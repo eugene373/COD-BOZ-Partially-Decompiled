@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="common_android_wear_notification_needs_update_text">Колдонмону Android Тагынма колдонмосуна жаңыртуу керек.</string>
+    <string name="common_android_wear_update_text">Android Тагынма колдонмосу жаңыртылмайынча бул колдонмо иштебейт.</string>
+    <string name="common_android_wear_update_title">Android Тагынманы жаңыртуу</string>
+    <string name="common_google_play_services_enable_button">Google Play кызматтарын иштетүү</string>
+    <string name="common_google_play_services_enable_text">Бул колдонмо Google Play кызматтары иштетилмейинче иштебейт.</string>
+    <string name="common_google_play_services_enable_title">Google Play кызматтарын иштетүү</string>
+    <string name="common_google_play_services_error_notification_requested_by_msg">%1$s сурап жатат</string>
+    <string name="common_google_play_services_install_button">Google Play кызматтарын алуу</string>
+    <string name="common_google_play_services_install_text_phone">Бул колдонмо Google Play кызматтарысыз иштебейт, алар сиздин телефонуңузда жок.</string>
+    <string name="common_google_play_services_install_text_tablet">Бул колдонмо Google Play кызматтарысыз иштебейт, алар сиздин планшетиңизде жок.</string>
+    <string name="common_google_play_services_install_title">Google Play кызматтарын алуу</string>
+    <string name="common_google_play_services_invalid_account_text">Көрсөтүлгөн каттоо эсеби бул түзмөктө жок. Башка каттоо эсебин тандаңыз.</string>
+    <string name="common_google_play_services_invalid_account_title">Каттоо эсеби жараксыз</string>
+    <string name="common_google_play_services_needs_enabling_title">Колдонмону иштетүү үчүн, Google Play Кызматтарын иштетүү керек.</string>
+    <string name="common_google_play_services_network_error_text">Google Play Кызматтарына туташуу үчүн, дайындарды өткөрүүчү туташуу талап кылынат.</string>
+    <string name="common_google_play_services_network_error_title">Тармак катасы</string>
+    <string name="common_google_play_services_notification_needs_installation_title">Колдонмону иштетүү үчүн, Google Play кызматтарын орнотуу керек.</string>
+    <string name="common_google_play_services_notification_needs_update_title">Колдонмону иштетүү үчүн, Google Play Кызматтарын жаңыртуу керек.</string>
+    <string name="common_google_play_services_notification_ticker">Google Play кызматтарынын катасы</string>
+    <string name="common_google_play_services_unknown_issue">Google Play кызматтарында келип чыккан белгисиз көйгөй.</string>
+    <string name="common_google_play_services_unsupported_text">Айрым колдонмолоруңузга байланышкан Google Play кызматтары түзмөгүңүздө колдоого алынбайт. Жардам алуу үчүн өндүрүүчүгө кайрылыңыз.</string>
+    <string name="common_google_play_services_unsupported_title">Google Play кызматтары</string>
+    <string name="common_google_play_services_update_button">Жаңыртуу</string>
+    <string name="common_google_play_services_update_text">Бул колдонмо Google Play кызматтары жаңыртылмайынча иштебейт.</string>
+    <string name="common_google_play_services_update_title">Google Play кызматтарын жаңыртуу</string>
+    <string name="common_open_on_phone">Телефондо ачык</string>
+    <string name="common_signin_button_text">Кирүү</string>
+    <string name="common_signin_button_text_long">Google менен кирүү</string>
+</resources>

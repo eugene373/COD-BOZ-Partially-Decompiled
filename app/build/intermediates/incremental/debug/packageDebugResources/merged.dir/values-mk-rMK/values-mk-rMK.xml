@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="common_android_wear_notification_needs_update_text">Една апликација бара ажурирање на апликацијата Android Wear.</string>
+    <string name="common_android_wear_update_text">Апликацијата нема да работи ако не ја ажурирате апликацијата Android Wear.</string>
+    <string name="common_android_wear_update_title">Ажурирај Android Wear</string>
+    <string name="common_google_play_services_enable_button">Овозможи ги услугите на Google Play</string>
+    <string name="common_google_play_services_enable_text">Апликацијата нема да работи ако не ги овозможите услугите на Google Play.</string>
+    <string name="common_google_play_services_enable_title">Овозможи ги услугите на Google Play</string>
+    <string name="common_google_play_services_error_notification_requested_by_msg">Побарал %1$s</string>
+    <string name="common_google_play_services_install_button">Преземи ги услугите на Google Play</string>
+    <string name="common_google_play_services_install_text_phone">Апликацијата нема да работи без услугите на Google Play, кои недостасуваат од вашиот телефон.</string>
+    <string name="common_google_play_services_install_text_tablet">Апликацијата нема да работи без услугите на Google Play, кои недостасуваат од вашиот таблет.</string>
+    <string name="common_google_play_services_install_title">Преземи ги услугите на Google Play</string>
+    <string name="common_google_play_services_invalid_account_text">Наведената сметка не постои на овој уред. Изберете друга сметка.</string>
+    <string name="common_google_play_services_invalid_account_title">Неважечка сметка</string>
+    <string name="common_google_play_services_needs_enabling_title">Апликацијата бара да се овозможат услугите на Google Play.</string>
+    <string name="common_google_play_services_network_error_text">Потребно е поврзување податоци за да се поврзете со услугите на Google Play.</string>
+    <string name="common_google_play_services_network_error_title">Мрежна грешка</string>
+    <string name="common_google_play_services_notification_needs_installation_title">Апликацијата бара да се инсталираат услугите на Google Play.</string>
+    <string name="common_google_play_services_notification_needs_update_title">Апликацијата бара да се ажурираат услугите на Google Play.</string>
+    <string name="common_google_play_services_notification_ticker">Грешка на услугите на Google Play</string>
+    <string name="common_google_play_services_unknown_issue">Непознат проблем со услугите на Google Play.</string>
+    <string name="common_google_play_services_unsupported_text">Уредот не ги поддржува услугите на Google Play на кои се потпираат некои од вашите апликации. Контактирајте со производителот за помош.</string>
+    <string name="common_google_play_services_unsupported_title">Услуги на Google Play</string>
+    <string name="common_google_play_services_update_button">Ажурирај</string>
+    <string name="common_google_play_services_update_text">Апликацијата нема да работи ако не ги ажурирате услугите на Google Play.</string>
+    <string name="common_google_play_services_update_title">Ажурирај ги услугите на Google Play</string>
+    <string name="common_open_on_phone">Отвори на телефонот</string>
+    <string name="common_signin_button_text">Најави се</string>
+    <string name="common_signin_button_text_long">Најави се со Google</string>
+</resources>

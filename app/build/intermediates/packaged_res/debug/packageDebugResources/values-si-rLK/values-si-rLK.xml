@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="common_android_wear_notification_needs_update_text">Android Wear යෙදුම යාවත්කාලීන කිරීමට යෙදුමක් අවශ්‍යය.</string>
+    <string name="common_android_wear_update_text">Android Wear යෙදුම ඔබ යාවත්කාලීන කළේ නැති නම් මෙම යෙදුම ධාවනය කළ නොහැක.</string>
+    <string name="common_android_wear_update_title">Android Wear යාවත්කාලීන කරන්න</string>
+    <string name="common_google_play_services_enable_button">Google Play සේවාවන් සබල කරන්න</string>
+    <string name="common_google_play_services_enable_text">ඔබ Google Play සේවාවන් සබල කරන්නේ නම් මිස මෙම යෙදුම වැඩ නොකරනු ඇත.</string>
+    <string name="common_google_play_services_enable_title">Google Play සේවාවන් සබල කරන්න</string>
+    <string name="common_google_play_services_error_notification_requested_by_msg">%1$s විසින් ඉල්ලා ඇත</string>
+    <string name="common_google_play_services_install_button">Google Play සේවාවන් ලබා ගන්න</string>
+    <string name="common_google_play_services_install_text_phone">ඔබගේ දුරකථනයෙන් අස්ථානගත වී ඇති Google Play සේවාවන් රහිතව මෙම යෙදුම ධාවනය නොවනු ඇත.</string>
+    <string name="common_google_play_services_install_text_tablet">ඔබගේ ටැබ්ලටයෙන් අස්ථානගත වී ඇති Google Play සේවාවන් රහිතව මෙම යෙදුම ධාවනය නොවේ.</string>
+    <string name="common_google_play_services_install_title">Google Play සේවාවන් ලබා ගන්න</string>
+    <string name="common_google_play_services_invalid_account_text">නියම කර දැක්වූ ගිණුම මෙම උපාංගය මත නොපවතී. කරුණාකර වෙනත් ගිණුමක් තෝරන්න.</string>
+    <string name="common_google_play_services_invalid_account_title">වලංගු නොවන ගිණුම</string>
+    <string name="common_google_play_services_needs_enabling_title">යෙදුමකට Google Play සේවාවන් සබලව තිබීම අවශ්‍යය.</string>
+    <string name="common_google_play_services_network_error_text">Google Play සේවාවන් වෙත සබැඳීමට දත්ත සබැඳුමක් අවශ්‍යය.</string>
+    <string name="common_google_play_services_network_error_title">ජාල දෝෂය</string>
+    <string name="common_google_play_services_notification_needs_installation_title">යෙදුමකට Google Play සේවා ස්ථාපනයක් අවශ්‍යය.</string>
+    <string name="common_google_play_services_notification_needs_update_title">යෙදුමකට Google Play සේවාවන් සඳහා යාවත්කාලීනයක් අවශ්‍යය.</string>
+    <string name="common_google_play_services_notification_ticker">Google Play සේවා දෝෂය</string>
+    <string name="common_google_play_services_unknown_issue">Google Play සේවාවන් සමග නොදන්නා ගැටලුවක්.</string>
+    <string name="common_google_play_services_unsupported_text">ඔබගේ සමහර යෙදුම් විශ්වාසය තබන, Google Play සේවාවන්ට, ඔබගේ උපාංගය සහාය නොදක්වයි. කරුණාකර සහාය සඳහා නිෂ්පාදකයා අමතන්න.</string>
+    <string name="common_google_play_services_unsupported_title">Google Play සේවා</string>
+    <string name="common_google_play_services_update_button">යාවත්කාලීන කරන්න</string>
+    <string name="common_google_play_services_update_text">ඔබ Google Play සේවා යාවත්කාලීන කරන්නේ නම් මිස මෙම යෙදුම ධාවනය නොවේ.</string>
+    <string name="common_google_play_services_update_title">Google Play සේවාවන් යාවත්කාලීන කරන්න</string>
+    <string name="common_open_on_phone">දුරකථනය තුළ විවෘත කරන්න</string>
+    <string name="common_signin_button_text">පිවිසෙන්න</string>
+    <string name="common_signin_button_text_long">Google සමගින් පුරනය වන්න</string>
+</resources>

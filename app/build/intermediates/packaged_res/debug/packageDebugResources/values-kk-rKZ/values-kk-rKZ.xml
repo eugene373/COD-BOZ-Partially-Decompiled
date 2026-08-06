@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="common_android_wear_notification_needs_update_text">Қолданба Android Wear қолданбасын жаңартуды қажет етеді.</string>
+    <string name="common_android_wear_update_text">Бұл қолданба Android Wear қолданбасын жаңартқанша іске қосылмайды.</string>
+    <string name="common_android_wear_update_title">Android Wear қолданбасын жаңарту</string>
+    <string name="common_google_play_services_enable_button">Google Play қызметтерін қосу</string>
+    <string name="common_google_play_services_enable_text">Бұл қолданба Google Play қызметтерін қосқанша жұмыс істемейді.</string>
+    <string name="common_google_play_services_enable_title">Google Play қызметтерін қосу</string>
+    <string name="common_google_play_services_error_notification_requested_by_msg">%1$s арқылы сұралған</string>
+    <string name="common_google_play_services_install_button">Google Play қызметтерін алу</string>
+    <string name="common_google_play_services_install_text_phone">Телефоныңызда жоқ Google Play қызметтерінсіз бұл қолданба іске қосылмайды.</string>
+    <string name="common_google_play_services_install_text_tablet">Планшетіңізде жоқ Google Play қызметтерінсіз бұл қолданба іске қосылмайды.</string>
+    <string name="common_google_play_services_install_title">Google Play қызметтерін алу</string>
+    <string name="common_google_play_services_invalid_account_text">Бұл құрылғыда көрсетілген тіркелгі жоқ. Басқа тіркелгіні таңдаңыз.</string>
+    <string name="common_google_play_services_invalid_account_title">Жарамсыз тіркелгі</string>
+    <string name="common_google_play_services_needs_enabling_title">Қолданба Google Play қызметтерін қосуды қажет етеді.</string>
+    <string name="common_google_play_services_network_error_text">Google Play қызметтеріне қосылу үшін деректер байланысы талап етіледі.</string>
+    <string name="common_google_play_services_network_error_title">Желі қатесі</string>
+    <string name="common_google_play_services_notification_needs_installation_title">Қолданба Google Play қызметтерін орнатуды талап етеді.</string>
+    <string name="common_google_play_services_notification_needs_update_title">Қолданба Google Play қызметтерін жаңартуды талап етеді.</string>
+    <string name="common_google_play_services_notification_ticker">Google Play қызметтерінің қатесі</string>
+    <string name="common_google_play_services_unknown_issue">Google Play қызметтерімен белгісіз мәселе.</string>
+    <string name="common_google_play_services_unsupported_text">Кейбір қолданбаларыңыз үшін қажет Google Play қызметтеріне құрылғыңыз қолдау көрсетпейді. Көмек алу үшін өндірушіге хабарласыңыз.</string>
+    <string name="common_google_play_services_unsupported_title">Google Play қызметтері</string>
+    <string name="common_google_play_services_update_button">Жаңарту</string>
+    <string name="common_google_play_services_update_text">Бұл қолданба Google Play қызметтерін жаңартқанша іске қосылмайды.</string>
+    <string name="common_google_play_services_update_title">Google Play қызметтерін жаңарту</string>
+    <string name="common_open_on_phone">Телефонда ашу</string>
+    <string name="common_signin_button_text">Кіру</string>
+    <string name="common_signin_button_text_long">Google арқылы кіру</string>
+</resources>

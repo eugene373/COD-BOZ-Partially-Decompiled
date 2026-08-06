@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="common_android_wear_notification_needs_update_text">Unha aplicación require unha actualización da aplicación Android Wear.</string>
+    <string name="common_android_wear_update_text">Esta aplicación non se executará se non actualizas a aplicación Android Wear.</string>
+    <string name="common_android_wear_update_title">Actualizar Android Wear</string>
+    <string name="common_google_play_services_enable_button">Activar servizos de Google Play</string>
+    <string name="common_google_play_services_enable_text">Esta aplicación non funcionará se non activas os servizos de Google Play.</string>
+    <string name="common_google_play_services_enable_title">Activar servizos de Google Play</string>
+    <string name="common_google_play_services_error_notification_requested_by_msg">Solicitado por %1$s</string>
+    <string name="common_google_play_services_install_button">Obter servizos de Google Play</string>
+    <string name="common_google_play_services_install_text_phone">Esta aplicación non se executará se o teléfono non ten instalados os servizos de Google Play.</string>
+    <string name="common_google_play_services_install_text_tablet">Esta aplicación non se executará se o tablet non ten instalados os servizos de Google Play.</string>
+    <string name="common_google_play_services_install_title">Descargar servizos de Google Play</string>
+    <string name="common_google_play_services_invalid_account_text">A conta especificada non existe neste dispositivo. Escolle unha diferente.</string>
+    <string name="common_google_play_services_invalid_account_title">Conta non válida</string>
+    <string name="common_google_play_services_needs_enabling_title">As aplicacións requiren ter os servizos de Google Play activados.</string>
+    <string name="common_google_play_services_network_error_text">É necesario dispoñer dunha conexión de datos para conectarse aos servizos de Google Play.</string>
+    <string name="common_google_play_services_network_error_title">Erro de rede</string>
+    <string name="common_google_play_services_notification_needs_installation_title">As aplicacións requiren a instalación dos servizos de Google Play.</string>
+    <string name="common_google_play_services_notification_needs_update_title">Unha aplicación require a actualización dos servizos de Google Play.</string>
+    <string name="common_google_play_services_notification_ticker">Erro nos servizos de Google Play</string>
+    <string name="common_google_play_services_unknown_issue">Erro descoñecido cos servizos de Google Play.</string>
+    <string name="common_google_play_services_unsupported_text">Os servizos de Google Play, nos que confían algunhas das túas aplicacións, non son compatibles co teu dispositivo. Ponte en contacto co fabricante para obter asistencia.</string>
+    <string name="common_google_play_services_unsupported_title">Servizos de Google Play</string>
+    <string name="common_google_play_services_update_button">Actualizar</string>
+    <string name="common_google_play_services_update_text">Esta aplicación non se executará se non actualizas os servizos de Google Play.</string>
+    <string name="common_google_play_services_update_title">Actualizar os servizos de Google Play</string>
+    <string name="common_open_on_phone">Abrir no teléfono</string>
+    <string name="common_signin_button_text">Iniciar sesión</string>
+    <string name="common_signin_button_text_long">Iniciar sesión con Google</string>
+</resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="IDS_SAPPS_BODY_WAITING_ING">Изчакване...</string>
+    <string name="IDS_SAPPS_HEADER_ITEM_PURCHASED">Елементът е закупен</string>
+    <string name="IDS_SAPPS_POP_ALREADY_PURCHASED">Вече е закупен</string>
+    <string name="IDS_SAPPS_POP_AN_ERROR_OCCURRED_WHILE_RESETTING_SAMSUNG_IN_APP_PURCHASE">Възникна грешка при нулиране на Покупка от приложение на Samsung</string>
+    <string name="IDS_SAPPS_POP_AN_INVALID_VALUE_HAS_BEEN_PROVIDED_FOR_SAMSUNG_IN_APP_PURCHASE">Предоставена е невалидна стойност за Покупка от приложение на Samsung</string>
+    <string name="IDS_SAPPS_POP_AN_UNEXPECTED_ERROR_HAS_OCCURRED_SAMSUNG_ACCOUNT_AUTHENTICATION_HAS_BEEN_CANCELLED">Възникна неочаквана грешка. Удостоверяването на Samsung акаунт е отменено.</string>
+    <string name="IDS_SAPPS_POP_A_NEW_VERSION_OF_SAMSUNG_IN_APP_PURCHASE_IS_AVAILABLE_UPDATE_Q">Има налична нова версия на Покупка от приложение на Samsung. Актуализиране?</string>
+    <string name="IDS_SAPPS_POP_NETWORK_UNAVAILABLE">Няма мрежа</string>
+    <string name="IDS_SAPPS_POP_PAYMENT_CANCELLED">Плащането е отменено</string>
+    <string name="IDS_SAPPS_POP_PRODUCT_DOES_NOT_EXIST_IN_THIS_STORE">Продуктът не съществува в този магазин</string>
+    <string name="IDS_SAPPS_POP_SAMSUNG_IN_APP_PURCHASE">Покупка от приложение на Samsung</string>
+    <string name="IDS_SAPPS_POP_SAMSUNG_IN_APP_PURCHASE_NEEDS_TO_BE_UPDATED">Покупка от приложение на Samsung трябва да се актуализира</string>
+    <string name="IDS_SAPPS_POP_TO_PURCHASE_ITEMS_YOU_NEED_TO_INSTALL_SAMSUNG_IN_APP_PURCHASE_INSTALL_Q">За да закупите елементи, трябва да инсталирате Покупка от приложение на Samsung. Инсталиране?</string>
+    <string name="IDS_SAPPS_POP_UNKNOWN_ERROR_OCCURRED">Възникна неизвестна грешка</string>
+    <string name="IDS_SAPPS_POP_YOUR_PURCHASE_VIA_SAMSUNG_IN_APP_PURCHASE_IS_INVALID_A_FAKE_APPLICATION_HAS_BEEN_DETECTED_CHECK_THE_APP_MSG">Вашата покупка през Покупка от приложение на Samsung е невалидна. Открито е фалшиво приложение. Проверете приложението, което се опитвате да закупите, и опитайте отново.</string>
+    <string name="common_android_wear_notification_needs_update_text">Приложение изисква актуализиране на Android Wear.</string>
+    <string name="common_android_wear_update_text">Това приложение няма да стартира, освен ако не актуализирате Android Wear.</string>
+    <string name="common_android_wear_update_title">Актуализиране на Android Wear</string>
+    <string name="common_google_play_services_enable_button">Услуги за Google Play: Актив.</string>
+    <string name="common_google_play_services_enable_text">Това приложение няма да работи, освен ако не активирате услугите за Google Play.</string>
+    <string name="common_google_play_services_enable_title">Активиране на услугите за Google Play</string>
+    <string name="common_google_play_services_error_notification_requested_by_msg">Заявено от %1$s</string>
+    <string name="common_google_play_services_install_button">Услуги за Google Play: Изтегл.</string>
+    <string name="common_google_play_services_install_text_phone">Това приложение няма да се изпълнява без услугите за Google Play, които липсват в телефона ви.</string>
+    <string name="common_google_play_services_install_text_tablet">Това приложение няма да се изпълнява без услугите за Google Play, които липсват в таблета ви.</string>
+    <string name="common_google_play_services_install_title">Изтегляне на услугите за Google Play</string>
+    <string name="common_google_play_services_invalid_account_text">Посоченият профил не съществува на това устройство. Моля, изберете друг.</string>
+    <string name="common_google_play_services_invalid_account_title">Невалиден профил</string>
+    <string name="common_google_play_services_needs_enabling_title">Приложение изисква активирането на услугите за Google Play.</string>
+    <string name="common_google_play_services_network_error_text">За свързване с услугите за Google Play се изисква връзка за данни.</string>
+    <string name="common_google_play_services_network_error_title">Грешка в мрежата</string>
+    <string name="common_google_play_services_notification_needs_installation_title">Приложение изисква инсталирането на услугите за Google Play.</string>
+    <string name="common_google_play_services_notification_needs_update_title">Приложение изисква актуализирането на услугите за Google Play.</string>
+    <string name="common_google_play_services_notification_ticker">Грешка в услугите за Google Play</string>
+    <string name="common_google_play_services_unknown_issue">Неизвестен проблем с услугите за Google Play.</string>
+    <string name="common_google_play_services_unsupported_text">Услугите за Google Play, на които разчитат някои от приложенията ви, не се поддържат от устройството ви. Моля, свържете се с производителя за помощ.</string>
+    <string name="common_google_play_services_unsupported_title">Услуги за Google Play</string>
+    <string name="common_google_play_services_update_button">Актуализиране</string>
+    <string name="common_google_play_services_update_text">Това приложение няма да се изпълнява, освен ако не актуализирате услугите за Google Play.</string>
+    <string name="common_google_play_services_update_title">Актуализиране на услугите за Google Play</string>
+    <string name="common_open_on_phone">Отваряне в телефона</string>
+    <string name="common_signin_button_text">Вход</string>
+    <string name="common_signin_button_text_long">Вход с Google</string>
+</resources>

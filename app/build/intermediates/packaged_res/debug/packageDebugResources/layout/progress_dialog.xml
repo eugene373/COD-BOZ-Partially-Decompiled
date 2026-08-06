@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_gravity="center" android:background="@drawable/dialog_full_holo_light" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/body" android:padding="20.0dp" android:layout_width="match_parent" android:layout_height="match_parent" android:baselineAligned="false">
+        <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/IapProgressBar" />
+        <TextView android:textSize="@dimen/page_loading_textview_textsize" android:layout_gravity="center_vertical" android:id="@id/message" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dp" android:text="@string/IDS_SAPPS_BODY_WAITING_ING" />
+    </LinearLayout>
+</FrameLayout>

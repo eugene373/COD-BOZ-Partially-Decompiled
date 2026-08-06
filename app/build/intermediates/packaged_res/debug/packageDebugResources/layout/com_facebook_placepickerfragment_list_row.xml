@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:focusable="false" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:focusable="false" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <FrameLayout android:layout_width="80.0dp" android:layout_height="wrap_content">
+            <ViewStub android:layout_gravity="left|center" android:id="@id/com_facebook_picker_profile_pic_stub" android:layout="@layout/com_facebook_picker_image" android:inflatedId="@id/com_facebook_picker_image" android:layout_width="@dimen/com_facebook_picker_place_image_size" android:layout_height="@dimen/com_facebook_picker_place_image_size" />
+        </FrameLayout>
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:focusable="false" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_marginRight="16.0dp" android:layout_weight="1.0">
+            <TextView android:textSize="16.0sp" android:typeface="sans" android:textColor="#000000" android:ellipsize="end" android:gravity="left|center" android:id="@id/com_facebook_picker_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:lines="1" android:singleLine="true" android:layout_weight="1.0" />
+            <TextView android:textSize="12.0sp" android:typeface="sans" android:textColor="#666666" android:ellipsize="end" android:gravity="left|center" android:id="@id/picker_subtitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:lines="1" android:singleLine="true" android:layout_weight="1.0" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:background="@drawable/com_facebook_picker_default_separator_color" android:layout_width="0.0dp" android:layout_height="@dimen/com_facebook_picker_divider_width" android:layout_alignParentLeft="true" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

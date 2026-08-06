@@ -1,0 +1,1194 @@
+[
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_picker_magnifier.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_picker_magnifier.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_native_loader_progress_06.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_native_loader_progress_06.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/layout_of_native_loader.xml.flat",
+        "source": "com.activision.boz.app-main-6:/layout/of_native_loader.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_common_signin_btn_icon_normal_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/common_signin_btn_icon_normal_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_common_signin_btn_text_dark.xml.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/common_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_achievement_icon_unlocked.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_achievement_icon_unlocked.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_common_signin_btn_icon_normal_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/common_signin_btn_icon_normal_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/layout_com_facebook_tooltip_bubble.xml.flat",
+        "source": "com.activision.boz.app-main-6:/layout/com_facebook_tooltip_bubble.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/layout_progress_dialog.xml.flat",
+        "source": "com.activision.boz.app-main-6:/layout/progress_dialog.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_of_notification_bkg.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/of_notification_bkg.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_ic_plusone_standard_off_client.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/ic_plusone_standard_off_client.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_button_grey_normal.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_button_grey_normal.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_button_like_background.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_button_like_background.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/layout_of_simple_notification.xml.flat",
+        "source": "com.activision.boz.app-main-6:/layout/of_simple_notification.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_com_facebook_button_blue_normal.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/com_facebook_button_blue_normal.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_common_signin_btn_text_disabled_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/common_signin_btn_text_disabled_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_common_signin_btn_text_disabled_focus_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/common_signin_btn_text_disabled_focus_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_icon.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/icon.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_common_signin_btn_text_focus_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/common_signin_btn_text_focus_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_common_signin_btn_icon_pressed_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/common_signin_btn_icon_pressed_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_button_blue_normal.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_button_blue_normal.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_ic_plusone_small_off_client.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/ic_plusone_small_off_client.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_common_signin_btn_icon_disabled_focus_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/common_signin_btn_icon_disabled_focus_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_com_facebook_picker_magnifier.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/com_facebook_picker_magnifier.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_com_facebook_button_like_background.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/com_facebook_button_like_background.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_button_blue.xml.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_button_blue.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_button_grey_focused.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_button_grey_focused.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_common_signin_btn_icon_focus_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/common_signin_btn_icon_focus_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_ic_plusone_medium_off_client.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/ic_plusone_medium_off_client.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-ldpi-v4_icon.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-ldpi-v4/icon.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_common_signin_btn_icon_pressed_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/common_signin_btn_icon_pressed_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_native_loader_progress_12.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_native_loader_progress_12.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_com_facebook_tooltip_blue_topnub.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/com_facebook_tooltip_blue_topnub.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_tooltip_blue_background.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_tooltip_blue_background.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_common_signin_btn_text_pressed_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/common_signin_btn_text_pressed_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_common_signin_btn_icon_pressed_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/common_signin_btn_icon_pressed_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_top_background.xml.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_top_background.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_inverse_icon.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_inverse_icon.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_picker_magnifier.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_picker_magnifier.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_ic_plusone_tall_off_client.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/ic_plusone_tall_off_client.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_tooltip_black_bottomnub.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_tooltip_black_bottomnub.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_common_signin_btn_icon_pressed_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/common_signin_btn_icon_pressed_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_ic_plusone_small_off_client.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/ic_plusone_small_off_client.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_icon.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/icon.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_button_grey_focused.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_button_grey_focused.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_picker_list_pressed.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_picker_list_pressed.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_close.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_close.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_powered_by_google_light.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/powered_by_google_light.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_tooltip_black_background.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_tooltip_black_background.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/layout_com_facebook_picker_title_bar_stub.xml.flat",
+        "source": "com.activision.boz.app-main-6:/layout/com_facebook_picker_title_bar_stub.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_powered_by_google_light.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/powered_by_google_light.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_common_signin_btn_text_disabled_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/common_signin_btn_text_disabled_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_native_loader_progress_11.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_native_loader_progress_11.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_frame_layout_shape.xml.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/frame_layout_shape.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_button_blue_pressed.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_button_blue_pressed.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_ic_plusone_standard_off_client.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/ic_plusone_standard_off_client.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/layout_com_facebook_picker_checkbox.xml.flat",
+        "source": "com.activision.boz.app-main-6:/layout/com_facebook_picker_checkbox.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-tvdpi-v4_ic_plusone_tall_off_client.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-tvdpi-v4/ic_plusone_tall_off_client.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_common_signin_btn_icon_normal_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/common_signin_btn_icon_normal_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_native_loader_progress_07.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_native_loader_progress_07.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_button_grey_pressed.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_button_grey_pressed.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_native_loader.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_native_loader.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_com_facebook_button_like_background_selected.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/com_facebook_button_like_background_selected.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_powered_by_google_light.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/powered_by_google_light.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_progressbar_middle.xml.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/progressbar_middle.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_common_signin_btn_text_disabled_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/common_signin_btn_text_disabled_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_button_like_background_selected.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_button_like_background_selected.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_button_grey_focused.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_button_grey_focused.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_common_signin_btn_text_pressed_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/common_signin_btn_text_pressed_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_native_loader_progress_04.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_native_loader_progress_04.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_common_signin_btn_text_normal_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/common_signin_btn_text_normal_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_achievement_icon_frame.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_achievement_icon_frame.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_icon_highscore_notification.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_icon_highscore_notification.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/color_common_signin_btn_text_light.xml.flat",
+        "source": "com.activision.boz.app-main-6:/color/common_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_native_loader_progress_10.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_native_loader_progress_10.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_common_signin_btn_icon_disabled_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/common_signin_btn_icon_disabled_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_native_loader_progress_02.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_native_loader_progress_02.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_com_facebook_tooltip_black_topnub.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/com_facebook_tooltip_black_topnub.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_button_blue_pressed.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_button_blue_pressed.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/layout_of_nested_window.xml.flat",
+        "source": "com.activision.boz.app-main-6:/layout/of_nested_window.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_powered_by_google_light.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/powered_by_google_light.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_tooltip_black_background.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_tooltip_black_background.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/layout_com_facebook_picker_search_box.xml.flat",
+        "source": "com.activision.boz.app-main-6:/layout/com_facebook_picker_search_box.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_close.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_close.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/layout_com_facebook_picker_title_bar.xml.flat",
+        "source": "com.activision.boz.app-main-6:/layout/com_facebook_picker_title_bar.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_tooltip_blue_bottomnub.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_tooltip_blue_bottomnub.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_sony_icon.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/sony_icon.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_button_grey_pressed.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_button_grey_pressed.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_native_loader_progress_03.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_native_loader_progress_03.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_button_like_background.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_button_like_background.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_powered_by_google_dark.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/powered_by_google_dark.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/layout_com_facebook_usersettingsfragment.xml.flat",
+        "source": "com.activision.boz.app-main-6:/layout/com_facebook_usersettingsfragment.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_common_signin_btn_text_focus_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/common_signin_btn_text_focus_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_tooltip_blue_xout.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_tooltip_blue_xout.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_profile_default_icon.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_profile_default_icon.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/layout_com_facebook_picker_list_row.xml.flat",
+        "source": "com.activision.boz.app-main-6:/layout/com_facebook_picker_list_row.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_common_signin_btn_text_focus_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/common_signin_btn_text_focus_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_common_ic_googleplayservices.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/common_ic_googleplayservices.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_usersettingsfragment_background_gradient.xml.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_usersettingsfragment_background_gradient.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_native_loader_progress_09.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_native_loader_progress_09.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_tw_widget_progressbar_effect_holo_light.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/tw_widget_progressbar_effect_holo_light.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_button_like_pressed.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_button_like_pressed.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_ic_plusone_standard_off_client.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/ic_plusone_standard_off_client.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_com_facebook_tooltip_black_bottomnub.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/com_facebook_tooltip_black_bottomnub.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_profile_picture_blank_portrait.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_profile_picture_blank_portrait.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_powered_by_google_dark.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/powered_by_google_dark.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_common_signin_btn_icon_pressed_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/common_signin_btn_icon_pressed_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_tw_widget_progressbar_holo_light.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/tw_widget_progressbar_holo_light.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_tooltip_blue_xout.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_tooltip_blue_xout.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_native_loader_progress_08.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_native_loader_progress_08.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_common_signin_btn_icon_normal_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/common_signin_btn_icon_normal_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_dialog_full_holo_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/dialog_full_holo_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_button_like_icon_selected.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_button_like_icon_selected.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_common_signin_btn_icon_focus_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/common_signin_btn_icon_focus_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_icon_dashboard_home.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_icon_dashboard_home.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_button_blue_focused.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_button_blue_focused.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_common_signin_btn_icon_focus_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/common_signin_btn_icon_focus_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_common_signin_btn_icon_focus_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/common_signin_btn_icon_focus_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_button_like_pressed.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_button_like_pressed.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_achievement_notification_bkg.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_achievement_notification_bkg.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_tooltip_blue_topnub.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_tooltip_blue_topnub.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_common_signin_btn_icon_focus_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/common_signin_btn_icon_focus_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_button_blue_normal.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_button_blue_normal.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_button_like_background_selected.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_button_like_background_selected.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/layout_com_facebook_login_activity_layout.xml.flat",
+        "source": "com.activision.boz.app-main-6:/layout/com_facebook_login_activity_layout.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_button_check.xml.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_button_check.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_logo.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_logo.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_icon.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/icon.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/layout_com_facebook_picker_activity_circle_row.xml.flat",
+        "source": "com.activision.boz.app-main-6:/layout/com_facebook_picker_activity_circle_row.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_button_like_icon_selected.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_button_like_icon_selected.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_common_signin_btn_text_normal_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/common_signin_btn_text_normal_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_common_signin_btn_text_normal_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/common_signin_btn_text_normal_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_common_signin_btn_icon_dark.xml.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/common_signin_btn_icon_dark.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_picker_top_button.xml.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_picker_top_button.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/menu_of_dashboard.xml.flat",
+        "source": "com.activision.boz.app-main-6:/menu/of_dashboard.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_tw_widget_progressbar_effect_holo_light.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/tw_widget_progressbar_effect_holo_light.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_achievement_notification_locked.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_achievement_notification_locked.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_common_signin_btn_text_pressed_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/common_signin_btn_text_pressed_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_common_signin_btn_text_disabled_focus_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/common_signin_btn_text_disabled_focus_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_button_like_icon_selected.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_button_like_icon_selected.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_close.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_close.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_ic_plusone_small_off_client.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/ic_plusone_small_off_client.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_tooltip_black_bottomnub.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_tooltip_black_bottomnub.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_common_signin_btn_icon_disabled_focus_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/common_signin_btn_icon_disabled_focus_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_feint_points_white.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_feint_points_white.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_common_signin_btn_icon_disabled_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/common_signin_btn_icon_disabled_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/color_wallet_primary_text_holo_light.xml.flat",
+        "source": "com.activision.boz.app-main-6:/color/wallet_primary_text_holo_light.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_tw_widget_progressbar_effect_holo_light.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/tw_widget_progressbar_effect_holo_light.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/layout_com_facebook_search_bar_layout.xml.flat",
+        "source": "com.activision.boz.app-main-6:/layout/com_facebook_search_bar_layout.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-tvdpi-v4_ic_plusone_medium_off_client.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-tvdpi-v4/ic_plusone_medium_off_client.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_common_signin_btn_text_disabled_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/common_signin_btn_text_disabled_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_ic_plusone_medium_off_client.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/ic_plusone_medium_off_client.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_common_signin_btn_icon_disabled_focus_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/common_signin_btn_icon_disabled_focus_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_common_signin_btn_icon_light.xml.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/common_signin_btn_icon_light.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_common_signin_btn_text_disabled_focus_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/common_signin_btn_text_disabled_focus_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_button_like_icon.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_button_like_icon.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_ic_plusone_tall_off_client.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/ic_plusone_tall_off_client.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_button_grey_normal.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_button_grey_normal.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_common_signin_btn_text_disabled_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/common_signin_btn_text_disabled_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_common_signin_btn_text_pressed_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/common_signin_btn_text_pressed_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_tw_widget_progressbar_holo_light.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/tw_widget_progressbar_holo_light.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_common_signin_btn_text_pressed_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/common_signin_btn_text_pressed_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_common_signin_btn_icon_disabled_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/common_signin_btn_icon_disabled_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_button_blue_focused.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_button_blue_focused.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_of_achievement_notification_locked.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/of_achievement_notification_locked.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_list_section_header_background.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_list_section_header_background.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_button_like.xml.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_button_like.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_ic_plusone_small_off_client.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/ic_plusone_small_off_client.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_common_signin_btn_icon_disabled_focus_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/common_signin_btn_icon_disabled_focus_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_button_grey_normal.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_button_grey_normal.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_button_like_selected.xml.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_button_like_selected.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_ic_plusone_tall_off_client.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/ic_plusone_tall_off_client.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_common_signin_btn_icon_disabled_focus_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/common_signin_btn_icon_disabled_focus_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_picker_list_selector_background_transition.xml.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_picker_list_selector_background_transition.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_common_signin_btn_icon_disabled_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/common_signin_btn_icon_disabled_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_common_signin_btn_icon_pressed_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/common_signin_btn_icon_pressed_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-ldpi-v4_com_facebook_close.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-ldpi-v4/com_facebook_close.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_com_facebook_inverse_icon.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/com_facebook_inverse_icon.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_com_facebook_button_blue_pressed.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/com_facebook_button_blue_pressed.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_of_icon_dashboard_settings.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/of_icon_dashboard_settings.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_common_signin_btn_icon_focus_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/common_signin_btn_icon_focus_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_native_loader_leaf.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_native_loader_leaf.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_tw_widget_progressbar_holo_light.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/tw_widget_progressbar_holo_light.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_common_signin_btn_text_focus_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/common_signin_btn_text_focus_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_powered_by_google_dark.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/powered_by_google_dark.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_ic_plusone_tall_off_client.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/ic_plusone_tall_off_client.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_common_signin_btn_icon_disabled_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/common_signin_btn_icon_disabled_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_common_signin_btn_text_normal_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/common_signin_btn_text_normal_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_common_signin_btn_text_disabled_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/common_signin_btn_text_disabled_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_of_achievement_notification_bkg.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/of_achievement_notification_bkg.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_common_signin_btn_icon_disabled_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/common_signin_btn_icon_disabled_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/layout_com_facebook_picker_list_section_header.xml.flat",
+        "source": "com.activision.boz.app-main-6:/layout/com_facebook_picker_list_section_header.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_top_button.xml.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_top_button.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_icon_dashboard_settings.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_icon_dashboard_settings.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_tooltip_black_xout.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_tooltip_black_xout.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_common_signin_btn_text_disabled_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/common_signin_btn_text_disabled_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_common_signin_btn_text_disabled_focus_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/common_signin_btn_text_disabled_focus_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxxhdpi-v4_icon.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxxhdpi-v4/icon.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-tvdpi-v4_ic_plusone_small_off_client.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-tvdpi-v4/ic_plusone_small_off_client.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_of_icon_dashboard_home.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/of_icon_dashboard_home.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_button_like_icon.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_button_like_icon.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_picker_list_focused.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_picker_list_focused.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/layout_com_facebook_placepickerfragment_list_row.xml.flat",
+        "source": "com.activision.boz.app-main-6:/layout/com_facebook_placepickerfragment_list_row.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_common_signin_btn_text_normal_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/common_signin_btn_text_normal_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_common_signin_btn_icon_normal_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/common_signin_btn_icon_normal_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_common_signin_btn_text_disabled_focus_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/common_signin_btn_text_disabled_focus_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-tvdpi-v4_ic_plusone_standard_off_client.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-tvdpi-v4/ic_plusone_standard_off_client.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_common_signin_btn_text_normal_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/common_signin_btn_text_normal_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_com_facebook_tooltip_black_background.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/com_facebook_tooltip_black_background.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_common_signin_btn_text_focus_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/common_signin_btn_text_focus_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_common_signin_btn_text_pressed_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/common_signin_btn_text_pressed_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_common_signin_btn_icon_pressed_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/common_signin_btn_icon_pressed_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_native_loader_progress_01.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_native_loader_progress_01.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_tooltip_blue_background.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_tooltip_blue_background.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_of_icon_dashboard_exit.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/of_icon_dashboard_exit.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_com_facebook_tooltip_blue_xout.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/com_facebook_tooltip_blue_xout.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_list_divider.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_list_divider.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_com_facebook_tooltip_blue_background.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/com_facebook_tooltip_blue_background.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_common_signin_btn_icon_focus_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/common_signin_btn_icon_focus_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_button_like_icon.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_button_like_icon.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_native_loader_frame.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_native_loader_frame.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_of_achievement_icon_frame.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/of_achievement_icon_frame.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_com_facebook_button_like_icon_selected.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/com_facebook_button_like_icon_selected.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_tooltip_black_topnub.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_tooltip_black_topnub.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_tw_widget_progressbar_effect_holo_light.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/tw_widget_progressbar_effect_holo_light.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_inverse_icon.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_inverse_icon.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_tooltip_blue_topnub.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_tooltip_blue_topnub.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_button_blue_focused.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_button_blue_focused.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_common_signin_btn_text_pressed_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/common_signin_btn_text_pressed_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_button_blue_pressed.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_button_blue_pressed.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_common_signin_btn_icon_disabled_focus_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/common_signin_btn_icon_disabled_focus_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_ic_plusone_standard_off_client.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/ic_plusone_standard_off_client.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_picker_list_selector_disabled.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_picker_list_selector_disabled.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_common_full_open_on_phone.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/common_full_open_on_phone.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_notification_bkg.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_notification_bkg.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_tooltip_black_topnub.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_tooltip_black_topnub.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_common_signin_btn_text_focus_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/common_signin_btn_text_focus_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_inverse_icon.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_inverse_icon.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_tooltip_black_xout.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_tooltip_black_xout.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_common_signin_btn_icon_disabled_focus_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/common_signin_btn_icon_disabled_focus_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_tw_widget_progressbar_holo_light.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/tw_widget_progressbar_holo_light.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_icon.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/icon.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/layout_com_facebook_picker_image.xml.flat",
+        "source": "com.activision.boz.app-main-6:/layout/com_facebook_picker_image.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_common_signin_btn_icon_normal_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/common_signin_btn_icon_normal_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_tw_widget_progressbar_effect_holo_light.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/tw_widget_progressbar_effect_holo_light.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_profile_picture_blank_square.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_profile_picture_blank_square.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_com_facebook_button_like_pressed.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/com_facebook_button_like_pressed.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_common_signin_btn_icon_normal_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/common_signin_btn_icon_normal_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_native_loader_progress.xml.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_native_loader_progress.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_loginbutton_silver.xml.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_loginbutton_silver.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_icon_dashboard_exit.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_icon_dashboard_exit.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_common_signin_btn_text_disabled_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/common_signin_btn_text_disabled_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_button_like_background.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_button_like_background.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/layout_com_facebook_friendpickerfragment.xml.flat",
+        "source": "com.activision.boz.app-main-6:/layout/com_facebook_friendpickerfragment.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_common_signin_btn_text_disabled_focus_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/common_signin_btn_text_disabled_focus_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_tooltip_blue_bottomnub.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_tooltip_blue_bottomnub.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/color_wallet_secondary_text_holo_dark.xml.flat",
+        "source": "com.activision.boz.app-main-6:/color/wallet_secondary_text_holo_dark.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_common_signin_btn_icon_disabled_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/common_signin_btn_icon_disabled_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_common_signin_btn_text_normal_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/common_signin_btn_text_normal_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_common_signin_btn_text_focus_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/common_signin_btn_text_focus_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_button_blue_normal.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_button_blue_normal.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_common_signin_btn_icon_normal_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/common_signin_btn_icon_normal_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_common_signin_btn_icon_disabled_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/common_signin_btn_icon_disabled_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_logo.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_logo.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_common_signin_btn_icon_pressed_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/common_signin_btn_icon_pressed_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/color_common_signin_btn_text_dark.xml.flat",
+        "source": "com.activision.boz.app-main-6:/color/common_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_button_grey_pressed.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_button_grey_pressed.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_common_signin_btn_text_light.xml.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/common_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_common_signin_btn_icon_focus_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/common_signin_btn_icon_focus_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_common_signin_btn_text_focus_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/common_signin_btn_text_focus_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_powered_by_google_dark.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/powered_by_google_dark.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_ic_plusone_medium_off_client.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/ic_plusone_medium_off_client.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_native_loader_progress_05.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_native_loader_progress_05.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_button_check_off.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_button_check_off.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_picker_item_background.xml.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_picker_item_background.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_achievement_icon_locked.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_achievement_icon_locked.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_tw_widget_progressbar_holo_light.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/tw_widget_progressbar_holo_light.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_place_default_icon.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_place_default_icon.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/layout_com_facebook_placepickerfragment.xml.flat",
+        "source": "com.activision.boz.app-main-6:/layout/com_facebook_placepickerfragment.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_common_signin_btn_text_pressed_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/common_signin_btn_text_pressed_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_com_facebook_tooltip_blue_bottomnub.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/com_facebook_tooltip_blue_bottomnub.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_com_facebook_button_like_pressed.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/com_facebook_button_like_pressed.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_of_ll_logo.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/of_ll_logo.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_common_signin_btn_icon_disabled_focus_light.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/common_signin_btn_icon_disabled_focus_light.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_common_signin_btn_text_normal_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/common_signin_btn_text_normal_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_picker_list_selector.xml.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_picker_list_selector.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/layout_of_two_line_notification.xml.flat",
+        "source": "com.activision.boz.app-main-6:/layout/of_two_line_notification.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_com_facebook_button_blue_focused.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/com_facebook_button_blue_focused.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_picker_list_longpressed.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_picker_list_longpressed.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_button_like_background_selected.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_button_like_background_selected.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_common_signin_btn_text_disabled_focus_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/common_signin_btn_text_disabled_focus_dark.9.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_ic_plusone_medium_off_client.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/ic_plusone_medium_off_client.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xhdpi-v4_com_facebook_logo.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xhdpi-v4/com_facebook_logo.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-mdpi-v4_com_facebook_tooltip_black_xout.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-mdpi-v4/com_facebook_tooltip_black_xout.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/layout_of_achievement_notification.xml.flat",
+        "source": "com.activision.boz.app-main-6:/layout/of_achievement_notification.xml"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-xxhdpi-v4_com_facebook_button_like_icon.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-xxhdpi-v4/com_facebook_button_like_icon.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable_com_facebook_button_check_on.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable/com_facebook_button_check_on.png"
+    },
+    {
+        "merged": "com.activision.boz.app-debug-4:/drawable-hdpi-v4_common_signin_btn_text_disabled_focus_dark.9.png.flat",
+        "source": "com.activision.boz.app-main-6:/drawable-hdpi-v4/common_signin_btn_text_disabled_focus_dark.9.png"
+    }
+]

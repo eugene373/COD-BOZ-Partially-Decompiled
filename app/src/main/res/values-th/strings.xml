@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="common_google_play_services_notification_ticker">ข้อผิดพลาดของบริการ Google Play</string>
+    <string name="common_google_play_services_notification_needs_installation_title">แอปพลิเคชันหนึ่งจำเป็นต้องมีการติดตั้งบริการ Google Play</string>
+    <string name="common_google_play_services_notification_needs_update_title">แอปพลิเคชันหนึ่งจำเป็นต้องมีการอัปเดตสำหรับบริการ Google Play</string>
+    <string name="common_android_wear_notification_needs_update_text">แอปพลิเคชันรายการหนึ่งต้องการให้อัปเดตแอป Android Wear</string>
+    <string name="common_google_play_services_needs_enabling_title">แอปพลิเคชันหนึ่งจำเป็นต้องมีบริการ Google Play เพื่อเปิดใช้งาน</string>
+    <string name="common_google_play_services_error_notification_requested_by_msg">ขอโดย %1$s</string>
+    <string name="common_google_play_services_install_title">รับบริการ Google Play</string>
+    <string name="common_google_play_services_install_text_phone">แอปพลิเคชันนี้จะไม่ทำงานหากไม่มีบริการ Google Play ซึ่งไม่มีในโทรศัพท์ของคุณ</string>
+    <string name="common_google_play_services_install_text_tablet">แอปพลิเคชันนี้จะไม่ทำงานหากไม่มีบริการ Google Play ซึ่งไม่มีในแท็บเล็ตของคุณ</string>
+    <string name="common_google_play_services_install_button">รับบริการ Google Play</string>
+    <string name="common_google_play_services_enable_title">เปิดใช้งานบริการ Google Play</string>
+    <string name="common_google_play_services_enable_text">แอปพลิเคชันนี้จะไม่ทำงานจนกว่าคุณจะเปิดใช้งานบริการ Google Play</string>
+    <string name="common_google_play_services_enable_button">เปิดใช้งานบริการ Google Play</string>
+    <string name="common_google_play_services_update_title">อัปเดตบริการ Google Play</string>
+    <string name="common_android_wear_update_title">อัปเดต Android Wear</string>
+    <string name="common_google_play_services_update_text">แอปพลิเคชันนี้จะไม่ทำงานจนกว่าคุณจะอัปเดตบริการ Google Play</string>
+    <string name="common_android_wear_update_text">แอปนี้จะไม่ทำงานจนกว่าคุณจะอัปเดตแอป Android Wear</string>
+    <string name="common_google_play_services_network_error_title">ข้อผิดพลาดของเครือข่าย</string>
+    <string name="common_google_play_services_network_error_text">ต้องมีการเขื่อมต่อข้อมูลเพื่อเชื่อมต่อกับบริการ Google Play</string>
+    <string name="common_google_play_services_invalid_account_title">บัญชีไม่ถูกต้อง</string>
+    <string name="common_google_play_services_invalid_account_text">บัญชีที่ระบุไม่มีอยู่บนอุปกรณ์นี้ โปรดเลือกบัญชีอื่น</string>
+    <string name="common_google_play_services_unknown_issue">ปัญหาที่ไม่รู้จักของบริการ Google Play</string>
+    <string name="common_google_play_services_unsupported_title">บริการ Google Play</string>
+    <string name="common_google_play_services_unsupported_text">บริการ Google Play ซึ่งใช้งานในบางแอปพลิเคชัน ไม่ได้รับการสนับสนุนโดยอุปกรณ์ของคุณ โปรดติดต่อผู้ผลิตเพื่อขอรับความช่วยเหลือ</string>
+    <string name="common_google_play_services_update_button">อัปเดต</string>
+    <string name="common_signin_button_text">ลงชื่อใช้</string>
+    <string name="common_signin_button_text_long">ลงชื่อเข้าใช้ด้วย Google</string>
+    <string name="common_open_on_phone">เปิดบนโทรศัพท์</string>
+    <string name="IDS_SAPPS_POP_AN_ERROR_OCCURRED_WHILE_RESETTING_SAMSUNG_IN_APP_PURCHASE">เกิดข้อผิดพลาด ขณะรีเซ็ทการสั่งซื้อในแอพ ของ Samsung</string>
+    <string name="IDS_SAPPS_POP_AN_INVALID_VALUE_HAS_BEEN_PROVIDED_FOR_SAMSUNG_IN_APP_PURCHASE">มีการระบุค่าไม่ถูกต้อง สำหรับการสั่งซื้อในแอพของ Samsung</string>
+    <string name="IDS_SAPPS_POP_AN_UNEXPECTED_ERROR_HAS_OCCURRED_SAMSUNG_ACCOUNT_AUTHENTICATION_HAS_BEEN_CANCELLED">เกิดข้อผิดพลาดที่ไม่ได้คาดคิด ข้อมูลการรับรอง Samsung account ถูกยกเลิกแล้ว</string>
+    <string name="IDS_SAPPS_POP_YOUR_PURCHASE_VIA_SAMSUNG_IN_APP_PURCHASE_IS_INVALID_A_FAKE_APPLICATION_HAS_BEEN_DETECTED_CHECK_THE_APP_MSG">การสั่งซื้อในแอพของ Samsung ของคุณไม่ถูกต้อง มีการตรวจพบแอพพลิเคชั่นปลอม ตรวจสอบแอพที่คุณพยายามซื้อ และลองอีกครั้ง</string>
+    <string name="IDS_SAPPS_POP_UNKNOWN_ERROR_OCCURRED">เกิด​ข้อ​ผิด​พลาด​ที่​ไม่​รู้จัก</string>
+    <string name="IDS_SAPPS_POP_SAMSUNG_IN_APP_PURCHASE">การสั่งซื้อในแอพของ Samsung</string>
+    <string name="IDS_SAPPS_POP_SAMSUNG_IN_APP_PURCHASE_NEEDS_TO_BE_UPDATED">ต้องอัพเดทการสั่งซื้อในแอพของ Samsung</string>
+    <string name="IDS_SAPPS_POP_TO_PURCHASE_ITEMS_YOU_NEED_TO_INSTALL_SAMSUNG_IN_APP_PURCHASE_INSTALL_Q">ในการซื้อรายการต่างๆ คุณต้องติดตั้งการสั่งซื้อในแอพของ Samsung ติดตั้ง?</string>
+    <string name="IDS_SAPPS_POP_A_NEW_VERSION_OF_SAMSUNG_IN_APP_PURCHASE_IS_AVAILABLE_UPDATE_Q">มีเวอร์ชั่นใหม่ของการสั่งซื้อในแอพของ Samsung อัพเดท?</string>
+    <string name="IDS_SAPPS_BODY_WAITING_ING">กำลัง​รอ...</string>
+    <string name="IDS_SAPPS_POP_PRODUCT_DOES_NOT_EXIST_IN_THIS_STORE">ไม่​มี​ผลิตภัณฑ์​ใน​ร้าน​ค้า​นี้</string>
+    <string name="IDS_SAPPS_POP_ALREADY_PURCHASED">ซื้อ​เรียบ​ร้อย</string>
+    <string name="IDS_SAPPS_POP_PAYMENT_CANCELLED">การชำระเงินถูกยกเลิก</string>
+    <string name="IDS_SAPPS_POP_NETWORK_UNAVAILABLE">เครือ​ข่าย​ใช้​ไม่​ได้</string>
+    <string name="IDS_SAPPS_HEADER_ITEM_PURCHASED">รายการที่ซื้อ</string>
+</resources>

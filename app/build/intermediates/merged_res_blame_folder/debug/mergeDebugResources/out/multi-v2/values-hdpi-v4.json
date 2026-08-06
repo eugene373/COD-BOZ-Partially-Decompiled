@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.activision.boz.app-mergeDebugResources-2:/values-hdpi-v4/values-hdpi-v4.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Sam\\Desktop\\code\\Call of Duty Black Ops Zombies 1.0.11\\main_app\\app\\src\\main\\res\\values-hdpi-v4\\dimens.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endColumns": "65",
+                        "endOffsets": "118"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                }
+            ]
+        }
+    ]
+}

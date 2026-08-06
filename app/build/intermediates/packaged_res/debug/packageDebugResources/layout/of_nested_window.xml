@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout android:id="@id/nested_window_root" android:background="#eee" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/frameLayout" android:visibility="invisible" android:layout_width="match_parent" android:layout_height="match_parent">
+        <WebView android:id="@id/web_view" android:visibility="invisible" android:layout_width="match_parent" android:layout_height="match_parent" />
+    </FrameLayout>
+</AbsoluteLayout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="common_google_play_services_notification_ticker">Google Play ಸೇವೆಗಳ ದೋಷ</string>
+    <string name="common_google_play_services_notification_needs_installation_title">ಅಪ್ಲಿಕೇಶನ್‌ಗೆ Google Play ಸೇವೆಗಳು ಸ್ಥಾಪನೆಯಾಗಿರಬೇಕಾಗುತ್ತದೆ.</string>
+    <string name="common_google_play_services_notification_needs_update_title">ಅಪ್ಲಿಕೇಶನ್‌ಗೆ Google Play ಸೇವೆಗಳ ನವೀಕರಣದ ಅಗತ್ಯವಿದೆ.</string>
+    <string name="common_android_wear_notification_needs_update_text">Android Wear ಅಪ್ಲಿಕೇಶನ್ ನವೀಕರಿಸಲು ಅಪ್ಲಿಕೇಶನ್ ಅಗತ್ಯವಿದೆ.</string>
+    <string name="common_google_play_services_needs_enabling_title">ಅಪ್ಲಿಕೇಶನ್‌ಗೆ Google Play ಸೇವೆಗಳು ಸಕ್ರಿಯಗೊಂಡಿರಬೇಕಾಗುತ್ತದೆ.</string>
+    <string name="common_google_play_services_error_notification_requested_by_msg">%1$s ನಿಂದ ವಿನಂತಿಸಲಾಗಿದೆ</string>
+    <string name="common_google_play_services_install_title">Google Play ಸೇವೆಗಳನ್ನು ಪಡೆಯಿರಿ</string>
+    <string name="common_google_play_services_install_text_phone">ನಿಮ್ಮ ಫೋನ್‍‍ನಲ್ಲಿ ಕಾಣೆಯಾಗಿರುವ ಈ ಅಪ್ಲಿಕೇಶನ್, Google Play ಸೇವೆಗಳಿಲ್ಲದೆ ಚಾಲನೆಯಾಗುವುದಿಲ್ಲ.</string>
+    <string name="common_google_play_services_install_text_tablet">"ನಿಮ್ಮ ಟ್ಯಾಬ್ಲೆಟ್‍ನಲ್ಲಿ ಕಾಣೆಯಾಗಿರುವ ಈ ಅಪ್ಲಿಕೇಶನ್,  Google Play ಸೇವೆಗಳಿಲ್ಲದೆ ಚಾಲನೆಯಾಗುವುದಿಲ್ಲ."</string>
+    <string name="common_google_play_services_install_button">Google Play ಸೇವೆಗಳನ್ನು ಪಡೆಯಿರಿ</string>
+    <string name="common_google_play_services_enable_title">Google Play ಸೇವೆಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ</string>
+    <string name="common_google_play_services_enable_text">Google Play ಸೇವೆಗಳನ್ನು ನೀವು ಸಕ್ರಿಯಗೊಳಿಸದ ಹೊರತು ಈ ಅಪ್ಲಿಕೇಶನ್ ಕಾರ್ಯನಿರ್ವಹಿಸುವುದಿಲ್ಲ.</string>
+    <string name="common_google_play_services_enable_button">Google Play ಸೇವೆಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ</string>
+    <string name="common_google_play_services_update_title">Google Play ಸೇವೆಗಳನ್ನು ನವೀಕರಿಸಿ</string>
+    <string name="common_android_wear_update_title">Android Wear ನವೀಕರಿಸಿ</string>
+    <string name="common_google_play_services_update_text">ನೀವು Google Play ಸೇವೆಗಳನ್ನು ನವೀಕರಿಸದ ಹೊರತು ಈ ಅಪ್ಲಿಕೇಶನ್ ಚಾಲನೆಯಾಗುವುದಿಲ್ಲ.</string>
+    <string name="common_android_wear_update_text">ನೀವು Android Wear ಅಪ್ಲಿಕೇಶನ್ ನವೀಕರಿಸದ ಹೊರತು ಈ ಅಪ್ಲಿಕೇಶನ್ ರನ್ ಆಗುವುದಿಲ್ಲ.</string>
+    <string name="common_google_play_services_network_error_title">ನೆಟ್‍ವರ್ಕ್ ದೋಷ</string>
+    <string name="common_google_play_services_network_error_text">Google Play ಸೇವೆಗಳಿಗೆ ಸಂಪರ್ಕ ಹೊಂದಲು ಡೇಟಾ ಸಂಪರ್ಕದ ಅಗತ್ಯವಿದೆ.</string>
+    <string name="common_google_play_services_invalid_account_title">ಅಮಾನ್ಯವಾದ ಖಾತೆ</string>
+    <string name="common_google_play_services_invalid_account_text">ಈ ಸಾಧನದಲ್ಲಿ ನಿರ್ದಿಷ್ಟಪಡಿಸಲಾದ ಖಾತೆಯು ಅಸ್ತಿತ್ವದಲ್ಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಬೇರೆಯ ಖಾತೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ.</string>
+    <string name="common_google_play_services_unknown_issue">Google Play ಸೇವೆಗಳಿಗೆ ಅಜ್ಞಾತ ಸಮಸ್ಯೆ.</string>
+    <string name="common_google_play_services_unsupported_title">Google Play ಸೇವೆಗಳು</string>
+    <string name="common_google_play_services_unsupported_text">ನಿಮ್ಮ ಕೆಲವು ಅಪ್ಲಿಕೇಶನ್‌ಗಳು ಅವಂಬಿಸಿರುವಂತಹ Google Play ಸೇವೆಗಳನ್ನು ನಿಮ್ಮ ಸಾಧನವು ಬೆಂಬಲಿಸುವುದಿಲ್ಲ. ದಯವಿಟ್ಟು ನೆರವಿಗಾಗಿ ಉತ್ಪಾದಕರನ್ನು ಸಂಪರ್ಕಿಸಿ.</string>
+    <string name="common_google_play_services_update_button">ನವೀಕರಿಸು</string>
+    <string name="common_signin_button_text">ಸೈನ್ ಇನ್ ಮಾಡು</string>
+    <string name="common_signin_button_text_long">Google ಜೊತೆ ಸೈನ್ ಇನ್ ಮಾಡಿ</string>
+    <string name="common_open_on_phone">ಫೋನ್‌ನಲ್ಲಿ ತೆರೆಯಿರಿ</string>
+</resources>

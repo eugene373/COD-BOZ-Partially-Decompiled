@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="common_android_wear_notification_needs_update_text">Aplikazio batek Android Wear eguneratzea eskatzen du.</string>
+    <string name="common_android_wear_update_text">Aplikazio hau ez da exekutatuko Android Wear aplikazioa eguneratu ezean.</string>
+    <string name="common_android_wear_update_title">Eguneratu Android Wear</string>
+    <string name="common_google_play_services_enable_button">Gaitu Google Play zerbitzuak</string>
+    <string name="common_google_play_services_enable_text">Aplikazio honek ez du funtzionatuko Google Play zerbitzuak gaitzen ez badituzu.</string>
+    <string name="common_google_play_services_enable_title">Gaitu Google Play zerbitzuak</string>
+    <string name="common_google_play_services_error_notification_requested_by_msg">%1$s aplikazioak eskatu du</string>
+    <string name="common_google_play_services_install_button">Lortu Google Play zerbitzuak</string>
+    <string name="common_google_play_services_install_text_phone">Aplikazio hau ez da exekutatuko Google Play zerbitzurik gabe, baina horiek ez daude telefonoan.</string>
+    <string name="common_google_play_services_install_text_tablet">Aplikazio hau ez da exekutatuko Google Play zerbitzurik gabe, baina horiek ez daude tabletan.</string>
+    <string name="common_google_play_services_install_title">Lortu Google Play zerbitzuak</string>
+    <string name="common_google_play_services_invalid_account_text">Zehaztutako kontua ez dago gailuan. Aukeratu beste kontu bat.</string>
+    <string name="common_google_play_services_invalid_account_title">Kontu baliogabea</string>
+    <string name="common_google_play_services_needs_enabling_title">Aplikazio batek Google Play zerbitzuak gaituta egotea eskatzen du.</string>
+    <string name="common_google_play_services_network_error_text">Datu-konexioa behar da Google Play zerbitzuetara konektatzeko.</string>
+    <string name="common_google_play_services_network_error_title">Sareko errorea</string>
+    <string name="common_google_play_services_notification_needs_installation_title">Aplikazio batek Google Play zerbitzuak instalatzea eskatzen du.</string>
+    <string name="common_google_play_services_notification_needs_update_title">Aplikazio batek Google Play zerbitzuak eguneratzea eskatzen du.</string>
+    <string name="common_google_play_services_notification_ticker">Google Play zerbitzuen errorea</string>
+    <string name="common_google_play_services_unknown_issue">Google Play zerbitzuekin arazo ezezaguna dago.</string>
+    <string name="common_google_play_services_unsupported_text">Aplikazioetako batzuek behar dituzten Google Play zerbitzuak ez dira zure gailuan onartzen. Laguntza lortzeko, jarri fabrikatzailearen harremanetan.</string>
+    <string name="common_google_play_services_unsupported_title">Google Play zerbitzuak</string>
+    <string name="common_google_play_services_update_button">Eguneratu</string>
+    <string name="common_google_play_services_update_text">Aplikazio hau ez da exekutatuko Google Play zerbitzuak eguneratzen ez badituzu.</string>
+    <string name="common_google_play_services_update_title">Eguneratu Google Play zerbitzuak</string>
+    <string name="common_open_on_phone">Ireki telefonoan</string>
+    <string name="common_signin_button_text">Hasi saioa</string>
+    <string name="common_signin_button_text_long">Hasi saioa Google-n</string>
+</resources>

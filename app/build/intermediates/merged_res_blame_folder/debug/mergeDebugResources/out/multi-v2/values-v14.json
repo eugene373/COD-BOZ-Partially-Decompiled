@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.activision.boz.app-mergeDebugResources-2:/values-v14/values-v14.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Sam\\Desktop\\code\\Call of Duty Black Ops Zombies 1.0.11\\main_app\\app\\src\\main\\res\\values-v14\\styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endColumns": "88",
+                        "endOffsets": "141"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "87",
+                        "endOffsets": "138"
+                    }
+                }
+            ]
+        }
+    ]
+}

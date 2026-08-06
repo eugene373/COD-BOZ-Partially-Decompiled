@@ -1,0 +1,255 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.activision.boz"
+4    platformBuildVersionCode="21"
+5    platformBuildVersionName="5.0-1521886"
+6    android:installLocation="preferExternal"
+7    android:versionCode="11"
+8    android:versionName="1.0.11" >
+9
+10    <uses-sdk
+11        android:minSdkVersion="23"
+12        android:targetSdkVersion="33" />
+13
+14    <uses-permission android:name="android.permission.WAKE_LOCK" />
+14-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:33:5-67
+14-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:33:22-65
+15    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+15-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:34:5-74
+15-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:34:22-72
+16    <uses-permission android:name="android.permission.BATTERY_STATS" />
+16-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:35:5-71
+16-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:35:22-69
+17    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+17-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:36:5-79
+17-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:36:22-77
+18    <uses-permission android:name="android.permission.SET_ORIENTATION" />
+18-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:37:5-73
+18-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:37:22-71
+19    <uses-permission android:name="android.permission.INTERNET" />
+19-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:38:5-66
+19-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:38:22-64
+20    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+20-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:39:5-78
+20-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:39:22-76
+21    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+21-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:40:5-80
+21-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:40:22-78
+22    <uses-permission android:name="com.android.vending.CHECK_LICENSE" />
+22-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:41:5-72
+22-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:41:22-70
+23    <uses-permission android:name="com.android.vending.BILLING" />
+23-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:42:5-66
+23-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:42:22-64
+24    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+24-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:43:5-85
+24-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:43:22-83
+25    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+25-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:44:5-75
+25-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:44:22-73
+26    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+26-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:45:5-84
+26-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:45:22-82
+27    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+27-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:46:5-70
+27-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:46:22-68
+28
+29    <uses-feature android:glEsVersion="0x20000" />
+29-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:47:5-50
+29-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:47:19-48
+30    <uses-feature
+30-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:48:5-81
+31        android:name="android.hardware.wifi"
+31-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:48:19-55
+32        android:required="true" />
+32-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:48:56-79
+33
+34    <application
+34-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:3:5-32:19
+35        android:debuggable="true"
+36        android:extractNativeLibs="false"
+37        android:icon="@drawable/icon"
+37-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:3:18-47
+38        android:label="@string/app_name"
+38-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:3:48-80
+39        android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+39-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:3:81-139
+40        <activity
+40-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:4:9-9:20
+41            android:name="com.activision.boz.Main"
+41-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:4:177-197
+42            android:configChanges="locale|keyboardHidden|orientation|screenSize"
+42-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:4:19-87
+43            android:exported="true"
+43-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:4:88-111
+44            android:label="@string/app_name"
+44-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:4:112-144
+45            android:launchMode="singleTask" >
+45-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:4:145-176
+46            <intent-filter>
+46-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:5:13-8:29
+47                <action android:name="android.intent.action.MAIN" />
+47-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:6:17-68
+47-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:6:25-66
+48
+49                <category android:name="android.intent.category.LAUNCHER" />
+49-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:7:17-76
+49-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:7:27-74
+50            </intent-filter>
+51        </activity>
+52
+53        <provider
+53-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:10:9-197
+54            android:name="com.ideaworks3d.marmalade.VFSProvider"
+54-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:10:143-195
+55            android:authorities="zzzz3cbc70bb20f852f289fb0ebc606135c5.VFSProvider"
+55-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:10:19-89
+56            android:exported="false"
+56-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:10:90-114
+57            android:multiprocess="true" />
+57-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:10:115-142
+58
+59        <service android:name="com.ideaworks3d.marmalade.s3eAndroidMarketBilling.s3eAndroidMarketBilling" />
+59-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:11:9-108
+59-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:11:18-106
+60
+61        <receiver
+61-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:12:9-18:20
+62            android:name="com.ideaworks3d.marmalade.s3eAndroidMarketBilling.s3eAndroidMarketBillingReceiver"
+62-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:12:43-139
+63            android:exported="true" >
+63-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:12:19-42
+64            <intent-filter>
+64-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:13:13-17:29
+65                <action android:name="com.android.vending.billing.IN_APP_NOTIFY" />
+65-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:14:17-83
+65-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:14:25-81
+66                <action android:name="com.android.vending.billing.RESPONSE_CODE" />
+66-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:15:17-83
+66-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:15:25-81
+67                <action android:name="com.android.vending.billing.PURCHASE_STATE_CHANGED" />
+67-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:16:17-92
+67-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:16:25-90
+68            </intent-filter>
+69        </receiver>
+70
+71        <activity
+71-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:19:9-168
+72            android:name="com.ideaworks3d.marmalade.s3eAndroidGooglePlayBilling.PurchaseProxy"
+72-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:19:43-125
+73            android:exported="true"
+73-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:19:19-42
+74            android:theme="@style/Theme.Transparent" />
+74-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:19:126-166
+75        <activity
+75-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:20:9-188
+76            android:name="com.sec.android.iap.lib.activity.InboxActivity"
+76-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:20:90-151
+77            android:configChanges="orientation|screenSize"
+77-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:20:19-65
+78            android:exported="true"
+78-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:20:66-89
+79            android:theme="@style/Theme.Empty" />
+79-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:20:152-186
+80        <activity
+80-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:21:9-190
+81            android:name="com.sec.android.iap.lib.activity.PaymentActivity"
+81-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:21:90-153
+82            android:configChanges="orientation|screenSize"
+82-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:21:19-65
+83            android:exported="true"
+83-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:21:66-89
+84            android:theme="@style/Theme.Empty" />
+84-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:21:154-188
+85        <activity
+85-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:22:9-187
+86            android:name="com.sec.android.iap.lib.activity.ItemActivity"
+86-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:22:90-150
+87            android:configChanges="orientation|screenSize"
+87-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:22:19-65
+88            android:exported="true"
+88-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:22:66-89
+89            android:theme="@style/Theme.Empty" />
+89-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:22:151-185
+90        <activity
+90-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:23:9-220
+91            android:name="com.openfeint.internal.ui.IntroFlow"
+91-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:23:120-170
+92            android:configChanges="keyboardHidden|orientation"
+92-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:23:19-69
+93            android:exported="true"
+93-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:23:70-93
+94            android:label="IntroFlow"
+94-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:23:94-119
+95            android:theme="@android:style/Theme.NoTitleBar" />
+95-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:23:171-218
+96        <activity
+96-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:24:9-215
+97            android:name="com.openfeint.api.ui.Dashboard"
+97-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:24:120-165
+98            android:configChanges="keyboardHidden|orientation"
+98-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:24:19-69
+99            android:exported="true"
+99-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:24:70-93
+100            android:label="Dashboard"
+100-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:24:94-119
+101            android:theme="@android:style/Theme.NoTitleBar" />
+101-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:24:166-213
+102        <activity
+102-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:25:9-218
+103            android:name="com.openfeint.internal.ui.Settings"
+103-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:25:119-168
+104            android:configChanges="keyboardHidden|orientation"
+104-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:25:19-69
+105            android:exported="true"
+105-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:25:70-93
+106            android:label="Settings"
+106-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:25:94-118
+107            android:theme="@android:style/Theme.NoTitleBar" />
+107-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:25:169-216
+108        <activity
+108-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:26:9-228
+109            android:name="com.openfeint.internal.ui.NativeBrowser"
+109-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:26:124-178
+110            android:configChanges="keyboardHidden|orientation"
+110-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:26:19-69
+111            android:exported="true"
+111-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:26:70-93
+112            android:label="NativeBrowser"
+112-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:26:94-123
+113            android:theme="@android:style/Theme.NoTitleBar" />
+113-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:26:179-226
+114
+115        <meta-data
+115-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:27:9-106
+116            android:name="xperiaplayoptimized_content"
+116-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:27:20-62
+117            android:resource="@string/xperia_content" />
+117-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:27:63-104
+118        <meta-data
+118-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:28:9-90
+119            android:name="game_display_name"
+119-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:28:20-52
+120            android:resource="@string/app_name" />
+120-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:28:53-88
+121        <meta-data
+121-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:29:9-85
+122            android:name="game_icon"
+122-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:29:20-44
+123            android:resource="@drawable/sony_icon" />
+123-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:29:45-83
+124        <meta-data
+124-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:30:9-121
+125            android:name="com.google.android.gms.version"
+125-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:30:20-65
+126            android:value="@integer/google_play_services_version" />
+126-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:30:66-119
+127        <meta-data
+127-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:31:9-103
+128            android:name="com.google.android.gms.games.APP_ID"
+128-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:31:20-70
+129            android:value="@string/app_id" />
+129-->C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\AndroidManifest.xml:31:71-101
+130    </application>
+131
+132</manifest>

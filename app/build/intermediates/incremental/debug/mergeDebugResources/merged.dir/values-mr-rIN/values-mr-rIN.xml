@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="common_android_wear_notification_needs_update_text">अनुप्रयोगास Android Wear अॅप अद्यतनित करण्याची आवश्यकता आहे.</string>
+    <string name="common_android_wear_update_text">आपण Android Wear अॅप अद्यतनित केल्याशिवाय हा अॅप कार्य करणार नाही.</string>
+    <string name="common_android_wear_update_title">Android Wear अद्यतनित करा</string>
+    <string name="common_google_play_services_enable_button">Google Play सेवा सक्षम करा</string>
+    <string name="common_google_play_services_enable_text">आपण Google Play सेवा सक्षम केल्याशिवाय हा अॅप कार्य करणार नाही.</string>
+    <string name="common_google_play_services_enable_title">Google Play सेवा सक्षम करा</string>
+    <string name="common_google_play_services_error_notification_requested_by_msg">%1$s द्वारे विनंती केली</string>
+    <string name="common_google_play_services_install_button">Google Play सेवा मिळवा</string>
+    <string name="common_google_play_services_install_text_phone">हा अॅप Google Play सेवांशिवाय चालणार नाही, ज्या आपल्या फोनवरून गहाळ झाल्या आहेत.</string>
+    <string name="common_google_play_services_install_text_tablet">हा अॅप Google Play सेवांशिवाय चालणार नाही, ज्या आपल्या टॅब्लेटवरून गहाळ आहेत.</string>
+    <string name="common_google_play_services_install_title">Google Play सेवा मिळवा</string>
+    <string name="common_google_play_services_invalid_account_text">निर्दिष्ट केलेले खाते या डिव्हाइसवर अस्तित्वात नाही. कृपया एक भिन्न खाते निवडा.</string>
+    <string name="common_google_play_services_invalid_account_title">अवैध खाते</string>
+    <string name="common_google_play_services_needs_enabling_title">अनुप्रयोगासाठी Google Play सेवा सक्षम केलेल्या असणे आवश्यक आहे.</string>
+    <string name="common_google_play_services_network_error_text">Google Play सेवांशी कनेक्ट होण्यासाठी डेटा कनेक्शन आवश्यक आहे.</string>
+    <string name="common_google_play_services_network_error_title">नेटवर्क त्रुटी</string>
+    <string name="common_google_play_services_notification_needs_installation_title">अनुप्रयोगासाठी Google Play सेवांची स्थापना आवश्यक आहे.</string>
+    <string name="common_google_play_services_notification_needs_update_title">अनुप्रयोगासाठी Google Play सेवांचे अद्यतन आवश्यक आहे.</string>
+    <string name="common_google_play_services_notification_ticker">Google Play सेवा त्रुटी</string>
+    <string name="common_google_play_services_unknown_issue">Google Play सेवांसह अज्ञात समस्या.</string>
+    <string name="common_google_play_services_unsupported_text">आपले काही अनुप्रयोग ज्यावर अवलंबून आहेत अशी, Google Play सेवा, आपल्या डिव्हाइसद्वारे समर्थित नाही. कृपया सहाय्यासाठी निर्मात्याशी संपर्क साधा.</string>
+    <string name="common_google_play_services_unsupported_title">Google Play सेवा</string>
+    <string name="common_google_play_services_update_button">अद्यतनित करा</string>
+    <string name="common_google_play_services_update_text">आपण Google Play सेवा अद्यतनित केल्याशिवाय हा अॅप चालणार नाही.</string>
+    <string name="common_google_play_services_update_title">Google Play सेवा अद्यतनित करा</string>
+    <string name="common_open_on_phone">फोनवर उघडा</string>
+    <string name="common_signin_button_text">साइन इन करा</string>
+    <string name="common_signin_button_text_long">Google सह साइन इन करा</string>
+</resources>

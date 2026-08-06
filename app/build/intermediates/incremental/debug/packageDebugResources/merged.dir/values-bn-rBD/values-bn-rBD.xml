@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="common_android_wear_notification_needs_update_text">একটি অ্যাপ্লিকেশানের জন্য Android Wear অ্যাপ্লিকেশানটির একটি আপডেট প্রয়োজন।</string>
+    <string name="common_android_wear_update_text">আপনি Android Wear অ্যাপ্লিকেশান আপডেট না করা পর্যন্ত এই অ্যাপ্লিকেশানটি চলবে না।</string>
+    <string name="common_android_wear_update_title">Android Wear আপডেট করুন</string>
+    <string name="common_google_play_services_enable_button">Google প্লে পরিষেবা সক্ষম করুন</string>
+    <string name="common_google_play_services_enable_text">আপনি যতক্ষণ  না Google প্লে পরিষেবা সক্ষম করবেন ততক্ষণ এই অ্যাপ্লিকেশানটি চলবে না৷</string>
+    <string name="common_google_play_services_enable_title">Google প্লে পরিষেবা সক্ষম করুন</string>
+    <string name="common_google_play_services_error_notification_requested_by_msg">%1$s দ্বারা অনুরোধ করা হয়েছে</string>
+    <string name="common_google_play_services_install_button">Google প্লে পরিষেবা পান</string>
+    <string name="common_google_play_services_install_text_phone">Google প্লে পরিষেবা ছাড়া এই অ্যাপ্লিকেশানটি চলবে না, যেটি আপনার ফোনে অনুপস্থিত৷</string>
+    <string name="common_google_play_services_install_text_tablet">Google প্লে পরিষেবা ছাড়া এই অ্যাপ্লিকেশানটি চলবে না, যেটি আপনার ট্যাবলেটে অনুপস্থিত৷</string>
+    <string name="common_google_play_services_install_title">Google প্লে পরিষেবা পান</string>
+    <string name="common_google_play_services_invalid_account_text">নির্দিষ্ট করা অ্যাকাউন্টটি ডিভাইসে বিদ্যমান নেই৷ দয়া করে একটি ভিন্ন অ্যাকাউন্ট চয়ন করুন৷</string>
+    <string name="common_google_play_services_invalid_account_title">অবৈধ অ্যাকাউন্ট</string>
+    <string name="common_google_play_services_needs_enabling_title">একটি অ্যাপ্লিকেশানের জন্য Google প্লে পরিষেবা সক্ষম করা প্রয়োজন৷</string>
+    <string name="common_google_play_services_network_error_text">Google প্লে পরিষেবা সংযোগ করতে একটি ডেটা সংযোগের প্রয়োজন৷</string>
+    <string name="common_google_play_services_network_error_title">নেটওয়ার্ক ত্রুটি</string>
+    <string name="common_google_play_services_notification_needs_installation_title">একটি অ্যাপ্লিকেশানের জন্য Google প্লে পরিষেবার ইনস্টল করা প্রয়োজন৷</string>
+    <string name="common_google_play_services_notification_needs_update_title">একটি অ্যাপ্লিকেশানের জন্য Google প্লে পরিষেবার একটি আপডেটের প্রয়োজন৷</string>
+    <string name="common_google_play_services_notification_ticker">Google প্লে পরিষেবার ত্রুটি</string>
+    <string name="common_google_play_services_unknown_issue">Google প্লে পরিষেবার সঙ্গে অজানা সমস্যা৷</string>
+    <string name="common_google_play_services_unsupported_text">Google প্লে পরিষেবা, যার উপর আপনার কিছু অ্যাপ্লিকেশান নির্ভর করে, আপনার ডিভাইসে সমর্থিত নয়৷ দয়া করে সহায়তার জন্য প্রস্তুতকারকের সাথে যোগাযোগ করুন৷</string>
+    <string name="common_google_play_services_unsupported_title">Google প্লে পরিষেবা</string>
+    <string name="common_google_play_services_update_button">আপডেট করুন</string>
+    <string name="common_google_play_services_update_text">আপনি যতক্ষণ না Google প্লে পরিষেবা আপডেট ততক্ষণ এই অ্যাপ্লিকেশানটি চলবে না৷</string>
+    <string name="common_google_play_services_update_title">Google প্লে পরিষেবা আপডেট করুন</string>
+    <string name="common_open_on_phone">ফোনে খুলুন</string>
+    <string name="common_signin_button_text">সাইন ইন করুন</string>
+    <string name="common_signin_button_text_long">Google এর মাধ্যমে সাইন ইন করুন</string>
+</resources>

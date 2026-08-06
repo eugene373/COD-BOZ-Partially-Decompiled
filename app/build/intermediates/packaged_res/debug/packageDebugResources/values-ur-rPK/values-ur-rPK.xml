@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="common_android_wear_notification_needs_update_text">‏ایک اپیلیکیشن کو Android Wear ایپ کیلئے ایک اپ ڈیٹ درکار ہے۔</string>
+    <string name="common_android_wear_update_text">‏جب تک آپ Android Wear ایپ کو اپ ڈیٹ نہیں کر لیتے یہ ایپ نہیں چلے گی۔</string>
+    <string name="common_android_wear_update_title">‏Android Wear کو اپ ڈیٹ کریں</string>
+    <string name="common_google_play_services_enable_button">‏Google Play سروسز فعال کریں</string>
+    <string name="common_google_play_services_enable_text">‏یہ ایپ تب تک کام نہیں کرے گی جب تک کہ آپ Google Play سروسز فعال نہیں کر لیتے ہیں۔</string>
+    <string name="common_google_play_services_enable_title">‏Google Play سروسز فعال کریں</string>
+    <string name="common_google_play_services_error_notification_requested_by_msg">%1$s کے ذریعے درخواست کی گئی</string>
+    <string name="common_google_play_services_install_button">‏Google Play سروسز حاصل کریں</string>
+    <string name="common_google_play_services_install_text_phone">‏یہ ایپ Google Play سروسز کے بغیر نہیں چلے گی، جو آپ کے فون سے غائب ہے۔</string>
+    <string name="common_google_play_services_install_text_tablet">‏یہ ایپ Google Play سروسز کے بغیر نہیں چلے گی، جو آپ کے ٹیبلیٹ سے غائب ہے۔</string>
+    <string name="common_google_play_services_install_title">‏Google Play سروسز حاصل کریں</string>
+    <string name="common_google_play_services_invalid_account_text">متعین اکاؤنٹ اس آلہ پر موجود نہیں ہے۔ براہ کرم ایک مختلف اکاؤنٹ منتخب کریں۔</string>
+    <string name="common_google_play_services_invalid_account_title">غلط اکاؤنٹ</string>
+    <string name="common_google_play_services_needs_enabling_title">‏ایک ایپلیکیشن کیلئے Google Play سروسز کا فعال ہونا ضروری ہے۔</string>
+    <string name="common_google_play_services_network_error_text">‏Google Play سروسز سے مربوط ہونے کیلئے ایک ڈیٹا کنکشن کی ضرورت ہے۔</string>
+    <string name="common_google_play_services_network_error_title">نیٹ ورک میں خرابی</string>
+    <string name="common_google_play_services_notification_needs_installation_title">‏ایک ایپلیکیشن کیلئے Google Play سروسز کا انسٹال ہونا ضروری ہے۔</string>
+    <string name="common_google_play_services_notification_needs_update_title">‏ایک ایپلیکیشن کیلئے Google Play سروسز کیلئے ایک اپ ڈیٹ ضروری ہے۔</string>
+    <string name="common_google_play_services_notification_ticker">‏Google Play سروسز کی خرابی</string>
+    <string name="common_google_play_services_unknown_issue">‏Google Play سروسز کے ساتھ نامعلوم مسئلہ۔</string>
+    <string name="common_google_play_services_unsupported_text">‏Google Play سروسز، جن پر آپ کی کچھ ایپلیکیشنز انحصار کرتی ہیں، آپ کے آلہ کے ذریعے تعاون یافتہ نہیں ہے۔ براہ کرم مدد کیلئے مینوفیکچرر سے رابطہ کریں۔</string>
+    <string name="common_google_play_services_unsupported_title">‏Google Play سروسز</string>
+    <string name="common_google_play_services_update_button">اپ ڈیٹ کریں</string>
+    <string name="common_google_play_services_update_text">‏یہ ایپ تب تک نہیں چلے گی جب تک کہ آپ Google Play سروسز اپ ڈیٹ نہیں کر لیتے ہیں۔</string>
+    <string name="common_google_play_services_update_title">‏Google Play سروسز اپ ڈیٹ کریں</string>
+    <string name="common_open_on_phone">فون پر کھولیں</string>
+    <string name="common_signin_button_text">سائن ان کریں</string>
+    <string name="common_signin_button_text_long">‏Google کے ساتھ سائن ان کریں</string>
+</resources>

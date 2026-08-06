@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="#68768a" android:gravity="left|center" android:orientation="horizontal" android:id="@id/com_facebook_picker_list_section_header" android:background="@drawable/com_facebook_list_section_header_background" android:paddingLeft="8.0dp" android:paddingBottom="0.0px" android:layout_width="match_parent" android:layout_height="wrap_content" android:shadowColor="#bfffffff" android:shadowDx="1.0" android:shadowDy="1.0" android:shadowRadius="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android" />
