@@ -1,7 +1,0 @@
-com.activision.boz.app-pngs-0 C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\build\generated\res\pngs\debug
-com.activision.boz.app-resValues-1 C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\build\generated\res\resValues\debug
-com.activision.boz.app-packageDebugResources-2 C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.activision.boz.app-packageDebugResources-3 C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.activision.boz.app-debug-4 C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\build\intermediates\merged_res\debug\mergeDebugResources
-com.activision.boz.app-debug-5 C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\debug\res
-com.activision.boz.app-main-6 C:\Users\Sam\Desktop\code\Call of Duty Black Ops Zombies 1.0.11\main_app\app\src\main\res
