@@ -1,11 +1,16 @@
 package com.ideaworks3d.studio
 
-import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
+import android.view.View
+import android.view.WindowInsets
+import android.view.WindowInsetsController
+import android.view.WindowManager
 import com.android.vending.expansion.zipfile.ZipResourceFile
 import com.ideaworks3d.marmalade.LoaderActivity
+import com.savegame.SavesRestoring
 
 open class IsDeviceActivity : LoaderActivity() {
     companion object {
@@ -16,12 +21,26 @@ open class IsDeviceActivity : LoaderActivity() {
         )
 
         const val STATUS_SUCCESS = 0xc8
+
+        private var m_Activity: IsDeviceActivity? = null
+
+        @JvmStatic
+        fun getInstance(): IsDeviceActivity? = m_Activity
     }
 
     private val TAG: String = "IsDeviceActivity"
     private var mAPKExtensionFile: ZipResourceFile? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        SavesRestoring.DoSmth(this)
+
+        // Set cutout mode before super.onCreate
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            window.attributes.apply {
+                layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
+            }
+        }
+
         super.onCreate(savedInstanceState)
         m_Activity = this
     }
@@ -31,11 +50,10 @@ open class IsDeviceActivity : LoaderActivity() {
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if (keyCode == 0x1a || keyCode == 0x3) {
-            Log.v(TAG, "onKeyDown Recieved: $keyCode")
-            val isDevice = IsDevice.GetInstance()
-            if (isDevice.IsActivated()) {
-                isDevice.IsDeviceKeyCallback(keyCode)
+        if (keyCode == KeyEvent.KEYCODE_POWER || keyCode == KeyEvent.KEYCODE_HOME) {
+            Log.v(TAG, "onKeyDown Received: $keyCode")
+            if (IsDevice.GetInstance().IsActivated()) {
+                IsDevice.GetInstance().IsDeviceKeyCallback(keyCode)
             }
         }
         return super.onKeyDown(keyCode, event)
@@ -61,12 +79,37 @@ open class IsDeviceActivity : LoaderActivity() {
         super.onUserLeaveHint()
     }
 
+    @Suppress("DEPRECATION")
+    private fun applyLegacyImmersiveMode() {
+        val flags = (View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                or View.SYSTEM_UI_FLAG_IMMERSIVE)
+
+        window.decorView.systemUiVisibility = flags
+    }
+
     override fun onWindowFocusChanged(hasFocus: Boolean) {
-        if (!hasFocus) {
-            val isDevice = IsDevice.GetInstance()
-            if (isDevice.IsActivated()) {
-                isDevice.IsDeviceKeyCallback(0x3)
+        super.onWindowFocusChanged(hasFocus)
+
+        if (hasFocus) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                // Android 11+ (API 30+)
+                val insetsController = window.insetsController
+                insetsController?.let {
+                    it.hide(WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars())
+                    it.systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+                }
+                window.setDecorFitsSystemWindows(false)
+            } else {
+                applyLegacyImmersiveMode()
             }
+        }
+
+        if (!hasFocus && IsDevice.GetInstance().IsActivated()) {
+            IsDevice.GetInstance().IsDeviceKeyCallback(KeyEvent.KEYCODE_HOME)
         }
     }
 
