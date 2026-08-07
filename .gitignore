@@ -21,3 +21,6 @@ app/src/main/assets/blackops_etc.dz
 app/src/main/assets/blackops_gles1.dz
 app/src/main/assets/blackops-music/
 app/src/main/assets/deadops-music/
+buildtools/smali_out/
+buildtools/__pycache__/
+buildtools/nullable_errs*.txt
