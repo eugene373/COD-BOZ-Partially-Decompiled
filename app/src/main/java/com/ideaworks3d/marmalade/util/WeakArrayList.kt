@@ -2,8 +2,6 @@ package com.ideaworks3d.marmalade.util
 
 import java.lang.ref.WeakReference
 import java.util.AbstractList
-import java.util.ArrayList
-import java.util.Iterator
 
 class WeakArrayList : AbstractList<Any?>() {
 
@@ -31,10 +29,11 @@ class WeakArrayList : AbstractList<Any?>() {
         return ref?.get()
     }
 
-    override fun size(): Int = m_list.size
+    override val size: Int
+        get() = m_list.size
 
-    override fun iterator(): Iterator<Any?> = object : Iterator<Any?> {
-        private val it: Iterator<WeakReference<*>> = m_list.iterator()
+    override fun iterator(): MutableIterator<Any?> = object : MutableIterator<Any?> {
+        private val it: MutableIterator<WeakReference<*>> = m_list.iterator()
 
         override fun next(): Any? {
             val ref = it.next()

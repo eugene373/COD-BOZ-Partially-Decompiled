@@ -1,21 +1,60 @@
 package com.ideaworks3d.marmalade
 
-// Auto-emitted from javap text dump. See HOWTO_BUILD.md.
-// 0 fields, 14 methods.
+import android.app.Activity
+import android.content.Intent
+import android.os.Bundle
+import android.util.Log
+import com.ideaworks3d.marmalade.event.ActivityResultEvent
+import com.ideaworks3d.marmalade.event.ActivityResultListener
+import com.ideaworks3d.marmalade.event.RequestPermissionsResultEvent
+import com.ideaworks3d.marmalade.event.RequestPermissionsResultListener
 
-open class LoaderActivitySlave: com.ideaworks3d.marmalade.event.ActivityResultListener, com.ideaworks3d.marmalade.SuspendResumeListener, com.ideaworks3d.marmalade.event.RequestPermissionsResultListener, com.ideaworks3d.marmalade.NewIntentListener {
-    protected fun onStart() { /* TODO(body): ()V */ }
-    protected fun onCreate(p0: android.os.Bundle) { /* TODO(body): (Landroid/os/Bundle;)V */ }
-    protected fun onStop() { /* TODO(body): ()V */ }
-    protected fun onDestroy() { /* TODO(body): ()V */ }
-    protected fun onPause() { /* TODO(body): ()V */ }
-    protected fun onResume() { /* TODO(body): ()V */ }
-    protected fun onActivityResult(p0: Int, p1: Int, p2: android.content.Intent) { /* TODO(body): (IILandroid/content/Intent;)V */ }
-    protected fun onRequestPermissionsResult(p0: Int, p1: Array<String>, p2: Array<Int>) { /* TODO(body): (I[Ljava/lang/String;[I)V */ }
-    protected fun onNewIntent(p0: android.content.Intent) { /* TODO(body): (Landroid/content/Intent;)V */ }
-    protected fun getActivity(): android.app.Activity { return TODO("body: ()Landroid/app/Activity;") }
-    public fun onActivityResultEvent(p0: com.ideaworks3d.marmalade.event.ActivityResultEvent) { /* TODO(body): (Lcom/ideaworks3d/marmalade/event/ActivityResultEvent;)V */ }
-    public fun onRequestPermissionsResultEvent(p0: com.ideaworks3d.marmalade.event.RequestPermissionsResultEvent) { /* TODO(body): (Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultEvent;)V */ }
-    public fun onSuspendResumeEvent(p0: com.ideaworks3d.marmalade.SuspendResumeEvent) { /* TODO(body): (Lcom/ideaworks3d/marmalade/SuspendResumeEvent;)V */ }
-    public fun onNewIntentEvent(p0: com.ideaworks3d.marmalade.NewIntentEvent) { /* TODO(body): (Lcom/ideaworks3d/marmalade/NewIntentEvent;)V */ }
+abstract class LoaderActivitySlave :
+    ActivityResultListener,
+    SuspendResumeListener,
+    RequestPermissionsResultListener,
+    NewIntentListener {
+
+    protected constructor() {
+        LoaderAPI.addSuspendResumeListener(this)
+        LoaderAPI.addActivityResultListener(this)
+        LoaderAPI.addRequestPermissionsResultListener(this)
+        LoaderAPI.addNewIntentListener(this)
+    }
+
+    protected open fun onStart() {}
+    protected open fun onCreate(savedInstanceState: Bundle?) {}
+    protected open fun onStop() {}
+    protected open fun onDestroy() {}
+    protected open fun onPause() {}
+    protected open fun onResume() {}
+    protected open fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {}
+    protected open fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {}
+    protected open fun onNewIntent(intent: Intent?) {}
+
+    protected open fun getActivity(): Activity = LoaderActivity.m_Activity!!
+
+    override fun onActivityResultEvent(event: ActivityResultEvent) {
+        Log.i("LoaderActivitySlave", "onActivityResultEvent request: ${event.m_requestCode} result: ${event.m_resultCode}")
+        onActivityResult(event.m_requestCode, event.m_resultCode, event.m_intent)
+    }
+
+    override fun onRequestPermissionsResultEvent(event: RequestPermissionsResultEvent) {
+        Log.i("LoaderActivitySlave", "onRequestPermissionsResult request: ${event.m_requestCode}")
+        onRequestPermissionsResult(event.m_requestCode, event.m_permissions!!, event.m_grantResults!!)
+    }
+
+    override fun onSuspendResumeEvent(event: SuspendResumeEvent) {
+        when (event.eventType) {
+            SuspendResumeEvent.EventType.RESUME -> onResume()
+            SuspendResumeEvent.EventType.SUSPEND -> onPause()
+            SuspendResumeEvent.EventType.SHUTDOWN -> onDestroy()
+        }
+    }
+
+    override fun onNewIntentEvent(event: NewIntentEvent) {
+        if (event.eventType == NewIntentEvent.EventType.NEWINTENT) {
+            onNewIntent(event.intent)
+        }
+    }
 }

@@ -46,7 +46,7 @@ open class IsDeviceActivity : LoaderActivity() {
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_POWER || keyCode == KeyEvent.KEYCODE_HOME) {
             Log.v(TAG, "onKeyDown Received: $keyCode")
-            if (IsDevice.getInstance().isActivated()) {
+            if (IsDevice.getInstance().IsActivated()) {
                 IsDevice.getInstance().IsDeviceKeyCallback(keyCode)
             }
         }
@@ -106,7 +106,7 @@ open class IsDeviceActivity : LoaderActivity() {
             }
         }
 
-        if (!hasFocus && IsDevice.getInstance().isActivated()) {
+        if (!hasFocus && IsDevice.getInstance().IsActivated()) {
             IsDevice.getInstance().IsDeviceKeyCallback(KeyEvent.KEYCODE_HOME)
         }
     }

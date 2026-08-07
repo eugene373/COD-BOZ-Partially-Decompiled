@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="preferExternal" package="com.activision.boz" platformBuildVersionCode="21" platformBuildVersionName="5.0-1521886">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:installLocation="preferExternal" platformBuildVersionCode="21" platformBuildVersionName="5.0-1521886">
     <application android:icon="@drawable/icon" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-        <activity android:configChanges="locale|keyboardHidden|orientation|screenSize" android:label="@string/app_name" android:launchMode="singleTask" android:name=".Main">
+        <activity android:configChanges="locale|keyboardHidden|orientation|screenSize" android:exported="true" android:label="@string/app_name" android:launchMode="singleTask" android:name=".Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -9,7 +9,7 @@
         </activity>
         <provider android:authorities="zzzz3cbc70bb20f852f289fb0ebc606135c5.VFSProvider" android:exported="false" android:multiprocess="true" android:name="com.ideaworks3d.marmalade.VFSProvider"/>
         <service android:name="com.ideaworks3d.marmalade.s3eAndroidMarketBilling.s3eAndroidMarketBilling"/>
-        <receiver android:name="com.ideaworks3d.marmalade.s3eAndroidMarketBilling.s3eAndroidMarketBillingReceiver">
+        <receiver android:exported="false" android:name="com.ideaworks3d.marmalade.s3eAndroidMarketBilling.s3eAndroidMarketBillingReceiver">
             <intent-filter>
                 <action android:name="com.android.vending.billing.IN_APP_NOTIFY"/>
                 <action android:name="com.android.vending.billing.RESPONSE_CODE"/>
@@ -44,5 +44,6 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL"/>
     <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
-    <uses-feature android:glEsVersion="0x20000" android:name="android.hardware.wifi"/>
+    <uses-feature android:glEsVersion="0x20000" android:required="true"/>
+    <uses-feature android:name="android.hardware.wifi"/>
 </manifest>

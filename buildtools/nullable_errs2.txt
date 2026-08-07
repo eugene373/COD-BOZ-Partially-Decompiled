@@ -1,0 +1,15 @@
+com/ideaworks3d/marmalade/LoaderActivity.kt:116:38 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'com.ideaworks3d.marmalade.LoaderKeyboard?'.
+com/ideaworks3d/marmalade/LoaderActivity.kt:118:38 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'com.ideaworks3d.marmalade.LoaderKeyboard?'.
+com/ideaworks3d/marmalade/ResourceUtility.kt:34:62 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'com.ideaworks3d.marmalade.LoaderActivity?'.
+com/ideaworks3d/marmalade/VFSProvider.kt:25:17 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'kotlin.String?'.
+com/ideaworks3d/marmalade/VFSProvider.kt:26:24 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'kotlin.String?'.
+com/ideaworks3d/marmalade/s3eCamera.kt:322:31 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'com.ideaworks3d.marmalade.LoaderView?'.
+com/ideaworks3d/marmalade/s3eCamera.kt:323:31 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'com.ideaworks3d.marmalade.LoaderView?'.
+com/ideaworks3d/marmalade/s3eCamera2.kt:162:30 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'com.ideaworks3d.marmalade.LoaderView?'.
+com/ideaworks3d/marmalade/s3eCamera2.kt:162:54 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'com.ideaworks3d.marmalade.LoaderView?'.
+com/ideaworks3d/marmalade/s3eCamera2.kt:200:118 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'com.ideaworks3d.marmalade.LoaderView?'.
+com/ideaworks3d/marmalade/s3eCamera2.kt:202:126 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'com.ideaworks3d.marmalade.LoaderView?'.
+com/ideaworks3d/marmalade/s3eCamera2.kt:272:75 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'com.ideaworks3d.marmalade.LoaderView?'.
+com/ideaworks3d/marmalade/s3eCamera2.kt:279:75 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'com.ideaworks3d.marmalade.LoaderView?'.
+com/ideaworks3d/marmalade/s3eCamera2.kt:293:51 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'com.ideaworks3d.marmalade.LoaderView?'.
+com/ideaworks3d/marmalade/s3eCamera2.kt:305:92 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'com.ideaworks3d.marmalade.LoaderView?'.

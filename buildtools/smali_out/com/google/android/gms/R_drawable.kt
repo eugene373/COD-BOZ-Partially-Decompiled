@@ -1,0 +1,126 @@
+package com.google.android.gms
+
+// Auto-emitted from smali source: R.java.
+// 115 fields, 1 methods.
+
+class R_drawable {
+    public constructor()
+
+    companion object {
+    @JvmField public val com_facebook_button_blue: Int = 0x7f020000
+    @JvmField public val com_facebook_button_blue_focused: Int = 0x7f020001
+    @JvmField public val com_facebook_button_blue_normal: Int = 0x7f020002
+    @JvmField public val com_facebook_button_blue_pressed: Int = 0x7f020003
+    @JvmField public val com_facebook_button_check: Int = 0x7f020004
+    @JvmField public val com_facebook_button_check_off: Int = 0x7f020005
+    @JvmField public val com_facebook_button_check_on: Int = 0x7f020006
+    @JvmField public val com_facebook_button_grey_focused: Int = 0x7f020007
+    @JvmField public val com_facebook_button_grey_normal: Int = 0x7f020008
+    @JvmField public val com_facebook_button_grey_pressed: Int = 0x7f020009
+    @JvmField public val com_facebook_button_like: Int = 0x7f02000a
+    @JvmField public val com_facebook_button_like_background: Int = 0x7f02000b
+    @JvmField public val com_facebook_button_like_background_selected: Int = 0x7f02000c
+    @JvmField public val com_facebook_button_like_icon: Int = 0x7f02000d
+    @JvmField public val com_facebook_button_like_icon_selected: Int = 0x7f02000e
+    @JvmField public val com_facebook_button_like_pressed: Int = 0x7f02000f
+    @JvmField public val com_facebook_button_like_selected: Int = 0x7f020010
+    @JvmField public val com_facebook_close: Int = 0x7f020011
+    @JvmField public val com_facebook_inverse_icon: Int = 0x7f020012
+    @JvmField public val com_facebook_list_divider: Int = 0x7f020013
+    @JvmField public val com_facebook_list_section_header_background: Int = 0x7f020014
+    @JvmField public val com_facebook_loginbutton_silver: Int = 0x7f020015
+    @JvmField public val com_facebook_logo: Int = 0x7f020016
+    @JvmField public val com_facebook_picker_default_separator_color: Int = 0x7f020072
+    @JvmField public val com_facebook_picker_item_background: Int = 0x7f020017
+    @JvmField public val com_facebook_picker_list_focused: Int = 0x7f020018
+    @JvmField public val com_facebook_picker_list_longpressed: Int = 0x7f020019
+    @JvmField public val com_facebook_picker_list_pressed: Int = 0x7f02001a
+    @JvmField public val com_facebook_picker_list_selector: Int = 0x7f02001b
+    @JvmField public val com_facebook_picker_list_selector_background_transition: Int = 0x7f02001c
+    @JvmField public val com_facebook_picker_list_selector_disabled: Int = 0x7f02001d
+    @JvmField public val com_facebook_picker_magnifier: Int = 0x7f02001e
+    @JvmField public val com_facebook_picker_top_button: Int = 0x7f02001f
+    @JvmField public val com_facebook_place_default_icon: Int = 0x7f020020
+    @JvmField public val com_facebook_profile_default_icon: Int = 0x7f020021
+    @JvmField public val com_facebook_profile_picture_blank_portrait: Int = 0x7f020022
+    @JvmField public val com_facebook_profile_picture_blank_square: Int = 0x7f020023
+    @JvmField public val com_facebook_tooltip_black_background: Int = 0x7f020024
+    @JvmField public val com_facebook_tooltip_black_bottomnub: Int = 0x7f020025
+    @JvmField public val com_facebook_tooltip_black_topnub: Int = 0x7f020026
+    @JvmField public val com_facebook_tooltip_black_xout: Int = 0x7f020027
+    @JvmField public val com_facebook_tooltip_blue_background: Int = 0x7f020028
+    @JvmField public val com_facebook_tooltip_blue_bottomnub: Int = 0x7f020029
+    @JvmField public val com_facebook_tooltip_blue_topnub: Int = 0x7f02002a
+    @JvmField public val com_facebook_tooltip_blue_xout: Int = 0x7f02002b
+    @JvmField public val com_facebook_top_background: Int = 0x7f02002c
+    @JvmField public val com_facebook_top_button: Int = 0x7f02002d
+    @JvmField public val com_facebook_usersettingsfragment_background_gradient: Int = 0x7f02002e
+    @JvmField public val common_full_open_on_phone: Int = 0x7f02002f
+    @JvmField public val common_ic_googleplayservices: Int = 0x7f020030
+    @JvmField public val common_signin_btn_icon_dark: Int = 0x7f020031
+    @JvmField public val common_signin_btn_icon_disabled_dark: Int = 0x7f020032
+    @JvmField public val common_signin_btn_icon_disabled_focus_dark: Int = 0x7f020033
+    @JvmField public val common_signin_btn_icon_disabled_focus_light: Int = 0x7f020034
+    @JvmField public val common_signin_btn_icon_disabled_light: Int = 0x7f020035
+    @JvmField public val common_signin_btn_icon_focus_dark: Int = 0x7f020036
+    @JvmField public val common_signin_btn_icon_focus_light: Int = 0x7f020037
+    @JvmField public val common_signin_btn_icon_light: Int = 0x7f020038
+    @JvmField public val common_signin_btn_icon_normal_dark: Int = 0x7f020039
+    @JvmField public val common_signin_btn_icon_normal_light: Int = 0x7f02003a
+    @JvmField public val common_signin_btn_icon_pressed_dark: Int = 0x7f02003b
+    @JvmField public val common_signin_btn_icon_pressed_light: Int = 0x7f02003c
+    @JvmField public val common_signin_btn_text_dark: Int = 0x7f02003d
+    @JvmField public val common_signin_btn_text_disabled_dark: Int = 0x7f02003e
+    @JvmField public val common_signin_btn_text_disabled_focus_dark: Int = 0x7f02003f
+    @JvmField public val common_signin_btn_text_disabled_focus_light: Int = 0x7f020040
+    @JvmField public val common_signin_btn_text_disabled_light: Int = 0x7f020041
+    @JvmField public val common_signin_btn_text_focus_dark: Int = 0x7f020042
+    @JvmField public val common_signin_btn_text_focus_light: Int = 0x7f020043
+    @JvmField public val common_signin_btn_text_light: Int = 0x7f020044
+    @JvmField public val common_signin_btn_text_normal_dark: Int = 0x7f020045
+    @JvmField public val common_signin_btn_text_normal_light: Int = 0x7f020046
+    @JvmField public val common_signin_btn_text_pressed_dark: Int = 0x7f020047
+    @JvmField public val common_signin_btn_text_pressed_light: Int = 0x7f020048
+    @JvmField public val dialog_full_holo_light: Int = 0x7f020049
+    @JvmField public val frame_layout_shape: Int = 0x7f02004a
+    @JvmField public val ic_plusone_medium_off_client: Int = 0x7f02004b
+    @JvmField public val ic_plusone_small_off_client: Int = 0x7f02004c
+    @JvmField public val ic_plusone_standard_off_client: Int = 0x7f02004d
+    @JvmField public val ic_plusone_tall_off_client: Int = 0x7f02004e
+    @JvmField public val icon: Int = 0x7f02004f
+    @JvmField public val of_achievement_icon_frame: Int = 0x7f020050
+    @JvmField public val of_achievement_icon_locked: Int = 0x7f020051
+    @JvmField public val of_achievement_icon_unlocked: Int = 0x7f020052
+    @JvmField public val of_achievement_notification_bkg: Int = 0x7f020053
+    @JvmField public val of_achievement_notification_locked: Int = 0x7f020054
+    @JvmField public val of_feint_points_white: Int = 0x7f020055
+    @JvmField public val of_icon_dashboard_exit: Int = 0x7f020056
+    @JvmField public val of_icon_dashboard_home: Int = 0x7f020057
+    @JvmField public val of_icon_dashboard_settings: Int = 0x7f020058
+    @JvmField public val of_icon_highscore_notification: Int = 0x7f020059
+    @JvmField public val of_ll_logo: Int = 0x7f02005a
+    @JvmField public val of_native_loader: Int = 0x7f02005b
+    @JvmField public val of_native_loader_frame: Int = 0x7f02005c
+    @JvmField public val of_native_loader_leaf: Int = 0x7f02005d
+    @JvmField public val of_native_loader_progress: Int = 0x7f02005e
+    @JvmField public val of_native_loader_progress_01: Int = 0x7f02005f
+    @JvmField public val of_native_loader_progress_02: Int = 0x7f020060
+    @JvmField public val of_native_loader_progress_03: Int = 0x7f020061
+    @JvmField public val of_native_loader_progress_04: Int = 0x7f020062
+    @JvmField public val of_native_loader_progress_05: Int = 0x7f020063
+    @JvmField public val of_native_loader_progress_06: Int = 0x7f020064
+    @JvmField public val of_native_loader_progress_07: Int = 0x7f020065
+    @JvmField public val of_native_loader_progress_08: Int = 0x7f020066
+    @JvmField public val of_native_loader_progress_09: Int = 0x7f020067
+    @JvmField public val of_native_loader_progress_10: Int = 0x7f020068
+    @JvmField public val of_native_loader_progress_11: Int = 0x7f020069
+    @JvmField public val of_native_loader_progress_12: Int = 0x7f02006a
+    @JvmField public val of_notification_bkg: Int = 0x7f02006b
+    @JvmField public val powered_by_google_dark: Int = 0x7f02006c
+    @JvmField public val powered_by_google_light: Int = 0x7f02006d
+    @JvmField public val progressbar_middle: Int = 0x7f02006e
+    @JvmField public val sony_icon: Int = 0x7f02006f
+    @JvmField public val tw_widget_progressbar_effect_holo_light: Int = 0x7f020070
+    @JvmField public val tw_widget_progressbar_holo_light: Int = 0x7f020071
+    }
+}

@@ -1,10 +1,11 @@
 package bolts
 
-// Auto-emitted from javap text dump. See HOWTO_BUILD.md.
-// 1 fields, 1 methods.
+class AggregateException : Exception {
+    private val errors: List<Exception>?
 
-open class AggregateException: java.lang.Exception() {
-        private var errors: java.util.List
+    constructor(errors: List<Exception>?) : super("There were multiple errors.") {
+        this.errors = errors
+    }
 
-    public fun getErrors(): java.util.List { return TODO("body: ()Ljava/util/List;") }
+    fun getErrors(): List<Exception>? = errors
 }

@@ -24,14 +24,14 @@ object ResourceUtility {
     @JvmStatic
     fun getResId(resourceClass: String, name: String): Int {
         val activity = LoaderActivity.m_Activity
-        return getResId(resourceClass, name, activity)
+        return getResId(resourceClass, name, activity!!)
     }
 
     @JvmStatic
     fun getResourceDeclareStyleableIntArray(name: String): IntArray? {
         val activity = LoaderActivity.m_Activity
         return try {
-            val fields: Array<Field> = Class.forName(activity.packageName + ".R\$styleable").fields
+            val fields: Array<Field> = Class.forName(activity!!.packageName + ".R\$styleable").fields
             for (field in fields) {
                 if (field.name == name) {
                     return field.get(null) as IntArray

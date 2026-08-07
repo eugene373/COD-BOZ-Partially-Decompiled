@@ -1,7 +1,5 @@
 package bolts
 
-// Auto-emitted from javap text dump. See HOWTO_BUILD.md.
-// 0 fields, 0 methods.
-
-open class Bolts {
+object Bolts {
+    const val VERSION = "1.1.2"
 }

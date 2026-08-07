@@ -1,37 +1,114 @@
 package com.ideaworks3d.marmalade
 
-// Auto-emitted from javap text dump. See HOWTO_BUILD.md.
-// 0 fields, 27 methods.
+import android.util.Log
+import android.view.View
+import android.view.View.OnKeyListener
+import android.widget.FrameLayout
+import com.ideaworks3d.marmalade.event.ActivityResultEvent
+import com.ideaworks3d.marmalade.event.ActivityResultListener
+import com.ideaworks3d.marmalade.event.ListenerManager
+import com.ideaworks3d.marmalade.event.RequestPermissionsResultEvent
+import com.ideaworks3d.marmalade.event.RequestPermissionsResultListener
+import java.io.PrintWriter
+import java.io.StringWriter
 
-open class LoaderAPI {
+object LoaderAPI {
+    const val S3E_RESULT_SUCCESS = 0
+    const val S3E_RESULT_ERROR = 1
 
-    companion object {
-        public external @JvmStatic fun s3eDebugTraceLine(p0: String)
-        public external @JvmStatic fun s3eDeviceYield(p0: Int)
-        public external @JvmStatic fun s3eConfigGetInt(p0: String, p1: String, p2: Array<Int>): Int
-        public external @JvmStatic fun s3eConfigGetString(p0: String, p1: String, p2: Array<String>): Int
-        public external @JvmStatic fun s3eConfigGet(p0: String, p1: Int): Int
-        public @JvmStatic fun traceChan(p0: String, p1: String) { /* TODO(body): (Ljava/lang/String;Ljava/lang/String;)V */ }
-        public @JvmStatic fun trace(p0: String) { /* TODO(body): (Ljava/lang/String;)V */ }
-        public @JvmStatic fun getStackTrace(p0: Throwable): String { return TODO("body: (Ljava/lang/Throwable;)Ljava/lang/String;") }
-        public @JvmStatic fun getStackTrace(): String { return TODO("body: ()Ljava/lang/String;") }
-        public @JvmStatic fun getActivity(): com.ideaworks3d.marmalade.LoaderActivity { return TODO("body: ()Lcom/ideaworks3d/marmalade/LoaderActivity;") }
-        public @JvmStatic fun getMainView(): android.view.View { return TODO("body: ()Landroid/view/View;") }
-        public @JvmStatic fun getFrameLayout(): android.widget.FrameLayout { return TODO("body: ()Landroid/widget/FrameLayout;") }
-        public @JvmStatic fun getListenerManager(): com.ideaworks3d.marmalade.event.ListenerManager { return TODO("body: ()Lcom/ideaworks3d/marmalade/event/ListenerManager;") }
-        public @JvmStatic fun addActivityResultListener(p0: com.ideaworks3d.marmalade.event.ActivityResultListener) { /* TODO(body): (Lcom/ideaworks3d/marmalade/event/ActivityResultListener;)V */ }
-        public @JvmStatic fun removeActivityResultListener(p0: com.ideaworks3d.marmalade.event.ActivityResultListener): Boolean { return TODO("body: (Lcom/ideaworks3d/marmalade/event/ActivityResultListener;)Z") }
-        public @JvmStatic fun notifyActivityResultListeners(p0: com.ideaworks3d.marmalade.event.ActivityResultEvent) { /* TODO(body): (Lcom/ideaworks3d/marmalade/event/ActivityResultEvent;)V */ }
-        public @JvmStatic fun addRequestPermissionsResultListener(p0: com.ideaworks3d.marmalade.event.RequestPermissionsResultListener) { /* TODO(body): (Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultListener;)V */ }
-        public @JvmStatic fun removeRequestPermissionsResultListener(p0: com.ideaworks3d.marmalade.event.RequestPermissionsResultListener): Boolean { return TODO("body: (Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultListener;)Z") }
-        public @JvmStatic fun notifyRequestPermissionsResultListeners(p0: com.ideaworks3d.marmalade.event.RequestPermissionsResultEvent) { /* TODO(body): (Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultEvent;)V */ }
-        public @JvmStatic fun addSuspendResumeListener(p0: com.ideaworks3d.marmalade.SuspendResumeListener) { /* TODO(body): (Lcom/ideaworks3d/marmalade/SuspendResumeListener;)V */ }
-        public @JvmStatic fun removeSuspendResumeListener(p0: com.ideaworks3d.marmalade.SuspendResumeListener): Boolean { return TODO("body: (Lcom/ideaworks3d/marmalade/SuspendResumeListener;)Z") }
-        public @JvmStatic fun notifySuspendResumeListeners(p0: com.ideaworks3d.marmalade.SuspendResumeEvent) { /* TODO(body): (Lcom/ideaworks3d/marmalade/SuspendResumeEvent;)V */ }
-        public @JvmStatic fun addNewIntentListener(p0: com.ideaworks3d.marmalade.NewIntentListener) { /* TODO(body): (Lcom/ideaworks3d/marmalade/NewIntentListener;)V */ }
-        public @JvmStatic fun removeNewIntentListener(p0: com.ideaworks3d.marmalade.NewIntentListener): Boolean { return TODO("body: (Lcom/ideaworks3d/marmalade/NewIntentListener;)Z") }
-        public @JvmStatic fun notifyNewIntentListeners(p0: com.ideaworks3d.marmalade.NewIntentEvent) { /* TODO(body): (Lcom/ideaworks3d/marmalade/NewIntentEvent;)V */ }
-        public @JvmStatic fun pushKeyListener(p0: android.view.View$OnKeyListener) { /* TODO(body): (Landroid/view/View$OnKeyListener;)V */ }
-        public @JvmStatic fun popKeyListener(): android.view.View$OnKeyListener { return TODO("body: ()Landroid/view/View$OnKeyListener;") }
+    @JvmStatic external fun s3eDebugTraceLine(msg: String)
+    @JvmStatic external fun s3eDeviceYield(ms: Int)
+    @JvmStatic external fun s3eConfigGetInt(section: String, name: String, out: IntArray): Int
+    @JvmStatic external fun s3eConfigGetString(section: String, name: String, out: Array<String?>): Int
+    @JvmStatic external fun s3eConfigGet(name: String, defaultValue: Int): Int
+
+    @JvmStatic fun traceChan(channel: String, msg: String) {
+        trace("$channel: $msg")
     }
+
+    @JvmStatic fun trace(msg: String) {
+        if (LoaderActivity.m_Activity != null) {
+            s3eDebugTraceLine(msg)
+        } else {
+            Log.i("MARMALADE", msg)
+        }
+    }
+
+    @JvmStatic fun getStackTrace(t: Throwable): String {
+        val sw = StringWriter()
+        val pw = PrintWriter(sw)
+        t.printStackTrace(pw)
+        return sw.toString()
+    }
+
+    @JvmStatic fun getStackTrace(): String {
+        val t = Exception("Tracer")
+        val sw = StringWriter()
+        val pw = PrintWriter(sw)
+        t.printStackTrace(pw)
+        return sw.toString()
+    }
+
+    @JvmStatic fun getActivity(): LoaderActivity = LoaderActivity.m_Activity!!
+
+    @JvmStatic fun getMainView(): View = LoaderActivity.m_Activity!!.m_View!!
+
+    @JvmStatic fun getFrameLayout(): FrameLayout = LoaderActivity.m_Activity!!.m_FrameLayout!!
+
+    @JvmStatic fun getListenerManager(): ListenerManager {
+        if (LoaderActivity.m_Activity!!.m_ListenerManager == null) {
+            LoaderActivity.m_Activity!!.m_ListenerManager = ListenerManager()
+        }
+        return LoaderActivity.m_Activity!!.m_ListenerManager!!
+    }
+
+    @JvmStatic fun addActivityResultListener(listener: ActivityResultListener) {
+        getListenerManager().addActivityResultListener(listener)
+    }
+
+    @JvmStatic fun removeActivityResultListener(listener: ActivityResultListener): Boolean =
+        getListenerManager().removeActivityResultListener(listener)
+
+    @JvmStatic fun notifyActivityResultListeners(event: ActivityResultEvent) {
+        getListenerManager().notifyActivityResultListeners(event)
+    }
+
+    @JvmStatic fun addRequestPermissionsResultListener(listener: RequestPermissionsResultListener) {
+        getListenerManager().addRequestPermissionsResultListener(listener)
+    }
+
+    @JvmStatic fun removeRequestPermissionsResultListener(listener: RequestPermissionsResultListener): Boolean =
+        getListenerManager().removeRequestPermissionsResultListener(listener)
+
+    @JvmStatic fun notifyRequestPermissionsResultListeners(event: RequestPermissionsResultEvent) {
+        getListenerManager().notifyRequestPermissionsResultListeners(event)
+    }
+
+    @JvmStatic fun addSuspendResumeListener(listener: SuspendResumeListener) {
+        getListenerManager().addSuspendResumeListener(listener)
+    }
+
+    @JvmStatic fun removeSuspendResumeListener(listener: SuspendResumeListener): Boolean =
+        getListenerManager().removeSuspendResumeListener(listener)
+
+    @JvmStatic fun notifySuspendResumeListeners(event: SuspendResumeEvent) {
+        getListenerManager().notifySuspendResumeListeners(event)
+    }
+
+    @JvmStatic fun addNewIntentListener(listener: NewIntentListener) {
+        getListenerManager().addNewIntentListener(listener)
+    }
+
+    @JvmStatic fun removeNewIntentListener(listener: NewIntentListener): Boolean =
+        getListenerManager().removeNewIntentListener(listener)
+
+    @JvmStatic fun notifyNewIntentListeners(event: NewIntentEvent) {
+        getListenerManager().notifyNewIntentListeners(event)
+    }
+
+    @JvmStatic fun pushKeyListener(listener: OnKeyListener) {
+        getListenerManager().pushKeyListener(listener)
+    }
+
+    @JvmStatic fun popKeyListener(): OnKeyListener = getListenerManager().popKeyListener()
 }

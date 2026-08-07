@@ -1,23 +1,100 @@
 package com.ideaworks3d.marmalade
 
-// Auto-emitted from javap text dump. See HOWTO_BUILD.md.
-// 4 fields, 9 methods.
+import android.content.ContentProvider
+import android.content.ContentValues
+import android.content.res.AssetFileDescriptor
+import android.database.Cursor
+import android.net.Uri
+import android.os.ParcelFileDescriptor
+import java.io.File
+import java.io.FileNotFoundException
 
-open class VFSProvider: android.content.ContentProvider() {
-    public fun onCreate(): Boolean { return TODO("body: ()Z") }
-    public fun openAssetFile(p0: android.net.Uri, p1: String): android.content.res.AssetFileDescriptor { return TODO("body: (Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;") }
-    public fun openFile(p0: android.net.Uri, p1: String): android.os.ParcelFileDescriptor { return TODO("body: (Landroid/net/Uri;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;") }
-    public fun query(p0: android.net.Uri, p1: Array<String>, p2: String, p3: Array<String>, p4: String): android.database.Cursor { return TODO("body: (Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;") }
-    public fun getAssetFileDescriptor(p0: String): android.content.res.AssetFileDescriptor { return TODO("body: (Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;") }
-    public fun update(p0: android.net.Uri, p1: android.content.ContentValues, p2: String, p3: Array<String>): Int { return TODO("body: (Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I") }
-    public fun delete(p0: android.net.Uri, p1: String, p2: Array<String>): Int { return TODO("body: (Landroid/net/Uri;Ljava/lang/String;[Ljava/lang/String;)I") }
-    public fun insert(p0: android.net.Uri, p1: android.content.ContentValues): android.net.Uri { return TODO("body: (Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;") }
-    public fun getType(p0: android.net.Uri): String { return TODO("body: (Landroid/net/Uri;)Ljava/lang/String;") }
+class VFSProvider : ContentProvider() {
+
+    override fun onCreate(): Boolean {
+        LoaderAPI.traceChan(
+            className() + "-" + Thread.currentThread().name,
+            "Creating VFSProvider",
+        )
+        return true
+    }
+
+    @Throws(FileNotFoundException::class)
+    override fun openAssetFile(uri: Uri, mode: String): AssetFileDescriptor? {
+        var path = uri.encodedPath ?: return null
+        if (path.startsWith("/")) {
+            path = path.substring(1)
+        }
+        return getAssetFileDescriptor(path)
+    }
+
+    @Throws(FileNotFoundException::class)
+    override fun openFile(uri: Uri, mode: String): ParcelFileDescriptor? {
+        val afd = openAssetFile(uri, mode)
+        return afd?.parcelFileDescriptor
+    }
+
+    override fun query(
+        uri: Uri,
+        projection: Array<String>?,
+        selection: String?,
+        selectionArgs: Array<String>?,
+        sortOrder: String?,
+    ): Cursor? = null
+
+    fun getAssetFileDescriptor(path: String): AssetFileDescriptor? {
+        val parts = path.split("/")
+        if (parts.size < 3) {
+            LoaderAPI.traceChan(className() + "-" + Thread.currentThread().name, "Invalid URi")
+            return null
+        }
+        return try {
+            val offset = parts[parts.size - 2].toLong()
+            val length = parts[parts.size - 1].toLong()
+            var root = parts[0]
+            for (i in 1 until parts.size - 2) {
+                root = "$root/${parts[i]}"
+            }
+            val file = File(root)
+            val pfd = ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY)
+            AssetFileDescriptor(pfd, offset, length)
+        } catch (_: NumberFormatException) {
+            LoaderAPI.traceChan(
+                className() + "-" + Thread.currentThread().name,
+                "Failed to parse file offset / length from URI",
+            )
+            null
+        } catch (e: FileNotFoundException) {
+            e.printStackTrace()
+            null
+        }
+    }
+
+    override fun update(
+        uri: Uri,
+        values: ContentValues?,
+        selection: String?,
+        selectionArgs: Array<String>?,
+    ): Int = 0
+
+    override fun delete(uri: Uri, selection: String?, selectionArgs: Array<String>?): Int = 0
+
+    override fun insert(uri: Uri, values: ContentValues?): Uri? = null
+
+    override fun getType(uri: Uri): String = "vnd.android.cursor.item/asset"
+
+    private fun className(): String {
+        val full = this::class.java.name
+        return full.substring(full.lastIndexOf('.') + 1)
+    }
 
     companion object {
-        private var EXP_PATH: String
-        private var CONTENT_PREFIX: String
-        private var AUTHORITY: String
-        @JvmField public var ASSET_URI: android.net.Uri
+        private const val EXP_PATH = "/Android/obb/"
+        private const val CONTENT_PREFIX = "content://"
+        // From AndroidManifest.xml android:authorities
+        private const val AUTHORITY = "zzzz3cbc70bb20f852f289fb0ebc606135c5.VFSProvider"
+
+        @JvmField
+        var ASSET_URI: Uri = Uri.parse(CONTENT_PREFIX + AUTHORITY)
     }
 }

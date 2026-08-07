@@ -1,10 +1,13 @@
-// Auto-emitted from javap text dump. See HOWTO_BUILD.md.
+// Auto-emitted from javap text dump (s3e_debug). See HOWTO_BUILD.md.
+// Default package. Inner class s3ePermissions$PermissionRequestResult, emitted standalone.
 // 3 fields, 2 methods.
 
-open class s3ePermissions_PermissionRequestResult {
-        public var permission: String
-        public var result: Int
-        private var isResultSet: Boolean
+open class s3ePermissions_PermissionRequestResult(
+    @Suppress("unused") private val outerThis: s3ePermissions,
+    public var permission: String,
+    @JvmField public var result: Int = 0
+) {
+    private var isResultSet: Boolean = false
 
     public fun setResult(p0: Int) { /* TODO(body): (I)V */ }
     public fun isSet(): Boolean { return TODO("body: ()Z") }

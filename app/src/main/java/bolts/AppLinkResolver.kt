@@ -1,8 +1,7 @@
 package bolts
 
-// Auto-emitted from javap text dump. See HOWTO_BUILD.md.
-// 0 fields, 1 methods.
+import android.net.Uri
 
 interface AppLinkResolver {
-    public fun getAppLinkFromUrlInBackground(p0: android.net.Uri): bolts.Task
+    fun getAppLinkFromUrlInBackground(url: Uri): Task<AppLink>
 }

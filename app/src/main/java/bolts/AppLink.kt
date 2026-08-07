@@ -1,14 +1,25 @@
 package bolts
 
-// Auto-emitted from javap text dump. See HOWTO_BUILD.md.
-// 3 fields, 3 methods.
+import android.net.Uri
+import java.util.Collections
 
-open class AppLink {
-        private var sourceUrl: android.net.Uri
-        private var targets: java.util.List
-        private var webUrl: android.net.Uri
+class AppLink(
+    private val sourceUrl: Uri?,
+    targets: List<Target>?,
+    private val webUrl: Uri?
+) {
+    private val targets: List<Target> = targets ?: Collections.emptyList()
 
-    public fun getSourceUrl(): android.net.Uri { return TODO("body: ()Landroid/net/Uri;") }
-    public fun getTargets(): java.util.List { return TODO("body: ()Ljava/util/List;") }
-    public fun getWebUrl(): android.net.Uri { return TODO("body: ()Landroid/net/Uri;") }
+    fun getSourceUrl(): Uri? = sourceUrl
+
+    fun getTargets(): List<Target> = Collections.unmodifiableList(targets)
+
+    fun getWebUrl(): Uri? = webUrl
+
+    class Target(
+        val packageName: String?,
+        val className: String?,
+        val url: Uri?,
+        val appName: String?
+    )
 }

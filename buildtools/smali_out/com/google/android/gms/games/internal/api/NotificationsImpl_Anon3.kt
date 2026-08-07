@@ -1,0 +1,46 @@
+package com.google.android.gms.games.internal.api
+
+// Auto-emitted from smali.
+// 1 fields, 4 methods.
+
+open class NotificationsImpl_Anon3: com.google.android.gms.games.Games.BaseGamesApiMethodImpl() {
+    val YW: String
+
+    public fun Z(p0: com.google.android.gms.common.api.Status): com.google.android.gms.games.Notifications.GameMuteStatusLoadResult { return TODO("body: (Lcom/google/android/gms/common/api/Status;)Lcom/google/android/gms/games/Notifications$GameMuteStatusLoadResult;") }
+    /*
+    //         .locals 1
+    //         new-instance v0, Lcom/google/android/gms/games/internal/api/NotificationsImpl$3$1;
+    //         invoke-direct {v0, p0, p1}, Lcom/google/android/gms/games/internal/api/NotificationsImpl$3$1;-><init>(Lcom/google/android/gms/games/internal/api/NotificationsImpl$3;Lcom/google/android/gms/common/api/Status;)V
+    //         return-object v0
+    */
+
+    protected fun a(p0: com.google.android.gms.common.api.Api.a) { /* TODO(body): (Lcom/google/android/gms/common/api/Api$a;)V */ }
+    /*
+    //         .locals 0
+    //         .annotation system Ldalvik/annotation/Throws;
+    //             value = {
+    //                 Landroid/os/RemoteException;
+    //             }
+    //         .end annotation
+    //         check-cast p1, Lcom/google/android/gms/games/internal/GamesClientImpl;
+    //         invoke-virtual {p0, p1}, Lcom/google/android/gms/games/internal/api/NotificationsImpl$3;->a(Lcom/google/android/gms/games/internal/GamesClientImpl;)V
+    //         return-void
+    */
+
+    protected fun a(p0: com.google.android.gms.games.internal.GamesClientImpl) { /* TODO(body): (Lcom/google/android/gms/games/internal/GamesClientImpl;)V */ }
+    /*
+    //         .locals 1
+    //         iget-object v0, p0, Lcom/google/android/gms/games/internal/api/NotificationsImpl$3;->YW:Ljava/lang/String;
+    //         invoke-virtual {p1, p0, v0}, Lcom/google/android/gms/games/internal/GamesClientImpl;->q(Lcom/google/android/gms/common/api/BaseImplementation$b;Ljava/lang/String;)V
+    //         return-void
+    */
+
+    public fun c(p0: com.google.android.gms.common.api.Status): com.google.android.gms.common.api.Result { return TODO("body: (Lcom/google/android/gms/common/api/Status;)Lcom/google/android/gms/common/api/Result;") }
+    /*
+    //         .locals 1
+    //         invoke-virtual {p0, p1}, Lcom/google/android/gms/games/internal/api/NotificationsImpl$3;->Z(Lcom/google/android/gms/common/api/Status;)Lcom/google/android/gms/games/Notifications$GameMuteStatusLoadResult;
+    //         move-result-object v0
+    //         return-object v0
+    */
+
+}

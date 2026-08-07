@@ -14,3 +14,10 @@ app/mapping.txt
 local.properties
 keystore.properties
 upload-keystore.jks
+app/version.properties
+gradle/gradle-daemon-jvm.properties
+app/src/main/assets/blackops_atitc.dz
+app/src/main/assets/blackops_etc.dz
+app/src/main/assets/blackops_gles1.dz
+app/src/main/assets/blackops-music/
+app/src/main/assets/deadops-music/

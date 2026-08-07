@@ -21,7 +21,8 @@ class IsDevice private constructor() : Cloneable {
 
     companion object {
         private const val TAG = "IsDevice"
-        const val EXP_PATH: String = File.separator + "Android" + File.separator + "obb" + File.separator
+        // File.separator is not a compile-time constant -> can't be `const val`.
+        val EXP_PATH: String = File.separator + "Android" + File.separator + "obb" + File.separator
 
         @Volatile
         private var instance: IsDevice? = null
@@ -34,9 +35,12 @@ class IsDevice private constructor() : Cloneable {
             }
             return instance!!
         }
+
+        // Alias so Java callers using the lowercase spelling resolve.
+        @JvmStatic fun getInstance(): IsDevice = GetInstance()
     }
 
-    private var isActivated: Boolean = false
+    private var m_IsActivated: Boolean = false
     var tabletThreshold: Int = 461
 
     val deviceMetrics: DisplayMetrics = DisplayMetrics()
@@ -47,19 +51,19 @@ class IsDevice private constructor() : Cloneable {
     // JNI callback registered by libIsDevice.so — name preserved verbatim.
     external fun IsDeviceKeyCallback(keyCode: Int)
 
-    fun IsActivated(): Boolean = isActivated
+    fun IsActivated(): Boolean = m_IsActivated
 
     fun GetExpansionPath(): String {
         val path = Environment.getExternalStorageDirectory().toString() +
                 EXP_PATH +
-                LoaderActivity.m_Activity.packageName +
+                LoaderActivity.m_Activity!!.packageName +
                 File.separator
         Log.i(TAG, "Expansion Path: $path")
         return path
     }
 
     fun Activate() {
-        isActivated = true
+        m_IsActivated = true
     }
 
     fun IsDeviceSetTabletThreshold(threshold: Int): Int {
@@ -87,7 +91,7 @@ class IsDevice private constructor() : Cloneable {
 
     @TargetApi(Build.VERSION_CODES.R)
     private fun getDisplayMetricsApi30Plus() {
-        val wm = LoaderActivity.m_Activity.getSystemService(Context.WINDOW_SERVICE) as? WindowManager
+        val wm = LoaderActivity.m_Activity!!.getSystemService(Context.WINDOW_SERVICE) as? WindowManager
         if (wm != null) {
             val metrics: WindowMetrics = wm.currentWindowMetrics
             val bounds: Rect = metrics.bounds
@@ -100,7 +104,7 @@ class IsDevice private constructor() : Cloneable {
 
     @Suppress("DEPRECATION")
     private fun getDisplayMetricsLegacy() {
-        val display: Display = LoaderActivity.m_Activity
+        val display: Display = LoaderActivity.m_Activity!!
             .windowManager
             .defaultDisplay
 

@@ -7,12 +7,19 @@ plugins {
 }
 
 android {
+    val keystoreProperties = Properties().apply {
+        val keystorePropertiesFile = rootProject.file("keystore.properties")
+        if (keystorePropertiesFile.canRead()) {
+            load(keystorePropertiesFile.inputStream())
+        }
+    }
+
     signingConfigs {
         create("release") {
-            storeFile = file(properties["RELEASE_STORE_FILE"] as String)
-            storePassword = properties["RELEASE_STORE_PASSWORD"] as String
-            keyPassword = properties["RELEASE_KEY_PASSWORD"] as String
-            keyAlias = properties["RELEASE_KEY_ALIAS"] as String
+            storeFile = file(keystoreProperties.getProperty("storeFile", ""))
+            storePassword = keystoreProperties.getProperty("storePassword", "")
+            keyAlias = keystoreProperties.getProperty("keyAlias", "")
+            keyPassword = keystoreProperties.getProperty("keyPassword", "")
         }
     }
 
@@ -34,7 +41,7 @@ android {
 
     defaultConfig {
         applicationId = "com.activision.boz"
-        minSdk = 19
+        minSdk = 21
         targetSdk = 36
         versionCode = versionProps.getProperty("VERSION_CODE").toInt()
         versionName = "1.0.8.1"

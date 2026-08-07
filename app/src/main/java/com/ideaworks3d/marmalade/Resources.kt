@@ -6,6 +6,6 @@ package com.ideaworks3d.marmalade
 open class Resources {
 
     companion object {
-        @JvmField public var VFSPROVIDER_AUTHORITY: String
+        @JvmField public var VFSPROVIDER_AUTHORITY: String = "zzzz60d91696a537ccab40020926eea77592.VFSProvider"
     }
 }

@@ -23,7 +23,7 @@ object CursorLoaderHelper {
             false
         } catch (e: Exception) {
             LoaderAPI.trace("Could not create cursorLoader $e")
-            LoaderAPI.trace(e.message)
+            LoaderAPI.trace(e.message ?: "")
             false
         }
     }
