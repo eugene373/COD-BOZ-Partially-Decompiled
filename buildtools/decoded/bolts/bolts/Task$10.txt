@@ -1,0 +1,62 @@
+Compiled from "Task.java"
+final class bolts.Task$10 implements java.lang.Runnable {
+  final bolts.Continuation val$continuation;
+    descriptor: Lbolts/Continuation;
+
+  final bolts.Task val$task;
+    descriptor: Lbolts/Task;
+
+  final bolts.Task$TaskCompletionSource val$tcs;
+    descriptor: Lbolts/Task$TaskCompletionSource;
+
+  bolts.Task$10(bolts.Continuation, bolts.Task, bolts.Task$TaskCompletionSource);
+    descriptor: (Lbolts/Continuation;Lbolts/Task;Lbolts/Task$TaskCompletionSource;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field val$continuation:Lbolts/Continuation;
+       5: aload_0
+       6: aload_2
+       7: putfield      #2                  // Field val$task:Lbolts/Task;
+      10: aload_0
+      11: aload_3
+      12: putfield      #3                  // Field val$tcs:Lbolts/Task$TaskCompletionSource;
+      15: aload_0
+      16: invokespecial #4                  // Method java/lang/Object."<init>":()V
+      19: return
+
+  public void run();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field val$continuation:Lbolts/Continuation;
+       4: aload_0
+       5: getfield      #2                  // Field val$task:Lbolts/Task;
+       8: invokeinterface #5,  2            // InterfaceMethod bolts/Continuation.then:(Lbolts/Task;)Ljava/lang/Object;
+      13: checkcast     #6                  // class bolts/Task
+      16: astore_1
+      17: aload_1
+      18: ifnonnull     32
+      21: aload_0
+      22: getfield      #3                  // Field val$tcs:Lbolts/Task$TaskCompletionSource;
+      25: aconst_null
+      26: invokevirtual #7                  // Method bolts/Task$TaskCompletionSource.setResult:(Ljava/lang/Object;)V
+      29: goto          45
+      32: aload_1
+      33: new           #8                  // class bolts/Task$10$1
+      36: dup
+      37: aload_0
+      38: invokespecial #9                  // Method bolts/Task$10$1."<init>":(Lbolts/Task$10;)V
+      41: invokevirtual #10                 // Method bolts/Task.continueWith:(Lbolts/Continuation;)Lbolts/Task;
+      44: pop
+      45: goto          57
+      48: astore_1
+      49: aload_0
+      50: getfield      #3                  // Field val$tcs:Lbolts/Task$TaskCompletionSource;
+      53: aload_1
+      54: invokevirtual #12                 // Method bolts/Task$TaskCompletionSource.setError:(Ljava/lang/Exception;)V
+      57: return
+    Exception table:
+       from    to  target type
+           0    45    48   Class java/lang/Exception
+}

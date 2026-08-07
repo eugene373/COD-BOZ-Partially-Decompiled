@@ -1,0 +1,52 @@
+Compiled from "NewIntentEvent.java"
+public final class com.ideaworks3d.marmalade.NewIntentEvent$EventType extends java.lang.Enum<com.ideaworks3d.marmalade.NewIntentEvent$EventType> {
+  public static final com.ideaworks3d.marmalade.NewIntentEvent$EventType NEWINTENT;
+    descriptor: Lcom/ideaworks3d/marmalade/NewIntentEvent$EventType;
+
+  private static final com.ideaworks3d.marmalade.NewIntentEvent$EventType[] $VALUES;
+    descriptor: [Lcom/ideaworks3d/marmalade/NewIntentEvent$EventType;
+
+  public static com.ideaworks3d.marmalade.NewIntentEvent$EventType[] values();
+    descriptor: ()[Lcom/ideaworks3d/marmalade/NewIntentEvent$EventType;
+    Code:
+       0: getstatic     #1                  // Field $VALUES:[Lcom/ideaworks3d/marmalade/NewIntentEvent$EventType;
+       3: invokevirtual #2                  // Method "[Lcom/ideaworks3d/marmalade/NewIntentEvent$EventType;".clone:()Ljava/lang/Object;
+       6: checkcast     #3                  // class "[Lcom/ideaworks3d/marmalade/NewIntentEvent$EventType;"
+       9: areturn
+
+  public static com.ideaworks3d.marmalade.NewIntentEvent$EventType valueOf(java.lang.String);
+    descriptor: (Ljava/lang/String;)Lcom/ideaworks3d/marmalade/NewIntentEvent$EventType;
+    Code:
+       0: ldc_w         #4                  // class com/ideaworks3d/marmalade/NewIntentEvent$EventType
+       3: aload_0
+       4: invokestatic  #5                  // Method java/lang/Enum.valueOf:(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+       7: checkcast     #4                  // class com/ideaworks3d/marmalade/NewIntentEvent$EventType
+      10: areturn
+
+  private com.ideaworks3d.marmalade.NewIntentEvent$EventType();
+    descriptor: (Ljava/lang/String;I)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: invokespecial #6                  // Method java/lang/Enum."<init>":(Ljava/lang/String;I)V
+       6: return
+
+  static {};
+    descriptor: ()V
+    Code:
+       0: new           #4                  // class com/ideaworks3d/marmalade/NewIntentEvent$EventType
+       3: dup
+       4: ldc           #7                  // String NEWINTENT
+       6: iconst_0
+       7: invokespecial #8                  // Method "<init>":(Ljava/lang/String;I)V
+      10: putstatic     #9                  // Field NEWINTENT:Lcom/ideaworks3d/marmalade/NewIntentEvent$EventType;
+      13: iconst_1
+      14: anewarray     #4                  // class com/ideaworks3d/marmalade/NewIntentEvent$EventType
+      17: dup
+      18: iconst_0
+      19: getstatic     #9                  // Field NEWINTENT:Lcom/ideaworks3d/marmalade/NewIntentEvent$EventType;
+      22: aastore
+      23: putstatic     #1                  // Field $VALUES:[Lcom/ideaworks3d/marmalade/NewIntentEvent$EventType;
+      26: return
+}

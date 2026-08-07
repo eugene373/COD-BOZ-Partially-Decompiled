@@ -1,0 +1,45 @@
+Compiled from "LoaderThread.java"
+class com.ideaworks3d.marmalade.LoaderThread$2 extends android.content.BroadcastReceiver {
+  final com.ideaworks3d.marmalade.LoaderThread this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderThread;
+
+  com.ideaworks3d.marmalade.LoaderThread$2(com.ideaworks3d.marmalade.LoaderThread);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderThread;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderThread;
+       5: aload_0
+       6: invokespecial #2                  // Method android/content/BroadcastReceiver."<init>":()V
+       9: return
+
+  public void onReceive(android.content.Context, android.content.Intent);
+    descriptor: (Landroid/content/Context;Landroid/content/Intent;)V
+    Code:
+       0: aload_1
+       1: ldc           #3                  // String connectivity
+       3: invokevirtual #4                  // Method android/content/Context.getSystemService:(Ljava/lang/String;)Ljava/lang/Object;
+       6: checkcast     #5                  // class android/net/ConnectivityManager
+       9: astore_3
+      10: aload_3
+      11: invokevirtual #6                  // Method android/net/ConnectivityManager.getActiveNetworkInfo:()Landroid/net/NetworkInfo;
+      14: astore        4
+      16: aload         4
+      18: ifnull        48
+      21: aload         4
+      23: invokevirtual #7                  // Method android/net/NetworkInfo.isAvailable:()Z
+      26: ifeq          48
+      29: aload         4
+      31: invokevirtual #8                  // Method android/net/NetworkInfo.isConnected:()Z
+      34: ifeq          48
+      37: aload_0
+      38: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderThread;
+      41: iconst_1
+      42: invokestatic  #9                  // Method com/ideaworks3d/marmalade/LoaderThread.access$900:(Lcom/ideaworks3d/marmalade/LoaderThread;Z)V
+      45: goto          56
+      48: aload_0
+      49: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderThread;
+      52: iconst_0
+      53: invokestatic  #9                  // Method com/ideaworks3d/marmalade/LoaderThread.access$900:(Lcom/ideaworks3d/marmalade/LoaderThread;Z)V
+      56: return
+}

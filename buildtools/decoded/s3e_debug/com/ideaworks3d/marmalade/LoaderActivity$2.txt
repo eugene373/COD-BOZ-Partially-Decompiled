@@ -1,0 +1,65 @@
+Compiled from "LoaderActivity.java"
+class com.ideaworks3d.marmalade.LoaderActivity$2 implements java.lang.Runnable {
+  final android.content.Intent val$i;
+    descriptor: Landroid/content/Intent;
+
+  final com.ideaworks3d.marmalade.LoaderActivity this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderActivity;
+
+  com.ideaworks3d.marmalade.LoaderActivity$2(com.ideaworks3d.marmalade.LoaderActivity, android.content.Intent);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderActivity;Landroid/content/Intent;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       5: aload_0
+       6: aload_2
+       7: putfield      #2                  // Field val$i:Landroid/content/Intent;
+      10: aload_0
+      11: invokespecial #3                  // Method java/lang/Object."<init>":()V
+      14: return
+
+  public void run();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       4: aload_0
+       5: getfield      #2                  // Field val$i:Landroid/content/Intent;
+       8: ldc           #4                  // int 123456
+      10: invokevirtual #5                  // Method com/ideaworks3d/marmalade/LoaderActivity.startActivityForResult:(Landroid/content/Intent;I)V
+      13: goto          80
+      16: astore_1
+      17: aload_0
+      18: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      21: iconst_1
+      22: invokestatic  #7                  // Method com/ideaworks3d/marmalade/LoaderActivity.access$502:(Lcom/ideaworks3d/marmalade/LoaderActivity;Z)Z
+      25: pop
+      26: new           #8                  // class java/lang/StringBuilder
+      29: dup
+      30: invokespecial #9                  // Method java/lang/StringBuilder."<init>":()V
+      33: ldc           #10                 // String Could not start activity:
+      35: invokevirtual #11                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      38: aload_1
+      39: invokevirtual #12                 // Method android/content/ActivityNotFoundException.getMessage:()Ljava/lang/String;
+      42: invokevirtual #11                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      45: invokevirtual #13                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      48: invokestatic  #14                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+      51: goto          80
+      54: astore_1
+      55: new           #8                  // class java/lang/StringBuilder
+      58: dup
+      59: invokespecial #9                  // Method java/lang/StringBuilder."<init>":()V
+      62: ldc           #10                 // String Could not start activity:
+      64: invokevirtual #11                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      67: aload_1
+      68: invokevirtual #16                 // Method java/lang/Exception.getMessage:()Ljava/lang/String;
+      71: invokevirtual #11                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      74: invokevirtual #13                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      77: invokestatic  #14                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+      80: return
+    Exception table:
+       from    to  target type
+           0    13    16   Class android/content/ActivityNotFoundException
+           0    13    54   Class java/lang/Exception
+}

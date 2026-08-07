@@ -1,0 +1,22 @@
+Compiled from "s3eTest.java"
+class com.ideaworks3d.marmalade.s3eTest$2 implements java.lang.Runnable {
+  final com.ideaworks3d.marmalade.s3eTest this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/s3eTest;
+
+  com.ideaworks3d.marmalade.s3eTest$2(com.ideaworks3d.marmalade.s3eTest);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eTest;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eTest;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: return
+
+  public void run();
+    descriptor: ()V
+    Code:
+       0: getstatic     #3                  // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       3: invokevirtual #4                  // Method com/ideaworks3d/marmalade/LoaderActivity.onStop:()V
+       6: return
+}

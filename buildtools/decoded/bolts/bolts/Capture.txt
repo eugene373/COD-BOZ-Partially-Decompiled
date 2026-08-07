@@ -1,0 +1,37 @@
+Compiled from "Capture.java"
+public class bolts.Capture<T> {
+  private T value;
+    descriptor: Ljava/lang/Object;
+
+  public bolts.Capture();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public bolts.Capture(T);
+    descriptor: (Ljava/lang/Object;)V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #2                  // Field value:Ljava/lang/Object;
+       9: return
+
+  public T get();
+    descriptor: ()Ljava/lang/Object;
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field value:Ljava/lang/Object;
+       4: areturn
+
+  public void set(T);
+    descriptor: (Ljava/lang/Object;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #2                  // Field value:Ljava/lang/Object;
+       5: return
+}

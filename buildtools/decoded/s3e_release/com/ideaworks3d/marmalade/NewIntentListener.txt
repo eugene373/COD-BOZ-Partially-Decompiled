@@ -1,0 +1,5 @@
+Compiled from "NewIntentListener.java"
+public interface com.ideaworks3d.marmalade.NewIntentListener {
+  public abstract void onNewIntentEvent(com.ideaworks3d.marmalade.NewIntentEvent);
+    descriptor: (Lcom/ideaworks3d/marmalade/NewIntentEvent;)V
+}

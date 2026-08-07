@@ -1,0 +1,156 @@
+Compiled from "LoaderThread.java"
+final class com.ideaworks3d.marmalade.LoaderThread$AudioState extends java.lang.Enum<com.ideaworks3d.marmalade.LoaderThread$AudioState> {
+  public static final com.ideaworks3d.marmalade.LoaderThread$AudioState None;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+
+  public static final com.ideaworks3d.marmalade.LoaderThread$AudioState Idle;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+
+  public static final com.ideaworks3d.marmalade.LoaderThread$AudioState Initialized;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+
+  public static final com.ideaworks3d.marmalade.LoaderThread$AudioState Stopped;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+
+  public static final com.ideaworks3d.marmalade.LoaderThread$AudioState Prepared;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+
+  public static final com.ideaworks3d.marmalade.LoaderThread$AudioState Started;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+
+  public static final com.ideaworks3d.marmalade.LoaderThread$AudioState Paused;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+
+  public static final com.ideaworks3d.marmalade.LoaderThread$AudioState PlaybackCompleted;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+
+  public static final com.ideaworks3d.marmalade.LoaderThread$AudioState Error;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+
+  private static final com.ideaworks3d.marmalade.LoaderThread$AudioState[] $VALUES;
+    descriptor: [Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+
+  public static com.ideaworks3d.marmalade.LoaderThread$AudioState[] values();
+    descriptor: ()[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+    Code:
+       0: getstatic     #1                  // Field $VALUES:[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+       3: invokevirtual #2                  // Method "[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;".clone:()Ljava/lang/Object;
+       6: checkcast     #3                  // class "[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;"
+       9: areturn
+
+  public static com.ideaworks3d.marmalade.LoaderThread$AudioState valueOf(java.lang.String);
+    descriptor: (Ljava/lang/String;)Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+    Code:
+       0: ldc_w         #4                  // class com/ideaworks3d/marmalade/LoaderThread$AudioState
+       3: aload_0
+       4: invokestatic  #5                  // Method java/lang/Enum.valueOf:(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+       7: checkcast     #4                  // class com/ideaworks3d/marmalade/LoaderThread$AudioState
+      10: areturn
+
+  private com.ideaworks3d.marmalade.LoaderThread$AudioState();
+    descriptor: (Ljava/lang/String;I)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: invokespecial #6                  // Method java/lang/Enum."<init>":(Ljava/lang/String;I)V
+       6: return
+
+  static {};
+    descriptor: ()V
+    Code:
+       0: new           #4                  // class com/ideaworks3d/marmalade/LoaderThread$AudioState
+       3: dup
+       4: ldc           #7                  // String None
+       6: iconst_0
+       7: invokespecial #8                  // Method "<init>":(Ljava/lang/String;I)V
+      10: putstatic     #9                  // Field None:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      13: new           #4                  // class com/ideaworks3d/marmalade/LoaderThread$AudioState
+      16: dup
+      17: ldc           #10                 // String Idle
+      19: iconst_1
+      20: invokespecial #8                  // Method "<init>":(Ljava/lang/String;I)V
+      23: putstatic     #11                 // Field Idle:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      26: new           #4                  // class com/ideaworks3d/marmalade/LoaderThread$AudioState
+      29: dup
+      30: ldc           #12                 // String Initialized
+      32: iconst_2
+      33: invokespecial #8                  // Method "<init>":(Ljava/lang/String;I)V
+      36: putstatic     #13                 // Field Initialized:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      39: new           #4                  // class com/ideaworks3d/marmalade/LoaderThread$AudioState
+      42: dup
+      43: ldc           #14                 // String Stopped
+      45: iconst_3
+      46: invokespecial #8                  // Method "<init>":(Ljava/lang/String;I)V
+      49: putstatic     #15                 // Field Stopped:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      52: new           #4                  // class com/ideaworks3d/marmalade/LoaderThread$AudioState
+      55: dup
+      56: ldc           #16                 // String Prepared
+      58: iconst_4
+      59: invokespecial #8                  // Method "<init>":(Ljava/lang/String;I)V
+      62: putstatic     #17                 // Field Prepared:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      65: new           #4                  // class com/ideaworks3d/marmalade/LoaderThread$AudioState
+      68: dup
+      69: ldc           #18                 // String Started
+      71: iconst_5
+      72: invokespecial #8                  // Method "<init>":(Ljava/lang/String;I)V
+      75: putstatic     #19                 // Field Started:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      78: new           #4                  // class com/ideaworks3d/marmalade/LoaderThread$AudioState
+      81: dup
+      82: ldc           #20                 // String Paused
+      84: bipush        6
+      86: invokespecial #8                  // Method "<init>":(Ljava/lang/String;I)V
+      89: putstatic     #21                 // Field Paused:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      92: new           #4                  // class com/ideaworks3d/marmalade/LoaderThread$AudioState
+      95: dup
+      96: ldc           #22                 // String PlaybackCompleted
+      98: bipush        7
+     100: invokespecial #8                  // Method "<init>":(Ljava/lang/String;I)V
+     103: putstatic     #23                 // Field PlaybackCompleted:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     106: new           #4                  // class com/ideaworks3d/marmalade/LoaderThread$AudioState
+     109: dup
+     110: ldc           #24                 // String Error
+     112: bipush        8
+     114: invokespecial #8                  // Method "<init>":(Ljava/lang/String;I)V
+     117: putstatic     #25                 // Field Error:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     120: bipush        9
+     122: anewarray     #4                  // class com/ideaworks3d/marmalade/LoaderThread$AudioState
+     125: dup
+     126: iconst_0
+     127: getstatic     #9                  // Field None:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     130: aastore
+     131: dup
+     132: iconst_1
+     133: getstatic     #11                 // Field Idle:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     136: aastore
+     137: dup
+     138: iconst_2
+     139: getstatic     #13                 // Field Initialized:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     142: aastore
+     143: dup
+     144: iconst_3
+     145: getstatic     #15                 // Field Stopped:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     148: aastore
+     149: dup
+     150: iconst_4
+     151: getstatic     #17                 // Field Prepared:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     154: aastore
+     155: dup
+     156: iconst_5
+     157: getstatic     #19                 // Field Started:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     160: aastore
+     161: dup
+     162: bipush        6
+     164: getstatic     #21                 // Field Paused:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     167: aastore
+     168: dup
+     169: bipush        7
+     171: getstatic     #23                 // Field PlaybackCompleted:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     174: aastore
+     175: dup
+     176: bipush        8
+     178: getstatic     #25                 // Field Error:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     181: aastore
+     182: putstatic     #1                  // Field $VALUES:[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     185: return
+}

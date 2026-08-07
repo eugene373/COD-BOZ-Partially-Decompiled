@@ -1,0 +1,132 @@
+Compiled from "LoaderThread.java"
+class com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade {
+  private android.net.wifi.WifiManager$MulticastLock m_multiCastLockReal;
+    descriptor: Landroid/net/wifi/WifiManager$MulticastLock;
+
+  final com.ideaworks3d.marmalade.LoaderThread this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderThread;
+
+  public com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade(com.ideaworks3d.marmalade.LoaderThread, android.net.wifi.WifiManager) throws java.lang.Exception;
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderThread;Landroid/net/wifi/WifiManager;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderThread;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: aload_0
+      10: aconst_null
+      11: putfield      #3                  // Field m_multiCastLockReal:Landroid/net/wifi/WifiManager$MulticastLock;
+      14: aload_0
+      15: aload_2
+      16: ldc           #4                  // String Marmalade
+      18: invokevirtual #5                  // Method android/net/wifi/WifiManager.createMulticastLock:(Ljava/lang/String;)Landroid/net/wifi/WifiManager$MulticastLock;
+      21: putfield      #3                  // Field m_multiCastLockReal:Landroid/net/wifi/WifiManager$MulticastLock;
+      24: return
+
+  public boolean isHeld();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: getfield      #3                  // Field m_multiCastLockReal:Landroid/net/wifi/WifiManager$MulticastLock;
+       4: ifnull        15
+       7: aload_0
+       8: getfield      #3                  // Field m_multiCastLockReal:Landroid/net/wifi/WifiManager$MulticastLock;
+      11: invokevirtual #6                  // Method android/net/wifi/WifiManager$MulticastLock.isHeld:()Z
+      14: ireturn
+      15: new           #7                  // class java/lang/StringBuilder
+      18: dup
+      19: invokespecial #8                  // Method java/lang/StringBuilder."<init>":()V
+      22: aload_0
+      23: invokevirtual #9                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      26: invokevirtual #10                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      29: aload_0
+      30: invokevirtual #9                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      33: invokevirtual #10                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      36: bipush        46
+      38: invokevirtual #11                 // Method java/lang/String.lastIndexOf:(I)I
+      41: iconst_1
+      42: iadd
+      43: invokevirtual #12                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      46: invokevirtual #13                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      49: ldc           #14                 // String -
+      51: invokevirtual #13                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      54: invokestatic  #15                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      57: invokevirtual #16                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      60: invokevirtual #13                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      63: invokevirtual #17                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      66: ldc           #18                 // String MulticastLock not supported
+      68: invokestatic  #19                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      71: iconst_0
+      72: ireturn
+
+  public void release();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #3                  // Field m_multiCastLockReal:Landroid/net/wifi/WifiManager$MulticastLock;
+       4: ifnull        17
+       7: aload_0
+       8: getfield      #3                  // Field m_multiCastLockReal:Landroid/net/wifi/WifiManager$MulticastLock;
+      11: invokevirtual #20                 // Method android/net/wifi/WifiManager$MulticastLock.release:()V
+      14: goto          73
+      17: new           #7                  // class java/lang/StringBuilder
+      20: dup
+      21: invokespecial #8                  // Method java/lang/StringBuilder."<init>":()V
+      24: aload_0
+      25: invokevirtual #9                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      28: invokevirtual #10                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      31: aload_0
+      32: invokevirtual #9                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      35: invokevirtual #10                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      38: bipush        46
+      40: invokevirtual #11                 // Method java/lang/String.lastIndexOf:(I)I
+      43: iconst_1
+      44: iadd
+      45: invokevirtual #12                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      48: invokevirtual #13                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      51: ldc           #14                 // String -
+      53: invokevirtual #13                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      56: invokestatic  #15                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      59: invokevirtual #16                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      62: invokevirtual #13                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      65: invokevirtual #17                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      68: ldc           #18                 // String MulticastLock not supported
+      70: invokestatic  #19                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      73: return
+
+  public void acquire();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #3                  // Field m_multiCastLockReal:Landroid/net/wifi/WifiManager$MulticastLock;
+       4: ifnull        17
+       7: aload_0
+       8: getfield      #3                  // Field m_multiCastLockReal:Landroid/net/wifi/WifiManager$MulticastLock;
+      11: invokevirtual #21                 // Method android/net/wifi/WifiManager$MulticastLock.acquire:()V
+      14: goto          73
+      17: new           #7                  // class java/lang/StringBuilder
+      20: dup
+      21: invokespecial #8                  // Method java/lang/StringBuilder."<init>":()V
+      24: aload_0
+      25: invokevirtual #9                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      28: invokevirtual #10                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      31: aload_0
+      32: invokevirtual #9                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      35: invokevirtual #10                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      38: bipush        46
+      40: invokevirtual #11                 // Method java/lang/String.lastIndexOf:(I)I
+      43: iconst_1
+      44: iadd
+      45: invokevirtual #12                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      48: invokevirtual #13                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      51: ldc           #14                 // String -
+      53: invokevirtual #13                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      56: invokestatic  #15                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      59: invokevirtual #16                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      62: invokevirtual #13                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      65: invokevirtual #17                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      68: ldc           #18                 // String MulticastLock not supported
+      70: invokestatic  #19                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      73: return
+}

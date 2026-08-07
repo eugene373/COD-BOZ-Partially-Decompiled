@@ -1,0 +1,56 @@
+Compiled from "WeakArrayList.java"
+class com.ideaworks3d.marmalade.util.WeakArrayList$1 implements java.util.Iterator<E> {
+  private java.util.Iterator<java.lang.ref.WeakReference<E>> it;
+    descriptor: Ljava/util/Iterator;
+
+  final com.ideaworks3d.marmalade.util.WeakArrayList this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/util/WeakArrayList;
+
+  com.ideaworks3d.marmalade.util.WeakArrayList$1(com.ideaworks3d.marmalade.util.WeakArrayList);
+    descriptor: (Lcom/ideaworks3d/marmalade/util/WeakArrayList;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/util/WeakArrayList;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: aload_0
+      10: aload_0
+      11: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/util/WeakArrayList;
+      14: invokestatic  #3                  // Method com/ideaworks3d/marmalade/util/WeakArrayList.access$000:(Lcom/ideaworks3d/marmalade/util/WeakArrayList;)Ljava/util/List;
+      17: invokeinterface #4,  1            // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      22: putfield      #5                  // Field it:Ljava/util/Iterator;
+      25: return
+
+  public E next();
+    descriptor: ()Ljava/lang/Object;
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field it:Ljava/util/Iterator;
+       4: invokeinterface #6,  1            // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+       9: checkcast     #7                  // class java/lang/ref/WeakReference
+      12: astore_1
+      13: aload_1
+      14: ifnonnull     21
+      17: aconst_null
+      18: goto          25
+      21: aload_1
+      22: invokevirtual #8                  // Method java/lang/ref/WeakReference.get:()Ljava/lang/Object;
+      25: areturn
+
+  public void remove();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field it:Ljava/util/Iterator;
+       4: invokeinterface #9,  1            // InterfaceMethod java/util/Iterator.remove:()V
+       9: return
+
+  public boolean hasNext();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field it:Ljava/util/Iterator;
+       4: invokeinterface #10,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+       9: ireturn
+}

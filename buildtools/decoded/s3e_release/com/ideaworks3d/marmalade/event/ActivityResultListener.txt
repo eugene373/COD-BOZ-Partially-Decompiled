@@ -1,0 +1,5 @@
+Compiled from "ActivityResultListener.java"
+public interface com.ideaworks3d.marmalade.event.ActivityResultListener {
+  public abstract void onActivityResultEvent(com.ideaworks3d.marmalade.event.ActivityResultEvent);
+    descriptor: (Lcom/ideaworks3d/marmalade/event/ActivityResultEvent;)V
+}

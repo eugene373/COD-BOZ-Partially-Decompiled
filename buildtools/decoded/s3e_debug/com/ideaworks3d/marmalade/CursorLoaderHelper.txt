@@ -1,0 +1,51 @@
+Compiled from "CursorLoaderHelper.java"
+public class com.ideaworks3d.marmalade.CursorLoaderHelper {
+  public com.ideaworks3d.marmalade.CursorLoaderHelper();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static boolean getCursor(android.net.Uri, java.lang.String[], com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener);
+    descriptor: (Landroid/net/Uri;[Ljava/lang/String;Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;)Z
+    Code:
+       0: new           #2                  // class android/content/CursorLoader
+       3: dup
+       4: invokestatic  #3                  // Method com/ideaworks3d/marmalade/LoaderAPI.getActivity:()Lcom/ideaworks3d/marmalade/LoaderActivity;
+       7: aload_0
+       8: aload_1
+       9: aconst_null
+      10: aconst_null
+      11: aconst_null
+      12: invokespecial #4                  // Method android/content/CursorLoader."<init>":(Landroid/content/Context;Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)V
+      15: astore_3
+      16: aload_3
+      17: iconst_0
+      18: new           #5                  // class com/ideaworks3d/marmalade/CursorLoaderHelper$1
+      21: dup
+      22: aload_2
+      23: invokespecial #6                  // Method com/ideaworks3d/marmalade/CursorLoaderHelper$1."<init>":(Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;)V
+      26: invokevirtual #7                  // Method android/content/CursorLoader.registerListener:(ILandroid/content/Loader$OnLoadCompleteListener;)V
+      29: aload_3
+      30: invokevirtual #8                  // Method android/content/CursorLoader.startLoading:()V
+      33: goto          66
+      36: astore_3
+      37: new           #10                 // class java/lang/StringBuilder
+      40: dup
+      41: invokespecial #11                 // Method java/lang/StringBuilder."<init>":()V
+      44: ldc           #12                 // String Could not create cursorLoader
+      46: invokevirtual #13                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      49: aload_3
+      50: invokevirtual #14                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      53: invokevirtual #15                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      56: invokestatic  #16                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+      59: aload_3
+      60: invokevirtual #17                 // Method java/lang/Exception.getMessage:()Ljava/lang/String;
+      63: invokestatic  #16                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+      66: iconst_0
+      67: ireturn
+    Exception table:
+       from    to  target type
+           0    33    36   Class java/lang/Exception
+}

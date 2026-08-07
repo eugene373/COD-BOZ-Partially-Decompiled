@@ -1,0 +1,5 @@
+Compiled from "SuspendResumeListener.java"
+public interface com.ideaworks3d.marmalade.SuspendResumeListener {
+  public abstract void onSuspendResumeEvent(com.ideaworks3d.marmalade.SuspendResumeEvent);
+    descriptor: (Lcom/ideaworks3d/marmalade/SuspendResumeEvent;)V
+}

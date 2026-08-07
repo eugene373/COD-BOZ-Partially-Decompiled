@@ -1,0 +1,31 @@
+Compiled from "NewIntentListenerList.java"
+public class com.ideaworks3d.marmalade.event.NewIntentListenerList extends com.ideaworks3d.marmalade.event.ListenerList<com.ideaworks3d.marmalade.NewIntentListener> {
+  public com.ideaworks3d.marmalade.event.NewIntentListenerList();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method com/ideaworks3d/marmalade/event/ListenerList."<init>":()V
+       4: return
+
+  public void notifyAll(com.ideaworks3d.marmalade.NewIntentEvent);
+    descriptor: (Lcom/ideaworks3d/marmalade/NewIntentEvent;)V
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field m_Listeners:Lcom/ideaworks3d/marmalade/util/WeakArrayList;
+       4: invokevirtual #3                  // Method com/ideaworks3d/marmalade/util/WeakArrayList.iterator:()Ljava/util/Iterator;
+       7: astore_2
+       8: aload_2
+       9: invokeinterface #4,  1            // InterfaceMethod java/util/Iterator.hasNext:()Z
+      14: ifeq          41
+      17: aload_2
+      18: invokeinterface #5,  1            // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      23: checkcast     #6                  // class com/ideaworks3d/marmalade/NewIntentListener
+      26: astore_3
+      27: aload_3
+      28: ifnull        38
+      31: aload_3
+      32: aload_1
+      33: invokeinterface #7,  2            // InterfaceMethod com/ideaworks3d/marmalade/NewIntentListener.onNewIntentEvent:(Lcom/ideaworks3d/marmalade/NewIntentEvent;)V
+      38: goto          8
+      41: return
+}

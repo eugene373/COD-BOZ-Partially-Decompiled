@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="common_google_play_services_notification_ticker">Virhe Google Play -palveluissa</string>
+    <string name="common_google_play_services_notification_needs_installation_title">Asenna Google Play -palvelut, jotta sovellus toimii.</string>
+    <string name="common_google_play_services_notification_needs_update_title">Päivitä Google Play -palvelut, jotta sovellus toimii.</string>
+    <string name="common_android_wear_notification_needs_update_text">Android Wear -sovellus täytyy päivittää toisen sovelluksen takia.</string>
+    <string name="common_google_play_services_needs_enabling_title">Ota käyttöön Google Play -palvelut, jotta sovellus toimii.</string>
+    <string name="common_google_play_services_error_notification_requested_by_msg">Pyynnön teki %1$s</string>
+    <string name="common_google_play_services_install_title">Asenna Google Play -palvelut</string>
+    <string name="common_google_play_services_install_text_phone">Tämä sovellus ei toimi ilman Google Play -palveluita, jotka puuttuvat puhelimesta.</string>
+    <string name="common_google_play_services_install_text_tablet">Tämä sovellus ei toimi ilman Google Play -palveluita, jotka puuttuvat tablet-laitteesta.</string>
+    <string name="common_google_play_services_install_button">Asenna Google Play -palvelut</string>
+    <string name="common_google_play_services_enable_title">Ota Google Play -palvelut käyttöön</string>
+    <string name="common_google_play_services_enable_text">Tämä sovellus ei toimi, ellet ota Google Play -palveluita käyttöön.</string>
+    <string name="common_google_play_services_enable_button">Ota Google Play -palv. käyttöön</string>
+    <string name="common_google_play_services_update_title">Päivitä Google Play -palvelut</string>
+    <string name="common_android_wear_update_title">Päivitä Android Wear</string>
+    <string name="common_google_play_services_update_text">Tämä sovellus ei toimi, ellet päivitä Google Play -palveluita.</string>
+    <string name="common_android_wear_update_text">Tämä sovellus ei toimi, ellet päivitä Android Wear -sovellusta.</string>
+    <string name="common_google_play_services_network_error_title">Verkkovirhe</string>
+    <string name="common_google_play_services_network_error_text">Google Play -palveluiden käyttöön tarvitaan tietoliikenneyhteys.</string>
+    <string name="common_google_play_services_invalid_account_title">Tili ei kelpaa</string>
+    <string name="common_google_play_services_invalid_account_text">Kyseistä tiliä ei ole tällä laitteella. Valitse toinen tili.</string>
+    <string name="common_google_play_services_unknown_issue">Tuntematon ongelma käytettäessä Google Play -palveluita.</string>
+    <string name="common_google_play_services_unsupported_title">Google Play -palvelut</string>
+    <string name="common_google_play_services_unsupported_text">Google Play -palveluita, joita osa sovelluksistasi käyttää, ei tueta laitteellasi. Pyydä ohjeita laitteen valmistajalta.</string>
+    <string name="common_google_play_services_update_button">Päivitä</string>
+    <string name="common_signin_button_text">Kirjaudu</string>
+    <string name="common_signin_button_text_long">Kirjaudu Google-tiliin</string>
+    <string name="common_open_on_phone">Avaa puhelimessa</string>
+    <string name="IDS_SAPPS_POP_AN_ERROR_OCCURRED_WHILE_RESETTING_SAMSUNG_IN_APP_PURCHASE">Samsung In-App Purchasea palautettaessa tapahtui virhe</string>
+    <string name="IDS_SAPPS_POP_AN_INVALID_VALUE_HAS_BEEN_PROVIDED_FOR_SAMSUNG_IN_APP_PURCHASE">Samsung In-App Purchaselle on annettu virheellinen arvo</string>
+    <string name="IDS_SAPPS_POP_AN_UNEXPECTED_ERROR_HAS_OCCURRED_SAMSUNG_ACCOUNT_AUTHENTICATION_HAS_BEEN_CANCELLED">Odottamaton virhe. Samsung-tilin todennus on peruutettu.</string>
+    <string name="IDS_SAPPS_POP_YOUR_PURCHASE_VIA_SAMSUNG_IN_APP_PURCHASE_IS_INVALID_A_FAKE_APPLICATION_HAS_BEEN_DETECTED_CHECK_THE_APP_MSG">Samsung In-App Purchase -ostos ei kelpaa. Havaittu virheellinen sovellus. Tarkista ostettava sovellus ja yritä uudelleen.</string>
+    <string name="IDS_SAPPS_POP_UNKNOWN_ERROR_OCCURRED">Tuntematon virhe</string>
+    <string name="IDS_SAPPS_POP_SAMSUNG_IN_APP_PURCHASE">Samsung In-App Purchase</string>
+    <string name="IDS_SAPPS_POP_SAMSUNG_IN_APP_PURCHASE_NEEDS_TO_BE_UPDATED">Samsung In-App Purchase on päivitettävä</string>
+    <string name="IDS_SAPPS_POP_TO_PURCHASE_ITEMS_YOU_NEED_TO_INSTALL_SAMSUNG_IN_APP_PURCHASE_INSTALL_Q">Samsung In-App Purchase on asennettava tuotteiden ostamista varten. Asennetaanko?</string>
+    <string name="IDS_SAPPS_POP_A_NEW_VERSION_OF_SAMSUNG_IN_APP_PURCHASE_IS_AVAILABLE_UPDATE_Q">Samsung In-App Purchasesta on saatavilla uusi versio. Päivitetäänkö?</string>
+    <string name="IDS_SAPPS_BODY_WAITING_ING">Odotetaan...</string>
+    <string name="IDS_SAPPS_POP_PRODUCT_DOES_NOT_EXIST_IN_THIS_STORE">Tuotetta ei ole tässä kaupassa</string>
+    <string name="IDS_SAPPS_POP_ALREADY_PURCHASED">Ostettu jo</string>
+    <string name="IDS_SAPPS_POP_PAYMENT_CANCELLED">Maksu on peruutettu</string>
+    <string name="IDS_SAPPS_POP_NETWORK_UNAVAILABLE">Verkko ei saatavilla</string>
+    <string name="IDS_SAPPS_HEADER_ITEM_PURCHASED">Kohde ostettu</string>
+</resources>

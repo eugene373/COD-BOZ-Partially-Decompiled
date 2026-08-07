@@ -1,0 +1,87 @@
+Compiled from "LoaderThread.java"
+class com.ideaworks3d.marmalade.LoaderThread$1 extends android.content.BroadcastReceiver {
+  final com.ideaworks3d.marmalade.LoaderThread this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderThread;
+
+  com.ideaworks3d.marmalade.LoaderThread$1(com.ideaworks3d.marmalade.LoaderThread);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderThread;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderThread;
+       5: aload_0
+       6: invokespecial #2                  // Method android/content/BroadcastReceiver."<init>":()V
+       9: return
+
+  public void onReceive(android.content.Context, android.content.Intent);
+    descriptor: (Landroid/content/Context;Landroid/content/Intent;)V
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderThread;
+       4: aload_2
+       5: ldc           #3                  // String level
+       7: iconst_0
+       8: invokevirtual #4                  // Method android/content/Intent.getIntExtra:(Ljava/lang/String;I)I
+      11: invokestatic  #5                  // Method com/ideaworks3d/marmalade/LoaderThread.access$702:(Lcom/ideaworks3d/marmalade/LoaderThread;I)I
+      14: pop
+      15: aload_0
+      16: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderThread;
+      19: invokestatic  #6                  // Method com/ideaworks3d/marmalade/LoaderThread.access$800:(Lcom/ideaworks3d/marmalade/LoaderThread;)Z
+      22: istore_3
+      23: aload_0
+      24: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderThread;
+      27: aload_2
+      28: ldc           #7                  // String plugged
+      30: iconst_0
+      31: invokevirtual #4                  // Method android/content/Intent.getIntExtra:(Ljava/lang/String;I)I
+      34: ifeq          41
+      37: iconst_1
+      38: goto          42
+      41: iconst_0
+      42: invokestatic  #8                  // Method com/ideaworks3d/marmalade/LoaderThread.access$802:(Lcom/ideaworks3d/marmalade/LoaderThread;Z)Z
+      45: pop
+      46: iload_3
+      47: aload_0
+      48: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderThread;
+      51: invokestatic  #6                  // Method com/ideaworks3d/marmalade/LoaderThread.access$800:(Lcom/ideaworks3d/marmalade/LoaderThread;)Z
+      54: if_icmpeq     150
+      57: new           #9                  // class java/lang/StringBuilder
+      60: dup
+      61: invokespecial #10                 // Method java/lang/StringBuilder."<init>":()V
+      64: aload_0
+      65: invokevirtual #11                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      68: invokevirtual #12                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      71: aload_0
+      72: invokevirtual #11                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      75: invokevirtual #12                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      78: bipush        46
+      80: invokevirtual #13                 // Method java/lang/String.lastIndexOf:(I)I
+      83: iconst_1
+      84: iadd
+      85: invokevirtual #14                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      88: invokevirtual #15                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      91: ldc           #16                 // String -
+      93: invokevirtual #15                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      96: invokestatic  #17                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      99: invokevirtual #18                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     102: invokevirtual #15                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     105: invokevirtual #19                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     108: new           #9                  // class java/lang/StringBuilder
+     111: dup
+     112: invokespecial #10                 // Method java/lang/StringBuilder."<init>":()V
+     115: ldc           #20                 // String m_ChargerConnected =
+     117: invokevirtual #15                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     120: aload_0
+     121: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderThread;
+     124: invokestatic  #6                  // Method com/ideaworks3d/marmalade/LoaderThread.access$800:(Lcom/ideaworks3d/marmalade/LoaderThread;)Z
+     127: invokevirtual #21                 // Method java/lang/StringBuilder.append:(Z)Ljava/lang/StringBuilder;
+     130: invokevirtual #19                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     133: invokestatic  #22                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     136: aload_0
+     137: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderThread;
+     140: aload_0
+     141: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderThread;
+     144: invokestatic  #6                  // Method com/ideaworks3d/marmalade/LoaderThread.access$800:(Lcom/ideaworks3d/marmalade/LoaderThread;)Z
+     147: invokestatic  #23                 // Method com/ideaworks3d/marmalade/LoaderThread.access$900:(Lcom/ideaworks3d/marmalade/LoaderThread;Z)V
+     150: return
+}

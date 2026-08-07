@@ -1,0 +1,36 @@
+Compiled from "CursorLoaderHelper.java"
+final class com.ideaworks3d.marmalade.CursorLoaderHelper$1 implements android.content.Loader$OnLoadCompleteListener<android.database.Cursor> {
+  final com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener val$completeCallback;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;
+
+  com.ideaworks3d.marmalade.CursorLoaderHelper$1(com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field val$completeCallback:Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: return
+
+  public void onLoadComplete(android.content.Loader<android.database.Cursor>, android.database.Cursor);
+    descriptor: (Landroid/content/Loader;Landroid/database/Cursor;)V
+    Code:
+       0: ldc           #3                  // String CursorLoader onLoadComplete
+       2: invokestatic  #4                  // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+       5: aload_0
+       6: getfield      #1                  // Field val$completeCallback:Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;
+       9: aload_2
+      10: invokeinterface #5,  2            // InterfaceMethod com/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener.cursorLoadComplete:(Landroid/database/Cursor;)V
+      15: return
+
+  public void onLoadComplete(android.content.Loader, java.lang.Object);
+    descriptor: (Landroid/content/Loader;Ljava/lang/Object;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: checkcast     #6                  // class android/database/Cursor
+       6: invokevirtual #7                  // Method onLoadComplete:(Landroid/content/Loader;Landroid/database/Cursor;)V
+       9: return
+}

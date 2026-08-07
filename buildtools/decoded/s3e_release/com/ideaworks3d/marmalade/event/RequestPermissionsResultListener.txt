@@ -1,0 +1,5 @@
+Compiled from "RequestPermissionsResultListener.java"
+public interface com.ideaworks3d.marmalade.event.RequestPermissionsResultListener {
+  public abstract void onRequestPermissionsResultEvent(com.ideaworks3d.marmalade.event.RequestPermissionsResultEvent);
+    descriptor: (Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultEvent;)V
+}

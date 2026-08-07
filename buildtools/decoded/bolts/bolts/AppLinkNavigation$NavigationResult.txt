@@ -1,0 +1,110 @@
+Compiled from "AppLinkNavigation.java"
+public final class bolts.AppLinkNavigation$NavigationResult extends java.lang.Enum<bolts.AppLinkNavigation$NavigationResult> {
+  public static final bolts.AppLinkNavigation$NavigationResult FAILED;
+    descriptor: Lbolts/AppLinkNavigation$NavigationResult;
+
+  public static final bolts.AppLinkNavigation$NavigationResult WEB;
+    descriptor: Lbolts/AppLinkNavigation$NavigationResult;
+
+  public static final bolts.AppLinkNavigation$NavigationResult APP;
+    descriptor: Lbolts/AppLinkNavigation$NavigationResult;
+
+  private java.lang.String code;
+    descriptor: Ljava/lang/String;
+
+  private boolean succeeded;
+    descriptor: Z
+
+  private static final bolts.AppLinkNavigation$NavigationResult[] $VALUES;
+    descriptor: [Lbolts/AppLinkNavigation$NavigationResult;
+
+  public static bolts.AppLinkNavigation$NavigationResult[] values();
+    descriptor: ()[Lbolts/AppLinkNavigation$NavigationResult;
+    Code:
+       0: getstatic     #1                  // Field $VALUES:[Lbolts/AppLinkNavigation$NavigationResult;
+       3: invokevirtual #2                  // Method "[Lbolts/AppLinkNavigation$NavigationResult;".clone:()Ljava/lang/Object;
+       6: checkcast     #3                  // class "[Lbolts/AppLinkNavigation$NavigationResult;"
+       9: areturn
+
+  public static bolts.AppLinkNavigation$NavigationResult valueOf(java.lang.String);
+    descriptor: (Ljava/lang/String;)Lbolts/AppLinkNavigation$NavigationResult;
+    Code:
+       0: ldc_w         #4                  // class bolts/AppLinkNavigation$NavigationResult
+       3: aload_0
+       4: invokestatic  #5                  // Method java/lang/Enum.valueOf:(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+       7: checkcast     #4                  // class bolts/AppLinkNavigation$NavigationResult
+      10: areturn
+
+  public java.lang.String getCode();
+    descriptor: ()Ljava/lang/String;
+    Code:
+       0: aload_0
+       1: getfield      #6                  // Field code:Ljava/lang/String;
+       4: areturn
+
+  public boolean isSucceeded();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field succeeded:Z
+       4: ireturn
+
+  private bolts.AppLinkNavigation$NavigationResult(java.lang.String, boolean);
+    descriptor: (Ljava/lang/String;ILjava/lang/String;Z)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: invokespecial #8                  // Method java/lang/Enum."<init>":(Ljava/lang/String;I)V
+       6: aload_0
+       7: aload_3
+       8: putfield      #6                  // Field code:Ljava/lang/String;
+      11: aload_0
+      12: iload         4
+      14: putfield      #7                  // Field succeeded:Z
+      17: return
+
+  static {};
+    descriptor: ()V
+    Code:
+       0: new           #4                  // class bolts/AppLinkNavigation$NavigationResult
+       3: dup
+       4: ldc           #9                  // String FAILED
+       6: iconst_0
+       7: ldc           #10                 // String failed
+       9: iconst_0
+      10: invokespecial #11                 // Method "<init>":(Ljava/lang/String;ILjava/lang/String;Z)V
+      13: putstatic     #12                 // Field FAILED:Lbolts/AppLinkNavigation$NavigationResult;
+      16: new           #4                  // class bolts/AppLinkNavigation$NavigationResult
+      19: dup
+      20: ldc           #13                 // String WEB
+      22: iconst_1
+      23: ldc           #14                 // String web
+      25: iconst_1
+      26: invokespecial #11                 // Method "<init>":(Ljava/lang/String;ILjava/lang/String;Z)V
+      29: putstatic     #15                 // Field WEB:Lbolts/AppLinkNavigation$NavigationResult;
+      32: new           #4                  // class bolts/AppLinkNavigation$NavigationResult
+      35: dup
+      36: ldc           #16                 // String APP
+      38: iconst_2
+      39: ldc           #17                 // String app
+      41: iconst_1
+      42: invokespecial #11                 // Method "<init>":(Ljava/lang/String;ILjava/lang/String;Z)V
+      45: putstatic     #18                 // Field APP:Lbolts/AppLinkNavigation$NavigationResult;
+      48: iconst_3
+      49: anewarray     #4                  // class bolts/AppLinkNavigation$NavigationResult
+      52: dup
+      53: iconst_0
+      54: getstatic     #12                 // Field FAILED:Lbolts/AppLinkNavigation$NavigationResult;
+      57: aastore
+      58: dup
+      59: iconst_1
+      60: getstatic     #15                 // Field WEB:Lbolts/AppLinkNavigation$NavigationResult;
+      63: aastore
+      64: dup
+      65: iconst_2
+      66: getstatic     #18                 // Field APP:Lbolts/AppLinkNavigation$NavigationResult;
+      69: aastore
+      70: putstatic     #1                  // Field $VALUES:[Lbolts/AppLinkNavigation$NavigationResult;
+      73: return
+}

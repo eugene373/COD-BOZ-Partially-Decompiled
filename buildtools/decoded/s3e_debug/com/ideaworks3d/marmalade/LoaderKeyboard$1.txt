@@ -1,0 +1,44 @@
+Compiled from "LoaderKeyboard.java"
+final class com.ideaworks3d.marmalade.LoaderKeyboard$1 extends java.util.HashMap<java.lang.Integer, java.lang.Integer> {
+  com.ideaworks3d.marmalade.LoaderKeyboard$1();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/util/HashMap."<init>":()V
+       4: aload_0
+       5: iconst_0
+       6: invokestatic  #2                  // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+       9: iconst_0
+      10: invokestatic  #2                  // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      13: invokevirtual #3                  // Method put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      16: pop
+      17: aload_0
+      18: iconst_1
+      19: invokestatic  #2                  // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      22: bipush        17
+      24: invokestatic  #2                  // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      27: invokevirtual #3                  // Method put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      30: pop
+      31: aload_0
+      32: iconst_2
+      33: invokestatic  #2                  // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      36: sipush        209
+      39: invokestatic  #2                  // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      42: invokevirtual #3                  // Method put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      45: pop
+      46: aload_0
+      47: iconst_3
+      48: invokestatic  #2                  // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      51: iconst_2
+      52: invokestatic  #2                  // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      55: invokevirtual #3                  // Method put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      58: pop
+      59: aload_0
+      60: iconst_4
+      61: invokestatic  #2                  // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      64: iconst_3
+      65: invokestatic  #2                  // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      68: invokevirtual #3                  // Method put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      71: pop
+      72: return
+}

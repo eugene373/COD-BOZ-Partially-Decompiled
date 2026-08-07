@@ -1,0 +1,303 @@
+Compiled from "LoaderView.java"
+class com.ideaworks3d.marmalade.LoaderView$VideoRunner implements java.lang.Runnable {
+  public static final int PLAY = 1;
+    descriptor: I
+
+  public static final int PAUSE = 2;
+    descriptor: I
+
+  public static final int RESUME = 3;
+    descriptor: I
+
+  public static final int STOP = 4;
+    descriptor: I
+
+  public static final int VOLUME = 5;
+    descriptor: I
+
+  private int m_Action;
+    descriptor: I
+
+  private java.lang.String m_File;
+    descriptor: Ljava/lang/String;
+
+  private int m_Volume;
+    descriptor: I
+
+  private int m_Repeats;
+    descriptor: I
+
+  private int m_X;
+    descriptor: I
+
+  private int m_Y;
+    descriptor: I
+
+  private int m_Width;
+    descriptor: I
+
+  private int m_Height;
+    descriptor: I
+
+  private boolean m_Fullscreen;
+    descriptor: Z
+
+  private long m_Offset;
+    descriptor: J
+
+  private long m_Size;
+    descriptor: J
+
+  private int m_Return;
+    descriptor: I
+
+  final com.ideaworks3d.marmalade.LoaderView this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderView;
+
+  private com.ideaworks3d.marmalade.LoaderView$VideoRunner(com.ideaworks3d.marmalade.LoaderView);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderView;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+       5: aload_0
+       6: invokespecial #3                  // Method java/lang/Object."<init>":()V
+       9: return
+
+  void play(java.lang.String, int, int, int, int, int, int, boolean, long, long);
+    descriptor: (Ljava/lang/String;IIIIIIZJJ)V
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: putfield      #4                  // Field m_Action:I
+       5: aload_0
+       6: aload_1
+       7: putfield      #5                  // Field m_File:Ljava/lang/String;
+      10: aload_0
+      11: iload_2
+      12: putfield      #6                  // Field m_Volume:I
+      15: aload_0
+      16: iload_3
+      17: putfield      #7                  // Field m_Repeats:I
+      20: aload_0
+      21: iload         4
+      23: putfield      #8                  // Field m_X:I
+      26: aload_0
+      27: iload         5
+      29: putfield      #9                  // Field m_Y:I
+      32: aload_0
+      33: iload         6
+      35: putfield      #10                 // Field m_Width:I
+      38: aload_0
+      39: iload         7
+      41: putfield      #11                 // Field m_Height:I
+      44: aload_0
+      45: iload         8
+      47: putfield      #12                 // Field m_Fullscreen:Z
+      50: aload_0
+      51: lload         9
+      53: putfield      #13                 // Field m_Offset:J
+      56: aload_0
+      57: lload         11
+      59: putfield      #14                 // Field m_Size:J
+      62: return
+
+  void setState(int);
+    descriptor: (I)V
+    Code:
+       0: iload_1
+       1: tableswitch   { // 0 to 2
+                     0: 44
+                     1: 36
+                     2: 28
+               default: 49
+          }
+      28: aload_0
+      29: iconst_2
+      30: putfield      #4                  // Field m_Action:I
+      33: goto          49
+      36: aload_0
+      37: iconst_3
+      38: putfield      #4                  // Field m_Action:I
+      41: goto          49
+      44: aload_0
+      45: iconst_4
+      46: putfield      #4                  // Field m_Action:I
+      49: return
+
+  void setVolume(int);
+    descriptor: (I)V
+    Code:
+       0: aload_0
+       1: iconst_5
+       2: putfield      #4                  // Field m_Action:I
+       5: aload_0
+       6: iload_1
+       7: putfield      #6                  // Field m_Volume:I
+      10: return
+
+  public synchronized int runOnUiThread(boolean);
+    descriptor: (Z)I
+    Code:
+       0: invokestatic  #15                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+       3: aload_0
+       4: getfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+       7: getfield      #16                 // Field com/ideaworks3d/marmalade/LoaderView.m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      10: invokevirtual #17                 // Method com/ideaworks3d/marmalade/LoaderActivity.getMainLooper:()Landroid/os/Looper;
+      13: invokevirtual #18                 // Method android/os/Looper.getThread:()Ljava/lang/Thread;
+      16: if_acmpne     26
+      19: aload_0
+      20: invokevirtual #19                 // Method run:()V
+      23: goto          46
+      26: aload_0
+      27: getfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+      30: getfield      #20                 // Field com/ideaworks3d/marmalade/LoaderView.m_Handler:Landroid/os/Handler;
+      33: aload_0
+      34: invokevirtual #21                 // Method android/os/Handler.post:(Ljava/lang/Runnable;)Z
+      37: pop
+      38: iload_1
+      39: ifeq          46
+      42: aload_0
+      43: invokevirtual #22                 // Method java/lang/Object.wait:()V
+      46: goto          52
+      49: astore_2
+      50: iconst_m1
+      51: ireturn
+      52: iload_1
+      53: ifeq          63
+      56: aload_0
+      57: getfield      #24                 // Field m_Return:I
+      60: goto          64
+      63: iconst_0
+      64: ireturn
+    Exception table:
+       from    to  target type
+           0    46    49   Class java/lang/InterruptedException
+
+  public synchronized void run();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #4                  // Field m_Action:I
+       4: iconst_1
+       5: if_icmpne     146
+       8: aload_0
+       9: getfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+      12: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderView.access$300:(Lcom/ideaworks3d/marmalade/LoaderView;)Lcom/ideaworks3d/marmalade/S3EVideoView;
+      15: ifnull        47
+      18: aload_0
+      19: getfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+      22: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderView.access$300:(Lcom/ideaworks3d/marmalade/LoaderView;)Lcom/ideaworks3d/marmalade/S3EVideoView;
+      25: invokevirtual #26                 // Method com/ideaworks3d/marmalade/S3EVideoView.videoStop:()V
+      28: aload_0
+      29: getfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+      32: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderView.access$300:(Lcom/ideaworks3d/marmalade/LoaderView;)Lcom/ideaworks3d/marmalade/S3EVideoView;
+      35: invokevirtual #27                 // Method com/ideaworks3d/marmalade/S3EVideoView.videoRemoveView:()V
+      38: aload_0
+      39: getfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+      42: aconst_null
+      43: invokestatic  #28                 // Method com/ideaworks3d/marmalade/LoaderView.access$302:(Lcom/ideaworks3d/marmalade/LoaderView;Lcom/ideaworks3d/marmalade/S3EVideoView;)Lcom/ideaworks3d/marmalade/S3EVideoView;
+      46: pop
+      47: aload_0
+      48: getfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+      51: new           #29                 // class com/ideaworks3d/marmalade/S3EVideoView
+      54: dup
+      55: aload_0
+      56: getfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+      59: getfield      #16                 // Field com/ideaworks3d/marmalade/LoaderView.m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      62: invokespecial #30                 // Method com/ideaworks3d/marmalade/S3EVideoView."<init>":(Lcom/ideaworks3d/marmalade/LoaderActivity;)V
+      65: invokestatic  #28                 // Method com/ideaworks3d/marmalade/LoaderView.access$302:(Lcom/ideaworks3d/marmalade/LoaderView;Lcom/ideaworks3d/marmalade/S3EVideoView;)Lcom/ideaworks3d/marmalade/S3EVideoView;
+      68: pop
+      69: aload_0
+      70: getfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+      73: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderView.access$300:(Lcom/ideaworks3d/marmalade/LoaderView;)Lcom/ideaworks3d/marmalade/S3EVideoView;
+      76: aload_0
+      77: getfield      #12                 // Field m_Fullscreen:Z
+      80: aload_0
+      81: getfield      #8                  // Field m_X:I
+      84: aload_0
+      85: getfield      #9                  // Field m_Y:I
+      88: aload_0
+      89: getfield      #10                 // Field m_Width:I
+      92: aload_0
+      93: getfield      #11                 // Field m_Height:I
+      96: invokevirtual #31                 // Method com/ideaworks3d/marmalade/S3EVideoView.videoAddView:(ZIIII)V
+      99: aload_0
+     100: getfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+     103: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderView.access$300:(Lcom/ideaworks3d/marmalade/LoaderView;)Lcom/ideaworks3d/marmalade/S3EVideoView;
+     106: aload_0
+     107: getfield      #6                  // Field m_Volume:I
+     110: invokevirtual #32                 // Method com/ideaworks3d/marmalade/S3EVideoView.videoSetVolume:(I)V
+     113: aload_0
+     114: aload_0
+     115: getfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+     118: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderView.access$300:(Lcom/ideaworks3d/marmalade/LoaderView;)Lcom/ideaworks3d/marmalade/S3EVideoView;
+     121: aload_0
+     122: getfield      #5                  // Field m_File:Ljava/lang/String;
+     125: aload_0
+     126: getfield      #7                  // Field m_Repeats:I
+     129: aload_0
+     130: getfield      #13                 // Field m_Offset:J
+     133: aload_0
+     134: getfield      #14                 // Field m_Size:J
+     137: invokevirtual #33                 // Method com/ideaworks3d/marmalade/S3EVideoView.videoPlay:(Ljava/lang/String;IJJ)I
+     140: putfield      #24                 // Field m_Return:I
+     143: goto          269
+     146: aload_0
+     147: getfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+     150: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderView.access$300:(Lcom/ideaworks3d/marmalade/LoaderView;)Lcom/ideaworks3d/marmalade/S3EVideoView;
+     153: ifnull        269
+     156: aload_0
+     157: getfield      #4                  // Field m_Action:I
+     160: tableswitch   { // 2 to 5
+                     2: 192
+                     3: 205
+                     4: 218
+                     5: 250
+               default: 264
+          }
+     192: aload_0
+     193: getfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+     196: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderView.access$300:(Lcom/ideaworks3d/marmalade/LoaderView;)Lcom/ideaworks3d/marmalade/S3EVideoView;
+     199: invokevirtual #34                 // Method com/ideaworks3d/marmalade/S3EVideoView.videoPause:()V
+     202: goto          264
+     205: aload_0
+     206: getfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+     209: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderView.access$300:(Lcom/ideaworks3d/marmalade/LoaderView;)Lcom/ideaworks3d/marmalade/S3EVideoView;
+     212: invokevirtual #35                 // Method com/ideaworks3d/marmalade/S3EVideoView.videoResume:()V
+     215: goto          264
+     218: aload_0
+     219: getfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+     222: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderView.access$300:(Lcom/ideaworks3d/marmalade/LoaderView;)Lcom/ideaworks3d/marmalade/S3EVideoView;
+     225: invokevirtual #26                 // Method com/ideaworks3d/marmalade/S3EVideoView.videoStop:()V
+     228: aload_0
+     229: getfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+     232: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderView.access$300:(Lcom/ideaworks3d/marmalade/LoaderView;)Lcom/ideaworks3d/marmalade/S3EVideoView;
+     235: invokevirtual #27                 // Method com/ideaworks3d/marmalade/S3EVideoView.videoRemoveView:()V
+     238: aload_0
+     239: getfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+     242: aconst_null
+     243: invokestatic  #28                 // Method com/ideaworks3d/marmalade/LoaderView.access$302:(Lcom/ideaworks3d/marmalade/LoaderView;Lcom/ideaworks3d/marmalade/S3EVideoView;)Lcom/ideaworks3d/marmalade/S3EVideoView;
+     246: pop
+     247: goto          264
+     250: aload_0
+     251: getfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+     254: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderView.access$300:(Lcom/ideaworks3d/marmalade/LoaderView;)Lcom/ideaworks3d/marmalade/S3EVideoView;
+     257: aload_0
+     258: getfield      #6                  // Field m_Volume:I
+     261: invokevirtual #32                 // Method com/ideaworks3d/marmalade/S3EVideoView.videoSetVolume:(I)V
+     264: aload_0
+     265: iconst_0
+     266: putfield      #24                 // Field m_Return:I
+     269: aload_0
+     270: invokevirtual #36                 // Method java/lang/Object.notify:()V
+     273: return
+
+  com.ideaworks3d.marmalade.LoaderView$VideoRunner(com.ideaworks3d.marmalade.LoaderView, com.ideaworks3d.marmalade.LoaderView$1);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderView;Lcom/ideaworks3d/marmalade/LoaderView$1;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method "<init>":(Lcom/ideaworks3d/marmalade/LoaderView;)V
+       5: return
+}

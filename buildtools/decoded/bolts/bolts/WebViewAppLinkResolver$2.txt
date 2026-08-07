@@ -1,0 +1,105 @@
+Compiled from "WebViewAppLinkResolver.java"
+class bolts.WebViewAppLinkResolver$2 implements bolts.Continuation<java.lang.Void, bolts.Task<org.json.JSONArray>> {
+  final bolts.Capture val$contentType;
+    descriptor: Lbolts/Capture;
+
+  final android.net.Uri val$url;
+    descriptor: Landroid/net/Uri;
+
+  final bolts.Capture val$content;
+    descriptor: Lbolts/Capture;
+
+  final bolts.WebViewAppLinkResolver this$0;
+    descriptor: Lbolts/WebViewAppLinkResolver;
+
+  bolts.WebViewAppLinkResolver$2(bolts.WebViewAppLinkResolver, bolts.Capture, android.net.Uri, bolts.Capture);
+    descriptor: (Lbolts/WebViewAppLinkResolver;Lbolts/Capture;Landroid/net/Uri;Lbolts/Capture;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lbolts/WebViewAppLinkResolver;
+       5: aload_0
+       6: aload_2
+       7: putfield      #2                  // Field val$contentType:Lbolts/Capture;
+      10: aload_0
+      11: aload_3
+      12: putfield      #3                  // Field val$url:Landroid/net/Uri;
+      15: aload_0
+      16: aload         4
+      18: putfield      #4                  // Field val$content:Lbolts/Capture;
+      21: aload_0
+      22: invokespecial #5                  // Method java/lang/Object."<init>":()V
+      25: return
+
+  public bolts.Task<org.json.JSONArray> then(bolts.Task<java.lang.Void>) throws java.lang.Exception;
+    descriptor: (Lbolts/Task;)Lbolts/Task;
+    Code:
+       0: invokestatic  #6                  // Method bolts/Task.create:()Lbolts/Task$TaskCompletionSource;
+       3: astore_2
+       4: new           #7                  // class android/webkit/WebView
+       7: dup
+       8: aload_0
+       9: getfield      #1                  // Field this$0:Lbolts/WebViewAppLinkResolver;
+      12: invokestatic  #8                  // Method bolts/WebViewAppLinkResolver.access$200:(Lbolts/WebViewAppLinkResolver;)Landroid/content/Context;
+      15: invokespecial #9                  // Method android/webkit/WebView."<init>":(Landroid/content/Context;)V
+      18: astore_3
+      19: aload_3
+      20: invokevirtual #10                 // Method android/webkit/WebView.getSettings:()Landroid/webkit/WebSettings;
+      23: iconst_1
+      24: invokevirtual #11                 // Method android/webkit/WebSettings.setJavaScriptEnabled:(Z)V
+      27: aload_3
+      28: iconst_0
+      29: invokevirtual #12                 // Method android/webkit/WebView.setNetworkAvailable:(Z)V
+      32: aload_3
+      33: new           #13                 // class bolts/WebViewAppLinkResolver$2$1
+      36: dup
+      37: aload_0
+      38: invokespecial #14                 // Method bolts/WebViewAppLinkResolver$2$1."<init>":(Lbolts/WebViewAppLinkResolver$2;)V
+      41: invokevirtual #15                 // Method android/webkit/WebView.setWebViewClient:(Landroid/webkit/WebViewClient;)V
+      44: aload_3
+      45: new           #16                 // class bolts/WebViewAppLinkResolver$2$2
+      48: dup
+      49: aload_0
+      50: aload_2
+      51: invokespecial #17                 // Method bolts/WebViewAppLinkResolver$2$2."<init>":(Lbolts/WebViewAppLinkResolver$2;Lbolts/Task$TaskCompletionSource;)V
+      54: ldc           #18                 // String boltsWebViewAppLinkResolverResult
+      56: invokevirtual #19                 // Method android/webkit/WebView.addJavascriptInterface:(Ljava/lang/Object;Ljava/lang/String;)V
+      59: aconst_null
+      60: astore        4
+      62: aload_0
+      63: getfield      #2                  // Field val$contentType:Lbolts/Capture;
+      66: invokevirtual #20                 // Method bolts/Capture.get:()Ljava/lang/Object;
+      69: ifnull        91
+      72: aload_0
+      73: getfield      #2                  // Field val$contentType:Lbolts/Capture;
+      76: invokevirtual #20                 // Method bolts/Capture.get:()Ljava/lang/Object;
+      79: checkcast     #21                 // class java/lang/String
+      82: ldc           #22                 // String ;
+      84: invokevirtual #23                 // Method java/lang/String.split:(Ljava/lang/String;)[Ljava/lang/String;
+      87: iconst_0
+      88: aaload
+      89: astore        4
+      91: aload_3
+      92: aload_0
+      93: getfield      #3                  // Field val$url:Landroid/net/Uri;
+      96: invokevirtual #24                 // Method android/net/Uri.toString:()Ljava/lang/String;
+      99: aload_0
+     100: getfield      #4                  // Field val$content:Lbolts/Capture;
+     103: invokevirtual #20                 // Method bolts/Capture.get:()Ljava/lang/Object;
+     106: checkcast     #21                 // class java/lang/String
+     109: aload         4
+     111: aconst_null
+     112: aconst_null
+     113: invokevirtual #25                 // Method android/webkit/WebView.loadDataWithBaseURL:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+     116: aload_2
+     117: invokevirtual #26                 // Method bolts/Task$TaskCompletionSource.getTask:()Lbolts/Task;
+     120: areturn
+
+  public java.lang.Object then(bolts.Task) throws java.lang.Exception;
+    descriptor: (Lbolts/Task;)Ljava/lang/Object;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #27                 // Method then:(Lbolts/Task;)Lbolts/Task;
+       5: areturn
+}

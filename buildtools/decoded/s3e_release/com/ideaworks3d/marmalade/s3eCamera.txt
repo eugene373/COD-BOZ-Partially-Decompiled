@@ -1,0 +1,1682 @@
+Compiled from "s3eCamera.java"
+class com.ideaworks3d.marmalade.s3eCamera implements android.hardware.Camera$PreviewCallback,com.ideaworks3d.marmalade.SuspendResumeListener {
+  static final int S3E_CAMERA_AVAILABLE = 0;
+    descriptor: I
+
+  static final int S3E_CAMERA_STATUS = 1;
+    descriptor: I
+
+  static final int S3E_CAMERA_AUTO_FOCUS = 3;
+    descriptor: I
+
+  static final int S3E_CAMERA_BRIGHTNESS = 4;
+    descriptor: I
+
+  static final int S3E_CAMERA_CONTRAST = 5;
+    descriptor: I
+
+  static final int S3E_CAMERA_QUALITY = 6;
+    descriptor: I
+
+  static final int S3E_CAMERA_TYPE = 7;
+    descriptor: I
+
+  static final int S3E_CAMERA_FLASH_MODE = 8;
+    descriptor: I
+
+  static final int S3E_CAMERA_TORCH_MODE = 9;
+    descriptor: I
+
+  static final int S3E_CAMERA_IDLE = 0;
+    descriptor: I
+
+  static final int S3E_CAMERA_STREAMING = 1;
+    descriptor: I
+
+  static final int S3E_CAMERA_STREAMING_SIZE_HINT_SMALLEST = 0;
+    descriptor: I
+
+  static final int S3E_CAMERA_STREAMING_SIZE_HINT_MEDIUM = 1;
+    descriptor: I
+
+  static final int S3E_CAMERA_STREAMING_SIZE_HINT_LARGEST = 2;
+    descriptor: I
+
+  static final int S3E_CAMERA_STREAMING_SIZE_HINT_MAXIMUM = 3;
+    descriptor: I
+
+  static final int S3E_CAMERA_PIXEL_TYPE_NV21 = 4097;
+    descriptor: I
+
+  static final int S3E_CAMERA_ERR_NONE = 0;
+    descriptor: I
+
+  static final int S3E_CAMERA_ERR_MEM = 8;
+    descriptor: I
+
+  static final int S3E_CAMERA_ERR_OPEN_FILE = 9;
+    descriptor: I
+
+  static final int S3E_CAMERA_ERR_IO = 10;
+    descriptor: I
+
+  static final int S3E_CAMERA_ERR_UNKNOWN = 11;
+    descriptor: I
+
+  static final int S3E_CAMERA_ERR_OPERATION_NA = 12;
+    descriptor: I
+
+  static final int S3E_CAMERA_TAKE_PICTURE_TYPE_FILE = 1;
+    descriptor: I
+
+  static final int S3E_CAMERA_TAKE_PICTURE_TYPE_BUFFER = 2;
+    descriptor: I
+
+  static final int S3E_CAMERA_SAVE_PATH_USER = 0;
+    descriptor: I
+
+  static final int S3E_CAMERA_SAVE_PATH_GALLERY = 1;
+    descriptor: I
+
+  static final int S3E_CAMERA_SAVE_PATH_CAMERA = 2;
+    descriptor: I
+
+  static final int S3E_CAMERA_SAVE_PATH_GALLERY_AND_CAMERA = 3;
+    descriptor: I
+
+  static final int S3E_CAMERA_FLASH_MODE_OFF = 0;
+    descriptor: I
+
+  static final int S3E_CAMERA_FLASH_MODE_ON = 1;
+    descriptor: I
+
+  static final int S3E_CAMERA_FLASH_MODE_AUTO = 2;
+    descriptor: I
+
+  static final int S3E_CAMERA_FLASH_MODE_RED_EYE_REDUCTION = 3;
+    descriptor: I
+
+  static final int S3E_CAMERA_TORCH_MODE_OFF = 0;
+    descriptor: I
+
+  static final int S3E_CAMERA_TORCH_MODE_ON = 1;
+    descriptor: I
+
+  static final int S3E_CAMERA_TORCH_MODE_AUTO = 2;
+    descriptor: I
+
+  int m_SizeHint;
+    descriptor: I
+
+  int m_Width;
+    descriptor: I
+
+  int m_Height;
+    descriptor: I
+
+  int m_PixelFormat;
+    descriptor: I
+
+  int m_Type;
+    descriptor: I
+
+  int m_Quality;
+    descriptor: I
+
+  int m_AutoFocus;
+    descriptor: I
+
+  int m_FlashMode;
+    descriptor: I
+
+  int m_TorchMode;
+    descriptor: I
+
+  private android.hardware.Camera m_Camera;
+    descriptor: Landroid/hardware/Camera;
+
+  private com.ideaworks3d.marmalade.s3eCamera$Preview m_Preview;
+    descriptor: Lcom/ideaworks3d/marmalade/s3eCamera$Preview;
+
+  private boolean m_Running;
+    descriptor: Z
+
+  private boolean m_NeedsRemovePreview;
+    descriptor: Z
+
+  private static final java.lang.Object m_CameraLock;
+    descriptor: Ljava/lang/Object;
+
+  private static final java.util.concurrent.Semaphore m_CameraOpenSem;
+    descriptor: Ljava/util/concurrent/Semaphore;
+
+  private boolean m_AutoFocusIsOn;
+    descriptor: Z
+
+  static final int S3E_RESULT_SUCCESS = 0;
+    descriptor: I
+
+  static final int S3E_RESULT_ERROR = 1;
+    descriptor: I
+
+  static final int S3E_CAMERA_TYPE_REAR = 0;
+    descriptor: I
+
+  static final int S3E_CAMERA_TYPE_FRONT = 1;
+    descriptor: I
+
+  static final int S3E_CAMERA_TYPE_UNAVAILABLE = -1;
+    descriptor: I
+
+  private int[] m_TypesToCameraId;
+    descriptor: [I
+
+  private java.lang.String[] m_AutoFocusModes;
+    descriptor: [Ljava/lang/String;
+
+  private java.lang.String[] m_NonAutoFocusModes;
+    descriptor: [Ljava/lang/String;
+
+  private native void previewCallback(byte[], int, int, int, int);
+    descriptor: ([BIIII)V
+
+  private native void onTakeImageCallback(byte[], int, int);
+    descriptor: ([BII)V
+
+  public com.ideaworks3d.marmalade.s3eCamera();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #7                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iconst_0
+       6: putfield      #8                  // Field m_SizeHint:I
+       9: aload_0
+      10: iconst_0
+      11: putfield      #9                  // Field m_Width:I
+      14: aload_0
+      15: iconst_0
+      16: putfield      #10                 // Field m_Height:I
+      19: aload_0
+      20: sipush        4097
+      23: putfield      #11                 // Field m_PixelFormat:I
+      26: aload_0
+      27: iconst_m1
+      28: putfield      #12                 // Field m_Type:I
+      31: aload_0
+      32: iconst_0
+      33: putfield      #13                 // Field m_Quality:I
+      36: aload_0
+      37: iconst_0
+      38: putfield      #14                 // Field m_AutoFocus:I
+      41: aload_0
+      42: iconst_0
+      43: putfield      #15                 // Field m_FlashMode:I
+      46: aload_0
+      47: iconst_0
+      48: putfield      #16                 // Field m_TorchMode:I
+      51: aload_0
+      52: iconst_0
+      53: putfield      #17                 // Field m_Running:Z
+      56: aload_0
+      57: iconst_0
+      58: putfield      #18                 // Field m_NeedsRemovePreview:Z
+      61: aload_0
+      62: iconst_0
+      63: putfield      #19                 // Field m_AutoFocusIsOn:Z
+      66: aload_0
+      67: iconst_2
+      68: newarray       int
+      70: dup
+      71: iconst_0
+      72: iconst_m1
+      73: iastore
+      74: dup
+      75: iconst_1
+      76: iconst_m1
+      77: iastore
+      78: putfield      #20                 // Field m_TypesToCameraId:[I
+      81: aload_0
+      82: iconst_2
+      83: anewarray     #21                 // class java/lang/String
+      86: dup
+      87: iconst_0
+      88: ldc           #22                 // String continuous-video
+      90: aastore
+      91: dup
+      92: iconst_1
+      93: ldc           #23                 // String continuous-picture
+      95: aastore
+      96: putfield      #24                 // Field m_AutoFocusModes:[Ljava/lang/String;
+      99: aload_0
+     100: iconst_2
+     101: anewarray     #21                 // class java/lang/String
+     104: dup
+     105: iconst_0
+     106: ldc           #25                 // String auto
+     108: aastore
+     109: dup
+     110: iconst_1
+     111: ldc           #26                 // String fixed
+     113: aastore
+     114: putfield      #27                 // Field m_NonAutoFocusModes:[Ljava/lang/String;
+     117: aload_0
+     118: invokestatic  #28                 // Method com/ideaworks3d/marmalade/LoaderAPI.addSuspendResumeListener:(Lcom/ideaworks3d/marmalade/SuspendResumeListener;)V
+     121: getstatic     #29                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+     124: invokevirtual #30                 // Method com/ideaworks3d/marmalade/LoaderActivity.getPackageManager:()Landroid/content/pm/PackageManager;
+     127: astore_1
+     128: aload_1
+     129: ldc           #31                 // String android.permission.CAMERA
+     131: getstatic     #29                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+     134: invokevirtual #32                 // Method com/ideaworks3d/marmalade/LoaderActivity.getPackageName:()Ljava/lang/String;
+     137: invokevirtual #33                 // Method android/content/pm/PackageManager.checkPermission:(Ljava/lang/String;Ljava/lang/String;)I
+     140: ifeq          144
+     143: return
+     144: new           #34                 // class android/hardware/Camera$CameraInfo
+     147: dup
+     148: invokespecial #35                 // Method android/hardware/Camera$CameraInfo."<init>":()V
+     151: astore_2
+     152: iconst_0
+     153: istore_3
+     154: iload_3
+     155: invokestatic  #36                 // Method android/hardware/Camera.getNumberOfCameras:()I
+     158: if_icmpge     222
+     161: iload_3
+     162: aload_2
+     163: invokestatic  #37                 // Method android/hardware/Camera.getCameraInfo:(ILandroid/hardware/Camera$CameraInfo;)V
+     166: aload_2
+     167: getfield      #38                 // Field android/hardware/Camera$CameraInfo.facing:I
+     170: lookupswitch  { // 2
+                     0: 196
+                     1: 206
+               default: 216
+          }
+     196: aload_0
+     197: getfield      #20                 // Field m_TypesToCameraId:[I
+     200: iconst_0
+     201: iload_3
+     202: iastore
+     203: goto          216
+     206: aload_0
+     207: getfield      #20                 // Field m_TypesToCameraId:[I
+     210: iconst_1
+     211: iload_3
+     212: iastore
+     213: goto          216
+     216: iinc          3, 1
+     219: goto          154
+     222: iconst_0
+     223: istore_3
+     224: iload_3
+     225: aload_0
+     226: getfield      #20                 // Field m_TypesToCameraId:[I
+     229: arraylength
+     230: if_icmpge     257
+     233: aload_0
+     234: getfield      #20                 // Field m_TypesToCameraId:[I
+     237: iload_3
+     238: iaload
+     239: iconst_m1
+     240: if_icmpeq     251
+     243: aload_0
+     244: iload_3
+     245: putfield      #12                 // Field m_Type:I
+     248: goto          257
+     251: iinc          3, 1
+     254: goto          224
+     257: return
+
+  private boolean isCameraOpen();
+    descriptor: ()Z
+    Code:
+       0: getstatic     #2                  // Field m_CameraLock:Ljava/lang/Object;
+       3: dup
+       4: astore_1
+       5: monitorenter
+       6: aload_0
+       7: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+      10: ifnull        17
+      13: iconst_1
+      14: goto          18
+      17: iconst_0
+      18: aload_1
+      19: monitorexit
+      20: ireturn
+      21: astore_2
+      22: aload_1
+      23: monitorexit
+      24: aload_2
+      25: athrow
+    Exception table:
+       from    to  target type
+           6    20    21   any
+          21    24    21   any
+
+  private boolean OpenCamera();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: invokespecial #39                 // Method isCameraOpen:()Z
+       4: ifeq          9
+       7: iconst_1
+       8: ireturn
+       9: aload_0
+      10: aload_0
+      11: getfield      #20                 // Field m_TypesToCameraId:[I
+      14: aload_0
+      15: getfield      #12                 // Field m_Type:I
+      18: iaload
+      19: invokestatic  #40                 // Method android/hardware/Camera.open:(I)Landroid/hardware/Camera;
+      22: putfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+      25: aload_0
+      26: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+      29: ifnull        36
+      32: iconst_1
+      33: goto          37
+      36: iconst_0
+      37: ireturn
+
+  private void CloseCamera();
+    descriptor: ()V
+    Code:
+       0: getstatic     #2                  // Field m_CameraLock:Ljava/lang/Object;
+       3: dup
+       4: astore_1
+       5: monitorenter
+       6: aload_0
+       7: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+      10: ifnonnull     16
+      13: aload_1
+      14: monitorexit
+      15: return
+      16: aload_0
+      17: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+      20: aconst_null
+      21: invokevirtual #41                 // Method android/hardware/Camera.setPreviewCallback:(Landroid/hardware/Camera$PreviewCallback;)V
+      24: aload_0
+      25: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+      28: invokevirtual #42                 // Method android/hardware/Camera.stopPreview:()V
+      31: aload_0
+      32: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+      35: invokevirtual #43                 // Method android/hardware/Camera.release:()V
+      38: aload_0
+      39: aconst_null
+      40: putfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+      43: aload_1
+      44: monitorexit
+      45: goto          53
+      48: astore_2
+      49: aload_1
+      50: monitorexit
+      51: aload_2
+      52: athrow
+      53: return
+    Exception table:
+       from    to  target type
+           6    15    48   any
+          16    45    48   any
+          48    51    48   any
+
+  public int s3eCameraGetInt(int);
+    descriptor: (I)I
+    Code:
+       0: iload_1
+       1: tableswitch   { // 0 to 9
+                     0: 69
+                     1: 56
+                     2: 111
+                     3: 83
+                     4: 111
+                     5: 111
+                     6: 111
+                     7: 96
+                     8: 101
+                     9: 106
+               default: 111
+          }
+      56: aload_0
+      57: invokespecial #39                 // Method isCameraOpen:()Z
+      60: ifeq          67
+      63: iconst_1
+      64: goto          68
+      67: iconst_0
+      68: ireturn
+      69: aload_0
+      70: getfield      #12                 // Field m_Type:I
+      73: iconst_m1
+      74: if_icmpeq     81
+      77: iconst_1
+      78: goto          82
+      81: iconst_0
+      82: ireturn
+      83: aload_0
+      84: getfield      #19                 // Field m_AutoFocusIsOn:Z
+      87: ifeq          94
+      90: iconst_1
+      91: goto          95
+      94: iconst_0
+      95: ireturn
+      96: aload_0
+      97: getfield      #12                 // Field m_Type:I
+     100: ireturn
+     101: aload_0
+     102: invokevirtual #44                 // Method getFlashMode:()I
+     105: ireturn
+     106: aload_0
+     107: invokevirtual #45                 // Method getTorchMode:()I
+     110: ireturn
+     111: iconst_0
+     112: ireturn
+
+  private boolean isFocusModeSupported(java.lang.String);
+    descriptor: (Ljava/lang/String;)Z
+    Code:
+       0: iconst_0
+       1: istore_2
+       2: aload_0
+       3: invokespecial #39                 // Method isCameraOpen:()Z
+       6: ifeq          32
+       9: aload_0
+      10: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+      13: invokevirtual #46                 // Method android/hardware/Camera.getParameters:()Landroid/hardware/Camera$Parameters;
+      16: astore_3
+      17: aload_3
+      18: invokevirtual #47                 // Method android/hardware/Camera$Parameters.getSupportedFocusModes:()Ljava/util/List;
+      21: astore        4
+      23: aload         4
+      25: aload_1
+      26: invokeinterface #48,  2           // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+      31: istore_2
+      32: iload_2
+      33: ireturn
+
+  private void setFocusMode(java.lang.String);
+    descriptor: (Ljava/lang/String;)V
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+       4: invokevirtual #46                 // Method android/hardware/Camera.getParameters:()Landroid/hardware/Camera$Parameters;
+       7: astore_2
+       8: aload_2
+       9: aload_1
+      10: invokevirtual #49                 // Method android/hardware/Camera$Parameters.setFocusMode:(Ljava/lang/String;)V
+      13: aload_0
+      14: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+      17: aload_2
+      18: invokevirtual #50                 // Method android/hardware/Camera.setParameters:(Landroid/hardware/Camera$Parameters;)V
+      21: return
+
+  private boolean chooseFocusMode(java.lang.String[]);
+    descriptor: ([Ljava/lang/String;)Z
+    Code:
+       0: aconst_null
+       1: astore_2
+       2: iconst_0
+       3: istore_3
+       4: iload_3
+       5: aload_1
+       6: arraylength
+       7: if_icmpge     34
+      10: aload_2
+      11: ifnonnull     34
+      14: aload_0
+      15: aload_1
+      16: iload_3
+      17: aaload
+      18: invokespecial #51                 // Method isFocusModeSupported:(Ljava/lang/String;)Z
+      21: ifeq          28
+      24: aload_1
+      25: iload_3
+      26: aaload
+      27: astore_2
+      28: iinc          3, 1
+      31: goto          4
+      34: aload_2
+      35: ifnull        69
+      38: aload_0
+      39: invokespecial #39                 // Method isCameraOpen:()Z
+      42: ifeq          69
+      45: iconst_2
+      46: istore_3
+      47: aload_0
+      48: aload_2
+      49: invokespecial #52                 // Method setFocusMode:(Ljava/lang/String;)V
+      52: goto          64
+      55: astore        4
+      57: iinc          3, -1
+      60: iload_3
+      61: ifne          47
+      64: aload_0
+      65: aload_2
+      66: invokespecial #54                 // Method forceRefocus:(Ljava/lang/String;)V
+      69: aload_2
+      70: ifnull        77
+      73: iconst_1
+      74: goto          78
+      77: iconst_0
+      78: ireturn
+    Exception table:
+       from    to  target type
+          47    52    55   Class java/lang/Exception
+
+  private void forceRefocus(java.lang.String);
+    descriptor: (Ljava/lang/String;)V
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+       4: ifnull        31
+       7: aload_1
+       8: ldc           #25                 // String auto
+      10: invokevirtual #55                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      13: ifeq          31
+      16: aload_0
+      17: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+      20: new           #56                 // class com/ideaworks3d/marmalade/s3eCamera$1
+      23: dup
+      24: aload_0
+      25: invokespecial #57                 // Method com/ideaworks3d/marmalade/s3eCamera$1."<init>":(Lcom/ideaworks3d/marmalade/s3eCamera;)V
+      28: invokevirtual #58                 // Method android/hardware/Camera.autoFocus:(Landroid/hardware/Camera$AutoFocusCallback;)V
+      31: return
+
+  private boolean setAutoFocusOnParams();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: aload_0
+       2: getfield      #24                 // Field m_AutoFocusModes:[Ljava/lang/String;
+       5: invokespecial #59                 // Method chooseFocusMode:([Ljava/lang/String;)Z
+       8: istore_1
+       9: aload_0
+      10: iload_1
+      11: putfield      #19                 // Field m_AutoFocusIsOn:Z
+      14: iload_1
+      15: ireturn
+
+  private boolean setAutoFocusOffParams();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: aload_0
+       2: getfield      #27                 // Field m_NonAutoFocusModes:[Ljava/lang/String;
+       5: invokespecial #59                 // Method chooseFocusMode:([Ljava/lang/String;)Z
+       8: istore_1
+       9: aload_0
+      10: iload_1
+      11: ifne          18
+      14: iconst_1
+      15: goto          19
+      18: iconst_0
+      19: putfield      #19                 // Field m_AutoFocusIsOn:Z
+      22: iload_1
+      23: ireturn
+
+  public int s3eCameraSetInt(int, int);
+    descriptor: (II)I
+    Code:
+       0: iconst_0
+       1: istore_3
+       2: iload_1
+       3: bipush        7
+       5: if_icmpne     78
+       8: iload_2
+       9: iflt          31
+      12: iload_2
+      13: aload_0
+      14: getfield      #20                 // Field m_TypesToCameraId:[I
+      17: arraylength
+      18: if_icmpge     31
+      21: aload_0
+      22: getfield      #20                 // Field m_TypesToCameraId:[I
+      25: iload_2
+      26: iaload
+      27: iconst_m1
+      28: if_icmpne     33
+      31: iconst_1
+      32: ireturn
+      33: aload_0
+      34: getfield      #12                 // Field m_Type:I
+      37: iload_2
+      38: if_icmpeq     140
+      41: aload_0
+      42: iload_2
+      43: putfield      #12                 // Field m_Type:I
+      46: aload_0
+      47: iconst_0
+      48: putfield      #19                 // Field m_AutoFocusIsOn:Z
+      51: aload_0
+      52: invokespecial #39                 // Method isCameraOpen:()Z
+      55: ifeq          140
+      58: aload_0
+      59: invokespecial #4                  // Method CloseCamera:()V
+      62: aload_0
+      63: invokespecial #6                  // Method OpenCamera:()Z
+      66: ifeq          73
+      69: iconst_0
+      70: goto          74
+      73: iconst_1
+      74: istore_3
+      75: goto          140
+      78: iload_1
+      79: iconst_3
+      80: if_icmpne     113
+      83: iload_2
+      84: ifne          97
+      87: aload_0
+      88: invokespecial #60                 // Method setAutoFocusOffParams:()Z
+      91: ifeq          108
+      94: goto          104
+      97: aload_0
+      98: invokespecial #61                 // Method setAutoFocusOnParams:()Z
+     101: ifeq          108
+     104: iconst_0
+     105: goto          109
+     108: iconst_1
+     109: istore_3
+     110: goto          140
+     113: iload_1
+     114: bipush        8
+     116: if_icmpne     128
+     119: aload_0
+     120: iload_2
+     121: invokevirtual #62                 // Method setFlashMode:(I)I
+     124: istore_3
+     125: goto          140
+     128: iload_1
+     129: bipush        9
+     131: if_icmpne     140
+     134: aload_0
+     135: iload_2
+     136: invokevirtual #63                 // Method setTorchMode:(I)I
+     139: istore_3
+     140: iload_3
+     141: ireturn
+
+  static final boolean s3eCameraFlashModeToPlatform(int, java.lang.String[]);
+    descriptor: (I[Ljava/lang/String;)Z
+    Code:
+       0: iload_0
+       1: tableswitch   { // 0 to 3
+                     0: 32
+                     1: 39
+                     2: 46
+                     3: 53
+               default: 60
+          }
+      32: aload_1
+      33: iconst_0
+      34: ldc           #64                 // String off
+      36: aastore
+      37: iconst_1
+      38: ireturn
+      39: aload_1
+      40: iconst_0
+      41: ldc           #65                 // String on
+      43: aastore
+      44: iconst_1
+      45: ireturn
+      46: aload_1
+      47: iconst_0
+      48: ldc           #25                 // String auto
+      50: aastore
+      51: iconst_1
+      52: ireturn
+      53: aload_1
+      54: iconst_0
+      55: ldc           #66                 // String red-eye
+      57: aastore
+      58: iconst_1
+      59: ireturn
+      60: aload_1
+      61: iconst_0
+      62: ldc           #64                 // String off
+      64: aastore
+      65: iconst_0
+      66: ireturn
+
+  static final boolean s3eCameraTorchModeToPlatform(int, java.lang.String[]);
+    descriptor: (I[Ljava/lang/String;)Z
+    Code:
+       0: iload_0
+       1: tableswitch   { // 0 to 2
+                     0: 28
+                     1: 35
+                     2: 42
+               default: 49
+          }
+      28: aload_1
+      29: iconst_0
+      30: ldc           #64                 // String off
+      32: aastore
+      33: iconst_1
+      34: ireturn
+      35: aload_1
+      36: iconst_0
+      37: ldc           #67                 // String torch
+      39: aastore
+      40: iconst_1
+      41: ireturn
+      42: aload_1
+      43: iconst_0
+      44: ldc           #64                 // String off
+      46: aastore
+      47: iconst_0
+      48: ireturn
+      49: aload_1
+      50: iconst_0
+      51: ldc           #64                 // String off
+      53: aastore
+      54: iconst_0
+      55: ireturn
+
+  int setFlashMode(int);
+    descriptor: (I)I
+    Code:
+       0: iconst_0
+       1: istore_2
+       2: aload_0
+       3: invokespecial #39                 // Method isCameraOpen:()Z
+       6: ifne          20
+       9: aload_0
+      10: invokespecial #6                  // Method OpenCamera:()Z
+      13: ifne          18
+      16: iconst_1
+      17: ireturn
+      18: iconst_1
+      19: istore_2
+      20: iconst_1
+      21: anewarray     #21                 // class java/lang/String
+      24: astore_3
+      25: iload_1
+      26: aload_3
+      27: invokestatic  #68                 // Method s3eCameraFlashModeToPlatform:(I[Ljava/lang/String;)Z
+      30: istore        4
+      32: aload_0
+      33: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+      36: invokevirtual #46                 // Method android/hardware/Camera.getParameters:()Landroid/hardware/Camera$Parameters;
+      39: astore        5
+      41: aload         5
+      43: invokevirtual #69                 // Method android/hardware/Camera$Parameters.getSupportedFlashModes:()Ljava/util/List;
+      46: astore        6
+      48: aload         6
+      50: ifnull        66
+      53: aload         6
+      55: aload_3
+      56: iconst_0
+      57: aaload
+      58: invokeinterface #48,  2           // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+      63: goto          67
+      66: iconst_0
+      67: istore        7
+      69: iload         7
+      71: ifeq          79
+      74: aload_0
+      75: iload_1
+      76: putfield      #15                 // Field m_FlashMode:I
+      79: iload_2
+      80: ifeq          90
+      83: aload_0
+      84: invokespecial #4                  // Method CloseCamera:()V
+      87: goto          112
+      90: iload         7
+      92: ifeq          112
+      95: aload         5
+      97: aload_3
+      98: iconst_0
+      99: aaload
+     100: invokevirtual #70                 // Method android/hardware/Camera$Parameters.setFlashMode:(Ljava/lang/String;)V
+     103: aload_0
+     104: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+     107: aload         5
+     109: invokevirtual #50                 // Method android/hardware/Camera.setParameters:(Landroid/hardware/Camera$Parameters;)V
+     112: iload         4
+     114: ifeq          126
+     117: iload         7
+     119: ifeq          126
+     122: iconst_0
+     123: goto          127
+     126: iconst_1
+     127: ireturn
+
+  int getFlashMode();
+    descriptor: ()I
+    Code:
+       0: aload_0
+       1: getfield      #15                 // Field m_FlashMode:I
+       4: ireturn
+
+  int setTorchMode(int);
+    descriptor: (I)I
+    Code:
+       0: iconst_0
+       1: istore_2
+       2: aload_0
+       3: invokespecial #39                 // Method isCameraOpen:()Z
+       6: ifne          20
+       9: aload_0
+      10: invokespecial #6                  // Method OpenCamera:()Z
+      13: ifne          18
+      16: iconst_1
+      17: ireturn
+      18: iconst_1
+      19: istore_2
+      20: iconst_1
+      21: anewarray     #21                 // class java/lang/String
+      24: astore_3
+      25: iload_1
+      26: aload_3
+      27: invokestatic  #71                 // Method s3eCameraTorchModeToPlatform:(I[Ljava/lang/String;)Z
+      30: istore        4
+      32: aload_0
+      33: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+      36: invokevirtual #46                 // Method android/hardware/Camera.getParameters:()Landroid/hardware/Camera$Parameters;
+      39: astore        5
+      41: aload         5
+      43: invokevirtual #69                 // Method android/hardware/Camera$Parameters.getSupportedFlashModes:()Ljava/util/List;
+      46: astore        6
+      48: aload         6
+      50: ifnull        66
+      53: aload         6
+      55: aload_3
+      56: iconst_0
+      57: aaload
+      58: invokeinterface #48,  2           // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+      63: goto          67
+      66: iconst_0
+      67: istore        7
+      69: iload         7
+      71: ifeq          79
+      74: aload_0
+      75: iload_1
+      76: putfield      #16                 // Field m_TorchMode:I
+      79: iload_2
+      80: ifeq          90
+      83: aload_0
+      84: invokespecial #4                  // Method CloseCamera:()V
+      87: goto          112
+      90: iload         7
+      92: ifeq          112
+      95: aload         5
+      97: aload_3
+      98: iconst_0
+      99: aaload
+     100: invokevirtual #70                 // Method android/hardware/Camera$Parameters.setFlashMode:(Ljava/lang/String;)V
+     103: aload_0
+     104: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+     107: aload         5
+     109: invokevirtual #50                 // Method android/hardware/Camera.setParameters:(Landroid/hardware/Camera$Parameters;)V
+     112: iload         4
+     114: ifeq          126
+     117: iload         7
+     119: ifeq          126
+     122: iconst_0
+     123: goto          127
+     126: iconst_1
+     127: ireturn
+
+  int getTorchMode();
+    descriptor: ()I
+    Code:
+       0: aload_0
+       1: getfield      #16                 // Field m_TorchMode:I
+       4: ireturn
+
+  private int s3ePixelFormatToPlatform(int);
+    descriptor: (I)I
+    Code:
+       0: iload_1
+       1: sipush        4097
+       4: if_icmpne     10
+       7: bipush        17
+       9: ireturn
+      10: iconst_0
+      11: ireturn
+
+  public boolean s3eCameraIsFormatSupported(int);
+    descriptor: (I)Z
+    Code:
+       0: iload_1
+       1: sipush        4097
+       4: if_icmpne     11
+       7: iconst_1
+       8: goto          12
+      11: iconst_0
+      12: ireturn
+
+  public void onPreviewFrame(byte[], android.hardware.Camera);
+    descriptor: ([BLandroid/hardware/Camera;)V
+    Code:
+       0: aload_2
+       1: invokevirtual #46                 // Method android/hardware/Camera.getParameters:()Landroid/hardware/Camera$Parameters;
+       4: astore_3
+       5: aload_0
+       6: getfield      #11                 // Field m_PixelFormat:I
+       9: sipush        4097
+      12: if_icmpne     56
+      15: aload_0
+      16: sipush        4097
+      19: invokespecial #72                 // Method s3ePixelFormatToPlatform:(I)I
+      22: aload_3
+      23: invokevirtual #73                 // Method android/hardware/Camera$Parameters.getPreviewFormat:()I
+      26: if_icmpne     56
+      29: aload_1
+      30: arraylength
+      31: aload_3
+      32: invokevirtual #74                 // Method android/hardware/Camera$Parameters.getPreviewSize:()Landroid/hardware/Camera$Size;
+      35: getfield      #75                 // Field android/hardware/Camera$Size.width:I
+      38: aload_3
+      39: invokevirtual #74                 // Method android/hardware/Camera$Parameters.getPreviewSize:()Landroid/hardware/Camera$Size;
+      42: getfield      #76                 // Field android/hardware/Camera$Size.height:I
+      45: imul
+      46: iconst_3
+      47: imul
+      48: iconst_2
+      49: idiv
+      50: if_icmpge     56
+      53: goto          88
+      56: aload_0
+      57: aload_1
+      58: aload_3
+      59: invokevirtual #73                 // Method android/hardware/Camera$Parameters.getPreviewFormat:()I
+      62: aload_3
+      63: invokevirtual #74                 // Method android/hardware/Camera$Parameters.getPreviewSize:()Landroid/hardware/Camera$Size;
+      66: getfield      #75                 // Field android/hardware/Camera$Size.width:I
+      69: aload_3
+      70: invokevirtual #74                 // Method android/hardware/Camera$Parameters.getPreviewSize:()Landroid/hardware/Camera$Size;
+      73: getfield      #76                 // Field android/hardware/Camera$Size.height:I
+      76: getstatic     #29                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      79: invokevirtual #77                 // Method com/ideaworks3d/marmalade/LoaderActivity.LoaderThread:()Lcom/ideaworks3d/marmalade/LoaderThread;
+      82: invokevirtual #78                 // Method com/ideaworks3d/marmalade/LoaderThread.getOrientation:()I
+      85: invokespecial #79                 // Method previewCallback:([BIIII)V
+      88: return
+
+  public int s3eCameraStart(int, int, int, int, int);
+    descriptor: (IIIII)I
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #8                  // Field m_SizeHint:I
+       5: aload_0
+       6: iload         4
+       8: putfield      #9                  // Field m_Width:I
+      11: aload_0
+      12: iload         5
+      14: putfield      #10                 // Field m_Height:I
+      17: aload_0
+      18: iload_2
+      19: putfield      #11                 // Field m_PixelFormat:I
+      22: aload_0
+      23: iload_3
+      24: putfield      #13                 // Field m_Quality:I
+      27: aload_0
+      28: invokespecial #6                  // Method OpenCamera:()Z
+      31: ifne          44
+      34: new           #80                 // class java/lang/RuntimeException
+      37: dup
+      38: ldc           #81                 // String Can\'t open the camera.
+      40: invokespecial #82                 // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+      43: athrow
+      44: aload_0
+      45: invokevirtual #83                 // Method setCameraParameters:()Landroid/hardware/Camera$Size;
+      48: astore        6
+      50: ldc           #84                 // String Creating image buffer
+      52: invokestatic  #85                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+      55: aload         6
+      57: getfield      #75                 // Field android/hardware/Camera$Size.width:I
+      60: aload         6
+      62: getfield      #76                 // Field android/hardware/Camera$Size.height:I
+      65: imul
+      66: iconst_2
+      67: imul
+      68: istore        7
+      70: ldc           #86                 // String Invoking preview methods
+      72: invokestatic  #85                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+      75: aload_0
+      76: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+      79: aload_0
+      80: invokevirtual #41                 // Method android/hardware/Camera.setPreviewCallback:(Landroid/hardware/Camera$PreviewCallback;)V
+      83: getstatic     #87                 // Field android/os/Build$VERSION.SDK_INT:I
+      86: bipush        11
+      88: if_icmplt     118
+      91: getstatic     #29                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      94: new           #88                 // class com/ideaworks3d/marmalade/s3eCamera$2
+      97: dup
+      98: aload_0
+      99: invokespecial #89                 // Method com/ideaworks3d/marmalade/s3eCamera$2."<init>":(Lcom/ideaworks3d/marmalade/s3eCamera;)V
+     102: invokevirtual #90                 // Method com/ideaworks3d/marmalade/LoaderActivity.runOnUiThread:(Ljava/lang/Runnable;)V
+     105: getstatic     #3                  // Field m_CameraOpenSem:Ljava/util/concurrent/Semaphore;
+     108: invokevirtual #91                 // Method java/util/concurrent/Semaphore.acquire:()V
+     111: goto          118
+     114: astore        8
+     116: iconst_1
+     117: ireturn
+     118: aload_0
+     119: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+     122: invokevirtual #93                 // Method android/hardware/Camera.startPreview:()V
+     125: aload_0
+     126: iconst_1
+     127: putfield      #17                 // Field m_Running:Z
+     130: iconst_0
+     131: ireturn
+     132: astore        6
+     134: aload         6
+     136: invokestatic  #94                 // Method com/ideaworks3d/marmalade/LoaderAPI.getStackTrace:(Ljava/lang/Throwable;)Ljava/lang/String;
+     139: pop
+     140: aload_0
+     141: invokevirtual #95                 // Method s3eCameraStop:()I
+     144: pop
+     145: iconst_1
+     146: ireturn
+    Exception table:
+       from    to  target type
+          91   111   114   Class java/lang/InterruptedException
+          27   117   132   Class java/lang/Exception
+         118   131   132   Class java/lang/Exception
+
+  public int s3eCameraStop();
+    descriptor: ()I
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: putfield      #17                 // Field m_Running:Z
+       5: aload_0
+       6: invokespecial #4                  // Method CloseCamera:()V
+       9: aload_0
+      10: getfield      #18                 // Field m_NeedsRemovePreview:Z
+      13: ifeq          30
+      16: getstatic     #29                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      19: new           #96                 // class com/ideaworks3d/marmalade/s3eCamera$3
+      22: dup
+      23: aload_0
+      24: invokespecial #97                 // Method com/ideaworks3d/marmalade/s3eCamera$3."<init>":(Lcom/ideaworks3d/marmalade/s3eCamera;)V
+      27: invokevirtual #90                 // Method com/ideaworks3d/marmalade/LoaderActivity.runOnUiThread:(Ljava/lang/Runnable;)V
+      30: iconst_0
+      31: ireturn
+
+  private android.hardware.Camera$Size getOptimalPreviewSize(java.util.List<android.hardware.Camera$Size>, int, int);
+    descriptor: (Ljava/util/List;II)Landroid/hardware/Camera$Size;
+    Code:
+       0: iload_2
+       1: iload_3
+       2: if_icmple     9
+       5: iload_2
+       6: goto          10
+       9: iload_3
+      10: istore        4
+      12: iload_2
+      13: iload_3
+      14: if_icmpge     21
+      17: iload_2
+      18: goto          22
+      21: iload_3
+      22: istore        5
+      24: aconst_null
+      25: astore        6
+      27: ldc           #98                 // int 2147483647
+      29: istore        7
+      31: aload_1
+      32: invokeinterface #99,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      37: astore        8
+      39: aload         8
+      41: invokeinterface #100,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      46: ifeq          104
+      49: aload         8
+      51: invokeinterface #101,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      56: checkcast     #102                // class android/hardware/Camera$Size
+      59: astore        9
+      61: aload         9
+      63: getfield      #76                 // Field android/hardware/Camera$Size.height:I
+      66: iload         5
+      68: isub
+      69: invokestatic  #103                // Method java/lang/Math.abs:(I)I
+      72: aload         9
+      74: getfield      #75                 // Field android/hardware/Camera$Size.width:I
+      77: iload         4
+      79: isub
+      80: invokestatic  #103                // Method java/lang/Math.abs:(I)I
+      83: iadd
+      84: istore        10
+      86: iload         10
+      88: iload         7
+      90: if_icmpge     101
+      93: aload         9
+      95: astore        6
+      97: iload         10
+      99: istore        7
+     101: goto          39
+     104: aload         6
+     106: areturn
+
+  private java.util.List<android.hardware.Camera$Size> getCameraSizes(android.hardware.Camera$Parameters);
+    descriptor: (Landroid/hardware/Camera$Parameters;)Ljava/util/List;
+    Code:
+       0: aload_1
+       1: invokevirtual #104                // Method android/hardware/Camera$Parameters.getSupportedPreviewSizes:()Ljava/util/List;
+       4: astore_2
+       5: aload_2
+       6: new           #105                // class com/ideaworks3d/marmalade/s3eCamera$4
+       9: dup
+      10: aload_0
+      11: invokespecial #106                // Method com/ideaworks3d/marmalade/s3eCamera$4."<init>":(Lcom/ideaworks3d/marmalade/s3eCamera;)V
+      14: invokestatic  #107                // Method java/util/Collections.sort:(Ljava/util/List;Ljava/util/Comparator;)V
+      17: aload_2
+      18: areturn
+      19: astore_2
+      20: aconst_null
+      21: areturn
+    Exception table:
+       from    to  target type
+           0    18    19   Class java/lang/Exception
+
+  public android.hardware.Camera$Size setCameraParameters();
+    descriptor: ()Landroid/hardware/Camera$Size;
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+       4: ifnonnull     9
+       7: aconst_null
+       8: areturn
+       9: ldc           #108                // String Setting camera parameters
+      11: invokestatic  #85                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+      14: aload_0
+      15: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+      18: invokevirtual #46                 // Method android/hardware/Camera.getParameters:()Landroid/hardware/Camera$Parameters;
+      21: astore_1
+      22: aload_0
+      23: aload_1
+      24: invokespecial #109                // Method getCameraSizes:(Landroid/hardware/Camera$Parameters;)Ljava/util/List;
+      27: astore_2
+      28: aload_1
+      29: invokevirtual #110                // Method android/hardware/Camera$Parameters.getSupportedPreviewFormats:()Ljava/util/List;
+      32: astore_3
+      33: aload_0
+      34: aload_0
+      35: getfield      #11                 // Field m_PixelFormat:I
+      38: invokespecial #72                 // Method s3ePixelFormatToPlatform:(I)I
+      41: istore        4
+      43: aload_3
+      44: iload         4
+      46: invokestatic  #111                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      49: invokeinterface #48,  2           // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+      54: ifeq          63
+      57: aload_1
+      58: iload         4
+      60: invokevirtual #112                // Method android/hardware/Camera$Parameters.setPreviewFormat:(I)V
+      63: goto          67
+      66: astore_3
+      67: ldc           #113                // String Setting preview size
+      69: invokestatic  #85                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+      72: aload_0
+      73: getfield      #9                  // Field m_Width:I
+      76: ifle          139
+      79: aload_0
+      80: getfield      #10                 // Field m_Height:I
+      83: ifle          139
+      86: new           #102                // class android/hardware/Camera$Size
+      89: dup
+      90: aload_0
+      91: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+      94: dup
+      95: invokevirtual #114                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      98: pop
+      99: aload_0
+     100: getfield      #9                  // Field m_Width:I
+     103: aload_0
+     104: getfield      #10                 // Field m_Height:I
+     107: invokespecial #115                // Method android/hardware/Camera$Size."<init>":(Landroid/hardware/Camera;II)V
+     110: astore        4
+     112: aload_2
+     113: aload         4
+     115: invokeinterface #48,  2           // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+     120: ifne          133
+     123: new           #80                 // class java/lang/RuntimeException
+     126: dup
+     127: ldc           #116                // String Can\'t apply desired size.
+     129: invokespecial #82                 // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+     132: athrow
+     133: aload         4
+     135: astore_3
+     136: goto          233
+     139: aload_0
+     140: getfield      #8                  // Field m_SizeHint:I
+     143: iconst_3
+     144: if_icmpne     168
+     147: aload_2
+     148: aload_2
+     149: invokeinterface #117,  1          // InterfaceMethod java/util/List.size:()I
+     154: iconst_1
+     155: isub
+     156: invokeinterface #118,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     161: checkcast     #102                // class android/hardware/Camera$Size
+     164: astore_3
+     165: goto          233
+     168: iconst_1
+     169: istore        4
+     171: aload_0
+     172: getfield      #8                  // Field m_SizeHint:I
+     175: iconst_1
+     176: if_icmpne     185
+     179: iconst_2
+     180: istore        4
+     182: goto          195
+     185: aload_0
+     186: getfield      #8                  // Field m_SizeHint:I
+     189: ifne          195
+     192: iconst_4
+     193: istore        4
+     195: getstatic     #29                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+     198: getfield      #119                // Field com/ideaworks3d/marmalade/LoaderActivity.m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+     201: astore        5
+     203: aload         5
+     205: getfield      #120                // Field com/ideaworks3d/marmalade/LoaderView.m_Width:I
+     208: iload         4
+     210: idiv
+     211: istore        6
+     213: aload         5
+     215: getfield      #121                // Field com/ideaworks3d/marmalade/LoaderView.m_Height:I
+     218: iload         4
+     220: idiv
+     221: istore        7
+     223: aload_0
+     224: aload_2
+     225: iload         6
+     227: iload         7
+     229: invokespecial #122                // Method getOptimalPreviewSize:(Ljava/util/List;II)Landroid/hardware/Camera$Size;
+     232: astore_3
+     233: aload_1
+     234: aload_3
+     235: getfield      #75                 // Field android/hardware/Camera$Size.width:I
+     238: aload_3
+     239: getfield      #76                 // Field android/hardware/Camera$Size.height:I
+     242: invokevirtual #123                // Method android/hardware/Camera$Parameters.setPreviewSize:(II)V
+     245: new           #124                // class java/lang/StringBuilder
+     248: dup
+     249: invokespecial #125                // Method java/lang/StringBuilder."<init>":()V
+     252: ldc           #126                // String Setting camera ID:
+     254: invokevirtual #127                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     257: aload_0
+     258: getfield      #20                 // Field m_TypesToCameraId:[I
+     261: aload_0
+     262: getfield      #12                 // Field m_Type:I
+     265: iaload
+     266: invokevirtual #128                // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     269: invokevirtual #129                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     272: invokestatic  #85                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+     275: aload_1
+     276: ldc           #130                // String camera-id
+     278: aload_0
+     279: getfield      #20                 // Field m_TypesToCameraId:[I
+     282: aload_0
+     283: getfield      #12                 // Field m_Type:I
+     286: iaload
+     287: invokevirtual #131                // Method android/hardware/Camera$Parameters.set:(Ljava/lang/String;I)V
+     290: aload_0
+     291: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+     294: invokevirtual #42                 // Method android/hardware/Camera.stopPreview:()V
+     297: aload_0
+     298: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+     301: aload_1
+     302: invokevirtual #50                 // Method android/hardware/Camera.setParameters:(Landroid/hardware/Camera$Parameters;)V
+     305: aload_1
+     306: invokevirtual #74                 // Method android/hardware/Camera$Parameters.getPreviewSize:()Landroid/hardware/Camera$Size;
+     309: astore_3
+     310: aload_0
+     311: getfield      #19                 // Field m_AutoFocusIsOn:Z
+     314: ifeq          325
+     317: aload_0
+     318: invokespecial #61                 // Method setAutoFocusOnParams:()Z
+     321: pop
+     322: goto          330
+     325: aload_0
+     326: invokespecial #60                 // Method setAutoFocusOffParams:()Z
+     329: pop
+     330: aload_0
+     331: aload_0
+     332: getfield      #16                 // Field m_TorchMode:I
+     335: invokevirtual #63                 // Method setTorchMode:(I)I
+     338: pop
+     339: goto          344
+     342: astore        4
+     344: aload_3
+     345: areturn
+    Exception table:
+       from    to  target type
+          28    63    66   Class java/lang/Exception
+         290   339   342   Class java/lang/Exception
+
+  public void onSuspendResumeEvent(com.ideaworks3d.marmalade.SuspendResumeEvent);
+    descriptor: (Lcom/ideaworks3d/marmalade/SuspendResumeEvent;)V
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field m_Running:Z
+       4: ifne          8
+       7: return
+       8: aload_1
+       9: getfield      #132                // Field com/ideaworks3d/marmalade/SuspendResumeEvent.eventType:Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+      12: getstatic     #133                // Field com/ideaworks3d/marmalade/SuspendResumeEvent$EventType.RESUME:Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+      15: if_acmpne     43
+      18: aload_0
+      19: aload_0
+      20: getfield      #8                  // Field m_SizeHint:I
+      23: aload_0
+      24: getfield      #11                 // Field m_PixelFormat:I
+      27: aload_0
+      28: getfield      #13                 // Field m_Quality:I
+      31: aload_0
+      32: getfield      #9                  // Field m_Width:I
+      35: aload_0
+      36: getfield      #10                 // Field m_Height:I
+      39: invokevirtual #134                // Method s3eCameraStart:(IIIII)I
+      42: pop
+      43: aload_1
+      44: getfield      #132                // Field com/ideaworks3d/marmalade/SuspendResumeEvent.eventType:Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+      47: getstatic     #135                // Field com/ideaworks3d/marmalade/SuspendResumeEvent$EventType.SUSPEND:Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+      50: if_acmpne     63
+      53: aload_0
+      54: invokevirtual #95                 // Method s3eCameraStop:()I
+      57: pop
+      58: aload_0
+      59: iconst_1
+      60: putfield      #17                 // Field m_Running:Z
+      63: aload_1
+      64: getfield      #132                // Field com/ideaworks3d/marmalade/SuspendResumeEvent.eventType:Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+      67: getstatic     #136                // Field com/ideaworks3d/marmalade/SuspendResumeEvent$EventType.SHUTDOWN:Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+      70: if_acmpne     78
+      73: aload_0
+      74: invokevirtual #95                 // Method s3eCameraStop:()I
+      77: pop
+      78: return
+
+  public int createPreview();
+    descriptor: ()I
+    Code:
+       0: new           #137                // class android/view/WindowManager$LayoutParams
+       3: dup
+       4: invokespecial #138                // Method android/view/WindowManager$LayoutParams."<init>":()V
+       7: astore_1
+       8: aload_1
+       9: aload_1
+      10: getfield      #139                // Field android/view/WindowManager$LayoutParams.flags:I
+      13: bipush        8
+      15: ior
+      16: putfield      #139                // Field android/view/WindowManager$LayoutParams.flags:I
+      19: aload_1
+      20: aload_1
+      21: getfield      #139                // Field android/view/WindowManager$LayoutParams.flags:I
+      24: bipush        16
+      26: ior
+      27: putfield      #139                // Field android/view/WindowManager$LayoutParams.flags:I
+      30: aload_1
+      31: aload_1
+      32: getfield      #139                // Field android/view/WindowManager$LayoutParams.flags:I
+      35: sipush        512
+      38: ior
+      39: putfield      #139                // Field android/view/WindowManager$LayoutParams.flags:I
+      42: aload_1
+      43: aload_1
+      44: getfield      #139                // Field android/view/WindowManager$LayoutParams.flags:I
+      47: sipush        1024
+      50: ior
+      51: putfield      #139                // Field android/view/WindowManager$LayoutParams.flags:I
+      54: aload_1
+      55: bipush        85
+      57: putfield      #140                // Field android/view/WindowManager$LayoutParams.gravity:I
+      60: aload_1
+      61: iconst_0
+      62: putfield      #141                // Field android/view/WindowManager$LayoutParams.x:I
+      65: aload_1
+      66: iconst_0
+      67: putfield      #142                // Field android/view/WindowManager$LayoutParams.y:I
+      70: aload_1
+      71: iconst_1
+      72: putfield      #143                // Field android/view/WindowManager$LayoutParams.width:I
+      75: aload_1
+      76: iconst_1
+      77: putfield      #144                // Field android/view/WindowManager$LayoutParams.height:I
+      80: aload_0
+      81: new           #145                // class com/ideaworks3d/marmalade/s3eCamera$Preview
+      84: dup
+      85: aload_0
+      86: getstatic     #29                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      89: invokespecial #146                // Method com/ideaworks3d/marmalade/s3eCamera$Preview."<init>":(Lcom/ideaworks3d/marmalade/s3eCamera;Landroid/content/Context;)V
+      92: putfield      #147                // Field m_Preview:Lcom/ideaworks3d/marmalade/s3eCamera$Preview;
+      95: aload_0
+      96: iconst_1
+      97: putfield      #18                 // Field m_NeedsRemovePreview:Z
+     100: getstatic     #29                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+     103: invokevirtual #148                // Method com/ideaworks3d/marmalade/LoaderActivity.getWindow:()Landroid/view/Window;
+     106: invokevirtual #149                // Method android/view/Window.getWindowManager:()Landroid/view/WindowManager;
+     109: aload_0
+     110: getfield      #147                // Field m_Preview:Lcom/ideaworks3d/marmalade/s3eCamera$Preview;
+     113: aload_1
+     114: invokeinterface #150,  3          // InterfaceMethod android/view/WindowManager.addView:(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+     119: iconst_0
+     120: ireturn
+
+  public int removePreview();
+    descriptor: ()I
+    Code:
+       0: aload_0
+       1: getfield      #147                // Field m_Preview:Lcom/ideaworks3d/marmalade/s3eCamera$Preview;
+       4: ifnull        44
+       7: aload_0
+       8: getfield      #18                 // Field m_NeedsRemovePreview:Z
+      11: ifeq          44
+      14: aload_0
+      15: iconst_0
+      16: putfield      #18                 // Field m_NeedsRemovePreview:Z
+      19: getstatic     #29                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      22: invokevirtual #148                // Method com/ideaworks3d/marmalade/LoaderActivity.getWindow:()Landroid/view/Window;
+      25: invokevirtual #149                // Method android/view/Window.getWindowManager:()Landroid/view/WindowManager;
+      28: aload_0
+      29: getfield      #147                // Field m_Preview:Lcom/ideaworks3d/marmalade/s3eCamera$Preview;
+      32: invokeinterface #151,  2          // InterfaceMethod android/view/WindowManager.removeViewImmediate:(Landroid/view/View;)V
+      37: aload_0
+      38: aconst_null
+      39: putfield      #147                // Field m_Preview:Lcom/ideaworks3d/marmalade/s3eCamera$Preview;
+      42: iconst_0
+      43: ireturn
+      44: iconst_1
+      45: ireturn
+
+  public void s3eCameraTakePictureToFile(java.lang.String, int);
+    descriptor: (Ljava/lang/String;I)V
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+       4: ifnull        53
+       7: new           #152                // class com/ideaworks3d/marmalade/s3eCamera$s3eCameraTakePicture
+      10: dup
+      11: aload_0
+      12: invokespecial #153                // Method com/ideaworks3d/marmalade/s3eCamera$s3eCameraTakePicture."<init>":(Lcom/ideaworks3d/marmalade/s3eCamera;)V
+      15: astore_3
+      16: aload_3
+      17: iload_2
+      18: putfield      #154                // Field com/ideaworks3d/marmalade/s3eCamera$s3eCameraTakePicture.m_nType:I
+      21: aload_3
+      22: aload_1
+      23: putfield      #155                // Field com/ideaworks3d/marmalade/s3eCamera$s3eCameraTakePicture.m_strFile:Ljava/lang/String;
+      26: aload_3
+      27: iconst_1
+      28: putfield      #156                // Field com/ideaworks3d/marmalade/s3eCamera$s3eCameraTakePicture.m_bToFile:Z
+      31: aload_0
+      32: aload_0
+      33: getfield      #15                 // Field m_FlashMode:I
+      36: invokevirtual #62                 // Method setFlashMode:(I)I
+      39: pop
+      40: aload_0
+      41: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+      44: aconst_null
+      45: aconst_null
+      46: aload_3
+      47: invokevirtual #157                // Method android/hardware/Camera.takePicture:(Landroid/hardware/Camera$ShutterCallback;Landroid/hardware/Camera$PictureCallback;Landroid/hardware/Camera$PictureCallback;)V
+      50: goto          61
+      53: aload_0
+      54: aconst_null
+      55: iconst_1
+      56: bipush        12
+      58: invokespecial #1                  // Method onTakeImageCallback:([BII)V
+      61: return
+
+  public void s3eCameraTakePictureToBuffer();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+       4: ifnull        43
+       7: new           #152                // class com/ideaworks3d/marmalade/s3eCamera$s3eCameraTakePicture
+      10: dup
+      11: aload_0
+      12: invokespecial #153                // Method com/ideaworks3d/marmalade/s3eCamera$s3eCameraTakePicture."<init>":(Lcom/ideaworks3d/marmalade/s3eCamera;)V
+      15: astore_1
+      16: aload_1
+      17: iconst_0
+      18: putfield      #156                // Field com/ideaworks3d/marmalade/s3eCamera$s3eCameraTakePicture.m_bToFile:Z
+      21: aload_0
+      22: aload_0
+      23: getfield      #15                 // Field m_FlashMode:I
+      26: invokevirtual #62                 // Method setFlashMode:(I)I
+      29: pop
+      30: aload_0
+      31: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+      34: aconst_null
+      35: aconst_null
+      36: aload_1
+      37: invokevirtual #157                // Method android/hardware/Camera.takePicture:(Landroid/hardware/Camera$ShutterCallback;Landroid/hardware/Camera$PictureCallback;Landroid/hardware/Camera$PictureCallback;)V
+      40: goto          51
+      43: aload_0
+      44: aconst_null
+      45: iconst_2
+      46: bipush        12
+      48: invokespecial #1                  // Method onTakeImageCallback:([BII)V
+      51: return
+
+  public int s3eCameraFetchResolutions(int[][]);
+    descriptor: ([[I)I
+    Code:
+       0: iconst_0
+       1: istore_2
+       2: aload_0
+       3: invokespecial #39                 // Method isCameraOpen:()Z
+       6: ifne          20
+       9: aload_0
+      10: invokespecial #6                  // Method OpenCamera:()Z
+      13: ifne          18
+      16: iconst_0
+      17: ireturn
+      18: iconst_1
+      19: istore_2
+      20: aload_0
+      21: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+      24: invokevirtual #46                 // Method android/hardware/Camera.getParameters:()Landroid/hardware/Camera$Parameters;
+      27: astore_3
+      28: aload_0
+      29: aload_3
+      30: invokespecial #109                // Method getCameraSizes:(Landroid/hardware/Camera$Parameters;)Ljava/util/List;
+      33: astore        4
+      35: aload_1
+      36: iconst_0
+      37: aload         4
+      39: invokeinterface #117,  1          // InterfaceMethod java/util/List.size:()I
+      44: iconst_2
+      45: imul
+      46: newarray       int
+      48: aastore
+      49: iconst_0
+      50: istore        5
+      52: iload         5
+      54: aload         4
+      56: invokeinterface #117,  1          // InterfaceMethod java/util/List.size:()I
+      61: if_icmpge     118
+      64: aload_1
+      65: iconst_0
+      66: aaload
+      67: iconst_2
+      68: iload         5
+      70: imul
+      71: aload         4
+      73: iload         5
+      75: invokeinterface #118,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+      80: checkcast     #102                // class android/hardware/Camera$Size
+      83: getfield      #75                 // Field android/hardware/Camera$Size.width:I
+      86: iastore
+      87: aload_1
+      88: iconst_0
+      89: aaload
+      90: iconst_2
+      91: iload         5
+      93: imul
+      94: iconst_1
+      95: iadd
+      96: aload         4
+      98: iload         5
+     100: invokeinterface #118,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     105: checkcast     #102                // class android/hardware/Camera$Size
+     108: getfield      #76                 // Field android/hardware/Camera$Size.height:I
+     111: iastore
+     112: iinc          5, 1
+     115: goto          52
+     118: iload_2
+     119: ifeq          126
+     122: aload_0
+     123: invokespecial #4                  // Method CloseCamera:()V
+     126: aload         4
+     128: invokeinterface #117,  1          // InterfaceMethod java/util/List.size:()I
+     133: ireturn
+
+  static boolean access$000(com.ideaworks3d.marmalade.s3eCamera);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eCamera;)Z
+    Code:
+       0: aload_0
+       1: invokespecial #6                  // Method OpenCamera:()Z
+       4: ireturn
+
+  static android.hardware.Camera access$100(com.ideaworks3d.marmalade.s3eCamera);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eCamera;)Landroid/hardware/Camera;
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field m_Camera:Landroid/hardware/Camera;
+       4: areturn
+
+  static void access$200(com.ideaworks3d.marmalade.s3eCamera);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eCamera;)V
+    Code:
+       0: aload_0
+       1: invokespecial #4                  // Method CloseCamera:()V
+       4: return
+
+  static java.util.concurrent.Semaphore access$300();
+    descriptor: ()Ljava/util/concurrent/Semaphore;
+    Code:
+       0: getstatic     #3                  // Field m_CameraOpenSem:Ljava/util/concurrent/Semaphore;
+       3: areturn
+
+  static java.lang.Object access$400();
+    descriptor: ()Ljava/lang/Object;
+    Code:
+       0: getstatic     #2                  // Field m_CameraLock:Ljava/lang/Object;
+       3: areturn
+
+  static void access$500(com.ideaworks3d.marmalade.s3eCamera, byte[], int, int);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eCamera;[BII)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: iload_3
+       4: invokespecial #1                  // Method onTakeImageCallback:([BII)V
+       7: return
+
+  static {};
+    descriptor: ()V
+    Code:
+       0: new           #158                // class java/lang/Object
+       3: dup
+       4: invokespecial #7                  // Method java/lang/Object."<init>":()V
+       7: putstatic     #2                  // Field m_CameraLock:Ljava/lang/Object;
+      10: new           #159                // class java/util/concurrent/Semaphore
+      13: dup
+      14: iconst_0
+      15: invokespecial #160                // Method java/util/concurrent/Semaphore."<init>":(I)V
+      18: putstatic     #3                  // Field m_CameraOpenSem:Ljava/util/concurrent/Semaphore;
+      21: return
+}

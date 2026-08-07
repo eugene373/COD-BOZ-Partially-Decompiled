@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/of_notification_bkg" android:layout_width="match_parent" android:layout_height="60.0dp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/of_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dp" android:layout_marginTop="5.0dp" android:layout_marginRight="10.0dp" android:scaleType="center" android:layout_centerVertical="true" />
+    <TextView android:textSize="14.0dp" android:id="@id/of_text1" android:paddingTop="2.0dp" android:paddingRight="20.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Lorem Ipsum I forget, whatever" android:layout_toRightOf="@id/of_icon" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <TextView android:textSize="12.0dp" android:id="@id/of_text2" android:paddingTop="2.0dp" android:paddingRight="20.0dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Help me I am stuck in a smaller font size" android:layout_toRightOf="@id/of_icon" android:layout_below="@id/of_text1" android:layout_alignParentRight="true" />
+</RelativeLayout>

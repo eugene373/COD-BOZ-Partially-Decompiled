@@ -1,0 +1,61 @@
+Compiled from "LoaderThread.java"
+class com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade {
+  private android.net.wifi.WifiManager$MulticastLock m_multiCastLockReal;
+    descriptor: Landroid/net/wifi/WifiManager$MulticastLock;
+
+  final com.ideaworks3d.marmalade.LoaderThread this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderThread;
+
+  public com.ideaworks3d.marmalade.LoaderThread$MulticastLockFacade(com.ideaworks3d.marmalade.LoaderThread, android.net.wifi.WifiManager) throws java.lang.Exception;
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderThread;Landroid/net/wifi/WifiManager;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderThread;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: aload_0
+      10: aconst_null
+      11: putfield      #3                  // Field m_multiCastLockReal:Landroid/net/wifi/WifiManager$MulticastLock;
+      14: aload_0
+      15: aload_2
+      16: ldc           #4                  // String Marmalade
+      18: invokevirtual #5                  // Method android/net/wifi/WifiManager.createMulticastLock:(Ljava/lang/String;)Landroid/net/wifi/WifiManager$MulticastLock;
+      21: putfield      #3                  // Field m_multiCastLockReal:Landroid/net/wifi/WifiManager$MulticastLock;
+      24: return
+
+  public boolean isHeld();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: getfield      #3                  // Field m_multiCastLockReal:Landroid/net/wifi/WifiManager$MulticastLock;
+       4: ifnull        15
+       7: aload_0
+       8: getfield      #3                  // Field m_multiCastLockReal:Landroid/net/wifi/WifiManager$MulticastLock;
+      11: invokevirtual #6                  // Method android/net/wifi/WifiManager$MulticastLock.isHeld:()Z
+      14: ireturn
+      15: iconst_0
+      16: ireturn
+
+  public void release();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #3                  // Field m_multiCastLockReal:Landroid/net/wifi/WifiManager$MulticastLock;
+       4: ifnull        14
+       7: aload_0
+       8: getfield      #3                  // Field m_multiCastLockReal:Landroid/net/wifi/WifiManager$MulticastLock;
+      11: invokevirtual #7                  // Method android/net/wifi/WifiManager$MulticastLock.release:()V
+      14: return
+
+  public void acquire();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #3                  // Field m_multiCastLockReal:Landroid/net/wifi/WifiManager$MulticastLock;
+       4: ifnull        14
+       7: aload_0
+       8: getfield      #3                  // Field m_multiCastLockReal:Landroid/net/wifi/WifiManager$MulticastLock;
+      11: invokevirtual #8                  // Method android/net/wifi/WifiManager$MulticastLock.acquire:()V
+      14: return
+}

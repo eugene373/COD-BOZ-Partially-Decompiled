@@ -1,0 +1,59 @@
+Compiled from "WebViewAppLinkResolver.java"
+class bolts.WebViewAppLinkResolver$2$1 extends android.webkit.WebViewClient {
+  private boolean loaded;
+    descriptor: Z
+
+  final bolts.WebViewAppLinkResolver$2 this$1;
+    descriptor: Lbolts/WebViewAppLinkResolver$2;
+
+  bolts.WebViewAppLinkResolver$2$1(bolts.WebViewAppLinkResolver$2);
+    descriptor: (Lbolts/WebViewAppLinkResolver$2;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$1:Lbolts/WebViewAppLinkResolver$2;
+       5: aload_0
+       6: invokespecial #2                  // Method android/webkit/WebViewClient."<init>":()V
+       9: aload_0
+      10: iconst_0
+      11: putfield      #3                  // Field loaded:Z
+      14: return
+
+  private void runJavaScript(android.webkit.WebView);
+    descriptor: (Landroid/webkit/WebView;)V
+    Code:
+       0: aload_0
+       1: getfield      #3                  // Field loaded:Z
+       4: ifne          18
+       7: aload_0
+       8: iconst_1
+       9: putfield      #3                  // Field loaded:Z
+      12: aload_1
+      13: ldc           #4                  // String javascript:boltsWebViewAppLinkResolverResult.setValue((function() {  var metaTags = document.getElementsByTagName(\'meta\');  var results = [];  for (var i = 0; i < metaTags.length; i++) {    var property = metaTags[i].getAttribute(\'property\');    if (property && property.substring(0, \'al:\'.length) === \'al:\') {      var tag = { \"property\": metaTags[i].getAttribute(\'property\') };      if (metaTags[i].hasAttribute(\'content\')) {        tag[\'content\'] = metaTags[i].getAttribute(\'content\');      }      results.push(tag);    }  }  return JSON.stringify(results);})())
+      15: invokevirtual #5                  // Method android/webkit/WebView.loadUrl:(Ljava/lang/String;)V
+      18: return
+
+  public void onPageFinished(android.webkit.WebView, java.lang.String);
+    descriptor: (Landroid/webkit/WebView;Ljava/lang/String;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokespecial #6                  // Method android/webkit/WebViewClient.onPageFinished:(Landroid/webkit/WebView;Ljava/lang/String;)V
+       6: aload_0
+       7: aload_1
+       8: invokespecial #7                  // Method runJavaScript:(Landroid/webkit/WebView;)V
+      11: return
+
+  public void onLoadResource(android.webkit.WebView, java.lang.String);
+    descriptor: (Landroid/webkit/WebView;Ljava/lang/String;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokespecial #8                  // Method android/webkit/WebViewClient.onLoadResource:(Landroid/webkit/WebView;Ljava/lang/String;)V
+       6: aload_0
+       7: aload_1
+       8: invokespecial #7                  // Method runJavaScript:(Landroid/webkit/WebView;)V
+      11: return
+}

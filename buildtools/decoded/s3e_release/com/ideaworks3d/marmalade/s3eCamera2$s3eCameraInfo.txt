@@ -1,0 +1,33 @@
+Compiled from "s3eCamera2.java"
+class com.ideaworks3d.marmalade.s3eCamera2$s3eCameraInfo {
+  public java.lang.String m_CameraId;
+    descriptor: Ljava/lang/String;
+
+  public boolean m_AutoFocusAvailable;
+    descriptor: Z
+
+  public boolean m_FlashAvailable;
+    descriptor: Z
+
+  final com.ideaworks3d.marmalade.s3eCamera2 this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/s3eCamera2;
+
+  public com.ideaworks3d.marmalade.s3eCamera2$s3eCameraInfo(com.ideaworks3d.marmalade.s3eCamera2);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eCamera2;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera2;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: aload_0
+      10: aconst_null
+      11: putfield      #3                  // Field m_CameraId:Ljava/lang/String;
+      14: aload_0
+      15: iconst_0
+      16: putfield      #4                  // Field m_AutoFocusAvailable:Z
+      19: aload_0
+      20: iconst_0
+      21: putfield      #5                  // Field m_FlashAvailable:Z
+      24: return
+}

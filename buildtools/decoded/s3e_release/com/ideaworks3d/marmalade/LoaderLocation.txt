@@ -1,0 +1,278 @@
+Compiled from "LoaderLocation.java"
+public class com.ideaworks3d.marmalade.LoaderLocation {
+  private android.location.LocationManager m_LocationManager;
+    descriptor: Landroid/location/LocationManager;
+
+  private com.ideaworks3d.marmalade.LoaderLocation$LocationUpdateHandler m_LocationListener;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderLocation$LocationUpdateHandler;
+
+  private android.location.GpsStatus m_GpsStatus;
+    descriptor: Landroid/location/GpsStatus;
+
+  private int m_LocationUpdateInterval;
+    descriptor: I
+
+  private int m_LocationUpdateDistance;
+    descriptor: I
+
+  public com.ideaworks3d.marmalade.LoaderLocation();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #7                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: sipush        5000
+       8: putfield      #2                  // Field m_LocationUpdateInterval:I
+      11: aload_0
+      12: iconst_2
+      13: putfield      #1                  // Field m_LocationUpdateDistance:I
+      16: return
+
+  private native void locationUpdate(int, long, double, double, double, float, float, float);
+    descriptor: (IJDDDFFF)V
+
+  private native void locationSatellite(int, float, float, int, float, boolean);
+    descriptor: (IFFIFZ)V
+
+  public boolean locationStart(com.ideaworks3d.marmalade.LoaderActivity);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderActivity;)Z
+    Code:
+       0: aload_0
+       1: getfield      #6                  // Field m_LocationManager:Landroid/location/LocationManager;
+       4: ifnull        9
+       7: iconst_0
+       8: ireturn
+       9: aload_0
+      10: aload_1
+      11: aload_1
+      12: pop
+      13: ldc           #8                  // String location
+      15: invokevirtual #9                  // Method com/ideaworks3d/marmalade/LoaderActivity.getSystemService:(Ljava/lang/String;)Ljava/lang/Object;
+      18: checkcast     #10                 // class android/location/LocationManager
+      21: putfield      #6                  // Field m_LocationManager:Landroid/location/LocationManager;
+      24: aload_0
+      25: getfield      #6                  // Field m_LocationManager:Landroid/location/LocationManager;
+      28: ifnonnull     33
+      31: iconst_0
+      32: ireturn
+      33: iconst_1
+      34: newarray       int
+      36: dup
+      37: iconst_0
+      38: sipush        5000
+      41: iastore
+      42: astore_2
+      43: iconst_1
+      44: newarray       int
+      46: dup
+      47: iconst_0
+      48: iconst_2
+      49: iastore
+      50: astore_3
+      51: ldc           #11                 // String s3e
+      53: ldc           #12                 // String LocUpdateInterval
+      55: aload_2
+      56: invokestatic  #13                 // Method com/ideaworks3d/marmalade/LoaderAPI.s3eConfigGetInt:(Ljava/lang/String;Ljava/lang/String;[I)I
+      59: ifne          69
+      62: aload_0
+      63: aload_2
+      64: iconst_0
+      65: iaload
+      66: putfield      #2                  // Field m_LocationUpdateInterval:I
+      69: ldc           #11                 // String s3e
+      71: ldc           #14                 // String LocUpdateDistance
+      73: aload_3
+      74: invokestatic  #13                 // Method com/ideaworks3d/marmalade/LoaderAPI.s3eConfigGetInt:(Ljava/lang/String;Ljava/lang/String;[I)I
+      77: ifne          87
+      80: aload_0
+      81: aload_3
+      82: iconst_0
+      83: iaload
+      84: putfield      #1                  // Field m_LocationUpdateDistance:I
+      87: aload_1
+      88: invokevirtual #15                 // Method com/ideaworks3d/marmalade/LoaderActivity.LoaderThread:()Lcom/ideaworks3d/marmalade/LoaderThread;
+      91: new           #16                 // class com/ideaworks3d/marmalade/LoaderLocation$1
+      94: dup
+      95: aload_0
+      96: invokespecial #17                 // Method com/ideaworks3d/marmalade/LoaderLocation$1."<init>":(Lcom/ideaworks3d/marmalade/LoaderLocation;)V
+      99: invokevirtual #18                 // Method com/ideaworks3d/marmalade/LoaderThread.runOnOSThread:(Ljava/lang/Runnable;)V
+     102: iconst_1
+     103: istore        4
+     105: aload_0
+     106: getfield      #6                  // Field m_LocationManager:Landroid/location/LocationManager;
+     109: ldc           #19                 // String gps
+     111: invokevirtual #20                 // Method android/location/LocationManager.getLastKnownLocation:(Ljava/lang/String;)Landroid/location/Location;
+     114: astore        5
+     116: aload         5
+     118: ifnonnull     135
+     121: iconst_3
+     122: istore        4
+     124: aload_0
+     125: getfield      #6                  // Field m_LocationManager:Landroid/location/LocationManager;
+     128: ldc           #21                 // String network
+     130: invokevirtual #20                 // Method android/location/LocationManager.getLastKnownLocation:(Ljava/lang/String;)Landroid/location/Location;
+     133: astore        5
+     135: aload         5
+     137: ifnull        194
+     140: aload_0
+     141: iload         4
+     143: aload         5
+     145: invokevirtual #22                 // Method android/location/Location.getTime:()J
+     148: aload         5
+     150: invokevirtual #23                 // Method android/location/Location.getLatitude:()D
+     153: aload         5
+     155: invokevirtual #24                 // Method android/location/Location.getLongitude:()D
+     158: aload         5
+     160: invokevirtual #25                 // Method android/location/Location.getAltitude:()D
+     163: aload         5
+     165: invokevirtual #26                 // Method android/location/Location.getAccuracy:()F
+     168: aload         5
+     170: invokevirtual #27                 // Method android/location/Location.hasBearing:()Z
+     173: ifeq          184
+     176: aload         5
+     178: invokevirtual #28                 // Method android/location/Location.getBearing:()F
+     181: goto          186
+     184: ldc           #29                 // float -1.0f
+     186: aload         5
+     188: invokevirtual #30                 // Method android/location/Location.getSpeed:()F
+     191: invokespecial #4                  // Method locationUpdate:(IJDDDFFF)V
+     194: iconst_1
+     195: ireturn
+
+  public boolean locationStop();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: getfield      #6                  // Field m_LocationManager:Landroid/location/LocationManager;
+       4: ifnonnull     9
+       7: iconst_0
+       8: ireturn
+       9: aload_0
+      10: getfield      #6                  // Field m_LocationManager:Landroid/location/LocationManager;
+      13: aload_0
+      14: getfield      #3                  // Field m_LocationListener:Lcom/ideaworks3d/marmalade/LoaderLocation$LocationUpdateHandler;
+      17: invokevirtual #31                 // Method android/location/LocationManager.removeGpsStatusListener:(Landroid/location/GpsStatus$Listener;)V
+      20: aload_0
+      21: getfield      #6                  // Field m_LocationManager:Landroid/location/LocationManager;
+      24: aload_0
+      25: getfield      #3                  // Field m_LocationListener:Lcom/ideaworks3d/marmalade/LoaderLocation$LocationUpdateHandler;
+      28: invokevirtual #32                 // Method android/location/LocationManager.removeUpdates:(Landroid/location/LocationListener;)V
+      31: aload_0
+      32: aconst_null
+      33: putfield      #3                  // Field m_LocationListener:Lcom/ideaworks3d/marmalade/LoaderLocation$LocationUpdateHandler;
+      36: aload_0
+      37: aconst_null
+      38: putfield      #6                  // Field m_LocationManager:Landroid/location/LocationManager;
+      41: iconst_1
+      42: ireturn
+
+  public boolean locationGpsData();
+    descriptor: ()Z
+    Code:
+       0: iconst_0
+       1: istore_1
+       2: aload_0
+       3: getfield      #5                  // Field m_GpsStatus:Landroid/location/GpsStatus;
+       6: ifnull        82
+       9: aload_0
+      10: getfield      #5                  // Field m_GpsStatus:Landroid/location/GpsStatus;
+      13: invokevirtual #33                 // Method android/location/GpsStatus.getSatellites:()Ljava/lang/Iterable;
+      16: astore_2
+      17: aload_2
+      18: invokeinterface #34,  1           // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+      23: astore_3
+      24: aload_3
+      25: invokeinterface #35,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      30: ifeq          80
+      33: aload_3
+      34: invokeinterface #36,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      39: checkcast     #37                 // class android/location/GpsSatellite
+      42: astore        4
+      44: aload_0
+      45: iload_1
+      46: aload         4
+      48: invokevirtual #38                 // Method android/location/GpsSatellite.getAzimuth:()F
+      51: aload         4
+      53: invokevirtual #39                 // Method android/location/GpsSatellite.getElevation:()F
+      56: aload         4
+      58: invokevirtual #40                 // Method android/location/GpsSatellite.getPrn:()I
+      61: aload         4
+      63: invokevirtual #41                 // Method android/location/GpsSatellite.getSnr:()F
+      66: aload         4
+      68: invokevirtual #42                 // Method android/location/GpsSatellite.usedInFix:()Z
+      71: invokespecial #43                 // Method locationSatellite:(IFFIFZ)V
+      74: iinc          1, 1
+      77: goto          24
+      80: iconst_1
+      81: ireturn
+      82: iconst_0
+      83: ireturn
+
+  static android.location.LocationManager access$000(com.ideaworks3d.marmalade.LoaderLocation);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderLocation;)Landroid/location/LocationManager;
+    Code:
+       0: aload_0
+       1: getfield      #6                  // Field m_LocationManager:Landroid/location/LocationManager;
+       4: areturn
+
+  static android.location.GpsStatus access$100(com.ideaworks3d.marmalade.LoaderLocation);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderLocation;)Landroid/location/GpsStatus;
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field m_GpsStatus:Landroid/location/GpsStatus;
+       4: areturn
+
+  static android.location.GpsStatus access$102(com.ideaworks3d.marmalade.LoaderLocation, android.location.GpsStatus);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderLocation;Landroid/location/GpsStatus;)Landroid/location/GpsStatus;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: dup_x1
+       3: putfield      #5                  // Field m_GpsStatus:Landroid/location/GpsStatus;
+       6: areturn
+
+  static void access$200(com.ideaworks3d.marmalade.LoaderLocation, int, long, double, double, double, float, float, float);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderLocation;IJDDDFFF)V
+    Code:
+       0: aload_0
+       1: iload_1
+       2: lload_2
+       3: dload         4
+       5: dload         6
+       7: dload         8
+       9: fload         10
+      11: fload         11
+      13: fload         12
+      15: invokespecial #4                  // Method locationUpdate:(IJDDDFFF)V
+      18: return
+
+  static com.ideaworks3d.marmalade.LoaderLocation$LocationUpdateHandler access$302(com.ideaworks3d.marmalade.LoaderLocation, com.ideaworks3d.marmalade.LoaderLocation$LocationUpdateHandler);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderLocation;Lcom/ideaworks3d/marmalade/LoaderLocation$LocationUpdateHandler;)Lcom/ideaworks3d/marmalade/LoaderLocation$LocationUpdateHandler;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: dup_x1
+       3: putfield      #3                  // Field m_LocationListener:Lcom/ideaworks3d/marmalade/LoaderLocation$LocationUpdateHandler;
+       6: areturn
+
+  static int access$400(com.ideaworks3d.marmalade.LoaderLocation);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderLocation;)I
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field m_LocationUpdateInterval:I
+       4: ireturn
+
+  static int access$500(com.ideaworks3d.marmalade.LoaderLocation);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderLocation;)I
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field m_LocationUpdateDistance:I
+       4: ireturn
+
+  static com.ideaworks3d.marmalade.LoaderLocation$LocationUpdateHandler access$300(com.ideaworks3d.marmalade.LoaderLocation);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderLocation;)Lcom/ideaworks3d/marmalade/LoaderLocation$LocationUpdateHandler;
+    Code:
+       0: aload_0
+       1: getfield      #3                  // Field m_LocationListener:Lcom/ideaworks3d/marmalade/LoaderLocation$LocationUpdateHandler;
+       4: areturn
+}

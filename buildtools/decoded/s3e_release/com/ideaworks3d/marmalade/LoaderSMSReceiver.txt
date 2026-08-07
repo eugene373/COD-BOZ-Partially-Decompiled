@@ -1,0 +1,80 @@
+Compiled from "LoaderSMSReceiver.java"
+public class com.ideaworks3d.marmalade.LoaderSMSReceiver extends android.content.BroadcastReceiver {
+  static final java.lang.String ACTION = "android.provider.Telephony.SMS_RECEIVED";
+    descriptor: Ljava/lang/String;
+
+  public com.ideaworks3d.marmalade.LoaderSMSReceiver();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method android/content/BroadcastReceiver."<init>":()V
+       4: return
+
+  public void onReceive(android.content.Context, android.content.Intent);
+    descriptor: (Landroid/content/Context;Landroid/content/Intent;)V
+    Code:
+       0: aload_2
+       1: invokevirtual #2                  // Method android/content/Intent.getAction:()Ljava/lang/String;
+       4: ldc           #3                  // String android.provider.Telephony.SMS_RECEIVED
+       6: invokevirtual #4                  // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       9: ifeq          132
+      12: new           #5                  // class java/lang/StringBuilder
+      15: dup
+      16: invokespecial #6                  // Method java/lang/StringBuilder."<init>":()V
+      19: astore_3
+      20: aload_2
+      21: invokevirtual #7                  // Method android/content/Intent.getExtras:()Landroid/os/Bundle;
+      24: astore        4
+      26: aload         4
+      28: ifnull        132
+      31: aload         4
+      33: ldc           #8                  // String pdus
+      35: invokevirtual #9                  // Method android/os/Bundle.get:(Ljava/lang/String;)Ljava/lang/Object;
+      38: checkcast     #10                 // class "[Ljava/lang/Object;"
+      41: checkcast     #10                 // class "[Ljava/lang/Object;"
+      44: astore        5
+      46: aload         5
+      48: arraylength
+      49: anewarray     #11                 // class android/telephony/SmsMessage
+      52: astore        6
+      54: iconst_0
+      55: istore        7
+      57: iload         7
+      59: aload         5
+      61: arraylength
+      62: if_icmpge     90
+      65: aload         6
+      67: iload         7
+      69: aload         5
+      71: iload         7
+      73: aaload
+      74: checkcast     #12                 // class "[B"
+      77: checkcast     #12                 // class "[B"
+      80: invokestatic  #13                 // Method android/telephony/SmsMessage.createFromPdu:([B)Landroid/telephony/SmsMessage;
+      83: aastore
+      84: iinc          7, 1
+      87: goto          57
+      90: iconst_0
+      91: istore        7
+      93: iload         7
+      95: aload         6
+      97: arraylength
+      98: if_icmpge     132
+     101: aload         6
+     103: iload         7
+     105: aaload
+     106: astore        8
+     108: aload         8
+     110: invokevirtual #14                 // Method android/telephony/SmsMessage.getDisplayOriginatingAddress:()Ljava/lang/String;
+     113: aload         8
+     115: invokevirtual #15                 // Method android/telephony/SmsMessage.getDisplayMessageBody:()Ljava/lang/String;
+     118: aload         8
+     120: invokevirtual #16                 // Method android/telephony/SmsMessage.getTimestampMillis:()J
+     123: invokestatic  #17                 // Method onReceiveCallback:(Ljava/lang/String;Ljava/lang/String;J)V
+     126: iinc          7, 1
+     129: goto          93
+     132: return
+
+  public static native void onReceiveCallback(java.lang.String, java.lang.String, long);
+    descriptor: (Ljava/lang/String;Ljava/lang/String;J)V
+}

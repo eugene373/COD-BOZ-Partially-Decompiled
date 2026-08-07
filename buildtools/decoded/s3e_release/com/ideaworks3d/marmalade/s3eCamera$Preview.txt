@@ -1,0 +1,105 @@
+Compiled from "s3eCamera.java"
+class com.ideaworks3d.marmalade.s3eCamera$Preview extends android.view.SurfaceView implements android.view.SurfaceHolder$Callback {
+  final com.ideaworks3d.marmalade.s3eCamera this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/s3eCamera;
+
+  com.ideaworks3d.marmalade.s3eCamera$Preview(com.ideaworks3d.marmalade.s3eCamera, android.content.Context);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eCamera;Landroid/content/Context;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera;
+       5: aload_0
+       6: aload_2
+       7: invokespecial #2                  // Method android/view/SurfaceView."<init>":(Landroid/content/Context;)V
+      10: aload_0
+      11: invokevirtual #3                  // Method getHolder:()Landroid/view/SurfaceHolder;
+      14: astore_3
+      15: aload_3
+      16: aload_0
+      17: invokeinterface #4,  2            // InterfaceMethod android/view/SurfaceHolder.addCallback:(Landroid/view/SurfaceHolder$Callback;)V
+      22: aload_3
+      23: iconst_3
+      24: invokeinterface #5,  2            // InterfaceMethod android/view/SurfaceHolder.setType:(I)V
+      29: return
+
+  public void surfaceCreated(android.view.SurfaceHolder);
+    descriptor: (Landroid/view/SurfaceHolder;)V
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera;
+       4: invokestatic  #6                  // Method com/ideaworks3d/marmalade/s3eCamera.access$000:(Lcom/ideaworks3d/marmalade/s3eCamera;)Z
+       7: ifne          11
+      10: return
+      11: aload_0
+      12: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera;
+      15: invokestatic  #7                  // Method com/ideaworks3d/marmalade/s3eCamera.access$100:(Lcom/ideaworks3d/marmalade/s3eCamera;)Landroid/hardware/Camera;
+      18: aload_1
+      19: invokevirtual #8                  // Method android/hardware/Camera.setPreviewDisplay:(Landroid/view/SurfaceHolder;)V
+      22: aload_0
+      23: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera;
+      26: invokestatic  #7                  // Method com/ideaworks3d/marmalade/s3eCamera.access$100:(Lcom/ideaworks3d/marmalade/s3eCamera;)Landroid/hardware/Camera;
+      29: aload_0
+      30: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera;
+      33: invokevirtual #9                  // Method android/hardware/Camera.setPreviewCallback:(Landroid/hardware/Camera$PreviewCallback;)V
+      36: goto          47
+      39: astore_2
+      40: aload_0
+      41: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera;
+      44: invokestatic  #11                 // Method com/ideaworks3d/marmalade/s3eCamera.access$200:(Lcom/ideaworks3d/marmalade/s3eCamera;)V
+      47: invokestatic  #12                 // Method com/ideaworks3d/marmalade/s3eCamera.access$300:()Ljava/util/concurrent/Semaphore;
+      50: invokevirtual #13                 // Method java/util/concurrent/Semaphore.release:()V
+      53: return
+    Exception table:
+       from    to  target type
+          11    36    39   Class java/lang/Exception
+
+  public void surfaceDestroyed(android.view.SurfaceHolder);
+    descriptor: (Landroid/view/SurfaceHolder;)V
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera;
+       4: invokestatic  #11                 // Method com/ideaworks3d/marmalade/s3eCamera.access$200:(Lcom/ideaworks3d/marmalade/s3eCamera;)V
+       7: return
+
+  public void surfaceChanged(android.view.SurfaceHolder, int, int, int);
+    descriptor: (Landroid/view/SurfaceHolder;III)V
+    Code:
+       0: aload_1
+       1: invokeinterface #14,  1           // InterfaceMethod android/view/SurfaceHolder.isCreating:()Z
+       6: ifeq          10
+       9: return
+      10: invokestatic  #15                 // Method com/ideaworks3d/marmalade/s3eCamera.access$400:()Ljava/lang/Object;
+      13: dup
+      14: astore        5
+      16: monitorenter
+      17: aload_0
+      18: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera;
+      21: invokestatic  #7                  // Method com/ideaworks3d/marmalade/s3eCamera.access$100:(Lcom/ideaworks3d/marmalade/s3eCamera;)Landroid/hardware/Camera;
+      24: ifnonnull     31
+      27: aload         5
+      29: monitorexit
+      30: return
+      31: aload_0
+      32: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera;
+      35: invokevirtual #16                 // Method com/ideaworks3d/marmalade/s3eCamera.setCameraParameters:()Landroid/hardware/Camera$Size;
+      38: pop
+      39: aload_0
+      40: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera;
+      43: invokestatic  #7                  // Method com/ideaworks3d/marmalade/s3eCamera.access$100:(Lcom/ideaworks3d/marmalade/s3eCamera;)Landroid/hardware/Camera;
+      46: invokevirtual #17                 // Method android/hardware/Camera.startPreview:()V
+      49: aload         5
+      51: monitorexit
+      52: goto          63
+      55: astore        6
+      57: aload         5
+      59: monitorexit
+      60: aload         6
+      62: athrow
+      63: return
+    Exception table:
+       from    to  target type
+          17    30    55   any
+          31    52    55   any
+          55    60    55   any
+}

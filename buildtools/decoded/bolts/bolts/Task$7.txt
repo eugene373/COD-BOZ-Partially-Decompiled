@@ -1,0 +1,50 @@
+Compiled from "Task.java"
+class bolts.Task$7 implements bolts.Continuation<TResult, bolts.Task<TContinuationResult>> {
+  final bolts.Continuation val$continuation;
+    descriptor: Lbolts/Continuation;
+
+  final bolts.Task this$0;
+    descriptor: Lbolts/Task;
+
+  bolts.Task$7(bolts.Task, bolts.Continuation);
+    descriptor: (Lbolts/Task;Lbolts/Continuation;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lbolts/Task;
+       5: aload_0
+       6: aload_2
+       7: putfield      #2                  // Field val$continuation:Lbolts/Continuation;
+      10: aload_0
+      11: invokespecial #3                  // Method java/lang/Object."<init>":()V
+      14: return
+
+  public bolts.Task<TContinuationResult> then(bolts.Task<TResult>);
+    descriptor: (Lbolts/Task;)Lbolts/Task;
+    Code:
+       0: aload_1
+       1: invokevirtual #4                  // Method bolts/Task.isFaulted:()Z
+       4: ifeq          15
+       7: aload_1
+       8: invokevirtual #5                  // Method bolts/Task.getError:()Ljava/lang/Exception;
+      11: invokestatic  #6                  // Method bolts/Task.forError:(Ljava/lang/Exception;)Lbolts/Task;
+      14: areturn
+      15: aload_1
+      16: invokevirtual #7                  // Method bolts/Task.isCancelled:()Z
+      19: ifeq          26
+      22: invokestatic  #8                  // Method bolts/Task.cancelled:()Lbolts/Task;
+      25: areturn
+      26: aload_1
+      27: aload_0
+      28: getfield      #2                  // Field val$continuation:Lbolts/Continuation;
+      31: invokevirtual #9                  // Method bolts/Task.continueWith:(Lbolts/Continuation;)Lbolts/Task;
+      34: areturn
+
+  public java.lang.Object then(bolts.Task) throws java.lang.Exception;
+    descriptor: (Lbolts/Task;)Ljava/lang/Object;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #10                 // Method then:(Lbolts/Task;)Lbolts/Task;
+       5: areturn
+}

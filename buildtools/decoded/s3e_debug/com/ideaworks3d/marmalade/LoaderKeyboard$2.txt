@@ -1,0 +1,185 @@
+Compiled from "LoaderKeyboard.java"
+class com.ideaworks3d.marmalade.LoaderKeyboard$2 implements java.lang.Runnable {
+  final boolean val$show;
+    descriptor: Z
+
+  final android.view.inputmethod.InputMethodManager val$imm;
+    descriptor: Landroid/view/inputmethod/InputMethodManager;
+
+  final com.ideaworks3d.marmalade.LoaderKeyboard this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+
+  com.ideaworks3d.marmalade.LoaderKeyboard$2(com.ideaworks3d.marmalade.LoaderKeyboard, boolean, android.view.inputmethod.InputMethodManager);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderKeyboard;ZLandroid/view/inputmethod/InputMethodManager;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+       5: aload_0
+       6: iload_2
+       7: putfield      #2                  // Field val$show:Z
+      10: aload_0
+      11: aload_3
+      12: putfield      #3                  // Field val$imm:Landroid/view/inputmethod/InputMethodManager;
+      15: aload_0
+      16: invokespecial #4                  // Method java/lang/Object."<init>":()V
+      19: return
+
+  public void run();
+    descriptor: ()V
+    Code:
+       0: new           #5                  // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #6                  // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #7                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #8                  // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #7                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #8                  // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #9                  // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #10                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #11                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #12                 // String -
+      36: invokevirtual #11                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #13                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #14                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #11                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #15                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: new           #5                  // class java/lang/StringBuilder
+      54: dup
+      55: invokespecial #6                  // Method java/lang/StringBuilder."<init>":()V
+      58: ldc           #16                 // String Showing On Screen Keyboard:
+      60: invokevirtual #11                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      63: aload_0
+      64: getfield      #2                  // Field val$show:Z
+      67: invokevirtual #17                 // Method java/lang/StringBuilder.append:(Z)Ljava/lang/StringBuilder;
+      70: invokevirtual #15                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      73: invokestatic  #18                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      76: aload_0
+      77: getfield      #2                  // Field val$show:Z
+      80: ifeq          317
+      83: aload_0
+      84: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+      87: invokestatic  #19                 // Method com/ideaworks3d/marmalade/LoaderKeyboard.access$200:(Lcom/ideaworks3d/marmalade/LoaderKeyboard;)Lcom/ideaworks3d/marmalade/LoaderView;
+      90: invokevirtual #20                 // Method com/ideaworks3d/marmalade/LoaderView.requestFocus:()Z
+      93: pop
+      94: aload_0
+      95: getfield      #3                  // Field val$imm:Landroid/view/inputmethod/InputMethodManager;
+      98: aload_0
+      99: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+     102: invokestatic  #19                 // Method com/ideaworks3d/marmalade/LoaderKeyboard.access$200:(Lcom/ideaworks3d/marmalade/LoaderKeyboard;)Lcom/ideaworks3d/marmalade/LoaderView;
+     105: iconst_2
+     106: aload_0
+     107: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+     110: invokestatic  #21                 // Method com/ideaworks3d/marmalade/LoaderKeyboard.access$300:(Lcom/ideaworks3d/marmalade/LoaderKeyboard;)Lcom/ideaworks3d/marmalade/LoaderKeyboard$SoftInputReceiver;
+     113: invokevirtual #22                 // Method android/view/inputmethod/InputMethodManager.showSoftInput:(Landroid/view/View;ILandroid/os/ResultReceiver;)Z
+     116: istore_1
+     117: new           #5                  // class java/lang/StringBuilder
+     120: dup
+     121: invokespecial #6                  // Method java/lang/StringBuilder."<init>":()V
+     124: aload_0
+     125: invokevirtual #7                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     128: invokevirtual #8                  // Method java/lang/Class.getName:()Ljava/lang/String;
+     131: aload_0
+     132: invokevirtual #7                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     135: invokevirtual #8                  // Method java/lang/Class.getName:()Ljava/lang/String;
+     138: bipush        46
+     140: invokevirtual #9                  // Method java/lang/String.lastIndexOf:(I)I
+     143: iconst_1
+     144: iadd
+     145: invokevirtual #10                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     148: invokevirtual #11                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     151: ldc           #12                 // String -
+     153: invokevirtual #11                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     156: invokestatic  #13                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     159: invokevirtual #14                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     162: invokevirtual #11                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     165: invokevirtual #15                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     168: new           #5                  // class java/lang/StringBuilder
+     171: dup
+     172: invokespecial #6                  // Method java/lang/StringBuilder."<init>":()V
+     175: ldc           #23                 // String LoaderKeyboard:Show keyboard result:
+     177: invokevirtual #11                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     180: iload_1
+     181: invokevirtual #17                 // Method java/lang/StringBuilder.append:(Z)Ljava/lang/StringBuilder;
+     184: invokevirtual #15                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     187: invokestatic  #18                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     190: iload_1
+     191: ifne          314
+     194: aload_0
+     195: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+     198: invokestatic  #19                 // Method com/ideaworks3d/marmalade/LoaderKeyboard.access$200:(Lcom/ideaworks3d/marmalade/LoaderKeyboard;)Lcom/ideaworks3d/marmalade/LoaderView;
+     201: invokevirtual #24                 // Method com/ideaworks3d/marmalade/LoaderView.hasWindowFocus:()Z
+     204: ifeq          314
+     207: aload_0
+     208: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+     211: invokestatic  #19                 // Method com/ideaworks3d/marmalade/LoaderKeyboard.access$200:(Lcom/ideaworks3d/marmalade/LoaderKeyboard;)Lcom/ideaworks3d/marmalade/LoaderView;
+     214: iconst_1
+     215: invokevirtual #25                 // Method com/ideaworks3d/marmalade/LoaderView.onWindowFocusChanged:(Z)V
+     218: aload_0
+     219: getfield      #3                  // Field val$imm:Landroid/view/inputmethod/InputMethodManager;
+     222: aload_0
+     223: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+     226: invokestatic  #19                 // Method com/ideaworks3d/marmalade/LoaderKeyboard.access$200:(Lcom/ideaworks3d/marmalade/LoaderKeyboard;)Lcom/ideaworks3d/marmalade/LoaderView;
+     229: iconst_2
+     230: aload_0
+     231: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+     234: invokestatic  #21                 // Method com/ideaworks3d/marmalade/LoaderKeyboard.access$300:(Lcom/ideaworks3d/marmalade/LoaderKeyboard;)Lcom/ideaworks3d/marmalade/LoaderKeyboard$SoftInputReceiver;
+     237: invokevirtual #22                 // Method android/view/inputmethod/InputMethodManager.showSoftInput:(Landroid/view/View;ILandroid/os/ResultReceiver;)Z
+     240: istore_1
+     241: new           #5                  // class java/lang/StringBuilder
+     244: dup
+     245: invokespecial #6                  // Method java/lang/StringBuilder."<init>":()V
+     248: aload_0
+     249: invokevirtual #7                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     252: invokevirtual #8                  // Method java/lang/Class.getName:()Ljava/lang/String;
+     255: aload_0
+     256: invokevirtual #7                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     259: invokevirtual #8                  // Method java/lang/Class.getName:()Ljava/lang/String;
+     262: bipush        46
+     264: invokevirtual #9                  // Method java/lang/String.lastIndexOf:(I)I
+     267: iconst_1
+     268: iadd
+     269: invokevirtual #10                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     272: invokevirtual #11                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     275: ldc           #12                 // String -
+     277: invokevirtual #11                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     280: invokestatic  #13                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     283: invokevirtual #14                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     286: invokevirtual #11                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     289: invokevirtual #15                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     292: new           #5                  // class java/lang/StringBuilder
+     295: dup
+     296: invokespecial #6                  // Method java/lang/StringBuilder."<init>":()V
+     299: ldc           #26                 // String LoaderKeyboard:(2)Show keyboard result:
+     301: invokevirtual #11                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     304: iload_1
+     305: invokevirtual #17                 // Method java/lang/StringBuilder.append:(Z)Ljava/lang/StringBuilder;
+     308: invokevirtual #15                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     311: invokestatic  #18                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     314: goto          356
+     317: aload_0
+     318: getfield      #3                  // Field val$imm:Landroid/view/inputmethod/InputMethodManager;
+     321: aload_0
+     322: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+     325: invokestatic  #19                 // Method com/ideaworks3d/marmalade/LoaderKeyboard.access$200:(Lcom/ideaworks3d/marmalade/LoaderKeyboard;)Lcom/ideaworks3d/marmalade/LoaderView;
+     328: invokevirtual #27                 // Method com/ideaworks3d/marmalade/LoaderView.getWindowToken:()Landroid/os/IBinder;
+     331: iconst_0
+     332: aload_0
+     333: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+     336: invokestatic  #21                 // Method com/ideaworks3d/marmalade/LoaderKeyboard.access$300:(Lcom/ideaworks3d/marmalade/LoaderKeyboard;)Lcom/ideaworks3d/marmalade/LoaderKeyboard$SoftInputReceiver;
+     339: invokevirtual #28                 // Method android/view/inputmethod/InputMethodManager.hideSoftInputFromWindow:(Landroid/os/IBinder;ILandroid/os/ResultReceiver;)Z
+     342: istore_1
+     343: iload_1
+     344: ifne          356
+     347: aload_0
+     348: getfield      #3                  // Field val$imm:Landroid/view/inputmethod/InputMethodManager;
+     351: iconst_0
+     352: iconst_0
+     353: invokevirtual #29                 // Method android/view/inputmethod/InputMethodManager.toggleSoftInput:(II)V
+     356: return
+}

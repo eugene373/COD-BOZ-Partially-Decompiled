@@ -1,0 +1,21 @@
+Compiled from "NewIntentEvent.java"
+public class com.ideaworks3d.marmalade.NewIntentEvent {
+  public final com.ideaworks3d.marmalade.NewIntentEvent$EventType eventType;
+    descriptor: Lcom/ideaworks3d/marmalade/NewIntentEvent$EventType;
+
+  public final android.content.Intent intent;
+    descriptor: Landroid/content/Intent;
+
+  public com.ideaworks3d.marmalade.NewIntentEvent(com.ideaworks3d.marmalade.NewIntentEvent$EventType, android.content.Intent);
+    descriptor: (Lcom/ideaworks3d/marmalade/NewIntentEvent$EventType;Landroid/content/Intent;)V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #2                  // Field eventType:Lcom/ideaworks3d/marmalade/NewIntentEvent$EventType;
+       9: aload_0
+      10: aload_2
+      11: putfield      #3                  // Field intent:Landroid/content/Intent;
+      14: return
+}

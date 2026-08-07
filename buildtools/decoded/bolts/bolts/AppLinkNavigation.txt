@@ -1,0 +1,883 @@
+Compiled from "AppLinkNavigation.java"
+public class bolts.AppLinkNavigation {
+  private static final java.lang.String KEY_NAME_USER_AGENT = "user_agent";
+    descriptor: Ljava/lang/String;
+
+  private static final java.lang.String KEY_NAME_VERSION = "version";
+    descriptor: Ljava/lang/String;
+
+  private static final java.lang.String KEY_NAME_REFERER_APP_LINK = "referer_app_link";
+    descriptor: Ljava/lang/String;
+
+  private static final java.lang.String KEY_NAME_REFERER_APP_LINK_APP_NAME = "app_name";
+    descriptor: Ljava/lang/String;
+
+  private static final java.lang.String KEY_NAME_REFERER_APP_LINK_PACKAGE = "package";
+    descriptor: Ljava/lang/String;
+
+  private static final java.lang.String VERSION = "1.0";
+    descriptor: Ljava/lang/String;
+
+  private static bolts.AppLinkResolver defaultResolver;
+    descriptor: Lbolts/AppLinkResolver;
+
+  private final bolts.AppLink appLink;
+    descriptor: Lbolts/AppLink;
+
+  private final android.os.Bundle extras;
+    descriptor: Landroid/os/Bundle;
+
+  private final android.os.Bundle appLinkData;
+    descriptor: Landroid/os/Bundle;
+
+  public bolts.AppLinkNavigation(bolts.AppLink, android.os.Bundle, android.os.Bundle);
+    descriptor: (Lbolts/AppLink;Landroid/os/Bundle;Landroid/os/Bundle;)V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_1
+       5: ifnonnull     18
+       8: new           #2                  // class java/lang/IllegalArgumentException
+      11: dup
+      12: ldc           #3                  // String appLink must not be null.
+      14: invokespecial #4                  // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+      17: athrow
+      18: aload_2
+      19: ifnonnull     30
+      22: new           #5                  // class android/os/Bundle
+      25: dup
+      26: invokespecial #6                  // Method android/os/Bundle."<init>":()V
+      29: astore_2
+      30: aload_3
+      31: ifnonnull     42
+      34: new           #5                  // class android/os/Bundle
+      37: dup
+      38: invokespecial #6                  // Method android/os/Bundle."<init>":()V
+      41: astore_3
+      42: aload_0
+      43: aload_1
+      44: putfield      #7                  // Field appLink:Lbolts/AppLink;
+      47: aload_0
+      48: aload_2
+      49: putfield      #8                  // Field extras:Landroid/os/Bundle;
+      52: aload_0
+      53: aload_3
+      54: putfield      #9                  // Field appLinkData:Landroid/os/Bundle;
+      57: return
+
+  public bolts.AppLink getAppLink();
+    descriptor: ()Lbolts/AppLink;
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field appLink:Lbolts/AppLink;
+       4: areturn
+
+  public android.os.Bundle getAppLinkData();
+    descriptor: ()Landroid/os/Bundle;
+    Code:
+       0: aload_0
+       1: getfield      #9                  // Field appLinkData:Landroid/os/Bundle;
+       4: areturn
+
+  public android.os.Bundle getExtras();
+    descriptor: ()Landroid/os/Bundle;
+    Code:
+       0: aload_0
+       1: getfield      #8                  // Field extras:Landroid/os/Bundle;
+       4: areturn
+
+  private android.os.Bundle buildAppLinkDataForNavigation(android.content.Context);
+    descriptor: (Landroid/content/Context;)Landroid/os/Bundle;
+    Code:
+       0: new           #5                  // class android/os/Bundle
+       3: dup
+       4: invokespecial #6                  // Method android/os/Bundle."<init>":()V
+       7: astore_2
+       8: new           #5                  // class android/os/Bundle
+      11: dup
+      12: invokespecial #6                  // Method android/os/Bundle."<init>":()V
+      15: astore_3
+      16: aload_1
+      17: ifnull        74
+      20: aload_1
+      21: invokevirtual #10                 // Method android/content/Context.getPackageName:()Ljava/lang/String;
+      24: astore        4
+      26: aload         4
+      28: ifnull        39
+      31: aload_3
+      32: ldc           #11                 // String package
+      34: aload         4
+      36: invokevirtual #12                 // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+      39: aload_1
+      40: invokevirtual #13                 // Method android/content/Context.getApplicationInfo:()Landroid/content/pm/ApplicationInfo;
+      43: astore        5
+      45: aload         5
+      47: ifnull        74
+      50: aload_1
+      51: aload         5
+      53: getfield      #14                 // Field android/content/pm/ApplicationInfo.labelRes:I
+      56: invokevirtual #15                 // Method android/content/Context.getString:(I)Ljava/lang/String;
+      59: astore        6
+      61: aload         6
+      63: ifnull        74
+      66: aload_3
+      67: ldc           #16                 // String app_name
+      69: aload         6
+      71: invokevirtual #12                 // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+      74: aload_2
+      75: aload_0
+      76: invokevirtual #17                 // Method getAppLinkData:()Landroid/os/Bundle;
+      79: invokevirtual #18                 // Method android/os/Bundle.putAll:(Landroid/os/Bundle;)V
+      82: aload_2
+      83: ldc           #19                 // String target_url
+      85: aload_0
+      86: invokevirtual #20                 // Method getAppLink:()Lbolts/AppLink;
+      89: invokevirtual #21                 // Method bolts/AppLink.getSourceUrl:()Landroid/net/Uri;
+      92: invokevirtual #22                 // Method android/net/Uri.toString:()Ljava/lang/String;
+      95: invokevirtual #12                 // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+      98: aload_2
+      99: ldc           #23                 // String version
+     101: ldc           #24                 // String 1.0
+     103: invokevirtual #12                 // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     106: aload_2
+     107: ldc           #25                 // String user_agent
+     109: ldc           #26                 // String Bolts Android 1.1.2
+     111: invokevirtual #12                 // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     114: aload_2
+     115: ldc           #27                 // String referer_app_link
+     117: aload_3
+     118: invokevirtual #28                 // Method android/os/Bundle.putBundle:(Ljava/lang/String;Landroid/os/Bundle;)V
+     121: aload_2
+     122: ldc           #29                 // String extras
+     124: aload_0
+     125: invokevirtual #30                 // Method getExtras:()Landroid/os/Bundle;
+     128: invokevirtual #28                 // Method android/os/Bundle.putBundle:(Ljava/lang/String;Landroid/os/Bundle;)V
+     131: aload_2
+     132: areturn
+
+  private java.lang.Object getJSONValue(java.lang.Object) throws org.json.JSONException;
+    descriptor: (Ljava/lang/Object;)Ljava/lang/Object;
+    Code:
+       0: aload_1
+       1: instanceof    #5                  // class android/os/Bundle
+       4: ifeq          16
+       7: aload_0
+       8: aload_1
+       9: checkcast     #5                  // class android/os/Bundle
+      12: invokespecial #31                 // Method getJSONForBundle:(Landroid/os/Bundle;)Lorg/json/JSONObject;
+      15: areturn
+      16: aload_1
+      17: instanceof    #32                 // class java/lang/CharSequence
+      20: ifeq          28
+      23: aload_1
+      24: invokevirtual #33                 // Method java/lang/Object.toString:()Ljava/lang/String;
+      27: areturn
+      28: aload_1
+      29: instanceof    #34                 // class java/util/List
+      32: ifeq          86
+      35: new           #35                 // class org/json/JSONArray
+      38: dup
+      39: invokespecial #36                 // Method org/json/JSONArray."<init>":()V
+      42: astore_2
+      43: aload_1
+      44: checkcast     #34                 // class java/util/List
+      47: invokeinterface #37,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      52: astore_3
+      53: aload_3
+      54: invokeinterface #38,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      59: ifeq          84
+      62: aload_3
+      63: invokeinterface #39,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      68: astore        4
+      70: aload_2
+      71: aload_0
+      72: aload         4
+      74: invokespecial #40                 // Method getJSONValue:(Ljava/lang/Object;)Ljava/lang/Object;
+      77: invokevirtual #41                 // Method org/json/JSONArray.put:(Ljava/lang/Object;)Lorg/json/JSONArray;
+      80: pop
+      81: goto          53
+      84: aload_2
+      85: areturn
+      86: aload_1
+      87: instanceof    #42                 // class android/util/SparseArray
+      90: ifeq          147
+      93: new           #35                 // class org/json/JSONArray
+      96: dup
+      97: invokespecial #36                 // Method org/json/JSONArray."<init>":()V
+     100: astore_2
+     101: aload_1
+     102: checkcast     #42                 // class android/util/SparseArray
+     105: astore_3
+     106: iconst_0
+     107: istore        4
+     109: iload         4
+     111: aload_3
+     112: invokevirtual #43                 // Method android/util/SparseArray.size:()I
+     115: if_icmpge     145
+     118: aload_2
+     119: aload_3
+     120: iload         4
+     122: invokevirtual #44                 // Method android/util/SparseArray.keyAt:(I)I
+     125: aload_0
+     126: aload_3
+     127: iload         4
+     129: invokevirtual #45                 // Method android/util/SparseArray.valueAt:(I)Ljava/lang/Object;
+     132: invokespecial #40                 // Method getJSONValue:(Ljava/lang/Object;)Ljava/lang/Object;
+     135: invokevirtual #46                 // Method org/json/JSONArray.put:(ILjava/lang/Object;)Lorg/json/JSONArray;
+     138: pop
+     139: iinc          4, 1
+     142: goto          109
+     145: aload_2
+     146: areturn
+     147: aload_1
+     148: instanceof    #47                 // class java/lang/Character
+     151: ifeq          159
+     154: aload_1
+     155: invokevirtual #33                 // Method java/lang/Object.toString:()Ljava/lang/String;
+     158: areturn
+     159: aload_1
+     160: instanceof    #48                 // class java/lang/Boolean
+     163: ifeq          168
+     166: aload_1
+     167: areturn
+     168: aload_1
+     169: instanceof    #49                 // class java/lang/Number
+     172: ifeq          211
+     175: aload_1
+     176: instanceof    #50                 // class java/lang/Double
+     179: ifne          189
+     182: aload_1
+     183: instanceof    #51                 // class java/lang/Float
+     186: ifeq          200
+     189: aload_1
+     190: checkcast     #49                 // class java/lang/Number
+     193: invokevirtual #52                 // Method java/lang/Number.doubleValue:()D
+     196: invokestatic  #53                 // Method java/lang/Double.valueOf:(D)Ljava/lang/Double;
+     199: areturn
+     200: aload_1
+     201: checkcast     #49                 // class java/lang/Number
+     204: invokevirtual #54                 // Method java/lang/Number.longValue:()J
+     207: invokestatic  #55                 // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+     210: areturn
+     211: aload_1
+     212: instanceof    #56                 // class "[Z"
+     215: ifeq          276
+     218: new           #35                 // class org/json/JSONArray
+     221: dup
+     222: invokespecial #36                 // Method org/json/JSONArray."<init>":()V
+     225: astore_2
+     226: aload_1
+     227: checkcast     #56                 // class "[Z"
+     230: checkcast     #56                 // class "[Z"
+     233: astore_3
+     234: aload_3
+     235: arraylength
+     236: istore        4
+     238: iconst_0
+     239: istore        5
+     241: iload         5
+     243: iload         4
+     245: if_icmpge     274
+     248: aload_3
+     249: iload         5
+     251: baload
+     252: istore        6
+     254: aload_2
+     255: aload_0
+     256: iload         6
+     258: invokestatic  #57                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     261: invokespecial #40                 // Method getJSONValue:(Ljava/lang/Object;)Ljava/lang/Object;
+     264: invokevirtual #41                 // Method org/json/JSONArray.put:(Ljava/lang/Object;)Lorg/json/JSONArray;
+     267: pop
+     268: iinc          5, 1
+     271: goto          241
+     274: aload_2
+     275: areturn
+     276: aload_1
+     277: instanceof    #58                 // class "[C"
+     280: ifeq          341
+     283: new           #35                 // class org/json/JSONArray
+     286: dup
+     287: invokespecial #36                 // Method org/json/JSONArray."<init>":()V
+     290: astore_2
+     291: aload_1
+     292: checkcast     #58                 // class "[C"
+     295: checkcast     #58                 // class "[C"
+     298: astore_3
+     299: aload_3
+     300: arraylength
+     301: istore        4
+     303: iconst_0
+     304: istore        5
+     306: iload         5
+     308: iload         4
+     310: if_icmpge     339
+     313: aload_3
+     314: iload         5
+     316: caload
+     317: istore        6
+     319: aload_2
+     320: aload_0
+     321: iload         6
+     323: invokestatic  #59                 // Method java/lang/Character.valueOf:(C)Ljava/lang/Character;
+     326: invokespecial #40                 // Method getJSONValue:(Ljava/lang/Object;)Ljava/lang/Object;
+     329: invokevirtual #41                 // Method org/json/JSONArray.put:(Ljava/lang/Object;)Lorg/json/JSONArray;
+     332: pop
+     333: iinc          5, 1
+     336: goto          306
+     339: aload_2
+     340: areturn
+     341: aload_1
+     342: instanceof    #60                 // class "[Ljava/lang/CharSequence;"
+     345: ifeq          403
+     348: new           #35                 // class org/json/JSONArray
+     351: dup
+     352: invokespecial #36                 // Method org/json/JSONArray."<init>":()V
+     355: astore_2
+     356: aload_1
+     357: checkcast     #60                 // class "[Ljava/lang/CharSequence;"
+     360: checkcast     #60                 // class "[Ljava/lang/CharSequence;"
+     363: astore_3
+     364: aload_3
+     365: arraylength
+     366: istore        4
+     368: iconst_0
+     369: istore        5
+     371: iload         5
+     373: iload         4
+     375: if_icmpge     401
+     378: aload_3
+     379: iload         5
+     381: aaload
+     382: astore        6
+     384: aload_2
+     385: aload_0
+     386: aload         6
+     388: invokespecial #40                 // Method getJSONValue:(Ljava/lang/Object;)Ljava/lang/Object;
+     391: invokevirtual #41                 // Method org/json/JSONArray.put:(Ljava/lang/Object;)Lorg/json/JSONArray;
+     394: pop
+     395: iinc          5, 1
+     398: goto          371
+     401: aload_2
+     402: areturn
+     403: aload_1
+     404: instanceof    #61                 // class "[D"
+     407: ifeq          468
+     410: new           #35                 // class org/json/JSONArray
+     413: dup
+     414: invokespecial #36                 // Method org/json/JSONArray."<init>":()V
+     417: astore_2
+     418: aload_1
+     419: checkcast     #61                 // class "[D"
+     422: checkcast     #61                 // class "[D"
+     425: astore_3
+     426: aload_3
+     427: arraylength
+     428: istore        4
+     430: iconst_0
+     431: istore        5
+     433: iload         5
+     435: iload         4
+     437: if_icmpge     466
+     440: aload_3
+     441: iload         5
+     443: daload
+     444: dstore        6
+     446: aload_2
+     447: aload_0
+     448: dload         6
+     450: invokestatic  #53                 // Method java/lang/Double.valueOf:(D)Ljava/lang/Double;
+     453: invokespecial #40                 // Method getJSONValue:(Ljava/lang/Object;)Ljava/lang/Object;
+     456: invokevirtual #41                 // Method org/json/JSONArray.put:(Ljava/lang/Object;)Lorg/json/JSONArray;
+     459: pop
+     460: iinc          5, 1
+     463: goto          433
+     466: aload_2
+     467: areturn
+     468: aload_1
+     469: instanceof    #62                 // class "[F"
+     472: ifeq          533
+     475: new           #35                 // class org/json/JSONArray
+     478: dup
+     479: invokespecial #36                 // Method org/json/JSONArray."<init>":()V
+     482: astore_2
+     483: aload_1
+     484: checkcast     #62                 // class "[F"
+     487: checkcast     #62                 // class "[F"
+     490: astore_3
+     491: aload_3
+     492: arraylength
+     493: istore        4
+     495: iconst_0
+     496: istore        5
+     498: iload         5
+     500: iload         4
+     502: if_icmpge     531
+     505: aload_3
+     506: iload         5
+     508: faload
+     509: fstore        6
+     511: aload_2
+     512: aload_0
+     513: fload         6
+     515: invokestatic  #63                 // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+     518: invokespecial #40                 // Method getJSONValue:(Ljava/lang/Object;)Ljava/lang/Object;
+     521: invokevirtual #41                 // Method org/json/JSONArray.put:(Ljava/lang/Object;)Lorg/json/JSONArray;
+     524: pop
+     525: iinc          5, 1
+     528: goto          498
+     531: aload_2
+     532: areturn
+     533: aload_1
+     534: instanceof    #64                 // class "[I"
+     537: ifeq          598
+     540: new           #35                 // class org/json/JSONArray
+     543: dup
+     544: invokespecial #36                 // Method org/json/JSONArray."<init>":()V
+     547: astore_2
+     548: aload_1
+     549: checkcast     #64                 // class "[I"
+     552: checkcast     #64                 // class "[I"
+     555: astore_3
+     556: aload_3
+     557: arraylength
+     558: istore        4
+     560: iconst_0
+     561: istore        5
+     563: iload         5
+     565: iload         4
+     567: if_icmpge     596
+     570: aload_3
+     571: iload         5
+     573: iaload
+     574: istore        6
+     576: aload_2
+     577: aload_0
+     578: iload         6
+     580: invokestatic  #65                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     583: invokespecial #40                 // Method getJSONValue:(Ljava/lang/Object;)Ljava/lang/Object;
+     586: invokevirtual #41                 // Method org/json/JSONArray.put:(Ljava/lang/Object;)Lorg/json/JSONArray;
+     589: pop
+     590: iinc          5, 1
+     593: goto          563
+     596: aload_2
+     597: areturn
+     598: aload_1
+     599: instanceof    #66                 // class "[J"
+     602: ifeq          663
+     605: new           #35                 // class org/json/JSONArray
+     608: dup
+     609: invokespecial #36                 // Method org/json/JSONArray."<init>":()V
+     612: astore_2
+     613: aload_1
+     614: checkcast     #66                 // class "[J"
+     617: checkcast     #66                 // class "[J"
+     620: astore_3
+     621: aload_3
+     622: arraylength
+     623: istore        4
+     625: iconst_0
+     626: istore        5
+     628: iload         5
+     630: iload         4
+     632: if_icmpge     661
+     635: aload_3
+     636: iload         5
+     638: laload
+     639: lstore        6
+     641: aload_2
+     642: aload_0
+     643: lload         6
+     645: invokestatic  #55                 // Method java/lang/Long.valueOf:(J)Ljava/lang/Long;
+     648: invokespecial #40                 // Method getJSONValue:(Ljava/lang/Object;)Ljava/lang/Object;
+     651: invokevirtual #41                 // Method org/json/JSONArray.put:(Ljava/lang/Object;)Lorg/json/JSONArray;
+     654: pop
+     655: iinc          5, 1
+     658: goto          628
+     661: aload_2
+     662: areturn
+     663: aload_1
+     664: instanceof    #67                 // class "[S"
+     667: ifeq          728
+     670: new           #35                 // class org/json/JSONArray
+     673: dup
+     674: invokespecial #36                 // Method org/json/JSONArray."<init>":()V
+     677: astore_2
+     678: aload_1
+     679: checkcast     #67                 // class "[S"
+     682: checkcast     #67                 // class "[S"
+     685: astore_3
+     686: aload_3
+     687: arraylength
+     688: istore        4
+     690: iconst_0
+     691: istore        5
+     693: iload         5
+     695: iload         4
+     697: if_icmpge     726
+     700: aload_3
+     701: iload         5
+     703: saload
+     704: istore        6
+     706: aload_2
+     707: aload_0
+     708: iload         6
+     710: invokestatic  #68                 // Method java/lang/Short.valueOf:(S)Ljava/lang/Short;
+     713: invokespecial #40                 // Method getJSONValue:(Ljava/lang/Object;)Ljava/lang/Object;
+     716: invokevirtual #41                 // Method org/json/JSONArray.put:(Ljava/lang/Object;)Lorg/json/JSONArray;
+     719: pop
+     720: iinc          5, 1
+     723: goto          693
+     726: aload_2
+     727: areturn
+     728: aload_1
+     729: instanceof    #69                 // class "[Ljava/lang/String;"
+     732: ifeq          790
+     735: new           #35                 // class org/json/JSONArray
+     738: dup
+     739: invokespecial #36                 // Method org/json/JSONArray."<init>":()V
+     742: astore_2
+     743: aload_1
+     744: checkcast     #69                 // class "[Ljava/lang/String;"
+     747: checkcast     #69                 // class "[Ljava/lang/String;"
+     750: astore_3
+     751: aload_3
+     752: arraylength
+     753: istore        4
+     755: iconst_0
+     756: istore        5
+     758: iload         5
+     760: iload         4
+     762: if_icmpge     788
+     765: aload_3
+     766: iload         5
+     768: aaload
+     769: astore        6
+     771: aload_2
+     772: aload_0
+     773: aload         6
+     775: invokespecial #40                 // Method getJSONValue:(Ljava/lang/Object;)Ljava/lang/Object;
+     778: invokevirtual #41                 // Method org/json/JSONArray.put:(Ljava/lang/Object;)Lorg/json/JSONArray;
+     781: pop
+     782: iinc          5, 1
+     785: goto          758
+     788: aload_2
+     789: areturn
+     790: aconst_null
+     791: areturn
+
+  private org.json.JSONObject getJSONForBundle(android.os.Bundle) throws org.json.JSONException;
+    descriptor: (Landroid/os/Bundle;)Lorg/json/JSONObject;
+    Code:
+       0: new           #70                 // class org/json/JSONObject
+       3: dup
+       4: invokespecial #71                 // Method org/json/JSONObject."<init>":()V
+       7: astore_2
+       8: aload_1
+       9: invokevirtual #72                 // Method android/os/Bundle.keySet:()Ljava/util/Set;
+      12: invokeinterface #73,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      17: astore_3
+      18: aload_3
+      19: invokeinterface #38,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      24: ifeq          58
+      27: aload_3
+      28: invokeinterface #39,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      33: checkcast     #74                 // class java/lang/String
+      36: astore        4
+      38: aload_2
+      39: aload         4
+      41: aload_0
+      42: aload_1
+      43: aload         4
+      45: invokevirtual #75                 // Method android/os/Bundle.get:(Ljava/lang/String;)Ljava/lang/Object;
+      48: invokespecial #40                 // Method getJSONValue:(Ljava/lang/Object;)Ljava/lang/Object;
+      51: invokevirtual #76                 // Method org/json/JSONObject.put:(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+      54: pop
+      55: goto          18
+      58: aload_2
+      59: areturn
+
+  public bolts.AppLinkNavigation$NavigationResult navigate(android.content.Context);
+    descriptor: (Landroid/content/Context;)Lbolts/AppLinkNavigation$NavigationResult;
+    Code:
+       0: aload_1
+       1: invokevirtual #77                 // Method android/content/Context.getPackageManager:()Landroid/content/pm/PackageManager;
+       4: astore_2
+       5: aload_0
+       6: aload_1
+       7: invokespecial #78                 // Method buildAppLinkDataForNavigation:(Landroid/content/Context;)Landroid/os/Bundle;
+      10: astore_3
+      11: aconst_null
+      12: astore        4
+      14: aload_0
+      15: invokevirtual #20                 // Method getAppLink:()Lbolts/AppLink;
+      18: invokevirtual #79                 // Method bolts/AppLink.getTargets:()Ljava/util/List;
+      21: invokeinterface #37,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      26: astore        5
+      28: aload         5
+      30: invokeinterface #38,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      35: ifeq          165
+      38: aload         5
+      40: invokeinterface #39,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      45: checkcast     #80                 // class bolts/AppLink$Target
+      48: astore        6
+      50: new           #81                 // class android/content/Intent
+      53: dup
+      54: ldc           #82                 // String android.intent.action.VIEW
+      56: invokespecial #83                 // Method android/content/Intent."<init>":(Ljava/lang/String;)V
+      59: astore        7
+      61: aload         6
+      63: invokevirtual #84                 // Method bolts/AppLink$Target.getUrl:()Landroid/net/Uri;
+      66: ifnull        83
+      69: aload         7
+      71: aload         6
+      73: invokevirtual #84                 // Method bolts/AppLink$Target.getUrl:()Landroid/net/Uri;
+      76: invokevirtual #85                 // Method android/content/Intent.setData:(Landroid/net/Uri;)Landroid/content/Intent;
+      79: pop
+      80: goto          96
+      83: aload         7
+      85: aload_0
+      86: getfield      #7                  // Field appLink:Lbolts/AppLink;
+      89: invokevirtual #21                 // Method bolts/AppLink.getSourceUrl:()Landroid/net/Uri;
+      92: invokevirtual #85                 // Method android/content/Intent.setData:(Landroid/net/Uri;)Landroid/content/Intent;
+      95: pop
+      96: aload         7
+      98: aload         6
+     100: invokevirtual #86                 // Method bolts/AppLink$Target.getPackageName:()Ljava/lang/String;
+     103: invokevirtual #87                 // Method android/content/Intent.setPackage:(Ljava/lang/String;)Landroid/content/Intent;
+     106: pop
+     107: aload         6
+     109: invokevirtual #88                 // Method bolts/AppLink$Target.getClassName:()Ljava/lang/String;
+     112: ifnull        131
+     115: aload         7
+     117: aload         6
+     119: invokevirtual #86                 // Method bolts/AppLink$Target.getPackageName:()Ljava/lang/String;
+     122: aload         6
+     124: invokevirtual #88                 // Method bolts/AppLink$Target.getClassName:()Ljava/lang/String;
+     127: invokevirtual #89                 // Method android/content/Intent.setClassName:(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+     130: pop
+     131: aload         7
+     133: ldc           #90                 // String al_applink_data
+     135: aload_3
+     136: invokevirtual #91                 // Method android/content/Intent.putExtra:(Ljava/lang/String;Landroid/os/Bundle;)Landroid/content/Intent;
+     139: pop
+     140: aload_2
+     141: aload         7
+     143: ldc           #92                 // int 65536
+     145: invokevirtual #93                 // Method android/content/pm/PackageManager.resolveActivity:(Landroid/content/Intent;I)Landroid/content/pm/ResolveInfo;
+     148: astore        8
+     150: aload         8
+     152: ifnull        162
+     155: aload         7
+     157: astore        4
+     159: goto          165
+     162: goto          28
+     165: aconst_null
+     166: astore        5
+     168: getstatic     #94                 // Field bolts/AppLinkNavigation$NavigationResult.FAILED:Lbolts/AppLinkNavigation$NavigationResult;
+     171: astore        6
+     173: aload         4
+     175: ifnull        190
+     178: aload         4
+     180: astore        5
+     182: getstatic     #95                 // Field bolts/AppLinkNavigation$NavigationResult.APP:Lbolts/AppLinkNavigation$NavigationResult;
+     185: astore        6
+     187: goto          276
+     190: aload_0
+     191: invokevirtual #20                 // Method getAppLink:()Lbolts/AppLink;
+     194: invokevirtual #96                 // Method bolts/AppLink.getWebUrl:()Landroid/net/Uri;
+     197: astore        7
+     199: aload         7
+     201: ifnull        276
+     204: aload_0
+     205: aload_3
+     206: invokespecial #31                 // Method getJSONForBundle:(Landroid/os/Bundle;)Lorg/json/JSONObject;
+     209: astore        8
+     211: goto          238
+     214: astore        9
+     216: aload_0
+     217: aload_1
+     218: aload         4
+     220: getstatic     #94                 // Field bolts/AppLinkNavigation$NavigationResult.FAILED:Lbolts/AppLinkNavigation$NavigationResult;
+     223: aload         9
+     225: invokespecial #98                 // Method sendAppLinkNavigateEventBroadcast:(Landroid/content/Context;Landroid/content/Intent;Lbolts/AppLinkNavigation$NavigationResult;Lorg/json/JSONException;)V
+     228: new           #99                 // class java/lang/RuntimeException
+     231: dup
+     232: aload         9
+     234: invokespecial #100                // Method java/lang/RuntimeException."<init>":(Ljava/lang/Throwable;)V
+     237: athrow
+     238: aload         7
+     240: invokevirtual #101                // Method android/net/Uri.buildUpon:()Landroid/net/Uri$Builder;
+     243: ldc           #90                 // String al_applink_data
+     245: aload         8
+     247: invokevirtual #102                // Method org/json/JSONObject.toString:()Ljava/lang/String;
+     250: invokevirtual #103                // Method android/net/Uri$Builder.appendQueryParameter:(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;
+     253: invokevirtual #104                // Method android/net/Uri$Builder.build:()Landroid/net/Uri;
+     256: astore        7
+     258: new           #81                 // class android/content/Intent
+     261: dup
+     262: ldc           #82                 // String android.intent.action.VIEW
+     264: aload         7
+     266: invokespecial #105                // Method android/content/Intent."<init>":(Ljava/lang/String;Landroid/net/Uri;)V
+     269: astore        5
+     271: getstatic     #106                // Field bolts/AppLinkNavigation$NavigationResult.WEB:Lbolts/AppLinkNavigation$NavigationResult;
+     274: astore        6
+     276: aload_0
+     277: aload_1
+     278: aload         5
+     280: aload         6
+     282: aconst_null
+     283: invokespecial #98                 // Method sendAppLinkNavigateEventBroadcast:(Landroid/content/Context;Landroid/content/Intent;Lbolts/AppLinkNavigation$NavigationResult;Lorg/json/JSONException;)V
+     286: aload         5
+     288: ifnull        297
+     291: aload_1
+     292: aload         5
+     294: invokevirtual #107                // Method android/content/Context.startActivity:(Landroid/content/Intent;)V
+     297: aload         6
+     299: areturn
+    Exception table:
+       from    to  target type
+         204   211   214   Class org/json/JSONException
+
+  private void sendAppLinkNavigateEventBroadcast(android.content.Context, android.content.Intent, bolts.AppLinkNavigation$NavigationResult, org.json.JSONException);
+    descriptor: (Landroid/content/Context;Landroid/content/Intent;Lbolts/AppLinkNavigation$NavigationResult;Lorg/json/JSONException;)V
+    Code:
+       0: new           #108                // class java/util/HashMap
+       3: dup
+       4: invokespecial #109                // Method java/util/HashMap."<init>":()V
+       7: astore        5
+       9: aload         4
+      11: ifnull        29
+      14: aload         5
+      16: ldc           #110                // String error
+      18: aload         4
+      20: invokevirtual #111                // Method org/json/JSONException.getLocalizedMessage:()Ljava/lang/String;
+      23: invokeinterface #112,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      28: pop
+      29: aload         5
+      31: ldc           #113                // String success
+      33: aload_3
+      34: invokevirtual #114                // Method bolts/AppLinkNavigation$NavigationResult.isSucceeded:()Z
+      37: ifeq          45
+      40: ldc           #115                // String 1
+      42: goto          47
+      45: ldc           #116                // String 0
+      47: invokeinterface #112,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      52: pop
+      53: aload         5
+      55: ldc           #117                // String type
+      57: aload_3
+      58: invokevirtual #118                // Method bolts/AppLinkNavigation$NavigationResult.getCode:()Ljava/lang/String;
+      61: invokeinterface #112,  3          // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      66: pop
+      67: aload_1
+      68: ldc           #119                // String al_nav_out
+      70: aload_2
+      71: aload         5
+      73: invokestatic  #120                // Method bolts/MeasurementEvent.sendBroadcastEvent:(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;Ljava/util/Map;)V
+      76: return
+
+  public static void setDefaultResolver(bolts.AppLinkResolver);
+    descriptor: (Lbolts/AppLinkResolver;)V
+    Code:
+       0: aload_0
+       1: putstatic     #121                // Field defaultResolver:Lbolts/AppLinkResolver;
+       4: return
+
+  public static bolts.AppLinkResolver getDefaultResolver();
+    descriptor: ()Lbolts/AppLinkResolver;
+    Code:
+       0: getstatic     #121                // Field defaultResolver:Lbolts/AppLinkResolver;
+       3: areturn
+
+  private static bolts.AppLinkResolver getResolver(android.content.Context);
+    descriptor: (Landroid/content/Context;)Lbolts/AppLinkResolver;
+    Code:
+       0: invokestatic  #122                // Method getDefaultResolver:()Lbolts/AppLinkResolver;
+       3: ifnull        10
+       6: invokestatic  #122                // Method getDefaultResolver:()Lbolts/AppLinkResolver;
+       9: areturn
+      10: new           #123                // class bolts/WebViewAppLinkResolver
+      13: dup
+      14: aload_0
+      15: invokespecial #124                // Method bolts/WebViewAppLinkResolver."<init>":(Landroid/content/Context;)V
+      18: areturn
+
+  public static bolts.AppLinkNavigation$NavigationResult navigate(android.content.Context, bolts.AppLink);
+    descriptor: (Landroid/content/Context;Lbolts/AppLink;)Lbolts/AppLinkNavigation$NavigationResult;
+    Code:
+       0: new           #125                // class bolts/AppLinkNavigation
+       3: dup
+       4: aload_1
+       5: aconst_null
+       6: aconst_null
+       7: invokespecial #126                // Method "<init>":(Lbolts/AppLink;Landroid/os/Bundle;Landroid/os/Bundle;)V
+      10: aload_0
+      11: invokevirtual #127                // Method navigate:(Landroid/content/Context;)Lbolts/AppLinkNavigation$NavigationResult;
+      14: areturn
+
+  public static bolts.Task<bolts.AppLinkNavigation$NavigationResult> navigateInBackground(android.content.Context, android.net.Uri, bolts.AppLinkResolver);
+    descriptor: (Landroid/content/Context;Landroid/net/Uri;Lbolts/AppLinkResolver;)Lbolts/Task;
+    Code:
+       0: aload_2
+       1: aload_1
+       2: invokeinterface #128,  2          // InterfaceMethod bolts/AppLinkResolver.getAppLinkFromUrlInBackground:(Landroid/net/Uri;)Lbolts/Task;
+       7: new           #129                // class bolts/AppLinkNavigation$1
+      10: dup
+      11: aload_0
+      12: invokespecial #130                // Method bolts/AppLinkNavigation$1."<init>":(Landroid/content/Context;)V
+      15: getstatic     #131                // Field bolts/Task.UI_THREAD_EXECUTOR:Ljava/util/concurrent/Executor;
+      18: invokevirtual #132                // Method bolts/Task.onSuccess:(Lbolts/Continuation;Ljava/util/concurrent/Executor;)Lbolts/Task;
+      21: areturn
+
+  public static bolts.Task<bolts.AppLinkNavigation$NavigationResult> navigateInBackground(android.content.Context, java.net.URL, bolts.AppLinkResolver);
+    descriptor: (Landroid/content/Context;Ljava/net/URL;Lbolts/AppLinkResolver;)Lbolts/Task;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #133                // Method java/net/URL.toString:()Ljava/lang/String;
+       5: invokestatic  #134                // Method android/net/Uri.parse:(Ljava/lang/String;)Landroid/net/Uri;
+       8: aload_2
+       9: invokestatic  #135                // Method navigateInBackground:(Landroid/content/Context;Landroid/net/Uri;Lbolts/AppLinkResolver;)Lbolts/Task;
+      12: areturn
+
+  public static bolts.Task<bolts.AppLinkNavigation$NavigationResult> navigateInBackground(android.content.Context, java.lang.String, bolts.AppLinkResolver);
+    descriptor: (Landroid/content/Context;Ljava/lang/String;Lbolts/AppLinkResolver;)Lbolts/Task;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #134                // Method android/net/Uri.parse:(Ljava/lang/String;)Landroid/net/Uri;
+       5: aload_2
+       6: invokestatic  #135                // Method navigateInBackground:(Landroid/content/Context;Landroid/net/Uri;Lbolts/AppLinkResolver;)Lbolts/Task;
+       9: areturn
+
+  public static bolts.Task<bolts.AppLinkNavigation$NavigationResult> navigateInBackground(android.content.Context, android.net.Uri);
+    descriptor: (Landroid/content/Context;Landroid/net/Uri;)Lbolts/Task;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_0
+       3: invokestatic  #136                // Method getResolver:(Landroid/content/Context;)Lbolts/AppLinkResolver;
+       6: invokestatic  #135                // Method navigateInBackground:(Landroid/content/Context;Landroid/net/Uri;Lbolts/AppLinkResolver;)Lbolts/Task;
+       9: areturn
+
+  public static bolts.Task<bolts.AppLinkNavigation$NavigationResult> navigateInBackground(android.content.Context, java.net.URL);
+    descriptor: (Landroid/content/Context;Ljava/net/URL;)Lbolts/Task;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_0
+       3: invokestatic  #136                // Method getResolver:(Landroid/content/Context;)Lbolts/AppLinkResolver;
+       6: invokestatic  #137                // Method navigateInBackground:(Landroid/content/Context;Ljava/net/URL;Lbolts/AppLinkResolver;)Lbolts/Task;
+       9: areturn
+
+  public static bolts.Task<bolts.AppLinkNavigation$NavigationResult> navigateInBackground(android.content.Context, java.lang.String);
+    descriptor: (Landroid/content/Context;Ljava/lang/String;)Lbolts/Task;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_0
+       3: invokestatic  #136                // Method getResolver:(Landroid/content/Context;)Lbolts/AppLinkResolver;
+       6: invokestatic  #138                // Method navigateInBackground:(Landroid/content/Context;Ljava/lang/String;Lbolts/AppLinkResolver;)Lbolts/Task;
+       9: areturn
+}

@@ -1,0 +1,44 @@
+Compiled from "WebViewAppLinkResolver.java"
+class bolts.WebViewAppLinkResolver$2$2 {
+  final bolts.Task$TaskCompletionSource val$tcs;
+    descriptor: Lbolts/Task$TaskCompletionSource;
+
+  final bolts.WebViewAppLinkResolver$2 this$1;
+    descriptor: Lbolts/WebViewAppLinkResolver$2;
+
+  bolts.WebViewAppLinkResolver$2$2(bolts.WebViewAppLinkResolver$2, bolts.Task$TaskCompletionSource);
+    descriptor: (Lbolts/WebViewAppLinkResolver$2;Lbolts/Task$TaskCompletionSource;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$1:Lbolts/WebViewAppLinkResolver$2;
+       5: aload_0
+       6: aload_2
+       7: putfield      #2                  // Field val$tcs:Lbolts/Task$TaskCompletionSource;
+      10: aload_0
+      11: invokespecial #3                  // Method java/lang/Object."<init>":()V
+      14: return
+
+  public void setValue(java.lang.String);
+    descriptor: (Ljava/lang/String;)V
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field val$tcs:Lbolts/Task$TaskCompletionSource;
+       4: new           #4                  // class org/json/JSONArray
+       7: dup
+       8: aload_1
+       9: invokespecial #5                  // Method org/json/JSONArray."<init>":(Ljava/lang/String;)V
+      12: invokevirtual #6                  // Method bolts/Task$TaskCompletionSource.trySetResult:(Ljava/lang/Object;)Z
+      15: pop
+      16: goto          29
+      19: astore_2
+      20: aload_0
+      21: getfield      #2                  // Field val$tcs:Lbolts/Task$TaskCompletionSource;
+      24: aload_2
+      25: invokevirtual #8                  // Method bolts/Task$TaskCompletionSource.trySetError:(Ljava/lang/Exception;)Z
+      28: pop
+      29: return
+    Exception table:
+       from    to  target type
+           0    16    19   Class org/json/JSONException
+}

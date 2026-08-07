@@ -1,0 +1,136 @@
+Compiled from "LoaderActivity.java"
+class com.ideaworks3d.marmalade.LoaderActivity$3 implements java.lang.Runnable {
+  final android.net.Uri val$uri;
+    descriptor: Landroid/net/Uri;
+
+  final java.lang.String[] val$proj;
+    descriptor: [Ljava/lang/String;
+
+  final com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener val$completeCallback;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;
+
+  final com.ideaworks3d.marmalade.LoaderActivity this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderActivity;
+
+  com.ideaworks3d.marmalade.LoaderActivity$3(com.ideaworks3d.marmalade.LoaderActivity, android.net.Uri, java.lang.String[], com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderActivity;Landroid/net/Uri;[Ljava/lang/String;Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       5: aload_0
+       6: aload_2
+       7: putfield      #2                  // Field val$uri:Landroid/net/Uri;
+      10: aload_0
+      11: aload_3
+      12: putfield      #3                  // Field val$proj:[Ljava/lang/String;
+      15: aload_0
+      16: aload         4
+      18: putfield      #4                  // Field val$completeCallback:Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;
+      21: aload_0
+      22: invokespecial #5                  // Method java/lang/Object."<init>":()V
+      25: return
+
+  public void run();
+    descriptor: ()V
+    Code:
+       0: new           #6                  // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #7                  // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #8                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #9                  // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #8                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #9                  // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #10                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #11                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #12                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #13                 // String -
+      36: invokevirtual #12                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #14                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #15                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #12                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #16                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: ldc           #17                 // String Creating cursor
+      53: invokestatic  #18                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      56: getstatic     #19                 // Field android/os/Build$VERSION.SDK_INT:I
+      59: istore_1
+      60: iload_1
+      61: bipush        11
+      63: if_icmplt     141
+      66: new           #6                  // class java/lang/StringBuilder
+      69: dup
+      70: invokespecial #7                  // Method java/lang/StringBuilder."<init>":()V
+      73: aload_0
+      74: invokevirtual #8                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      77: invokevirtual #9                  // Method java/lang/Class.getName:()Ljava/lang/String;
+      80: aload_0
+      81: invokevirtual #8                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      84: invokevirtual #9                  // Method java/lang/Class.getName:()Ljava/lang/String;
+      87: bipush        46
+      89: invokevirtual #10                 // Method java/lang/String.lastIndexOf:(I)I
+      92: iconst_1
+      93: iadd
+      94: invokevirtual #11                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      97: invokevirtual #12                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     100: ldc           #13                 // String -
+     102: invokevirtual #12                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     105: invokestatic  #14                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     108: invokevirtual #15                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     111: invokevirtual #12                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     114: invokevirtual #16                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     117: ldc           #20                 // String Using async cursor
+     119: invokestatic  #18                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     122: aload_0
+     123: getfield      #2                  // Field val$uri:Landroid/net/Uri;
+     126: aload_0
+     127: getfield      #3                  // Field val$proj:[Ljava/lang/String;
+     130: aload_0
+     131: getfield      #4                  // Field val$completeCallback:Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;
+     134: invokestatic  #21                 // Method com/ideaworks3d/marmalade/CursorLoaderHelper.getCursor:(Landroid/net/Uri;[Ljava/lang/String;Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;)Z
+     137: pop
+     138: goto          226
+     141: new           #6                  // class java/lang/StringBuilder
+     144: dup
+     145: invokespecial #7                  // Method java/lang/StringBuilder."<init>":()V
+     148: aload_0
+     149: invokevirtual #8                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     152: invokevirtual #9                  // Method java/lang/Class.getName:()Ljava/lang/String;
+     155: aload_0
+     156: invokevirtual #8                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     159: invokevirtual #9                  // Method java/lang/Class.getName:()Ljava/lang/String;
+     162: bipush        46
+     164: invokevirtual #10                 // Method java/lang/String.lastIndexOf:(I)I
+     167: iconst_1
+     168: iadd
+     169: invokevirtual #11                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     172: invokevirtual #12                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     175: ldc           #13                 // String -
+     177: invokevirtual #12                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     180: invokestatic  #14                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     183: invokevirtual #15                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     186: invokevirtual #12                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     189: invokevirtual #16                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     192: ldc           #22                 // String Using legacy cursor
+     194: invokestatic  #18                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     197: aload_0
+     198: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderActivity;
+     201: aload_0
+     202: getfield      #2                  // Field val$uri:Landroid/net/Uri;
+     205: aload_0
+     206: getfield      #3                  // Field val$proj:[Ljava/lang/String;
+     209: aconst_null
+     210: aconst_null
+     211: aconst_null
+     212: invokevirtual #23                 // Method com/ideaworks3d/marmalade/LoaderActivity.managedQuery:(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+     215: astore_2
+     216: aload_0
+     217: getfield      #4                  // Field val$completeCallback:Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;
+     220: aload_2
+     221: invokeinterface #24,  2           // InterfaceMethod com/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener.cursorLoadComplete:(Landroid/database/Cursor;)V
+     226: return
+}

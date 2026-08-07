@@ -1,0 +1,41 @@
+Compiled from "Task.java"
+final class bolts.Task$2 implements java.lang.Runnable {
+  final bolts.Task$TaskCompletionSource val$tcs;
+    descriptor: Lbolts/Task$TaskCompletionSource;
+
+  final java.util.concurrent.Callable val$callable;
+    descriptor: Ljava/util/concurrent/Callable;
+
+  bolts.Task$2(bolts.Task$TaskCompletionSource, java.util.concurrent.Callable);
+    descriptor: (Lbolts/Task$TaskCompletionSource;Ljava/util/concurrent/Callable;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field val$tcs:Lbolts/Task$TaskCompletionSource;
+       5: aload_0
+       6: aload_2
+       7: putfield      #2                  // Field val$callable:Ljava/util/concurrent/Callable;
+      10: aload_0
+      11: invokespecial #3                  // Method java/lang/Object."<init>":()V
+      14: return
+
+  public void run();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field val$tcs:Lbolts/Task$TaskCompletionSource;
+       4: aload_0
+       5: getfield      #2                  // Field val$callable:Ljava/util/concurrent/Callable;
+       8: invokeinterface #4,  1            // InterfaceMethod java/util/concurrent/Callable.call:()Ljava/lang/Object;
+      13: invokevirtual #5                  // Method bolts/Task$TaskCompletionSource.setResult:(Ljava/lang/Object;)V
+      16: goto          28
+      19: astore_1
+      20: aload_0
+      21: getfield      #1                  // Field val$tcs:Lbolts/Task$TaskCompletionSource;
+      24: aload_1
+      25: invokevirtual #7                  // Method bolts/Task$TaskCompletionSource.setError:(Ljava/lang/Exception;)V
+      28: return
+    Exception table:
+       from    to  target type
+           0    16    19   Class java/lang/Exception
+}

@@ -1,0 +1,427 @@
+Compiled from "s3ePermissions.java"
+class s3ePermissions implements com.ideaworks3d.marmalade.event.RequestPermissionsResultListener {
+  private static final java.lang.String TAG = "s3ePermissions";
+    descriptor: Ljava/lang/String;
+
+  private static final int S3E_PERMISSION_GRANTED = 0;
+    descriptor: I
+
+  private static final int S3E_PERMISSION_DENIED = 1;
+    descriptor: I
+
+  private static final int S3E_PERMISSIONS_ERR_NO_PERMISSIONS_TO_REQUEST = 1;
+    descriptor: I
+
+  private s3ePermissions$PendingRequestsQueue pendingRequests;
+    descriptor: Ls3ePermissions$PendingRequestsQueue;
+
+  s3ePermissions();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #3                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #4                  // class s3ePermissions$PendingRequestsQueue
+       8: dup
+       9: aload_0
+      10: invokespecial #5                  // Method s3ePermissions$PendingRequestsQueue."<init>":(Ls3ePermissions;)V
+      13: putfield      #6                  // Field pendingRequests:Ls3ePermissions$PendingRequestsQueue;
+      16: return
+
+  private static native void native_RequestPermissionsResultCallback(int, java.lang.String[], int[]);
+    descriptor: (I[Ljava/lang/String;[I)V
+
+  private static void notifyRequestPermissionsResult(int, java.lang.String[], int[]);
+    descriptor: (I[Ljava/lang/String;[I)V
+    Code:
+       0: aload_2
+       1: arraylength
+       2: newarray       int
+       4: astore_3
+       5: iconst_0
+       6: istore        4
+       8: iload         4
+      10: aload_2
+      11: arraylength
+      12: if_icmpge     37
+      15: aload_3
+      16: iload         4
+      18: aload_2
+      19: iload         4
+      21: iaload
+      22: ifne          29
+      25: iconst_0
+      26: goto          30
+      29: iconst_1
+      30: iastore
+      31: iinc          4, 1
+      34: goto          8
+      37: iload_0
+      38: aload_1
+      39: aload_3
+      40: invokestatic  #7                  // Method native_RequestPermissionsResultCallback:(I[Ljava/lang/String;[I)V
+      43: return
+
+  public void s3ePermissionsInit();
+    descriptor: ()V
+    Code:
+       0: ldc           #8                  // String s3ePermissions
+       2: ldc           #9                  // String s3ePermissionsInit
+       4: invokestatic  #10                 // Method android/util/Log.i:(Ljava/lang/String;Ljava/lang/String;)I
+       7: pop
+       8: aload_0
+       9: invokestatic  #11                 // Method com/ideaworks3d/marmalade/LoaderAPI.addRequestPermissionsResultListener:(Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultListener;)V
+      12: return
+
+  public void s3ePermissionsTerminate();
+    descriptor: ()V
+    Code:
+       0: ldc           #8                  // String s3ePermissions
+       2: ldc           #12                 // String s3ePermissionsTerminate
+       4: invokestatic  #10                 // Method android/util/Log.i:(Ljava/lang/String;Ljava/lang/String;)I
+       7: pop
+       8: aload_0
+       9: invokestatic  #13                 // Method com/ideaworks3d/marmalade/LoaderAPI.removeRequestPermissionsResultListener:(Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultListener;)Z
+      12: pop
+      13: return
+
+  public boolean s3ePermissionsIsGranted(java.lang.String);
+    descriptor: (Ljava/lang/String;)Z
+    Code:
+       0: ldc           #8                  // String s3ePermissions
+       2: ldc           #14                 // String s3ePermissionsIsGranted
+       4: invokestatic  #10                 // Method android/util/Log.i:(Ljava/lang/String;Ljava/lang/String;)I
+       7: pop
+       8: aload_1
+       9: invokestatic  #2                  // Method getPermissionGrantedValue:(Ljava/lang/String;)I
+      12: ifne          19
+      15: iconst_1
+      16: goto          20
+      19: iconst_0
+      20: ireturn
+
+  private static int getPermissionGrantedValue(java.lang.String);
+    descriptor: (Ljava/lang/String;)I
+    Code:
+       0: getstatic     #15                 // Field android/os/Build$VERSION.SDK_INT:I
+       3: bipush        23
+       5: if_icmplt     16
+       8: invokestatic  #16                 // Method com/ideaworks3d/marmalade/LoaderAPI.getActivity:()Lcom/ideaworks3d/marmalade/LoaderActivity;
+      11: aload_0
+      12: invokevirtual #17                 // Method com/ideaworks3d/marmalade/LoaderActivity.checkSelfPermission:(Ljava/lang/String;)I
+      15: ireturn
+      16: ldc           #8                  // String s3ePermissions
+      18: ldc           #18                 // String Warning: getPermissionGrantedValue called in compatibility mode (app is not targeting api level 23)
+      20: invokestatic  #10                 // Method android/util/Log.i:(Ljava/lang/String;Ljava/lang/String;)I
+      23: pop
+      24: invokestatic  #16                 // Method com/ideaworks3d/marmalade/LoaderAPI.getActivity:()Lcom/ideaworks3d/marmalade/LoaderActivity;
+      27: invokevirtual #19                 // Method com/ideaworks3d/marmalade/LoaderActivity.getPackageManager:()Landroid/content/pm/PackageManager;
+      30: astore_1
+      31: invokestatic  #16                 // Method com/ideaworks3d/marmalade/LoaderAPI.getActivity:()Lcom/ideaworks3d/marmalade/LoaderActivity;
+      34: invokevirtual #20                 // Method com/ideaworks3d/marmalade/LoaderActivity.getPackageName:()Ljava/lang/String;
+      37: astore_2
+      38: aload_1
+      39: aload_0
+      40: aload_2
+      41: invokevirtual #21                 // Method android/content/pm/PackageManager.checkPermission:(Ljava/lang/String;Ljava/lang/String;)I
+      44: ireturn
+
+  public synchronized int s3ePermissionsRequest(java.lang.String[], int, boolean);
+    descriptor: ([Ljava/lang/String;IZ)I
+    Code:
+       0: ldc           #8                  // String s3ePermissions
+       2: new           #22                 // class java/lang/StringBuilder
+       5: dup
+       6: invokespecial #23                 // Method java/lang/StringBuilder."<init>":()V
+       9: ldc           #24                 // String s3ePermissionsRequest requestId =
+      11: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      14: iload_2
+      15: invokevirtual #26                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      18: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      21: invokestatic  #10                 // Method android/util/Log.i:(Ljava/lang/String;Ljava/lang/String;)I
+      24: pop
+      25: aload_1
+      26: arraylength
+      27: ifne          40
+      30: ldc           #8                  // String s3ePermissions
+      32: ldc           #28                 // String s3ePermissionsRequest - empty permissions request list
+      34: invokestatic  #10                 // Method android/util/Log.i:(Ljava/lang/String;Ljava/lang/String;)I
+      37: pop
+      38: iconst_1
+      39: ireturn
+      40: getstatic     #15                 // Field android/os/Build$VERSION.SDK_INT:I
+      43: bipush        23
+      45: if_icmpge     99
+      48: ldc           #8                  // String s3ePermissions
+      50: ldc           #29                 // String Warning: s3ePermissionsRequest called in compatibility mode (app is not targeting api level 23)
+      52: invokestatic  #10                 // Method android/util/Log.i:(Ljava/lang/String;Ljava/lang/String;)I
+      55: pop
+      56: aload_1
+      57: arraylength
+      58: newarray       int
+      60: astore        4
+      62: iconst_0
+      63: istore        5
+      65: iload         5
+      67: aload_1
+      68: arraylength
+      69: if_icmpge     90
+      72: aload         4
+      74: iload         5
+      76: aload_1
+      77: iload         5
+      79: aaload
+      80: invokestatic  #2                  // Method getPermissionGrantedValue:(Ljava/lang/String;)I
+      83: iastore
+      84: iinc          5, 1
+      87: goto          65
+      90: iload_2
+      91: aload_1
+      92: aload         4
+      94: invokestatic  #1                  // Method notifyRequestPermissionsResult:(I[Ljava/lang/String;[I)V
+      97: iconst_0
+      98: ireturn
+      99: aload_0
+     100: getfield      #6                  // Field pendingRequests:Ls3ePermissions$PendingRequestsQueue;
+     103: invokevirtual #30                 // Method s3ePermissions$PendingRequestsQueue.iterator:()Ljava/util/Iterator;
+     106: astore        4
+     108: aload         4
+     110: invokeinterface #31,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     115: ifeq          167
+     118: aload         4
+     120: invokeinterface #32,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     125: checkcast     #33                 // class s3ePermissions$PendingRequest
+     128: astore        5
+     130: aload         5
+     132: getfield      #34                 // Field s3ePermissions$PendingRequest.requestId:I
+     135: iload_2
+     136: if_icmpne     164
+     139: ldc           #8                  // String s3ePermissions
+     141: new           #22                 // class java/lang/StringBuilder
+     144: dup
+     145: invokespecial #23                 // Method java/lang/StringBuilder."<init>":()V
+     148: ldc           #35                 // String s3ePermissionsRequest - there is ongoing request with same id:
+     150: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     153: iload_2
+     154: invokevirtual #26                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     157: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     160: invokestatic  #10                 // Method android/util/Log.i:(Ljava/lang/String;Ljava/lang/String;)I
+     163: pop
+     164: goto          108
+     167: aload_0
+     168: getfield      #6                  // Field pendingRequests:Ls3ePermissions$PendingRequestsQueue;
+     171: new           #33                 // class s3ePermissions$PendingRequest
+     174: dup
+     175: aload_0
+     176: iload_2
+     177: iload_3
+     178: aload_1
+     179: invokespecial #36                 // Method s3ePermissions$PendingRequest."<init>":(Ls3ePermissions;IZ[Ljava/lang/String;)V
+     182: invokevirtual #37                 // Method s3ePermissions$PendingRequestsQueue.add:(Ls3ePermissions$PendingRequest;)Z
+     185: pop
+     186: aload_0
+     187: getfield      #6                  // Field pendingRequests:Ls3ePermissions$PendingRequestsQueue;
+     190: invokevirtual #38                 // Method s3ePermissions$PendingRequestsQueue.size:()I
+     193: iconst_1
+     194: if_icmpne     220
+     197: aload_0
+     198: getfield      #6                  // Field pendingRequests:Ls3ePermissions$PendingRequestsQueue;
+     201: iconst_0
+     202: invokevirtual #39                 // Method s3ePermissions$PendingRequestsQueue.get:(I)Ls3ePermissions$PendingRequest;
+     205: invokevirtual #40                 // Method s3ePermissions$PendingRequest.request:()Z
+     208: ifne          220
+     211: aload_0
+     212: getfield      #6                  // Field pendingRequests:Ls3ePermissions$PendingRequestsQueue;
+     215: iconst_0
+     216: invokevirtual #41                 // Method s3ePermissions$PendingRequestsQueue.remove:(I)Ls3ePermissions$PendingRequest;
+     219: pop
+     220: iconst_0
+     221: ireturn
+
+  private s3ePermissions$PendingRequest removePendingRequestWithId(int);
+    descriptor: (I)Ls3ePermissions$PendingRequest;
+    Code:
+       0: aload_0
+       1: getfield      #6                  // Field pendingRequests:Ls3ePermissions$PendingRequestsQueue;
+       4: invokevirtual #30                 // Method s3ePermissions$PendingRequestsQueue.iterator:()Ljava/util/Iterator;
+       7: astore_2
+       8: aload_2
+       9: invokeinterface #31,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      14: ifeq          49
+      17: aload_2
+      18: invokeinterface #32,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      23: checkcast     #33                 // class s3ePermissions$PendingRequest
+      26: astore_3
+      27: aload_3
+      28: getfield      #34                 // Field s3ePermissions$PendingRequest.requestId:I
+      31: iload_1
+      32: if_icmpne     46
+      35: aload_0
+      36: getfield      #6                  // Field pendingRequests:Ls3ePermissions$PendingRequestsQueue;
+      39: aload_3
+      40: invokevirtual #42                 // Method s3ePermissions$PendingRequestsQueue.remove:(Ljava/lang/Object;)Z
+      43: pop
+      44: aload_3
+      45: areturn
+      46: goto          8
+      49: aconst_null
+      50: areturn
+
+  private void updatePendingRequests(com.ideaworks3d.marmalade.event.RequestPermissionsResultEvent);
+    descriptor: (Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultEvent;)V
+    Code:
+       0: iconst_0
+       1: istore_2
+       2: iload_2
+       3: aload_1
+       4: getfield      #43                 // Field com/ideaworks3d/marmalade/event/RequestPermissionsResultEvent.m_permissions:[Ljava/lang/String;
+       7: arraylength
+       8: if_icmpge     36
+      11: aload_0
+      12: getfield      #6                  // Field pendingRequests:Ls3ePermissions$PendingRequestsQueue;
+      15: aload_1
+      16: getfield      #43                 // Field com/ideaworks3d/marmalade/event/RequestPermissionsResultEvent.m_permissions:[Ljava/lang/String;
+      19: iload_2
+      20: aaload
+      21: aload_1
+      22: getfield      #44                 // Field com/ideaworks3d/marmalade/event/RequestPermissionsResultEvent.m_grantResults:[I
+      25: iload_2
+      26: iaload
+      27: invokevirtual #45                 // Method s3ePermissions$PendingRequestsQueue.updatePermission:(Ljava/lang/String;I)V
+      30: iinc          2, 1
+      33: goto          2
+      36: return
+
+  public synchronized void onRequestPermissionsResultEvent(com.ideaworks3d.marmalade.event.RequestPermissionsResultEvent);
+    descriptor: (Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultEvent;)V
+    Code:
+       0: ldc           #8                  // String s3ePermissions
+       2: new           #22                 // class java/lang/StringBuilder
+       5: dup
+       6: invokespecial #23                 // Method java/lang/StringBuilder."<init>":()V
+       9: ldc           #46                 // String Handling permissions request result, request code:
+      11: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      14: aload_1
+      15: getfield      #47                 // Field com/ideaworks3d/marmalade/event/RequestPermissionsResultEvent.m_requestCode:I
+      18: invokevirtual #26                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      21: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      24: invokestatic  #10                 // Method android/util/Log.i:(Ljava/lang/String;Ljava/lang/String;)I
+      27: pop
+      28: iconst_0
+      29: istore_2
+      30: iload_2
+      31: aload_1
+      32: getfield      #43                 // Field com/ideaworks3d/marmalade/event/RequestPermissionsResultEvent.m_permissions:[Ljava/lang/String;
+      35: arraylength
+      36: if_icmpge     89
+      39: ldc           #8                  // String s3ePermissions
+      41: new           #22                 // class java/lang/StringBuilder
+      44: dup
+      45: invokespecial #23                 // Method java/lang/StringBuilder."<init>":()V
+      48: ldc           #48                 // String Permission
+      50: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      53: aload_1
+      54: getfield      #43                 // Field com/ideaworks3d/marmalade/event/RequestPermissionsResultEvent.m_permissions:[Ljava/lang/String;
+      57: iload_2
+      58: aaload
+      59: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      62: ldc           #49                 // String  grantResult
+      64: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      67: aload_1
+      68: getfield      #44                 // Field com/ideaworks3d/marmalade/event/RequestPermissionsResultEvent.m_grantResults:[I
+      71: iload_2
+      72: iaload
+      73: invokevirtual #26                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      76: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      79: invokestatic  #10                 // Method android/util/Log.i:(Ljava/lang/String;Ljava/lang/String;)I
+      82: pop
+      83: iinc          2, 1
+      86: goto          30
+      89: aload_0
+      90: aload_1
+      91: getfield      #47                 // Field com/ideaworks3d/marmalade/event/RequestPermissionsResultEvent.m_requestCode:I
+      94: invokespecial #50                 // Method removePendingRequestWithId:(I)Ls3ePermissions$PendingRequest;
+      97: astore_2
+      98: aload_0
+      99: aload_1
+     100: invokespecial #51                 // Method updatePendingRequests:(Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultEvent;)V
+     103: aload_2
+     104: ifnonnull     130
+     107: ldc           #8                  // String s3ePermissions
+     109: ldc           #52                 // String onRequestPermissionsResultEvent - not found pending request data!
+     111: invokestatic  #10                 // Method android/util/Log.i:(Ljava/lang/String;Ljava/lang/String;)I
+     114: pop
+     115: aload_1
+     116: getfield      #47                 // Field com/ideaworks3d/marmalade/event/RequestPermissionsResultEvent.m_requestCode:I
+     119: aload_1
+     120: getfield      #43                 // Field com/ideaworks3d/marmalade/event/RequestPermissionsResultEvent.m_permissions:[Ljava/lang/String;
+     123: aload_1
+     124: getfield      #44                 // Field com/ideaworks3d/marmalade/event/RequestPermissionsResultEvent.m_grantResults:[I
+     127: invokestatic  #1                  // Method notifyRequestPermissionsResult:(I[Ljava/lang/String;[I)V
+     130: aload_1
+     131: getfield      #47                 // Field com/ideaworks3d/marmalade/event/RequestPermissionsResultEvent.m_requestCode:I
+     134: aload_2
+     135: aload_1
+     136: getfield      #43                 // Field com/ideaworks3d/marmalade/event/RequestPermissionsResultEvent.m_permissions:[Ljava/lang/String;
+     139: invokevirtual #53                 // Method s3ePermissions$PendingRequest.getResPermissions:([Ljava/lang/String;)[Ljava/lang/String;
+     142: aload_2
+     143: aload_1
+     144: getfield      #44                 // Field com/ideaworks3d/marmalade/event/RequestPermissionsResultEvent.m_grantResults:[I
+     147: invokevirtual #54                 // Method s3ePermissions$PendingRequest.getResGrantResults:([I)[I
+     150: invokestatic  #1                  // Method notifyRequestPermissionsResult:(I[Ljava/lang/String;[I)V
+     153: aload_0
+     154: getfield      #6                  // Field pendingRequests:Ls3ePermissions$PendingRequestsQueue;
+     157: invokevirtual #38                 // Method s3ePermissions$PendingRequestsQueue.size:()I
+     160: ifle          192
+     163: aload_0
+     164: getfield      #6                  // Field pendingRequests:Ls3ePermissions$PendingRequestsQueue;
+     167: iconst_0
+     168: invokevirtual #39                 // Method s3ePermissions$PendingRequestsQueue.get:(I)Ls3ePermissions$PendingRequest;
+     171: invokevirtual #40                 // Method s3ePermissions$PendingRequest.request:()Z
+     174: ifeq          180
+     177: goto          192
+     180: aload_0
+     181: getfield      #6                  // Field pendingRequests:Ls3ePermissions$PendingRequestsQueue;
+     184: iconst_0
+     185: invokevirtual #41                 // Method s3ePermissions$PendingRequestsQueue.remove:(I)Ls3ePermissions$PendingRequest;
+     188: pop
+     189: goto          153
+     192: return
+
+  public boolean s3ePermissionsShouldShowRequestPermissionRationale(java.lang.String);
+    descriptor: (Ljava/lang/String;)Z
+    Code:
+       0: getstatic     #15                 // Field android/os/Build$VERSION.SDK_INT:I
+       3: bipush        23
+       5: if_icmplt     16
+       8: invokestatic  #16                 // Method com/ideaworks3d/marmalade/LoaderAPI.getActivity:()Lcom/ideaworks3d/marmalade/LoaderActivity;
+      11: aload_1
+      12: invokevirtual #55                 // Method com/ideaworks3d/marmalade/LoaderActivity.shouldShowRequestPermissionRationale:(Ljava/lang/String;)Z
+      15: ireturn
+      16: iconst_0
+      17: ireturn
+
+  public synchronized void s3ePermissionsNotifyPermissionsResultCleanup();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #6                  // Field pendingRequests:Ls3ePermissions$PendingRequestsQueue;
+       4: invokevirtual #56                 // Method s3ePermissions$PendingRequestsQueue.cleanup:()V
+       7: return
+
+  static int access$000(java.lang.String);
+    descriptor: (Ljava/lang/String;)I
+    Code:
+       0: aload_0
+       1: invokestatic  #2                  // Method getPermissionGrantedValue:(Ljava/lang/String;)I
+       4: ireturn
+
+  static void access$100(int, java.lang.String[], int[]);
+    descriptor: (I[Ljava/lang/String;[I)V
+    Code:
+       0: iload_0
+       1: aload_1
+       2: aload_2
+       3: invokestatic  #1                  // Method notifyRequestPermissionsResult:(I[Ljava/lang/String;[I)V
+       6: return
+}

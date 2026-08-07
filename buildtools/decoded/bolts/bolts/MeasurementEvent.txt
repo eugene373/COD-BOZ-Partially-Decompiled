@@ -1,0 +1,448 @@
+Compiled from "MeasurementEvent.java"
+public class bolts.MeasurementEvent {
+  public static final java.lang.String MEASUREMENT_EVENT_NOTIFICATION_NAME = "com.parse.bolts.measurement_event";
+    descriptor: Ljava/lang/String;
+
+  public static final java.lang.String MEASUREMENT_EVENT_NAME_KEY = "event_name";
+    descriptor: Ljava/lang/String;
+
+  public static final java.lang.String MEASUREMENT_EVENT_ARGS_KEY = "event_args";
+    descriptor: Ljava/lang/String;
+
+  public static final java.lang.String APP_LINK_NAVIGATE_OUT_EVENT_NAME = "al_nav_out";
+    descriptor: Ljava/lang/String;
+
+  public static final java.lang.String APP_LINK_NAVIGATE_IN_EVENT_NAME = "al_nav_in";
+    descriptor: Ljava/lang/String;
+
+  private android.content.Context appContext;
+    descriptor: Landroid/content/Context;
+
+  private java.lang.String name;
+    descriptor: Ljava/lang/String;
+
+  private android.os.Bundle args;
+    descriptor: Landroid/os/Bundle;
+
+  static void sendBroadcastEvent(android.content.Context, java.lang.String, android.content.Intent, java.util.Map<java.lang.String, java.lang.String>);
+    descriptor: (Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;Ljava/util/Map;)V
+    Code:
+       0: new           #1                  // class android/os/Bundle
+       3: dup
+       4: invokespecial #2                  // Method android/os/Bundle."<init>":()V
+       7: astore        4
+       9: aload_2
+      10: ifnull        133
+      13: aload_2
+      14: invokestatic  #3                  // Method bolts/AppLinks.getAppLinkData:(Landroid/content/Intent;)Landroid/os/Bundle;
+      17: astore        5
+      19: aload         5
+      21: ifnull        37
+      24: aload_0
+      25: aload_1
+      26: aload         5
+      28: aload_2
+      29: invokestatic  #4                  // Method getApplinkLogData:(Landroid/content/Context;Ljava/lang/String;Landroid/os/Bundle;Landroid/content/Intent;)Landroid/os/Bundle;
+      32: astore        4
+      34: goto          133
+      37: aload_2
+      38: invokevirtual #5                  // Method android/content/Intent.getData:()Landroid/net/Uri;
+      41: astore        6
+      43: aload         6
+      45: ifnull        60
+      48: aload         4
+      50: ldc           #6                  // String intentData
+      52: aload         6
+      54: invokevirtual #7                  // Method android/net/Uri.toString:()Ljava/lang/String;
+      57: invokevirtual #8                  // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+      60: aload_2
+      61: invokevirtual #9                  // Method android/content/Intent.getExtras:()Landroid/os/Bundle;
+      64: astore        7
+      66: aload         7
+      68: ifnull        133
+      71: aload         7
+      73: invokevirtual #10                 // Method android/os/Bundle.keySet:()Ljava/util/Set;
+      76: invokeinterface #11,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      81: astore        8
+      83: aload         8
+      85: invokeinterface #12,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      90: ifeq          133
+      93: aload         8
+      95: invokeinterface #13,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     100: checkcast     #14                 // class java/lang/String
+     103: astore        9
+     105: aload         7
+     107: aload         9
+     109: invokevirtual #15                 // Method android/os/Bundle.get:(Ljava/lang/String;)Ljava/lang/Object;
+     112: astore        10
+     114: aload         10
+     116: invokestatic  #16                 // Method objectToJSONString:(Ljava/lang/Object;)Ljava/lang/String;
+     119: astore        11
+     121: aload         4
+     123: aload         9
+     125: aload         11
+     127: invokevirtual #8                  // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     130: goto          83
+     133: aload_3
+     134: ifnull        193
+     137: aload_3
+     138: invokeinterface #17,  1           // InterfaceMethod java/util/Map.keySet:()Ljava/util/Set;
+     143: invokeinterface #11,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     148: astore        5
+     150: aload         5
+     152: invokeinterface #12,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     157: ifeq          193
+     160: aload         5
+     162: invokeinterface #13,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     167: checkcast     #14                 // class java/lang/String
+     170: astore        6
+     172: aload         4
+     174: aload         6
+     176: aload_3
+     177: aload         6
+     179: invokeinterface #18,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     184: checkcast     #14                 // class java/lang/String
+     187: invokevirtual #8                  // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     190: goto          150
+     193: new           #19                 // class bolts/MeasurementEvent
+     196: dup
+     197: aload_0
+     198: aload_1
+     199: aload         4
+     201: invokespecial #20                 // Method "<init>":(Landroid/content/Context;Ljava/lang/String;Landroid/os/Bundle;)V
+     204: astore        5
+     206: aload         5
+     208: invokespecial #21                 // Method sendBroadcast:()V
+     211: return
+
+  private bolts.MeasurementEvent(android.content.Context, java.lang.String, android.os.Bundle);
+    descriptor: (Landroid/content/Context;Ljava/lang/String;Landroid/os/Bundle;)V
+    Code:
+       0: aload_0
+       1: invokespecial #22                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: invokevirtual #23                 // Method android/content/Context.getApplicationContext:()Landroid/content/Context;
+       9: putfield      #24                 // Field appContext:Landroid/content/Context;
+      12: aload_0
+      13: aload_2
+      14: putfield      #25                 // Field name:Ljava/lang/String;
+      17: aload_0
+      18: aload_3
+      19: putfield      #26                 // Field args:Landroid/os/Bundle;
+      22: return
+
+  private void sendBroadcast();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #25                 // Field name:Ljava/lang/String;
+       4: ifnonnull     20
+       7: aload_0
+       8: invokevirtual #27                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #28                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: ldc           #29                 // String Event name is required
+      16: invokestatic  #30                 // Method android/util/Log.d:(Ljava/lang/String;Ljava/lang/String;)I
+      19: pop
+      20: ldc           #31                 // String android.support.v4.content.LocalBroadcastManager
+      22: invokestatic  #32                 // Method java/lang/Class.forName:(Ljava/lang/String;)Ljava/lang/Class;
+      25: astore_1
+      26: aload_1
+      27: ldc           #33                 // String getInstance
+      29: iconst_1
+      30: anewarray     #34                 // class java/lang/Class
+      33: dup
+      34: iconst_0
+      35: ldc_w         #35                 // class android/content/Context
+      38: aastore
+      39: invokevirtual #36                 // Method java/lang/Class.getMethod:(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+      42: astore_2
+      43: aload_1
+      44: ldc           #37                 // String sendBroadcast
+      46: iconst_1
+      47: anewarray     #34                 // class java/lang/Class
+      50: dup
+      51: iconst_0
+      52: ldc_w         #38                 // class android/content/Intent
+      55: aastore
+      56: invokevirtual #36                 // Method java/lang/Class.getMethod:(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+      59: astore_3
+      60: aload_2
+      61: aconst_null
+      62: iconst_1
+      63: anewarray     #39                 // class java/lang/Object
+      66: dup
+      67: iconst_0
+      68: aload_0
+      69: getfield      #24                 // Field appContext:Landroid/content/Context;
+      72: aastore
+      73: invokevirtual #40                 // Method java/lang/reflect/Method.invoke:(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+      76: astore        4
+      78: new           #38                 // class android/content/Intent
+      81: dup
+      82: ldc           #41                 // String com.parse.bolts.measurement_event
+      84: invokespecial #42                 // Method android/content/Intent."<init>":(Ljava/lang/String;)V
+      87: astore        5
+      89: aload         5
+      91: ldc           #43                 // String event_name
+      93: aload_0
+      94: getfield      #25                 // Field name:Ljava/lang/String;
+      97: invokevirtual #44                 // Method android/content/Intent.putExtra:(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+     100: pop
+     101: aload         5
+     103: ldc           #45                 // String event_args
+     105: aload_0
+     106: getfield      #26                 // Field args:Landroid/os/Bundle;
+     109: invokevirtual #46                 // Method android/content/Intent.putExtra:(Ljava/lang/String;Landroid/os/Bundle;)Landroid/content/Intent;
+     112: pop
+     113: aload_3
+     114: aload         4
+     116: iconst_1
+     117: anewarray     #39                 // class java/lang/Object
+     120: dup
+     121: iconst_0
+     122: aload         5
+     124: aastore
+     125: invokevirtual #40                 // Method java/lang/reflect/Method.invoke:(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+     128: pop
+     129: goto          146
+     132: astore_1
+     133: aload_0
+     134: invokevirtual #27                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     137: invokevirtual #28                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     140: ldc           #48                 // String LocalBroadcastManager in android support library is required to raise bolts event.
+     142: invokestatic  #30                 // Method android/util/Log.d:(Ljava/lang/String;Ljava/lang/String;)I
+     145: pop
+     146: return
+    Exception table:
+       from    to  target type
+          20   129   132   Class java/lang/Exception
+
+  private static android.os.Bundle getApplinkLogData(android.content.Context, java.lang.String, android.os.Bundle, android.content.Intent);
+    descriptor: (Landroid/content/Context;Ljava/lang/String;Landroid/os/Bundle;Landroid/content/Intent;)Landroid/os/Bundle;
+    Code:
+       0: new           #1                  // class android/os/Bundle
+       3: dup
+       4: invokespecial #2                  // Method android/os/Bundle."<init>":()V
+       7: astore        4
+       9: aload_3
+      10: aload_0
+      11: invokevirtual #49                 // Method android/content/Context.getPackageManager:()Landroid/content/pm/PackageManager;
+      14: invokevirtual #50                 // Method android/content/Intent.resolveActivity:(Landroid/content/pm/PackageManager;)Landroid/content/ComponentName;
+      17: astore        5
+      19: aload         5
+      21: ifnull        36
+      24: aload         4
+      26: ldc           #51                 // String class
+      28: aload         5
+      30: invokevirtual #52                 // Method android/content/ComponentName.getShortClassName:()Ljava/lang/String;
+      33: invokevirtual #8                  // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+      36: ldc           #53                 // String al_nav_out
+      38: aload_1
+      39: invokevirtual #54                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      42: ifeq          104
+      45: aload         5
+      47: ifnull        62
+      50: aload         4
+      52: ldc           #55                 // String package
+      54: aload         5
+      56: invokevirtual #56                 // Method android/content/ComponentName.getPackageName:()Ljava/lang/String;
+      59: invokevirtual #8                  // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+      62: aload_3
+      63: invokevirtual #5                  // Method android/content/Intent.getData:()Landroid/net/Uri;
+      66: ifnull        83
+      69: aload         4
+      71: ldc           #57                 // String outputURL
+      73: aload_3
+      74: invokevirtual #5                  // Method android/content/Intent.getData:()Landroid/net/Uri;
+      77: invokevirtual #7                  // Method android/net/Uri.toString:()Ljava/lang/String;
+      80: invokevirtual #8                  // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+      83: aload_3
+      84: invokevirtual #58                 // Method android/content/Intent.getScheme:()Ljava/lang/String;
+      87: ifnull        152
+      90: aload         4
+      92: ldc           #59                 // String outputURLScheme
+      94: aload_3
+      95: invokevirtual #58                 // Method android/content/Intent.getScheme:()Ljava/lang/String;
+      98: invokevirtual #8                  // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     101: goto          152
+     104: ldc           #60                 // String al_nav_in
+     106: aload_1
+     107: invokevirtual #54                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     110: ifeq          152
+     113: aload_3
+     114: invokevirtual #5                  // Method android/content/Intent.getData:()Landroid/net/Uri;
+     117: ifnull        134
+     120: aload         4
+     122: ldc           #61                 // String inputURL
+     124: aload_3
+     125: invokevirtual #5                  // Method android/content/Intent.getData:()Landroid/net/Uri;
+     128: invokevirtual #7                  // Method android/net/Uri.toString:()Ljava/lang/String;
+     131: invokevirtual #8                  // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     134: aload_3
+     135: invokevirtual #58                 // Method android/content/Intent.getScheme:()Ljava/lang/String;
+     138: ifnull        152
+     141: aload         4
+     143: ldc           #62                 // String inputURLScheme
+     145: aload_3
+     146: invokevirtual #58                 // Method android/content/Intent.getScheme:()Ljava/lang/String;
+     149: invokevirtual #8                  // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     152: aload_2
+     153: invokevirtual #10                 // Method android/os/Bundle.keySet:()Ljava/util/Set;
+     156: invokeinterface #11,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     161: astore        6
+     163: aload         6
+     165: invokeinterface #12,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     170: ifeq          430
+     173: aload         6
+     175: invokeinterface #13,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     180: checkcast     #14                 // class java/lang/String
+     183: astore        7
+     185: aload_2
+     186: aload         7
+     188: invokevirtual #15                 // Method android/os/Bundle.get:(Ljava/lang/String;)Ljava/lang/Object;
+     191: astore        8
+     193: aload         8
+     195: instanceof    #1                  // class android/os/Bundle
+     198: ifeq          367
+     201: aload         8
+     203: checkcast     #1                  // class android/os/Bundle
+     206: invokevirtual #10                 // Method android/os/Bundle.keySet:()Ljava/util/Set;
+     209: invokeinterface #11,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+     214: astore        9
+     216: aload         9
+     218: invokeinterface #12,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     223: ifeq          364
+     226: aload         9
+     228: invokeinterface #13,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     233: checkcast     #14                 // class java/lang/String
+     236: astore        10
+     238: aload         8
+     240: checkcast     #1                  // class android/os/Bundle
+     243: aload         10
+     245: invokevirtual #15                 // Method android/os/Bundle.get:(Ljava/lang/String;)Ljava/lang/Object;
+     248: invokestatic  #16                 // Method objectToJSONString:(Ljava/lang/Object;)Ljava/lang/String;
+     251: astore        11
+     253: aload         7
+     255: ldc           #63                 // String referer_app_link
+     257: invokevirtual #54                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     260: ifeq          329
+     263: aload         10
+     265: ldc           #64                 // String url
+     267: invokevirtual #65                 // Method java/lang/String.equalsIgnoreCase:(Ljava/lang/String;)Z
+     270: ifeq          285
+     273: aload         4
+     275: ldc           #66                 // String refererURL
+     277: aload         11
+     279: invokevirtual #8                  // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     282: goto          216
+     285: aload         10
+     287: ldc           #67                 // String app_name
+     289: invokevirtual #65                 // Method java/lang/String.equalsIgnoreCase:(Ljava/lang/String;)Z
+     292: ifeq          307
+     295: aload         4
+     297: ldc           #68                 // String refererAppName
+     299: aload         11
+     301: invokevirtual #8                  // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     304: goto          216
+     307: aload         10
+     309: ldc           #55                 // String package
+     311: invokevirtual #65                 // Method java/lang/String.equalsIgnoreCase:(Ljava/lang/String;)Z
+     314: ifeq          329
+     317: aload         4
+     319: ldc           #69                 // String sourceApplication
+     321: aload         11
+     323: invokevirtual #8                  // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     326: goto          216
+     329: aload         4
+     331: new           #70                 // class java/lang/StringBuilder
+     334: dup
+     335: invokespecial #71                 // Method java/lang/StringBuilder."<init>":()V
+     338: aload         7
+     340: invokevirtual #72                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     343: ldc           #73                 // String /
+     345: invokevirtual #72                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     348: aload         10
+     350: invokevirtual #72                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     353: invokevirtual #74                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     356: aload         11
+     358: invokevirtual #8                  // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     361: goto          216
+     364: goto          427
+     367: aload         8
+     369: invokestatic  #16                 // Method objectToJSONString:(Ljava/lang/Object;)Ljava/lang/String;
+     372: astore        9
+     374: aload         7
+     376: ldc           #75                 // String target_url
+     378: invokevirtual #54                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     381: ifeq          418
+     384: aload         9
+     386: invokestatic  #76                 // Method android/net/Uri.parse:(Ljava/lang/String;)Landroid/net/Uri;
+     389: astore        10
+     391: aload         4
+     393: ldc           #77                 // String targetURL
+     395: aload         10
+     397: invokevirtual #7                  // Method android/net/Uri.toString:()Ljava/lang/String;
+     400: invokevirtual #8                  // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     403: aload         4
+     405: ldc           #78                 // String targetURLHost
+     407: aload         10
+     409: invokevirtual #79                 // Method android/net/Uri.getHost:()Ljava/lang/String;
+     412: invokevirtual #8                  // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     415: goto          163
+     418: aload         4
+     420: aload         7
+     422: aload         9
+     424: invokevirtual #8                  // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     427: goto          163
+     430: aload         4
+     432: areturn
+
+  private static java.lang.String objectToJSONString(java.lang.Object);
+    descriptor: (Ljava/lang/Object;)Ljava/lang/String;
+    Code:
+       0: aload_0
+       1: ifnonnull     6
+       4: aconst_null
+       5: areturn
+       6: aload_0
+       7: instanceof    #80                 // class org/json/JSONArray
+      10: ifne          20
+      13: aload_0
+      14: instanceof    #81                 // class org/json/JSONObject
+      17: ifeq          25
+      20: aload_0
+      21: invokevirtual #82                 // Method java/lang/Object.toString:()Ljava/lang/String;
+      24: areturn
+      25: aload_0
+      26: instanceof    #83                 // class java/util/Collection
+      29: ifeq          47
+      32: new           #80                 // class org/json/JSONArray
+      35: dup
+      36: aload_0
+      37: checkcast     #83                 // class java/util/Collection
+      40: invokespecial #84                 // Method org/json/JSONArray."<init>":(Ljava/util/Collection;)V
+      43: invokevirtual #85                 // Method org/json/JSONArray.toString:()Ljava/lang/String;
+      46: areturn
+      47: aload_0
+      48: instanceof    #86                 // class java/util/Map
+      51: ifeq          69
+      54: new           #81                 // class org/json/JSONObject
+      57: dup
+      58: aload_0
+      59: checkcast     #86                 // class java/util/Map
+      62: invokespecial #87                 // Method org/json/JSONObject."<init>":(Ljava/util/Map;)V
+      65: invokevirtual #88                 // Method org/json/JSONObject.toString:()Ljava/lang/String;
+      68: areturn
+      69: aload_0
+      70: invokevirtual #82                 // Method java/lang/Object.toString:()Ljava/lang/String;
+      73: areturn
+      74: astore_1
+      75: aconst_null
+      76: areturn
+    Exception table:
+       from    to  target type
+          25    46    74   Class java/lang/Exception
+          47    68    74   Class java/lang/Exception
+          69    73    74   Class java/lang/Exception
+}

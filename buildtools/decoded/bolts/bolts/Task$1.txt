@@ -1,0 +1,42 @@
+Compiled from "Task.java"
+class bolts.Task$1 implements bolts.Continuation<TResult, bolts.Task<java.lang.Void>> {
+  final bolts.Task this$0;
+    descriptor: Lbolts/Task;
+
+  bolts.Task$1(bolts.Task);
+    descriptor: (Lbolts/Task;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lbolts/Task;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: return
+
+  public bolts.Task<java.lang.Void> then(bolts.Task<TResult>) throws java.lang.Exception;
+    descriptor: (Lbolts/Task;)Lbolts/Task;
+    Code:
+       0: aload_1
+       1: invokevirtual #3                  // Method bolts/Task.isCancelled:()Z
+       4: ifeq          11
+       7: invokestatic  #4                  // Method bolts/Task.cancelled:()Lbolts/Task;
+      10: areturn
+      11: aload_1
+      12: invokevirtual #5                  // Method bolts/Task.isFaulted:()Z
+      15: ifeq          26
+      18: aload_1
+      19: invokevirtual #6                  // Method bolts/Task.getError:()Ljava/lang/Exception;
+      22: invokestatic  #7                  // Method bolts/Task.forError:(Ljava/lang/Exception;)Lbolts/Task;
+      25: areturn
+      26: aconst_null
+      27: invokestatic  #8                  // Method bolts/Task.forResult:(Ljava/lang/Object;)Lbolts/Task;
+      30: areturn
+
+  public java.lang.Object then(bolts.Task) throws java.lang.Exception;
+    descriptor: (Lbolts/Task;)Ljava/lang/Object;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #9                  // Method then:(Lbolts/Task;)Lbolts/Task;
+       5: areturn
+}

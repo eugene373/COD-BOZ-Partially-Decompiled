@@ -1,0 +1,27 @@
+Compiled from "s3eTest.java"
+class com.ideaworks3d.marmalade.s3eTest$1 implements java.lang.Runnable {
+  final com.ideaworks3d.marmalade.s3eTest this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/s3eTest;
+
+  com.ideaworks3d.marmalade.s3eTest$1(com.ideaworks3d.marmalade.s3eTest);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eTest;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eTest;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: return
+
+  public void run();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eTest;
+       4: new           #3                  // class android/os/Handler
+       7: dup
+       8: invokespecial #4                  // Method android/os/Handler."<init>":()V
+      11: invokestatic  #5                  // Method com/ideaworks3d/marmalade/s3eTest.access$002:(Lcom/ideaworks3d/marmalade/s3eTest;Landroid/os/Handler;)Landroid/os/Handler;
+      14: pop
+      15: return
+}

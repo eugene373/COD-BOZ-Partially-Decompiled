@@ -1,0 +1,27 @@
+Compiled from "RequestPermissionsResultEvent.java"
+public class com.ideaworks3d.marmalade.event.RequestPermissionsResultEvent {
+  public int m_requestCode;
+    descriptor: I
+
+  public java.lang.String[] m_permissions;
+    descriptor: [Ljava/lang/String;
+
+  public int[] m_grantResults;
+    descriptor: [I
+
+  public com.ideaworks3d.marmalade.event.RequestPermissionsResultEvent(int, java.lang.String[], int[]);
+    descriptor: (I[Ljava/lang/String;[I)V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iload_1
+       6: putfield      #2                  // Field m_requestCode:I
+       9: aload_0
+      10: aload_2
+      11: putfield      #3                  // Field m_permissions:[Ljava/lang/String;
+      14: aload_0
+      15: aload_3
+      16: putfield      #4                  // Field m_grantResults:[I
+      19: return
+}

@@ -1,0 +1,198 @@
+Compiled from "VFSProvider.java"
+public class com.ideaworks3d.marmalade.VFSProvider extends android.content.ContentProvider {
+  private static java.lang.String EXP_PATH;
+    descriptor: Ljava/lang/String;
+
+  private static java.lang.String CONTENT_PREFIX;
+    descriptor: Ljava/lang/String;
+
+  private static java.lang.String AUTHORITY;
+    descriptor: Ljava/lang/String;
+
+  public static android.net.Uri ASSET_URI;
+    descriptor: Landroid/net/Uri;
+
+  public com.ideaworks3d.marmalade.VFSProvider();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method android/content/ContentProvider."<init>":()V
+       4: return
+
+  public boolean onCreate();
+    descriptor: ()Z
+    Code:
+       0: iconst_1
+       1: ireturn
+
+  public android.content.res.AssetFileDescriptor openAssetFile(android.net.Uri, java.lang.String) throws java.io.FileNotFoundException;
+    descriptor: (Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+    Code:
+       0: aload_1
+       1: invokevirtual #2                  // Method android/net/Uri.getEncodedPath:()Ljava/lang/String;
+       4: astore_3
+       5: aload_3
+       6: ldc           #3                  // String /
+       8: invokevirtual #4                  // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+      11: ifeq          20
+      14: aload_3
+      15: iconst_1
+      16: invokevirtual #5                  // Method java/lang/String.substring:(I)Ljava/lang/String;
+      19: astore_3
+      20: aload_0
+      21: aload_3
+      22: invokevirtual #6                  // Method getAssetFileDescriptor:(Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+      25: areturn
+
+  public android.os.ParcelFileDescriptor openFile(android.net.Uri, java.lang.String) throws java.io.FileNotFoundException;
+    descriptor: (Landroid/net/Uri;Ljava/lang/String;)Landroid/os/ParcelFileDescriptor;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: invokevirtual #7                  // Method openAssetFile:(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+       6: astore_3
+       7: aconst_null
+       8: aload_3
+       9: if_acmpeq     17
+      12: aload_3
+      13: invokevirtual #8                  // Method android/content/res/AssetFileDescriptor.getParcelFileDescriptor:()Landroid/os/ParcelFileDescriptor;
+      16: areturn
+      17: aconst_null
+      18: areturn
+
+  public android.database.Cursor query(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String);
+    descriptor: (Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    Code:
+       0: aconst_null
+       1: areturn
+
+  public android.content.res.AssetFileDescriptor getAssetFileDescriptor(java.lang.String);
+    descriptor: (Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+    Code:
+       0: aload_1
+       1: ldc           #3                  // String /
+       3: invokevirtual #9                  // Method java/lang/String.split:(Ljava/lang/String;)[Ljava/lang/String;
+       6: astore_2
+       7: aload_2
+       8: arraylength
+       9: iconst_3
+      10: if_icmpge     15
+      13: aconst_null
+      14: areturn
+      15: aload_2
+      16: aload_2
+      17: arraylength
+      18: iconst_2
+      19: isub
+      20: aaload
+      21: invokestatic  #10                 // Method java/lang/Long.parseLong:(Ljava/lang/String;)J
+      24: lstore        4
+      26: aload_2
+      27: aload_2
+      28: arraylength
+      29: iconst_1
+      30: isub
+      31: aaload
+      32: invokestatic  #10                 // Method java/lang/Long.parseLong:(Ljava/lang/String;)J
+      35: lstore        6
+      37: aload_2
+      38: iconst_0
+      39: aaload
+      40: astore        8
+      42: iconst_1
+      43: istore        9
+      45: iload         9
+      47: aload_2
+      48: arraylength
+      49: iconst_2
+      50: isub
+      51: if_icmpge     89
+      54: new           #11                 // class java/lang/StringBuilder
+      57: dup
+      58: invokespecial #12                 // Method java/lang/StringBuilder."<init>":()V
+      61: aload         8
+      63: invokevirtual #13                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      66: ldc           #3                  // String /
+      68: invokevirtual #13                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      71: aload_2
+      72: iload         9
+      74: aaload
+      75: invokevirtual #13                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      78: invokevirtual #14                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      81: astore        8
+      83: iinc          9, 1
+      86: goto          45
+      89: new           #15                 // class java/io/File
+      92: dup
+      93: aload         8
+      95: invokespecial #16                 // Method java/io/File."<init>":(Ljava/lang/String;)V
+      98: astore        9
+     100: aload         9
+     102: ldc           #17                 // int 268435456
+     104: invokestatic  #18                 // Method android/os/ParcelFileDescriptor.open:(Ljava/io/File;I)Landroid/os/ParcelFileDescriptor;
+     107: astore_3
+     108: new           #19                 // class android/content/res/AssetFileDescriptor
+     111: dup
+     112: aload_3
+     113: lload         4
+     115: lload         6
+     117: invokespecial #20                 // Method android/content/res/AssetFileDescriptor."<init>":(Landroid/os/ParcelFileDescriptor;JJ)V
+     120: areturn
+     121: astore        4
+     123: goto          133
+     126: astore        4
+     128: aload         4
+     130: invokevirtual #23                 // Method java/io/FileNotFoundException.printStackTrace:()V
+     133: aconst_null
+     134: areturn
+    Exception table:
+       from    to  target type
+          15   120   121   Class java/lang/NumberFormatException
+          15   120   126   Class java/io/FileNotFoundException
+
+  public int update(android.net.Uri, android.content.ContentValues, java.lang.String, java.lang.String[]);
+    descriptor: (Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    Code:
+       0: iconst_0
+       1: ireturn
+
+  public int delete(android.net.Uri, java.lang.String, java.lang.String[]);
+    descriptor: (Landroid/net/Uri;Ljava/lang/String;[Ljava/lang/String;)I
+    Code:
+       0: iconst_0
+       1: ireturn
+
+  public android.net.Uri insert(android.net.Uri, android.content.ContentValues);
+    descriptor: (Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    Code:
+       0: aconst_null
+       1: areturn
+
+  public java.lang.String getType(android.net.Uri);
+    descriptor: (Landroid/net/Uri;)Ljava/lang/String;
+    Code:
+       0: ldc           #24                 // String vnd.android.cursor.item/asset
+       2: areturn
+
+  static {};
+    descriptor: ()V
+    Code:
+       0: ldc           #25                 // String /Android/obb/
+       2: putstatic     #26                 // Field EXP_PATH:Ljava/lang/String;
+       5: ldc           #27                 // String content://
+       7: putstatic     #28                 // Field CONTENT_PREFIX:Ljava/lang/String;
+      10: getstatic     #29                 // Field com/ideaworks3d/marmalade/Resources.VFSPROVIDER_AUTHORITY:Ljava/lang/String;
+      13: putstatic     #30                 // Field AUTHORITY:Ljava/lang/String;
+      16: new           #11                 // class java/lang/StringBuilder
+      19: dup
+      20: invokespecial #12                 // Method java/lang/StringBuilder."<init>":()V
+      23: getstatic     #28                 // Field CONTENT_PREFIX:Ljava/lang/String;
+      26: invokevirtual #13                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      29: getstatic     #30                 // Field AUTHORITY:Ljava/lang/String;
+      32: invokevirtual #13                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      35: invokevirtual #14                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      38: invokestatic  #31                 // Method android/net/Uri.parse:(Ljava/lang/String;)Landroid/net/Uri;
+      41: putstatic     #32                 // Field ASSET_URI:Landroid/net/Uri;
+      44: return
+}

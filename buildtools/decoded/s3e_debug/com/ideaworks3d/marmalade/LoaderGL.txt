@@ -1,0 +1,1091 @@
+Compiled from "LoaderGL.java"
+class com.ideaworks3d.marmalade.LoaderGL {
+  private boolean m_Started;
+    descriptor: Z
+
+  private boolean m_DoneInit;
+    descriptor: Z
+
+  private int m_GLVersion;
+    descriptor: I
+
+  javax.microedition.khronos.egl.EGL10 m_Egl;
+    descriptor: Ljavax/microedition/khronos/egl/EGL10;
+
+  javax.microedition.khronos.egl.EGLDisplay m_EglDisplay;
+    descriptor: Ljavax/microedition/khronos/egl/EGLDisplay;
+
+  javax.microedition.khronos.egl.EGLSurface m_EglSurface;
+    descriptor: Ljavax/microedition/khronos/egl/EGLSurface;
+
+  javax.microedition.khronos.egl.EGLConfig[] m_EglConfigs;
+    descriptor: [Ljavax/microedition/khronos/egl/EGLConfig;
+
+  javax.microedition.khronos.egl.EGLContext m_EglContext;
+    descriptor: Ljavax/microedition/khronos/egl/EGLContext;
+
+  private static final int EGL_CONTEXT_CLIENT_VERSION = 12440;
+    descriptor: I
+
+  private static final int EGL_DEPTH_ENCODING_NV = 12514;
+    descriptor: I
+
+  com.ideaworks3d.marmalade.LoaderGL();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public boolean started();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field m_Started:Z
+       4: ireturn
+
+  public void init();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokestatic  #3                  // Method javax/microedition/khronos/egl/EGLContext.getEGL:()Ljavax/microedition/khronos/egl/EGL;
+       4: checkcast     #4                  // class javax/microedition/khronos/egl/EGL10
+       7: putfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+      10: aload_0
+      11: aload_0
+      12: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+      15: getstatic     #6                  // Field javax/microedition/khronos/egl/EGL10.EGL_DEFAULT_DISPLAY:Ljava/lang/Object;
+      18: invokeinterface #7,  2            // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglGetDisplay:(Ljava/lang/Object;)Ljavax/microedition/khronos/egl/EGLDisplay;
+      23: putfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+      26: iconst_2
+      27: newarray       int
+      29: astore_1
+      30: aload_0
+      31: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+      34: aload_0
+      35: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+      38: aload_1
+      39: invokeinterface #9,  3            // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglInitialize:(Ljavax/microedition/khronos/egl/EGLDisplay;[I)Z
+      44: pop
+      45: aload_0
+      46: invokespecial #10                 // Method chooseConfigs:()V
+      49: aconst_null
+      50: astore_2
+      51: aload_0
+      52: getfield      #11                 // Field m_GLVersion:I
+      55: iconst_2
+      56: if_icmplt     84
+      59: iconst_3
+      60: newarray       int
+      62: dup
+      63: iconst_0
+      64: sipush        12440
+      67: iastore
+      68: dup
+      69: iconst_1
+      70: aload_0
+      71: getfield      #11                 // Field m_GLVersion:I
+      74: iastore
+      75: dup
+      76: iconst_2
+      77: sipush        12344
+      80: iastore
+      81: astore_3
+      82: aload_3
+      83: astore_2
+      84: aload_0
+      85: aload_0
+      86: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+      89: aload_0
+      90: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+      93: aload_0
+      94: getfield      #12                 // Field m_EglConfigs:[Ljavax/microedition/khronos/egl/EGLConfig;
+      97: iconst_0
+      98: aaload
+      99: getstatic     #13                 // Field javax/microedition/khronos/egl/EGL10.EGL_NO_CONTEXT:Ljavax/microedition/khronos/egl/EGLContext;
+     102: aload_2
+     103: invokeinterface #14,  5           // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglCreateContext:(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;Ljavax/microedition/khronos/egl/EGLContext;[I)Ljavax/microedition/khronos/egl/EGLContext;
+     108: putfield      #15                 // Field m_EglContext:Ljavax/microedition/khronos/egl/EGLContext;
+     111: aload_0
+     112: iconst_1
+     113: putfield      #16                 // Field m_DoneInit:Z
+     116: return
+
+  public javax.microedition.khronos.opengles.GL startGL(android.view.SurfaceHolder, int);
+    descriptor: (Landroid/view/SurfaceHolder;I)Ljavax/microedition/khronos/opengles/GL;
+    Code:
+       0: new           #17                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #21                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #22                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #24                 // String -
+      36: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #25                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #26                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: new           #17                 // class java/lang/StringBuilder
+      54: dup
+      55: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+      58: ldc           #28                 // String startGL:
+      60: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      63: aload_1
+      64: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      67: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      70: invokestatic  #30                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      73: iload_2
+      74: ifeq          82
+      77: aload_0
+      78: iload_2
+      79: putfield      #11                 // Field m_GLVersion:I
+      82: aload_0
+      83: getfield      #16                 // Field m_DoneInit:Z
+      86: ifne          93
+      89: aload_0
+      90: invokevirtual #31                 // Method init:()V
+      93: aload_0
+      94: aload_0
+      95: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+      98: aload_0
+      99: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     102: aload_0
+     103: getfield      #12                 // Field m_EglConfigs:[Ljavax/microedition/khronos/egl/EGLConfig;
+     106: iconst_0
+     107: aaload
+     108: aload_1
+     109: aconst_null
+     110: invokeinterface #32,  5           // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglCreateWindowSurface:(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;Ljava/lang/Object;[I)Ljavax/microedition/khronos/egl/EGLSurface;
+     115: putfield      #33                 // Field m_EglSurface:Ljavax/microedition/khronos/egl/EGLSurface;
+     118: aload_0
+     119: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+     122: aload_0
+     123: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     126: aload_0
+     127: getfield      #33                 // Field m_EglSurface:Ljavax/microedition/khronos/egl/EGLSurface;
+     130: aload_0
+     131: getfield      #33                 // Field m_EglSurface:Ljavax/microedition/khronos/egl/EGLSurface;
+     134: aload_0
+     135: getfield      #15                 // Field m_EglContext:Ljavax/microedition/khronos/egl/EGLContext;
+     138: invokeinterface #34,  5           // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglMakeCurrent:(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLSurface;Ljavax/microedition/khronos/egl/EGLSurface;Ljavax/microedition/khronos/egl/EGLContext;)Z
+     143: istore_3
+     144: new           #17                 // class java/lang/StringBuilder
+     147: dup
+     148: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+     151: aload_0
+     152: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     155: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     158: aload_0
+     159: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     162: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     165: bipush        46
+     167: invokevirtual #21                 // Method java/lang/String.lastIndexOf:(I)I
+     170: iconst_1
+     171: iadd
+     172: invokevirtual #22                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     175: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     178: ldc           #24                 // String -
+     180: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     183: invokestatic  #25                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     186: invokevirtual #26                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     189: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     192: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     195: new           #17                 // class java/lang/StringBuilder
+     198: dup
+     199: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+     202: ldc           #35                 // String startGL done:
+     204: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     207: aload_0
+     208: getfield      #15                 // Field m_EglContext:Ljavax/microedition/khronos/egl/EGLContext;
+     211: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+     214: ldc           #36                 // String  eglMakeCurrent:
+     216: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     219: iload_3
+     220: invokevirtual #37                 // Method java/lang/StringBuilder.append:(Z)Ljava/lang/StringBuilder;
+     223: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     226: invokestatic  #30                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     229: aload_0
+     230: iconst_1
+     231: putfield      #2                  // Field m_Started:Z
+     234: aload_0
+     235: getfield      #15                 // Field m_EglContext:Ljavax/microedition/khronos/egl/EGLContext;
+     238: invokevirtual #38                 // Method javax/microedition/khronos/egl/EGLContext.getGL:()Ljavax/microedition/khronos/opengles/GL;
+     241: areturn
+
+  private static int CountSettingsWithValue(com.ideaworks3d.marmalade.LoaderGL$ConfigSetting[]);
+    descriptor: ([Lcom/ideaworks3d/marmalade/LoaderGL$ConfigSetting;)I
+    Code:
+       0: iconst_0
+       1: istore_1
+       2: aload_0
+       3: astore_2
+       4: aload_2
+       5: arraylength
+       6: istore_3
+       7: iconst_0
+       8: istore        4
+      10: iload         4
+      12: iload_3
+      13: if_icmpge     39
+      16: aload_2
+      17: iload         4
+      19: aaload
+      20: astore        5
+      22: aload         5
+      24: invokevirtual #39                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting.HasValue:()Z
+      27: ifeq          33
+      30: iinc          1, 1
+      33: iinc          4, 1
+      36: goto          10
+      39: iload_1
+      40: ireturn
+
+  private static int CopySettingsWithValues(com.ideaworks3d.marmalade.LoaderGL$ConfigSetting[], int[]);
+    descriptor: ([Lcom/ideaworks3d/marmalade/LoaderGL$ConfigSetting;[I)I
+    Code:
+       0: iconst_0
+       1: istore_2
+       2: aload_0
+       3: astore_3
+       4: aload_3
+       5: arraylength
+       6: istore        4
+       8: iconst_0
+       9: istore        5
+      11: iload         5
+      13: iload         4
+      15: if_icmpge     63
+      18: aload_3
+      19: iload         5
+      21: aaload
+      22: astore        6
+      24: aload         6
+      26: invokevirtual #39                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting.HasValue:()Z
+      29: ifeq          57
+      32: aload_1
+      33: iconst_2
+      34: iload_2
+      35: imul
+      36: aload         6
+      38: invokevirtual #40                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting.GetSetting:()I
+      41: iastore
+      42: aload_1
+      43: iconst_2
+      44: iload_2
+      45: imul
+      46: iconst_1
+      47: iadd
+      48: aload         6
+      50: invokevirtual #41                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting.GetValue:()I
+      53: iastore
+      54: iinc          2, 1
+      57: iinc          5, 1
+      60: goto          11
+      63: iload_2
+      64: ireturn
+
+  private int[] CreateSpecFromSettings(com.ideaworks3d.marmalade.LoaderGL$ConfigSetting[]);
+    descriptor: ([Lcom/ideaworks3d/marmalade/LoaderGL$ConfigSetting;)[I
+    Code:
+       0: aload_1
+       1: invokestatic  #42                 // Method CountSettingsWithValue:([Lcom/ideaworks3d/marmalade/LoaderGL$ConfigSetting;)I
+       4: istore_2
+       5: aload_0
+       6: getfield      #11                 // Field m_GLVersion:I
+       9: iconst_2
+      10: if_icmplt     16
+      13: iinc          2, 1
+      16: iconst_2
+      17: iload_2
+      18: imul
+      19: iconst_1
+      20: iadd
+      21: newarray       int
+      23: astore_3
+      24: aload_1
+      25: aload_3
+      26: invokestatic  #43                 // Method CopySettingsWithValues:([Lcom/ideaworks3d/marmalade/LoaderGL$ConfigSetting;[I)I
+      29: istore        4
+      31: aload_0
+      32: getfield      #11                 // Field m_GLVersion:I
+      35: iconst_2
+      36: if_icmplt     60
+      39: aload_3
+      40: iconst_2
+      41: iload         4
+      43: imul
+      44: sipush        12352
+      47: iastore
+      48: aload_3
+      49: iconst_2
+      50: iload         4
+      52: imul
+      53: iconst_1
+      54: iadd
+      55: iconst_4
+      56: iastore
+      57: iinc          4, 1
+      60: aload_3
+      61: iconst_2
+      62: iload         4
+      64: imul
+      65: sipush        12344
+      68: iastore
+      69: aload_3
+      70: areturn
+
+  private void chooseConfigs();
+    descriptor: ()V
+    Code:
+       0: bipush        11
+       2: anewarray     #44                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+       5: dup
+       6: iconst_0
+       7: new           #44                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+      10: dup
+      11: aload_0
+      12: ldc           #45                 // String EGL_BUFFER_SIZE
+      14: sipush        12320
+      17: invokespecial #46                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting."<init>":(Lcom/ideaworks3d/marmalade/LoaderGL;Ljava/lang/String;I)V
+      20: aastore
+      21: dup
+      22: iconst_1
+      23: new           #44                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+      26: dup
+      27: aload_0
+      28: ldc           #47                 // String EGL_DEPTH_ENCODING_NV
+      30: sipush        12514
+      33: invokespecial #46                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting."<init>":(Lcom/ideaworks3d/marmalade/LoaderGL;Ljava/lang/String;I)V
+      36: aastore
+      37: dup
+      38: iconst_2
+      39: new           #44                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+      42: dup
+      43: aload_0
+      44: ldc           #48                 // String EGL_DEPTH_SIZE
+      46: sipush        12325
+      49: invokespecial #46                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting."<init>":(Lcom/ideaworks3d/marmalade/LoaderGL;Ljava/lang/String;I)V
+      52: aastore
+      53: dup
+      54: iconst_3
+      55: new           #44                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+      58: dup
+      59: aload_0
+      60: ldc           #49                 // String EGL_SURFACE_TYPE
+      62: sipush        12339
+      65: invokespecial #46                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting."<init>":(Lcom/ideaworks3d/marmalade/LoaderGL;Ljava/lang/String;I)V
+      68: aastore
+      69: dup
+      70: iconst_4
+      71: new           #44                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+      74: dup
+      75: aload_0
+      76: ldc           #50                 // String EGL_RED_SIZE
+      78: sipush        12324
+      81: invokespecial #46                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting."<init>":(Lcom/ideaworks3d/marmalade/LoaderGL;Ljava/lang/String;I)V
+      84: aastore
+      85: dup
+      86: iconst_5
+      87: new           #44                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+      90: dup
+      91: aload_0
+      92: ldc           #51                 // String EGL_GREEN_SIZE
+      94: sipush        12323
+      97: invokespecial #46                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting."<init>":(Lcom/ideaworks3d/marmalade/LoaderGL;Ljava/lang/String;I)V
+     100: aastore
+     101: dup
+     102: bipush        6
+     104: new           #44                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+     107: dup
+     108: aload_0
+     109: ldc           #52                 // String EGL_BLUE_SIZE
+     111: sipush        12322
+     114: invokespecial #46                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting."<init>":(Lcom/ideaworks3d/marmalade/LoaderGL;Ljava/lang/String;I)V
+     117: aastore
+     118: dup
+     119: bipush        7
+     121: new           #44                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+     124: dup
+     125: aload_0
+     126: ldc           #53                 // String EGL_ALPHA_SIZE
+     128: sipush        12321
+     131: invokespecial #46                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting."<init>":(Lcom/ideaworks3d/marmalade/LoaderGL;Ljava/lang/String;I)V
+     134: aastore
+     135: dup
+     136: bipush        8
+     138: new           #44                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+     141: dup
+     142: aload_0
+     143: ldc           #54                 // String EGL_STENCIL_SIZE
+     145: sipush        12326
+     148: invokespecial #46                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting."<init>":(Lcom/ideaworks3d/marmalade/LoaderGL;Ljava/lang/String;I)V
+     151: aastore
+     152: dup
+     153: bipush        9
+     155: new           #44                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+     158: dup
+     159: aload_0
+     160: ldc           #55                 // String EGL_SAMPLE_BUFFERS
+     162: sipush        12338
+     165: invokespecial #46                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting."<init>":(Lcom/ideaworks3d/marmalade/LoaderGL;Ljava/lang/String;I)V
+     168: aastore
+     169: dup
+     170: bipush        10
+     172: new           #44                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+     175: dup
+     176: aload_0
+     177: ldc           #56                 // String EGL_SAMPLES
+     179: sipush        12337
+     182: invokespecial #46                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting."<init>":(Lcom/ideaworks3d/marmalade/LoaderGL;Ljava/lang/String;I)V
+     185: aastore
+     186: astore_1
+     187: aconst_null
+     188: astore_2
+     189: iconst_1
+     190: newarray       int
+     192: astore_3
+     193: iconst_0
+     194: istore        4
+     196: aload_0
+     197: aload_1
+     198: invokespecial #57                 // Method CreateSpecFromSettings:([Lcom/ideaworks3d/marmalade/LoaderGL$ConfigSetting;)[I
+     201: astore_2
+     202: aload_0
+     203: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+     206: aload_0
+     207: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     210: aload_2
+     211: aconst_null
+     212: iconst_0
+     213: aload_3
+     214: invokeinterface #58,  6           // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglChooseConfig:(Ljavax/microedition/khronos/egl/EGLDisplay;[I[Ljavax/microedition/khronos/egl/EGLConfig;I[I)Z
+     219: pop
+     220: aload_3
+     221: iconst_0
+     222: iaload
+     223: ifeq          229
+     226: goto          366
+     229: iload         4
+     231: aload_1
+     232: arraylength
+     233: if_icmpge     356
+     236: aload_1
+     237: iload         4
+     239: aaload
+     240: astore        5
+     242: new           #17                 // class java/lang/StringBuilder
+     245: dup
+     246: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+     249: aload_0
+     250: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     253: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     256: aload_0
+     257: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     260: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     263: bipush        46
+     265: invokevirtual #21                 // Method java/lang/String.lastIndexOf:(I)I
+     268: iconst_1
+     269: iadd
+     270: invokevirtual #22                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     273: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     276: ldc           #24                 // String -
+     278: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     281: invokestatic  #25                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     284: invokevirtual #26                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     287: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     290: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     293: new           #17                 // class java/lang/StringBuilder
+     296: dup
+     297: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+     300: ldc           #59                 // String No matching egl configs... reverting setting:
+     302: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     305: aload         5
+     307: invokevirtual #60                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting.GetName:()Ljava/lang/String;
+     310: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     313: ldc           #61                 // String  :
+     315: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     318: aload         5
+     320: invokevirtual #41                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting.GetValue:()I
+     323: invokevirtual #62                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     326: ldc           #63                 // String  ->
+     328: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     331: aload         5
+     333: invokevirtual #64                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting.GetDefault:()I
+     336: invokevirtual #62                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     339: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     342: invokestatic  #30                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     345: aload         5
+     347: invokevirtual #65                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting.SetValueToDefault:()V
+     350: iinc          4, 1
+     353: goto          196
+     356: new           #66                 // class java/lang/RuntimeException
+     359: dup
+     360: ldc           #67                 // String Failed to choose an EGL config
+     362: invokespecial #68                 // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+     365: athrow
+     366: aload_3
+     367: iconst_0
+     368: iaload
+     369: istore        4
+     371: aload_0
+     372: iload         4
+     374: anewarray     #69                 // class javax/microedition/khronos/egl/EGLConfig
+     377: putfield      #12                 // Field m_EglConfigs:[Ljavax/microedition/khronos/egl/EGLConfig;
+     380: aload_0
+     381: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+     384: aload_0
+     385: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     388: aload_2
+     389: aload_0
+     390: getfield      #12                 // Field m_EglConfigs:[Ljavax/microedition/khronos/egl/EGLConfig;
+     393: iload         4
+     395: aload_3
+     396: invokeinterface #58,  6           // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglChooseConfig:(Ljavax/microedition/khronos/egl/EGLDisplay;[I[Ljavax/microedition/khronos/egl/EGLConfig;I[I)Z
+     401: pop
+     402: aload_0
+     403: getfield      #12                 // Field m_EglConfigs:[Ljavax/microedition/khronos/egl/EGLConfig;
+     406: iconst_0
+     407: aaload
+     408: astore        5
+     410: aload_0
+     411: aload_0
+     412: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+     415: aload_0
+     416: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     419: aload         5
+     421: sipush        12324
+     424: iconst_0
+     425: invokespecial #70                 // Method findConfigAttrib:(Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;II)I
+     428: istore        6
+     430: aload_0
+     431: aload_0
+     432: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+     435: aload_0
+     436: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     439: aload         5
+     441: sipush        12323
+     444: iconst_0
+     445: invokespecial #70                 // Method findConfigAttrib:(Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;II)I
+     448: istore        7
+     450: aload_0
+     451: aload_0
+     452: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+     455: aload_0
+     456: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     459: aload         5
+     461: sipush        12322
+     464: iconst_0
+     465: invokespecial #70                 // Method findConfigAttrib:(Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;II)I
+     468: istore        8
+     470: aload_0
+     471: aload_0
+     472: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+     475: aload_0
+     476: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     479: aload         5
+     481: sipush        12321
+     484: iconst_0
+     485: invokespecial #70                 // Method findConfigAttrib:(Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;II)I
+     488: istore        9
+     490: aload_0
+     491: aload_0
+     492: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+     495: aload_0
+     496: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     499: aload         5
+     501: sipush        12325
+     504: iconst_0
+     505: invokespecial #70                 // Method findConfigAttrib:(Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;II)I
+     508: istore        10
+     510: aload_0
+     511: aload_0
+     512: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+     515: aload_0
+     516: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     519: aload         5
+     521: sipush        12352
+     524: iconst_0
+     525: invokespecial #70                 // Method findConfigAttrib:(Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;II)I
+     528: istore        11
+     530: aload_0
+     531: aload_0
+     532: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+     535: aload_0
+     536: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     539: aload         5
+     541: sipush        12327
+     544: sipush        12344
+     547: invokespecial #70                 // Method findConfigAttrib:(Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;II)I
+     550: istore        12
+     552: new           #17                 // class java/lang/StringBuilder
+     555: dup
+     556: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+     559: aload_0
+     560: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     563: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     566: aload_0
+     567: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     570: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     573: bipush        46
+     575: invokevirtual #21                 // Method java/lang/String.lastIndexOf:(I)I
+     578: iconst_1
+     579: iadd
+     580: invokevirtual #22                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     583: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     586: ldc           #24                 // String -
+     588: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     591: invokestatic  #25                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     594: invokevirtual #26                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     597: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     600: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     603: new           #17                 // class java/lang/StringBuilder
+     606: dup
+     607: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+     610: ldc           #71                 // String EGLConfig: r:
+     612: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     615: iload         6
+     617: invokevirtual #62                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     620: ldc           #72                 // String  g:
+     622: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     625: iload         7
+     627: invokevirtual #62                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     630: ldc           #73                 // String  b:
+     632: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     635: iload         8
+     637: invokevirtual #62                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     640: ldc           #74                 // String  a:
+     642: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     645: iload         9
+     647: invokevirtual #62                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     650: ldc           #75                 // String  d:
+     652: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     655: iload         10
+     657: invokevirtual #62                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     660: ldc           #76                 // String  renderable_type:
+     662: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     665: iload         11
+     667: invokevirtual #62                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     670: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     673: invokestatic  #30                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     676: return
+
+  private int findConfigAttrib(javax.microedition.khronos.egl.EGL10, javax.microedition.khronos.egl.EGLDisplay, javax.microedition.khronos.egl.EGLConfig, int, int);
+    descriptor: (Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;II)I
+    Code:
+       0: iconst_1
+       1: newarray       int
+       3: astore        6
+       5: aload_1
+       6: aload_2
+       7: aload_3
+       8: iload         4
+      10: aload         6
+      12: invokeinterface #77,  5           // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglGetConfigAttrib:(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;I[I)Z
+      17: ifeq          25
+      20: aload         6
+      22: iconst_0
+      23: iaload
+      24: ireturn
+      25: iload         5
+      27: ireturn
+
+  public void swap();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+       4: aload_0
+       5: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+       8: aload_0
+       9: getfield      #33                 // Field m_EglSurface:Ljavax/microedition/khronos/egl/EGLSurface;
+      12: invokeinterface #78,  3           // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglSwapBuffers:(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLSurface;)Z
+      17: pop
+      18: return
+
+  public javax.microedition.khronos.opengles.GL restartGL(android.view.SurfaceHolder);
+    descriptor: (Landroid/view/SurfaceHolder;)Ljavax/microedition/khronos/opengles/GL;
+    Code:
+       0: new           #17                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #21                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #22                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #24                 // String -
+      36: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #25                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #26                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: new           #17                 // class java/lang/StringBuilder
+      54: dup
+      55: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+      58: ldc           #79                 // String restartGL:
+      60: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      63: aload_1
+      64: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      67: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      70: invokestatic  #30                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      73: aload_0
+      74: invokespecial #80                 // Method stop:()V
+      77: aload_0
+      78: aload_1
+      79: aload_0
+      80: getfield      #11                 // Field m_GLVersion:I
+      83: invokevirtual #81                 // Method startGL:(Landroid/view/SurfaceHolder;I)Ljavax/microedition/khronos/opengles/GL;
+      86: areturn
+
+  public void stopGL();
+    descriptor: ()V
+    Code:
+       0: new           #17                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #21                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #22                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #24                 // String -
+      36: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #25                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #26                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: ldc           #82                 // String stopGL
+      53: invokestatic  #30                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      56: aload_0
+      57: invokespecial #80                 // Method stop:()V
+      60: aload_0
+      61: invokevirtual #83                 // Method term:()V
+      64: return
+
+  public void pauseGL();
+    descriptor: ()V
+    Code:
+       0: new           #17                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #21                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #22                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #24                 // String -
+      36: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #25                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #26                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: ldc           #84                 // String pauseGL
+      53: invokestatic  #30                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      56: aload_0
+      57: invokespecial #80                 // Method stop:()V
+      60: return
+
+  public javax.microedition.khronos.opengles.GL resumeGL(android.view.SurfaceHolder);
+    descriptor: (Landroid/view/SurfaceHolder;)Ljavax/microedition/khronos/opengles/GL;
+    Code:
+       0: new           #17                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #21                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #22                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #24                 // String -
+      36: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #25                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #26                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: new           #17                 // class java/lang/StringBuilder
+      54: dup
+      55: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+      58: ldc           #85                 // String resumeGL:
+      60: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      63: aload_1
+      64: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      67: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      70: invokestatic  #30                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      73: aload_0
+      74: aload_1
+      75: aload_0
+      76: getfield      #11                 // Field m_GLVersion:I
+      79: invokevirtual #81                 // Method startGL:(Landroid/view/SurfaceHolder;I)Ljavax/microedition/khronos/opengles/GL;
+      82: areturn
+
+  private void stop();
+    descriptor: ()V
+    Code:
+       0: new           #17                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #21                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #22                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #24                 // String -
+      36: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #25                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #26                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: new           #17                 // class java/lang/StringBuilder
+      54: dup
+      55: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+      58: ldc           #86                 // String stop :
+      60: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      63: invokestatic  #25                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      66: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      69: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      72: invokestatic  #30                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      75: new           #17                 // class java/lang/StringBuilder
+      78: dup
+      79: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+      82: aload_0
+      83: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      86: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      89: aload_0
+      90: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      93: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      96: bipush        46
+      98: invokevirtual #21                 // Method java/lang/String.lastIndexOf:(I)I
+     101: iconst_1
+     102: iadd
+     103: invokevirtual #22                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     106: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     109: ldc           #24                 // String -
+     111: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     114: invokestatic  #25                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     117: invokevirtual #26                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     120: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     123: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     126: new           #17                 // class java/lang/StringBuilder
+     129: dup
+     130: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+     133: ldc           #87                 // String surface :
+     135: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     138: aload_0
+     139: getfield      #33                 // Field m_EglSurface:Ljavax/microedition/khronos/egl/EGLSurface;
+     142: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+     145: ldc           #88                 // String display :
+     147: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     150: aload_0
+     151: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     154: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+     157: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     160: invokestatic  #30                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     163: new           #17                 // class java/lang/StringBuilder
+     166: dup
+     167: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+     170: aload_0
+     171: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     174: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     177: aload_0
+     178: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     181: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     184: bipush        46
+     186: invokevirtual #21                 // Method java/lang/String.lastIndexOf:(I)I
+     189: iconst_1
+     190: iadd
+     191: invokevirtual #22                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     194: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     197: ldc           #24                 // String -
+     199: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     202: invokestatic  #25                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     205: invokevirtual #26                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     208: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     211: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     214: new           #17                 // class java/lang/StringBuilder
+     217: dup
+     218: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+     221: ldc           #89                 // String eglGetDisplay :
+     223: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     226: aload_0
+     227: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+     230: getstatic     #6                  // Field javax/microedition/khronos/egl/EGL10.EGL_DEFAULT_DISPLAY:Ljava/lang/Object;
+     233: invokeinterface #7,  2            // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglGetDisplay:(Ljava/lang/Object;)Ljavax/microedition/khronos/egl/EGLDisplay;
+     238: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+     241: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     244: invokestatic  #30                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     247: aload_0
+     248: iconst_0
+     249: putfield      #2                  // Field m_Started:Z
+     252: aload_0
+     253: getfield      #33                 // Field m_EglSurface:Ljavax/microedition/khronos/egl/EGLSurface;
+     256: ifnull        417
+     259: new           #17                 // class java/lang/StringBuilder
+     262: dup
+     263: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+     266: aload_0
+     267: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     270: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     273: aload_0
+     274: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     277: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     280: bipush        46
+     282: invokevirtual #21                 // Method java/lang/String.lastIndexOf:(I)I
+     285: iconst_1
+     286: iadd
+     287: invokevirtual #22                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     290: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     293: ldc           #24                 // String -
+     295: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     298: invokestatic  #25                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     301: invokevirtual #26                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     304: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     307: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     310: ldc           #90                 // String --> eglMakeCurrent
+     312: invokestatic  #30                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     315: aload_0
+     316: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+     319: aload_0
+     320: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     323: getstatic     #91                 // Field javax/microedition/khronos/egl/EGL10.EGL_NO_SURFACE:Ljavax/microedition/khronos/egl/EGLSurface;
+     326: getstatic     #91                 // Field javax/microedition/khronos/egl/EGL10.EGL_NO_SURFACE:Ljavax/microedition/khronos/egl/EGLSurface;
+     329: getstatic     #13                 // Field javax/microedition/khronos/egl/EGL10.EGL_NO_CONTEXT:Ljavax/microedition/khronos/egl/EGLContext;
+     332: invokeinterface #34,  5           // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglMakeCurrent:(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLSurface;Ljavax/microedition/khronos/egl/EGLSurface;Ljavax/microedition/khronos/egl/EGLContext;)Z
+     337: pop
+     338: new           #17                 // class java/lang/StringBuilder
+     341: dup
+     342: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+     345: aload_0
+     346: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     349: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     352: aload_0
+     353: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     356: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     359: bipush        46
+     361: invokevirtual #21                 // Method java/lang/String.lastIndexOf:(I)I
+     364: iconst_1
+     365: iadd
+     366: invokevirtual #22                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     369: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     372: ldc           #24                 // String -
+     374: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     377: invokestatic  #25                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     380: invokevirtual #26                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     383: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     386: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     389: ldc           #92                 // String <-- eglMakeCurrent
+     391: invokestatic  #30                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     394: aload_0
+     395: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+     398: aload_0
+     399: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     402: aload_0
+     403: getfield      #33                 // Field m_EglSurface:Ljavax/microedition/khronos/egl/EGLSurface;
+     406: invokeinterface #93,  3           // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglDestroySurface:(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLSurface;)Z
+     411: pop
+     412: aload_0
+     413: aconst_null
+     414: putfield      #33                 // Field m_EglSurface:Ljavax/microedition/khronos/egl/EGLSurface;
+     417: return
+
+  public void term();
+    descriptor: ()V
+    Code:
+       0: new           #17                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #19                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #20                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #21                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #22                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #24                 // String -
+      36: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #25                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #26                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #23                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #27                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: ldc           #94                 // String term
+      53: invokestatic  #30                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      56: aload_0
+      57: getfield      #15                 // Field m_EglContext:Ljavax/microedition/khronos/egl/EGLContext;
+      60: ifnull        86
+      63: aload_0
+      64: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+      67: aload_0
+      68: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+      71: aload_0
+      72: getfield      #15                 // Field m_EglContext:Ljavax/microedition/khronos/egl/EGLContext;
+      75: invokeinterface #95,  3           // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglDestroyContext:(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLContext;)Z
+      80: pop
+      81: aload_0
+      82: aconst_null
+      83: putfield      #15                 // Field m_EglContext:Ljavax/microedition/khronos/egl/EGLContext;
+      86: aload_0
+      87: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+      90: ifnull        112
+      93: aload_0
+      94: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+      97: aload_0
+      98: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     101: invokeinterface #96,  2           // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglTerminate:(Ljavax/microedition/khronos/egl/EGLDisplay;)Z
+     106: pop
+     107: aload_0
+     108: aconst_null
+     109: putfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     112: aload_0
+     113: iconst_0
+     114: putfield      #16                 // Field m_DoneInit:Z
+     117: return
+}

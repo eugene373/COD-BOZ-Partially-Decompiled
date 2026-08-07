@@ -1,0 +1,508 @@
+Compiled from "SoundRecord.java"
+public class com.ideaworks3d.marmalade.SoundRecord implements android.media.AudioRecord$OnRecordPositionUpdateListener {
+  private android.media.AudioRecord m_AudioRecord;
+    descriptor: Landroid/media/AudioRecord;
+
+  private short[] m_Buffer;
+    descriptor: [S
+
+  private int m_BufSize;
+    descriptor: I
+
+  private int m_Period;
+    descriptor: I
+
+  private int m_Frequency;
+    descriptor: I
+
+  private int m_BufferSizeHintMs;
+    descriptor: I
+
+  private static final int PERIODS_IN_BUFFER = 2;
+    descriptor: I
+
+  public com.ideaworks3d.marmalade.SoundRecord();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aconst_null
+       6: putfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+       9: return
+
+  private native void recordAudio(short[], int, int);
+    descriptor: ([SII)V
+
+  public static int available();
+    descriptor: ()I
+    Code:
+       0: getstatic     #3                  // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       3: invokevirtual #4                  // Method com/ideaworks3d/marmalade/LoaderActivity.getPackageManager:()Landroid/content/pm/PackageManager;
+       6: ldc           #5                  // String android.hardware.microphone
+       8: invokevirtual #6                  // Method android/content/pm/PackageManager.hasSystemFeature:(Ljava/lang/String;)Z
+      11: ifeq          18
+      14: iconst_1
+      15: goto          19
+      18: iconst_0
+      19: ireturn
+
+  public int start(int, int);
+    descriptor: (II)I
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+       4: ifnonnull     13
+       7: invokestatic  #7                  // Method available:()I
+      10: ifne          15
+      13: iconst_0
+      14: ireturn
+      15: iload_1
+      16: iconst_m1
+      17: if_icmpeq     25
+      20: aload_0
+      21: iload_1
+      22: putfield      #8                  // Field m_Frequency:I
+      25: iload_2
+      26: iconst_m1
+      27: if_icmpeq     35
+      30: aload_0
+      31: iload_2
+      32: putfield      #9                  // Field m_BufferSizeHintMs:I
+      35: bipush        16
+      37: istore_3
+      38: iconst_2
+      39: istore        4
+      41: aload_0
+      42: aload_0
+      43: getfield      #8                  // Field m_Frequency:I
+      46: iload_3
+      47: iload         4
+      49: invokestatic  #10                 // Method android/media/AudioRecord.getMinBufferSize:(III)I
+      52: putfield      #11                 // Field m_BufSize:I
+      55: aload_0
+      56: getfield      #11                 // Field m_BufSize:I
+      59: bipush        -2
+      61: if_icmpne     177
+      64: new           #12                 // class java/lang/StringBuilder
+      67: dup
+      68: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      71: aload_0
+      72: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      75: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      78: aload_0
+      79: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      82: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      85: bipush        46
+      87: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      90: iconst_1
+      91: iadd
+      92: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      95: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      98: ldc           #19                 // String -
+     100: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     103: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     106: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     109: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     112: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     115: new           #12                 // class java/lang/StringBuilder
+     118: dup
+     119: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     122: ldc           #23                 // String Frequency:
+     124: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     127: aload_0
+     128: getfield      #8                  // Field m_Frequency:I
+     131: invokevirtual #24                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     134: ldc           #25                 // String  is unsupported on this device. Defaulting to 8000Hz
+     136: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     139: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     142: invokestatic  #26                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     145: aload_0
+     146: sipush        8000
+     149: putfield      #8                  // Field m_Frequency:I
+     152: aload_0
+     153: aload_0
+     154: getfield      #8                  // Field m_Frequency:I
+     157: iload_3
+     158: iload         4
+     160: invokestatic  #10                 // Method android/media/AudioRecord.getMinBufferSize:(III)I
+     163: putfield      #11                 // Field m_BufSize:I
+     166: aload_0
+     167: getfield      #11                 // Field m_BufSize:I
+     170: bipush        -2
+     172: if_icmpne     177
+     175: iconst_0
+     176: ireturn
+     177: aload_0
+     178: getfield      #9                  // Field m_BufferSizeHintMs:I
+     181: ifle          221
+     184: aload_0
+     185: getfield      #8                  // Field m_Frequency:I
+     188: aload_0
+     189: getfield      #9                  // Field m_BufferSizeHintMs:I
+     192: imul
+     193: sipush        999
+     196: iadd
+     197: sipush        1000
+     200: idiv
+     201: istore        5
+     203: iload         5
+     205: aload_0
+     206: getfield      #11                 // Field m_BufSize:I
+     209: if_icmple     218
+     212: aload_0
+     213: iload         5
+     215: putfield      #11                 // Field m_BufSize:I
+     218: goto          241
+     221: aload_0
+     222: getfield      #11                 // Field m_BufSize:I
+     225: sipush        4096
+     228: if_icmpgt     241
+     231: aload_0
+     232: aload_0
+     233: getfield      #11                 // Field m_BufSize:I
+     236: iconst_2
+     237: imul
+     238: putfield      #11                 // Field m_BufSize:I
+     241: aload_0
+     242: aload_0
+     243: getfield      #11                 // Field m_BufSize:I
+     246: iconst_2
+     247: idiv
+     248: putfield      #27                 // Field m_Period:I
+     251: new           #12                 // class java/lang/StringBuilder
+     254: dup
+     255: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     258: aload_0
+     259: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     262: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     265: aload_0
+     266: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     269: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     272: bipush        46
+     274: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     277: iconst_1
+     278: iadd
+     279: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     282: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     285: ldc           #19                 // String -
+     287: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     290: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     293: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     296: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     299: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     302: new           #12                 // class java/lang/StringBuilder
+     305: dup
+     306: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     309: ldc           #28                 // String record m_Frequency =
+     311: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     314: aload_0
+     315: getfield      #8                  // Field m_Frequency:I
+     318: invokevirtual #24                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     321: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     324: invokestatic  #26                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     327: new           #12                 // class java/lang/StringBuilder
+     330: dup
+     331: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     334: aload_0
+     335: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     338: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     341: aload_0
+     342: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     345: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     348: bipush        46
+     350: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     353: iconst_1
+     354: iadd
+     355: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     358: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     361: ldc           #19                 // String -
+     363: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     366: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     369: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     372: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     375: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     378: new           #12                 // class java/lang/StringBuilder
+     381: dup
+     382: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     385: ldc           #29                 // String record min bufsize (bytes) =
+     387: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     390: aload_0
+     391: getfield      #11                 // Field m_BufSize:I
+     394: iconst_2
+     395: imul
+     396: invokevirtual #24                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     399: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     402: invokestatic  #26                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     405: new           #12                 // class java/lang/StringBuilder
+     408: dup
+     409: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     412: aload_0
+     413: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     416: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     419: aload_0
+     420: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     423: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     426: bipush        46
+     428: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     431: iconst_1
+     432: iadd
+     433: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     436: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     439: ldc           #19                 // String -
+     441: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     444: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     447: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     450: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     453: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     456: new           #12                 // class java/lang/StringBuilder
+     459: dup
+     460: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     463: ldc           #30                 // String record min delay (mills) =
+     465: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     468: aload_0
+     469: getfield      #11                 // Field m_BufSize:I
+     472: sipush        1000
+     475: imul
+     476: aload_0
+     477: getfield      #8                  // Field m_Frequency:I
+     480: idiv
+     481: invokevirtual #24                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     484: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     487: invokestatic  #26                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     490: aload_0
+     491: aload_0
+     492: getfield      #11                 // Field m_BufSize:I
+     495: newarray       short
+     497: putfield      #31                 // Field m_Buffer:[S
+     500: aload_0
+     501: new           #32                 // class android/media/AudioRecord
+     504: dup
+     505: iconst_1
+     506: aload_0
+     507: getfield      #8                  // Field m_Frequency:I
+     510: iload_3
+     511: iload         4
+     513: aload_0
+     514: getfield      #11                 // Field m_BufSize:I
+     517: invokespecial #33                 // Method android/media/AudioRecord."<init>":(IIIII)V
+     520: putfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+     523: aload_0
+     524: getfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+     527: aload_0
+     528: invokevirtual #34                 // Method android/media/AudioRecord.setRecordPositionUpdateListener:(Landroid/media/AudioRecord$OnRecordPositionUpdateListener;)V
+     531: aload_0
+     532: getfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+     535: aload_0
+     536: getfield      #27                 // Field m_Period:I
+     539: invokevirtual #35                 // Method android/media/AudioRecord.setPositionNotificationPeriod:(I)I
+     542: pop
+     543: aload_0
+     544: getfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+     547: invokevirtual #36                 // Method android/media/AudioRecord.startRecording:()V
+     550: goto          634
+     553: astore        5
+     555: new           #12                 // class java/lang/StringBuilder
+     558: dup
+     559: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     562: aload_0
+     563: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     566: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     569: aload_0
+     570: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     573: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     576: bipush        46
+     578: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     581: iconst_1
+     582: iadd
+     583: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     586: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     589: ldc           #19                 // String -
+     591: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     594: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     597: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     600: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     603: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     606: new           #12                 // class java/lang/StringBuilder
+     609: dup
+     610: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     613: ldc           #38                 // String Exception:
+     615: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     618: aload         5
+     620: invokevirtual #39                 // Method java/lang/IllegalStateException.toString:()Ljava/lang/String;
+     623: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     626: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     629: invokestatic  #26                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     632: iconst_0
+     633: ireturn
+     634: new           #12                 // class java/lang/StringBuilder
+     637: dup
+     638: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     641: aload_0
+     642: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     645: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     648: aload_0
+     649: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     652: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     655: bipush        46
+     657: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     660: iconst_1
+     661: iadd
+     662: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     665: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     668: ldc           #19                 // String -
+     670: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     673: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     676: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     679: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     682: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     685: ldc           #40                 // String recording ...
+     687: invokestatic  #26                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     690: aload_0
+     691: getfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+     694: aload_0
+     695: getfield      #31                 // Field m_Buffer:[S
+     698: iconst_0
+     699: aload_0
+     700: getfield      #27                 // Field m_Period:I
+     703: invokevirtual #41                 // Method android/media/AudioRecord.read:([SII)I
+     706: istore        5
+     708: aload_0
+     709: aload_0
+     710: getfield      #31                 // Field m_Buffer:[S
+     713: iload         5
+     715: aload_0
+     716: getfield      #8                  // Field m_Frequency:I
+     719: invokespecial #42                 // Method recordAudio:([SII)V
+     722: new           #12                 // class java/lang/StringBuilder
+     725: dup
+     726: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     729: aload_0
+     730: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     733: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     736: aload_0
+     737: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     740: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     743: bipush        46
+     745: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     748: iconst_1
+     749: iadd
+     750: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     753: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     756: ldc           #19                 // String -
+     758: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     761: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     764: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     767: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     770: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     773: new           #12                 // class java/lang/StringBuilder
+     776: dup
+     777: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     780: ldc           #43                 // String recording working
+     782: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     785: iload         5
+     787: invokevirtual #24                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     790: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     793: invokestatic  #26                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     796: aload_0
+     797: getfield      #8                  // Field m_Frequency:I
+     800: ireturn
+    Exception table:
+       from    to  target type
+         543   550   553   Class java/lang/IllegalStateException
+
+  public void onMarkerReached(android.media.AudioRecord);
+    descriptor: (Landroid/media/AudioRecord;)V
+    Code:
+       0: return
+
+  public void onPeriodicNotification(android.media.AudioRecord);
+    descriptor: (Landroid/media/AudioRecord;)V
+    Code:
+       0: aload_1
+       1: aload_0
+       2: getfield      #31                 // Field m_Buffer:[S
+       5: iconst_0
+       6: aload_0
+       7: getfield      #27                 // Field m_Period:I
+      10: invokevirtual #41                 // Method android/media/AudioRecord.read:([SII)I
+      13: istore_2
+      14: aload_0
+      15: aload_0
+      16: getfield      #31                 // Field m_Buffer:[S
+      19: iload_2
+      20: aload_0
+      21: getfield      #8                  // Field m_Frequency:I
+      24: invokespecial #42                 // Method recordAudio:([SII)V
+      27: return
+
+  public int stop();
+    descriptor: ()I
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+       4: ifnonnull     9
+       7: iconst_1
+       8: ireturn
+       9: new           #12                 // class java/lang/StringBuilder
+      12: dup
+      13: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      16: aload_0
+      17: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      20: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      23: aload_0
+      24: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      27: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      30: bipush        46
+      32: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      35: iconst_1
+      36: iadd
+      37: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      40: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      43: ldc           #19                 // String -
+      45: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      51: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      54: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      57: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      60: ldc           #44                 // String stopping recording
+      62: invokestatic  #26                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      65: aload_0
+      66: getfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+      69: aconst_null
+      70: invokevirtual #34                 // Method android/media/AudioRecord.setRecordPositionUpdateListener:(Landroid/media/AudioRecord$OnRecordPositionUpdateListener;)V
+      73: aload_0
+      74: getfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+      77: invokevirtual #45                 // Method android/media/AudioRecord.stop:()V
+      80: aload_0
+      81: getfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+      84: invokevirtual #46                 // Method android/media/AudioRecord.release:()V
+      87: aload_0
+      88: aconst_null
+      89: putfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+      92: new           #12                 // class java/lang/StringBuilder
+      95: dup
+      96: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      99: aload_0
+     100: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     103: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     106: aload_0
+     107: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     110: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     113: bipush        46
+     115: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     118: iconst_1
+     119: iadd
+     120: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     123: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     126: ldc           #19                 // String -
+     128: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     131: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     134: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     137: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     140: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     143: ldc           #47                 // String done stopping recording
+     145: invokestatic  #26                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     148: iconst_0
+     149: ireturn
+}

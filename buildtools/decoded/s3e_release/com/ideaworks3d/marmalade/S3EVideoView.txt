@@ -1,0 +1,451 @@
+Compiled from "S3EVideoView.java"
+public class com.ideaworks3d.marmalade.S3EVideoView extends android.widget.VideoView implements android.media.MediaPlayer$OnPreparedListener,android.media.MediaPlayer$OnCompletionListener,android.media.MediaPlayer$OnErrorListener,com.ideaworks3d.marmalade.SuspendResumeListener {
+  public static final int S3E_VIDEO_STOPPED = 0;
+    descriptor: I
+
+  public static final int S3E_VIDEO_PLAYING = 1;
+    descriptor: I
+
+  public static final int S3E_VIDEO_PAUSED = 2;
+    descriptor: I
+
+  public static final int S3E_VIDEO_FAILED = 3;
+    descriptor: I
+
+  public static final int S3E_VIDEO_MAX_VOLUME = 256;
+    descriptor: I
+
+  private com.ideaworks3d.marmalade.LoaderActivity m_LoaderActivity;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderActivity;
+
+  private java.lang.String m_Path;
+    descriptor: Ljava/lang/String;
+
+  private android.net.Uri m_Uri;
+    descriptor: Landroid/net/Uri;
+
+  private int m_Repeats;
+    descriptor: I
+
+  private boolean m_Fullscreen;
+    descriptor: Z
+
+  private int m_Width;
+    descriptor: I
+
+  private int m_Height;
+    descriptor: I
+
+  private android.media.MediaPlayer m_MediaPlayer;
+    descriptor: Landroid/media/MediaPlayer;
+
+  private float m_Volume;
+    descriptor: F
+
+  private int m_StoredPos;
+    descriptor: I
+
+  private boolean m_PausedBeforeSuspend;
+    descriptor: Z
+
+  private android.widget.FrameLayout m_FullScreenView;
+    descriptor: Landroid/widget/FrameLayout;
+
+  public com.ideaworks3d.marmalade.S3EVideoView(com.ideaworks3d.marmalade.LoaderActivity);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderActivity;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method android/widget/VideoView."<init>":(Landroid/content/Context;)V
+       5: aload_0
+       6: fconst_1
+       7: putfield      #2                  // Field m_Volume:F
+      10: aload_0
+      11: iconst_0
+      12: putfield      #3                  // Field m_StoredPos:I
+      15: aload_0
+      16: iconst_0
+      17: putfield      #4                  // Field m_PausedBeforeSuspend:Z
+      20: aload_0
+      21: aconst_null
+      22: putfield      #5                  // Field m_FullScreenView:Landroid/widget/FrameLayout;
+      25: aload_0
+      26: aload_1
+      27: putfield      #6                  // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      30: aload_0
+      31: aload_0
+      32: invokevirtual #7                  // Method setOnPreparedListener:(Landroid/media/MediaPlayer$OnPreparedListener;)V
+      35: aload_0
+      36: aload_0
+      37: invokevirtual #8                  // Method setOnCompletionListener:(Landroid/media/MediaPlayer$OnCompletionListener;)V
+      40: aload_0
+      41: aload_0
+      42: invokevirtual #9                  // Method setOnErrorListener:(Landroid/media/MediaPlayer$OnErrorListener;)V
+      45: aload_0
+      46: invokestatic  #10                 // Method com/ideaworks3d/marmalade/LoaderAPI.addSuspendResumeListener:(Lcom/ideaworks3d/marmalade/SuspendResumeListener;)V
+      49: return
+
+  public int videoGetPosition();
+    descriptor: ()I
+    Code:
+       0: aload_0
+       1: invokevirtual #11                 // Method getCurrentPosition:()I
+       4: ireturn
+       5: astore_1
+       6: iconst_0
+       7: ireturn
+    Exception table:
+       from    to  target type
+           0     4     5   Class java/lang/IllegalStateException
+
+  public int videoPlay(java.lang.String, int, long, long);
+    descriptor: (Ljava/lang/String;IJJ)I
+    Code:
+       0: aload_0
+       1: iload_2
+       2: putfield      #13                 // Field m_Repeats:I
+       5: lload         5
+       7: lconst_0
+       8: lcmp
+       9: ifne          28
+      12: aload_0
+      13: aload_1
+      14: putfield      #14                 // Field m_Path:Ljava/lang/String;
+      17: aload_0
+      18: aload_0
+      19: getfield      #14                 // Field m_Path:Ljava/lang/String;
+      22: invokevirtual #15                 // Method setVideoPath:(Ljava/lang/String;)V
+      25: goto          87
+      28: aload_0
+      29: new           #16                 // class java/lang/StringBuilder
+      32: dup
+      33: invokespecial #17                 // Method java/lang/StringBuilder."<init>":()V
+      36: getstatic     #18                 // Field com/ideaworks3d/marmalade/VFSProvider.ASSET_URI:Landroid/net/Uri;
+      39: invokevirtual #19                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      42: ldc           #20                 // String /
+      44: invokevirtual #21                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      47: aload_1
+      48: invokevirtual #21                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      51: ldc           #20                 // String /
+      53: invokevirtual #21                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      56: lload_3
+      57: invokevirtual #22                 // Method java/lang/StringBuilder.append:(J)Ljava/lang/StringBuilder;
+      60: ldc           #20                 // String /
+      62: invokevirtual #21                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      65: lload         5
+      67: invokevirtual #22                 // Method java/lang/StringBuilder.append:(J)Ljava/lang/StringBuilder;
+      70: invokevirtual #23                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      73: invokestatic  #24                 // Method android/net/Uri.parse:(Ljava/lang/String;)Landroid/net/Uri;
+      76: putfield      #25                 // Field m_Uri:Landroid/net/Uri;
+      79: aload_0
+      80: aload_0
+      81: getfield      #25                 // Field m_Uri:Landroid/net/Uri;
+      84: invokevirtual #26                 // Method setVideoURI:(Landroid/net/Uri;)V
+      87: iconst_0
+      88: ireturn
+
+  public void videoPause();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: aload_0
+       2: invokevirtual #11                 // Method getCurrentPosition:()I
+       5: putfield      #3                  // Field m_StoredPos:I
+       8: aload_0
+       9: invokevirtual #27                 // Method pause:()V
+      12: return
+
+  public void videoResume();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: aload_0
+       2: getfield      #3                  // Field m_StoredPos:I
+       5: invokevirtual #28                 // Method seekTo:(I)V
+       8: aload_0
+       9: getfield      #4                  // Field m_PausedBeforeSuspend:Z
+      12: ifeq          25
+      15: aload_0
+      16: iconst_0
+      17: putfield      #4                  // Field m_PausedBeforeSuspend:Z
+      20: aload_0
+      21: invokevirtual #27                 // Method pause:()V
+      24: return
+      25: aload_0
+      26: invokevirtual #29                 // Method start:()V
+      29: return
+
+  public void onSuspendResumeEvent(com.ideaworks3d.marmalade.SuspendResumeEvent);
+    descriptor: (Lcom/ideaworks3d/marmalade/SuspendResumeEvent;)V
+    Code:
+       0: aload_1
+       1: getfield      #30                 // Field com/ideaworks3d/marmalade/SuspendResumeEvent.eventType:Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+       4: getstatic     #31                 // Field com/ideaworks3d/marmalade/SuspendResumeEvent$EventType.SUSPEND:Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+       7: if_acmpne     37
+      10: aload_0
+      11: aload_0
+      12: getfield      #32                 // Field m_MediaPlayer:Landroid/media/MediaPlayer;
+      15: ifnull        25
+      18: aload_0
+      19: invokevirtual #33                 // Method isPlaying:()Z
+      22: ifne          29
+      25: iconst_1
+      26: goto          30
+      29: iconst_0
+      30: putfield      #4                  // Field m_PausedBeforeSuspend:Z
+      33: aload_0
+      34: invokevirtual #34                 // Method videoPause:()V
+      37: return
+
+  public void videoStop();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: aconst_null
+       2: putfield      #32                 // Field m_MediaPlayer:Landroid/media/MediaPlayer;
+       5: aload_0
+       6: iconst_0
+       7: putfield      #3                  // Field m_StoredPos:I
+      10: aload_0
+      11: invokevirtual #35                 // Method stopPlayback:()V
+      14: return
+
+  public void videoAddView(boolean, int, int, int, int);
+    descriptor: (ZIIII)V
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #36                 // Field m_Fullscreen:Z
+       5: aload_0
+       6: iload         4
+       8: putfield      #37                 // Field m_Width:I
+      11: aload_0
+      12: iload         5
+      14: putfield      #38                 // Field m_Height:I
+      17: iload_1
+      18: ifeq          97
+      21: new           #39                 // class android/widget/FrameLayout$LayoutParams
+      24: dup
+      25: iconst_m1
+      26: iconst_m1
+      27: bipush        17
+      29: invokespecial #40                 // Method android/widget/FrameLayout$LayoutParams."<init>":(III)V
+      32: astore        6
+      34: aload_0
+      35: iconst_0
+      36: putfield      #37                 // Field m_Width:I
+      39: aload_0
+      40: iconst_0
+      41: putfield      #38                 // Field m_Height:I
+      44: aload_0
+      45: new           #41                 // class android/widget/FrameLayout
+      48: dup
+      49: aload_0
+      50: getfield      #6                  // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      53: invokespecial #42                 // Method android/widget/FrameLayout."<init>":(Landroid/content/Context;)V
+      56: putfield      #5                  // Field m_FullScreenView:Landroid/widget/FrameLayout;
+      59: aload_0
+      60: getfield      #5                  // Field m_FullScreenView:Landroid/widget/FrameLayout;
+      63: aload_0
+      64: aload         6
+      66: invokevirtual #43                 // Method android/widget/FrameLayout.addView:(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+      69: aload_0
+      70: getfield      #5                  // Field m_FullScreenView:Landroid/widget/FrameLayout;
+      73: ldc           #44                 // int -16777216
+      75: invokevirtual #45                 // Method android/widget/FrameLayout.setBackgroundColor:(I)V
+      78: aload_0
+      79: getfield      #6                  // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      82: getfield      #46                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_FrameLayout:Landroid/widget/FrameLayout;
+      85: aload_0
+      86: getfield      #5                  // Field m_FullScreenView:Landroid/widget/FrameLayout;
+      89: aload         6
+      91: invokevirtual #43                 // Method android/widget/FrameLayout.addView:(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+      94: goto          135
+      97: new           #47                 // class android/widget/RelativeLayout$LayoutParams
+     100: dup
+     101: iload         4
+     103: iload         5
+     105: invokespecial #48                 // Method android/widget/RelativeLayout$LayoutParams."<init>":(II)V
+     108: astore        6
+     110: aload         6
+     112: iload_2
+     113: putfield      #49                 // Field android/widget/RelativeLayout$LayoutParams.leftMargin:I
+     116: aload         6
+     118: iload_3
+     119: putfield      #50                 // Field android/widget/RelativeLayout$LayoutParams.topMargin:I
+     122: aload_0
+     123: getfield      #6                  // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+     126: getfield      #51                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_TopLevel:Landroid/widget/RelativeLayout;
+     129: aload_0
+     130: aload         6
+     132: invokevirtual #52                 // Method android/widget/RelativeLayout.addView:(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+     135: aload_0
+     136: iconst_1
+     137: invokevirtual #53                 // Method setZOrderOnTop:(Z)V
+     140: return
+
+  public void videoRemoveView();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #36                 // Field m_Fullscreen:Z
+       4: ifeq          29
+       7: aload_0
+       8: getfield      #6                  // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      11: getfield      #46                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_FrameLayout:Landroid/widget/FrameLayout;
+      14: aload_0
+      15: getfield      #5                  // Field m_FullScreenView:Landroid/widget/FrameLayout;
+      18: invokevirtual #54                 // Method android/widget/FrameLayout.removeView:(Landroid/view/View;)V
+      21: aload_0
+      22: aconst_null
+      23: putfield      #5                  // Field m_FullScreenView:Landroid/widget/FrameLayout;
+      26: goto          40
+      29: aload_0
+      30: getfield      #6                  // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      33: getfield      #51                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_TopLevel:Landroid/widget/RelativeLayout;
+      36: aload_0
+      37: invokevirtual #55                 // Method android/widget/RelativeLayout.removeView:(Landroid/view/View;)V
+      40: return
+
+  public void videoSetVolume(int);
+    descriptor: (I)V
+    Code:
+       0: aload_0
+       1: iload_1
+       2: i2f
+       3: ldc           #56                 // float 256.0f
+       5: fdiv
+       6: putfield      #2                  // Field m_Volume:F
+       9: aload_0
+      10: getfield      #32                 // Field m_MediaPlayer:Landroid/media/MediaPlayer;
+      13: ifnull        31
+      16: aload_0
+      17: getfield      #32                 // Field m_MediaPlayer:Landroid/media/MediaPlayer;
+      20: aload_0
+      21: getfield      #2                  // Field m_Volume:F
+      24: aload_0
+      25: getfield      #2                  // Field m_Volume:F
+      28: invokevirtual #57                 // Method android/media/MediaPlayer.setVolume:(FF)V
+      31: return
+
+  public void onPrepared(android.media.MediaPlayer);
+    descriptor: (Landroid/media/MediaPlayer;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #32                 // Field m_MediaPlayer:Landroid/media/MediaPlayer;
+       5: aload_0
+       6: getfield      #32                 // Field m_MediaPlayer:Landroid/media/MediaPlayer;
+       9: aload_0
+      10: getfield      #2                  // Field m_Volume:F
+      13: aload_0
+      14: getfield      #2                  // Field m_Volume:F
+      17: invokevirtual #57                 // Method android/media/MediaPlayer.setVolume:(FF)V
+      20: aload_0
+      21: invokevirtual #58                 // Method videoResume:()V
+      24: return
+
+  public boolean onError(android.media.MediaPlayer, int, int);
+    descriptor: (Landroid/media/MediaPlayer;II)Z
+    Code:
+       0: aload_0
+       1: getfield      #6                  // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       4: getfield      #59                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+       7: invokevirtual #60                 // Method com/ideaworks3d/marmalade/LoaderView.videoStopped:()V
+      10: iconst_1
+      11: ireturn
+
+  public void onCompletion(android.media.MediaPlayer);
+    descriptor: (Landroid/media/MediaPlayer;)V
+    Code:
+       0: aload_0
+       1: aconst_null
+       2: putfield      #32                 // Field m_MediaPlayer:Landroid/media/MediaPlayer;
+       5: aload_0
+       6: dup
+       7: getfield      #13                 // Field m_Repeats:I
+      10: iconst_1
+      11: isub
+      12: putfield      #13                 // Field m_Repeats:I
+      15: aload_0
+      16: getfield      #13                 // Field m_Repeats:I
+      19: ifgt          39
+      22: aload_0
+      23: invokevirtual #61                 // Method videoStop:()V
+      26: aload_0
+      27: getfield      #6                  // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      30: getfield      #59                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+      33: invokevirtual #60                 // Method com/ideaworks3d/marmalade/LoaderView.videoStopped:()V
+      36: goto          74
+      39: aload_0
+      40: invokevirtual #35                 // Method stopPlayback:()V
+      43: aload_0
+      44: iconst_0
+      45: putfield      #3                  // Field m_StoredPos:I
+      48: aload_0
+      49: getfield      #25                 // Field m_Uri:Landroid/net/Uri;
+      52: ifnull        66
+      55: aload_0
+      56: aload_0
+      57: getfield      #25                 // Field m_Uri:Landroid/net/Uri;
+      60: invokevirtual #26                 // Method setVideoURI:(Landroid/net/Uri;)V
+      63: goto          74
+      66: aload_0
+      67: aload_0
+      68: getfield      #14                 // Field m_Path:Ljava/lang/String;
+      71: invokevirtual #15                 // Method setVideoPath:(Ljava/lang/String;)V
+      74: return
+
+  public boolean onTouchEvent(android.view.MotionEvent);
+    descriptor: (Landroid/view/MotionEvent;)Z
+    Code:
+       0: aload_0
+       1: getfield      #6                  // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       4: invokevirtual #62                 // Method com/ideaworks3d/marmalade/LoaderActivity.LoaderThread:()Lcom/ideaworks3d/marmalade/LoaderThread;
+       7: ifnull        43
+      10: iconst_2
+      11: newarray       int
+      13: astore_2
+      14: aload_0
+      15: aload_2
+      16: invokevirtual #63                 // Method getLocationOnScreen:([I)V
+      19: aload_1
+      20: aload_2
+      21: iconst_0
+      22: iaload
+      23: i2f
+      24: aload_2
+      25: iconst_1
+      26: iaload
+      27: i2f
+      28: invokevirtual #64                 // Method android/view/MotionEvent.offsetLocation:(FF)V
+      31: aload_0
+      32: getfield      #6                  // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      35: invokevirtual #62                 // Method com/ideaworks3d/marmalade/LoaderActivity.LoaderThread:()Lcom/ideaworks3d/marmalade/LoaderThread;
+      38: aload_1
+      39: invokevirtual #65                 // Method com/ideaworks3d/marmalade/LoaderThread.onTouchEvent:(Landroid/view/MotionEvent;)Z
+      42: ireturn
+      43: iconst_0
+      44: ireturn
+
+  protected void onMeasure(int, int);
+    descriptor: (II)V
+    Code:
+       0: aload_0
+       1: iload_1
+       2: iload_2
+       3: invokespecial #66                 // Method android/widget/VideoView.onMeasure:(II)V
+       6: aload_0
+       7: getfield      #37                 // Field m_Width:I
+      10: ifeq          32
+      13: aload_0
+      14: getfield      #38                 // Field m_Height:I
+      17: ifeq          32
+      20: aload_0
+      21: aload_0
+      22: getfield      #37                 // Field m_Width:I
+      25: aload_0
+      26: getfield      #38                 // Field m_Height:I
+      29: invokevirtual #67                 // Method setMeasuredDimension:(II)V
+      32: return
+}

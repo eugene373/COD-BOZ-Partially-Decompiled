@@ -1,0 +1,78 @@
+Compiled from "SuspendResumeEvent.java"
+public final class com.ideaworks3d.marmalade.SuspendResumeEvent$EventType extends java.lang.Enum<com.ideaworks3d.marmalade.SuspendResumeEvent$EventType> {
+  public static final com.ideaworks3d.marmalade.SuspendResumeEvent$EventType SUSPEND;
+    descriptor: Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+
+  public static final com.ideaworks3d.marmalade.SuspendResumeEvent$EventType RESUME;
+    descriptor: Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+
+  public static final com.ideaworks3d.marmalade.SuspendResumeEvent$EventType SHUTDOWN;
+    descriptor: Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+
+  private static final com.ideaworks3d.marmalade.SuspendResumeEvent$EventType[] $VALUES;
+    descriptor: [Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+
+  public static com.ideaworks3d.marmalade.SuspendResumeEvent$EventType[] values();
+    descriptor: ()[Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+    Code:
+       0: getstatic     #1                  // Field $VALUES:[Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+       3: invokevirtual #2                  // Method "[Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;".clone:()Ljava/lang/Object;
+       6: checkcast     #3                  // class "[Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;"
+       9: areturn
+
+  public static com.ideaworks3d.marmalade.SuspendResumeEvent$EventType valueOf(java.lang.String);
+    descriptor: (Ljava/lang/String;)Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+    Code:
+       0: ldc_w         #4                  // class com/ideaworks3d/marmalade/SuspendResumeEvent$EventType
+       3: aload_0
+       4: invokestatic  #5                  // Method java/lang/Enum.valueOf:(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+       7: checkcast     #4                  // class com/ideaworks3d/marmalade/SuspendResumeEvent$EventType
+      10: areturn
+
+  private com.ideaworks3d.marmalade.SuspendResumeEvent$EventType();
+    descriptor: (Ljava/lang/String;I)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: invokespecial #6                  // Method java/lang/Enum."<init>":(Ljava/lang/String;I)V
+       6: return
+
+  static {};
+    descriptor: ()V
+    Code:
+       0: new           #4                  // class com/ideaworks3d/marmalade/SuspendResumeEvent$EventType
+       3: dup
+       4: ldc           #7                  // String SUSPEND
+       6: iconst_0
+       7: invokespecial #8                  // Method "<init>":(Ljava/lang/String;I)V
+      10: putstatic     #9                  // Field SUSPEND:Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+      13: new           #4                  // class com/ideaworks3d/marmalade/SuspendResumeEvent$EventType
+      16: dup
+      17: ldc           #10                 // String RESUME
+      19: iconst_1
+      20: invokespecial #8                  // Method "<init>":(Ljava/lang/String;I)V
+      23: putstatic     #11                 // Field RESUME:Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+      26: new           #4                  // class com/ideaworks3d/marmalade/SuspendResumeEvent$EventType
+      29: dup
+      30: ldc           #12                 // String SHUTDOWN
+      32: iconst_2
+      33: invokespecial #8                  // Method "<init>":(Ljava/lang/String;I)V
+      36: putstatic     #13                 // Field SHUTDOWN:Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+      39: iconst_3
+      40: anewarray     #4                  // class com/ideaworks3d/marmalade/SuspendResumeEvent$EventType
+      43: dup
+      44: iconst_0
+      45: getstatic     #9                  // Field SUSPEND:Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+      48: aastore
+      49: dup
+      50: iconst_1
+      51: getstatic     #11                 // Field RESUME:Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+      54: aastore
+      55: dup
+      56: iconst_2
+      57: getstatic     #13                 // Field SHUTDOWN:Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+      60: aastore
+      61: putstatic     #1                  // Field $VALUES:[Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+      64: return
+}

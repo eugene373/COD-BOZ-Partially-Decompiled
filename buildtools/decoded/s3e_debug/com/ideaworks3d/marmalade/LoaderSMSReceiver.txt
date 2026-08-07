@@ -1,0 +1,139 @@
+Compiled from "LoaderSMSReceiver.java"
+public class com.ideaworks3d.marmalade.LoaderSMSReceiver extends android.content.BroadcastReceiver {
+  static final java.lang.String ACTION = "android.provider.Telephony.SMS_RECEIVED";
+    descriptor: Ljava/lang/String;
+
+  public com.ideaworks3d.marmalade.LoaderSMSReceiver();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method android/content/BroadcastReceiver."<init>":()V
+       4: return
+
+  public void onReceive(android.content.Context, android.content.Intent);
+    descriptor: (Landroid/content/Context;Landroid/content/Intent;)V
+    Code:
+       0: new           #2                  // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #3                  // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #4                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #5                  // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #4                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #5                  // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #6                  // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #7                  // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #8                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #9                  // String -
+      36: invokevirtual #8                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #10                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #11                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #8                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #12                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: ldc           #13                 // String onReceive
+      53: invokestatic  #14                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      56: aload_2
+      57: invokevirtual #15                 // Method android/content/Intent.getAction:()Ljava/lang/String;
+      60: ldc           #16                 // String android.provider.Telephony.SMS_RECEIVED
+      62: invokevirtual #17                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      65: ifeq          278
+      68: new           #2                  // class java/lang/StringBuilder
+      71: dup
+      72: invokespecial #3                  // Method java/lang/StringBuilder."<init>":()V
+      75: astore_3
+      76: aload_2
+      77: invokevirtual #18                 // Method android/content/Intent.getExtras:()Landroid/os/Bundle;
+      80: astore        4
+      82: aload         4
+      84: ifnull        278
+      87: aload         4
+      89: ldc           #19                 // String pdus
+      91: invokevirtual #20                 // Method android/os/Bundle.get:(Ljava/lang/String;)Ljava/lang/Object;
+      94: checkcast     #21                 // class "[Ljava/lang/Object;"
+      97: checkcast     #21                 // class "[Ljava/lang/Object;"
+     100: astore        5
+     102: aload         5
+     104: arraylength
+     105: anewarray     #22                 // class android/telephony/SmsMessage
+     108: astore        6
+     110: iconst_0
+     111: istore        7
+     113: iload         7
+     115: aload         5
+     117: arraylength
+     118: if_icmpge     146
+     121: aload         6
+     123: iload         7
+     125: aload         5
+     127: iload         7
+     129: aaload
+     130: checkcast     #23                 // class "[B"
+     133: checkcast     #23                 // class "[B"
+     136: invokestatic  #24                 // Method android/telephony/SmsMessage.createFromPdu:([B)Landroid/telephony/SmsMessage;
+     139: aastore
+     140: iinc          7, 1
+     143: goto          113
+     146: iconst_0
+     147: istore        7
+     149: iload         7
+     151: aload         6
+     153: arraylength
+     154: if_icmpge     278
+     157: aload         6
+     159: iload         7
+     161: aaload
+     162: astore        8
+     164: aload         8
+     166: invokevirtual #25                 // Method android/telephony/SmsMessage.getDisplayOriginatingAddress:()Ljava/lang/String;
+     169: aload         8
+     171: invokevirtual #26                 // Method android/telephony/SmsMessage.getDisplayMessageBody:()Ljava/lang/String;
+     174: aload         8
+     176: invokevirtual #27                 // Method android/telephony/SmsMessage.getTimestampMillis:()J
+     179: invokestatic  #28                 // Method onReceiveCallback:(Ljava/lang/String;Ljava/lang/String;J)V
+     182: new           #2                  // class java/lang/StringBuilder
+     185: dup
+     186: invokespecial #3                  // Method java/lang/StringBuilder."<init>":()V
+     189: aload_0
+     190: invokevirtual #4                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     193: invokevirtual #5                  // Method java/lang/Class.getName:()Ljava/lang/String;
+     196: aload_0
+     197: invokevirtual #4                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     200: invokevirtual #5                  // Method java/lang/Class.getName:()Ljava/lang/String;
+     203: bipush        46
+     205: invokevirtual #6                  // Method java/lang/String.lastIndexOf:(I)I
+     208: iconst_1
+     209: iadd
+     210: invokevirtual #7                  // Method java/lang/String.substring:(I)Ljava/lang/String;
+     213: invokevirtual #8                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     216: ldc           #9                  // String -
+     218: invokevirtual #8                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     221: invokestatic  #10                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     224: invokevirtual #11                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     227: invokevirtual #8                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     230: invokevirtual #12                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     233: new           #2                  // class java/lang/StringBuilder
+     236: dup
+     237: invokespecial #3                  // Method java/lang/StringBuilder."<init>":()V
+     240: ldc           #29                 // String SMS from
+     242: invokevirtual #8                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     245: aload         8
+     247: invokevirtual #25                 // Method android/telephony/SmsMessage.getDisplayOriginatingAddress:()Ljava/lang/String;
+     250: invokevirtual #8                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     253: ldc           #30                 // String  -
+     255: invokevirtual #8                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     258: aload         8
+     260: invokevirtual #26                 // Method android/telephony/SmsMessage.getDisplayMessageBody:()Ljava/lang/String;
+     263: invokevirtual #8                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     266: invokevirtual #12                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     269: invokestatic  #14                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     272: iinc          7, 1
+     275: goto          149
+     278: return
+
+  public static native void onReceiveCallback(java.lang.String, java.lang.String, long);
+    descriptor: (Ljava/lang/String;Ljava/lang/String;J)V
+}

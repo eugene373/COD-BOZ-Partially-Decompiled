@@ -1,0 +1,23 @@
+Compiled from "LoaderView.java"
+class com.ideaworks3d.marmalade.LoaderView$1 implements java.lang.Runnable {
+  final com.ideaworks3d.marmalade.LoaderView this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderView;
+
+  com.ideaworks3d.marmalade.LoaderView$1(com.ideaworks3d.marmalade.LoaderView);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderView;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: return
+
+  public void run();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+       4: invokestatic  #3                  // Method com/ideaworks3d/marmalade/LoaderView.access$000:(Lcom/ideaworks3d/marmalade/LoaderView;)V
+       7: return
+}

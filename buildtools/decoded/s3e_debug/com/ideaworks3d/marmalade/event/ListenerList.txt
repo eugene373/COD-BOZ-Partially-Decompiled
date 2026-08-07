@@ -1,0 +1,49 @@
+Compiled from "ListenerList.java"
+public class com.ideaworks3d.marmalade.event.ListenerList<E> {
+  protected com.ideaworks3d.marmalade.util.WeakArrayList<E> m_Listeners;
+    descriptor: Lcom/ideaworks3d/marmalade/util/WeakArrayList;
+
+  public com.ideaworks3d.marmalade.event.ListenerList();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #2                  // class com/ideaworks3d/marmalade/util/WeakArrayList
+       8: dup
+       9: invokespecial #3                  // Method com/ideaworks3d/marmalade/util/WeakArrayList."<init>":()V
+      12: putfield      #4                  // Field m_Listeners:Lcom/ideaworks3d/marmalade/util/WeakArrayList;
+      15: return
+
+  public boolean add(E);
+    descriptor: (Ljava/lang/Object;)Z
+    Code:
+       0: aload_0
+       1: getfield      #4                  // Field m_Listeners:Lcom/ideaworks3d/marmalade/util/WeakArrayList;
+       4: invokevirtual #5                  // Method com/ideaworks3d/marmalade/util/WeakArrayList.expunge:()V
+       7: aload_1
+       8: ifnull        20
+      11: aload_0
+      12: getfield      #4                  // Field m_Listeners:Lcom/ideaworks3d/marmalade/util/WeakArrayList;
+      15: aload_1
+      16: invokevirtual #6                  // Method com/ideaworks3d/marmalade/util/WeakArrayList.add:(Ljava/lang/Object;)Z
+      19: ireturn
+      20: iconst_0
+      21: ireturn
+
+  public boolean remove(E);
+    descriptor: (Ljava/lang/Object;)Z
+    Code:
+       0: aload_0
+       1: getfield      #4                  // Field m_Listeners:Lcom/ideaworks3d/marmalade/util/WeakArrayList;
+       4: invokevirtual #5                  // Method com/ideaworks3d/marmalade/util/WeakArrayList.expunge:()V
+       7: aload_1
+       8: ifnull        20
+      11: aload_0
+      12: getfield      #4                  // Field m_Listeners:Lcom/ideaworks3d/marmalade/util/WeakArrayList;
+      15: aload_1
+      16: invokevirtual #7                  // Method com/ideaworks3d/marmalade/util/WeakArrayList.remove:(Ljava/lang/Object;)Z
+      19: ireturn
+      20: iconst_0
+      21: ireturn
+}

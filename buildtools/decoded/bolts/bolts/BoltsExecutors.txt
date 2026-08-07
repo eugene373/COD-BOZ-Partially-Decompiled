@@ -1,0 +1,71 @@
+Compiled from "BoltsExecutors.java"
+final class bolts.BoltsExecutors {
+  private static final bolts.BoltsExecutors INSTANCE;
+    descriptor: Lbolts/BoltsExecutors;
+
+  private final java.util.concurrent.ExecutorService background;
+    descriptor: Ljava/util/concurrent/ExecutorService;
+
+  private final java.util.concurrent.Executor immediate;
+    descriptor: Ljava/util/concurrent/Executor;
+
+  private static boolean isAndroidRuntime();
+    descriptor: ()Z
+    Code:
+       0: ldc           #1                  // String java.runtime.name
+       2: invokestatic  #2                  // Method java/lang/System.getProperty:(Ljava/lang/String;)Ljava/lang/String;
+       5: astore_0
+       6: aload_0
+       7: ifnonnull     12
+      10: iconst_0
+      11: ireturn
+      12: aload_0
+      13: getstatic     #3                  // Field java/util/Locale.US:Ljava/util/Locale;
+      16: invokevirtual #4                  // Method java/lang/String.toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;
+      19: ldc           #5                  // String android
+      21: invokevirtual #6                  // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+      24: ireturn
+
+  private bolts.BoltsExecutors();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #7                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: invokestatic  #8                  // Method isAndroidRuntime:()Z
+       8: ifne          17
+      11: invokestatic  #9                  // Method java/util/concurrent/Executors.newCachedThreadPool:()Ljava/util/concurrent/ExecutorService;
+      14: goto          20
+      17: invokestatic  #10                 // Method bolts/AndroidExecutors.newCachedThreadPool:()Ljava/util/concurrent/ExecutorService;
+      20: putfield      #11                 // Field background:Ljava/util/concurrent/ExecutorService;
+      23: aload_0
+      24: new           #12                 // class bolts/BoltsExecutors$ImmediateExecutor
+      27: dup
+      28: aconst_null
+      29: invokespecial #13                 // Method bolts/BoltsExecutors$ImmediateExecutor."<init>":(Lbolts/BoltsExecutors$1;)V
+      32: putfield      #14                 // Field immediate:Ljava/util/concurrent/Executor;
+      35: return
+
+  public static java.util.concurrent.ExecutorService background();
+    descriptor: ()Ljava/util/concurrent/ExecutorService;
+    Code:
+       0: getstatic     #15                 // Field INSTANCE:Lbolts/BoltsExecutors;
+       3: getfield      #11                 // Field background:Ljava/util/concurrent/ExecutorService;
+       6: areturn
+
+  static java.util.concurrent.Executor immediate();
+    descriptor: ()Ljava/util/concurrent/Executor;
+    Code:
+       0: getstatic     #15                 // Field INSTANCE:Lbolts/BoltsExecutors;
+       3: getfield      #14                 // Field immediate:Ljava/util/concurrent/Executor;
+       6: areturn
+
+  static {};
+    descriptor: ()V
+    Code:
+       0: new           #16                 // class bolts/BoltsExecutors
+       3: dup
+       4: invokespecial #17                 // Method "<init>":()V
+       7: putstatic     #15                 // Field INSTANCE:Lbolts/BoltsExecutors;
+      10: return
+}

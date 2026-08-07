@@ -1,0 +1,87 @@
+Compiled from "AppLinks.java"
+public final class bolts.AppLinks {
+  static final java.lang.String KEY_NAME_APPLINK_DATA = "al_applink_data";
+    descriptor: Ljava/lang/String;
+
+  static final java.lang.String KEY_NAME_EXTRAS = "extras";
+    descriptor: Ljava/lang/String;
+
+  static final java.lang.String KEY_NAME_TARGET = "target_url";
+    descriptor: Ljava/lang/String;
+
+  public bolts.AppLinks();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static android.os.Bundle getAppLinkData(android.content.Intent);
+    descriptor: (Landroid/content/Intent;)Landroid/os/Bundle;
+    Code:
+       0: aload_0
+       1: ldc           #2                  // String al_applink_data
+       3: invokevirtual #3                  // Method android/content/Intent.getBundleExtra:(Ljava/lang/String;)Landroid/os/Bundle;
+       6: areturn
+
+  public static android.os.Bundle getAppLinkExtras(android.content.Intent);
+    descriptor: (Landroid/content/Intent;)Landroid/os/Bundle;
+    Code:
+       0: aload_0
+       1: invokestatic  #4                  // Method getAppLinkData:(Landroid/content/Intent;)Landroid/os/Bundle;
+       4: astore_1
+       5: aload_1
+       6: ifnonnull     11
+       9: aconst_null
+      10: areturn
+      11: aload_1
+      12: ldc           #5                  // String extras
+      14: invokevirtual #6                  // Method android/os/Bundle.getBundle:(Ljava/lang/String;)Landroid/os/Bundle;
+      17: areturn
+
+  public static android.net.Uri getTargetUrl(android.content.Intent);
+    descriptor: (Landroid/content/Intent;)Landroid/net/Uri;
+    Code:
+       0: aload_0
+       1: invokestatic  #4                  // Method getAppLinkData:(Landroid/content/Intent;)Landroid/os/Bundle;
+       4: astore_1
+       5: aload_1
+       6: ifnull        25
+       9: aload_1
+      10: ldc           #7                  // String target_url
+      12: invokevirtual #8                  // Method android/os/Bundle.getString:(Ljava/lang/String;)Ljava/lang/String;
+      15: astore_2
+      16: aload_2
+      17: ifnull        25
+      20: aload_2
+      21: invokestatic  #9                  // Method android/net/Uri.parse:(Ljava/lang/String;)Landroid/net/Uri;
+      24: areturn
+      25: aload_0
+      26: invokevirtual #10                 // Method android/content/Intent.getData:()Landroid/net/Uri;
+      29: areturn
+
+  public static android.net.Uri getTargetUrlFromInboundIntent(android.content.Context, android.content.Intent);
+    descriptor: (Landroid/content/Context;Landroid/content/Intent;)Landroid/net/Uri;
+    Code:
+       0: aload_1
+       1: invokestatic  #4                  // Method getAppLinkData:(Landroid/content/Intent;)Landroid/os/Bundle;
+       4: astore_2
+       5: aload_2
+       6: ifnull        33
+       9: aload_2
+      10: ldc           #7                  // String target_url
+      12: invokevirtual #8                  // Method android/os/Bundle.getString:(Ljava/lang/String;)Ljava/lang/String;
+      15: astore_3
+      16: aload_3
+      17: ifnull        33
+      20: aload_0
+      21: ldc           #11                 // String al_nav_in
+      23: aload_1
+      24: aconst_null
+      25: invokestatic  #12                 // Method bolts/MeasurementEvent.sendBroadcastEvent:(Landroid/content/Context;Ljava/lang/String;Landroid/content/Intent;Ljava/util/Map;)V
+      28: aload_3
+      29: invokestatic  #9                  // Method android/net/Uri.parse:(Ljava/lang/String;)Landroid/net/Uri;
+      32: areturn
+      33: aconst_null
+      34: areturn
+}

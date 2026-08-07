@@ -1,0 +1,24 @@
+Compiled from "s3eCamera.java"
+class com.ideaworks3d.marmalade.s3eCamera$3 implements java.lang.Runnable {
+  final com.ideaworks3d.marmalade.s3eCamera this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/s3eCamera;
+
+  com.ideaworks3d.marmalade.s3eCamera$3(com.ideaworks3d.marmalade.s3eCamera);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eCamera;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: return
+
+  public void run();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera;
+       4: invokevirtual #3                  // Method com/ideaworks3d/marmalade/s3eCamera.removePreview:()I
+       7: pop
+       8: return
+}

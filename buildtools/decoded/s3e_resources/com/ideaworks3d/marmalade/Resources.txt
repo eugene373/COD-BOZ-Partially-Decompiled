@@ -1,0 +1,19 @@
+Compiled from "Resources.java"
+public class com.ideaworks3d.marmalade.Resources {
+  public static java.lang.String VFSPROVIDER_AUTHORITY;
+    descriptor: Ljava/lang/String;
+
+  public com.ideaworks3d.marmalade.Resources();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  static {};
+    descriptor: ()V
+    Code:
+       0: ldc           #2                  // String zzzzReplaceAuthorityReplaceAuthority.VFSProvider
+       2: putstatic     #3                  // Field VFSPROVIDER_AUTHORITY:Ljava/lang/String;
+       5: return
+}

@@ -1,0 +1,28 @@
+Compiled from "AndroidExecutors.java"
+class bolts.AndroidExecutors$UIThreadExecutor implements java.util.concurrent.Executor {
+  private bolts.AndroidExecutors$UIThreadExecutor();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public void execute(java.lang.Runnable);
+    descriptor: (Ljava/lang/Runnable;)V
+    Code:
+       0: new           #3                  // class android/os/Handler
+       3: dup
+       4: invokestatic  #4                  // Method android/os/Looper.getMainLooper:()Landroid/os/Looper;
+       7: invokespecial #5                  // Method android/os/Handler."<init>":(Landroid/os/Looper;)V
+      10: aload_1
+      11: invokevirtual #6                  // Method android/os/Handler.post:(Ljava/lang/Runnable;)Z
+      14: pop
+      15: return
+
+  bolts.AndroidExecutors$UIThreadExecutor(bolts.AndroidExecutors$1);
+    descriptor: (Lbolts/AndroidExecutors$1;)V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method "<init>":()V
+       4: return
+}

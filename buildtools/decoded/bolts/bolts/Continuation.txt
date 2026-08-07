@@ -1,0 +1,5 @@
+Compiled from "Continuation.java"
+public interface bolts.Continuation<TTaskResult, TContinuationResult> {
+  public abstract TContinuationResult then(bolts.Task<TTaskResult>) throws java.lang.Exception;
+    descriptor: (Lbolts/Task;)Ljava/lang/Object;
+}

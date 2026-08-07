@@ -1,0 +1,385 @@
+Compiled from "s3ePermissions.java"
+class s3ePermissions$PendingRequest {
+  public int requestId;
+    descriptor: I
+
+  private boolean skipGranted;
+    descriptor: Z
+
+  public java.util.List<java.lang.String> permissions;
+    descriptor: Ljava/util/List;
+
+  public java.util.List<s3ePermissions$PermissionRequestResult> skippedPermissions;
+    descriptor: Ljava/util/List;
+
+  final s3ePermissions this$0;
+    descriptor: Ls3ePermissions;
+
+  public s3ePermissions$PendingRequest(s3ePermissions, int, boolean, java.lang.String[]);
+    descriptor: (Ls3ePermissions;IZ[Ljava/lang/String;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Ls3ePermissions;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: aload_0
+      10: iload_2
+      11: putfield      #3                  // Field requestId:I
+      14: aload_0
+      15: iload_3
+      16: putfield      #4                  // Field skipGranted:Z
+      19: aload_0
+      20: new           #5                  // class java/util/ArrayList
+      23: dup
+      24: aload         4
+      26: invokestatic  #6                  // Method java/util/Arrays.asList:([Ljava/lang/Object;)Ljava/util/List;
+      29: invokespecial #7                  // Method java/util/ArrayList."<init>":(Ljava/util/Collection;)V
+      32: putfield      #8                  // Field permissions:Ljava/util/List;
+      35: aload_0
+      36: new           #5                  // class java/util/ArrayList
+      39: dup
+      40: invokespecial #9                  // Method java/util/ArrayList."<init>":()V
+      43: putfield      #10                 // Field skippedPermissions:Ljava/util/List;
+      46: return
+
+  public void updatePermission(java.lang.String, int);
+    descriptor: (Ljava/lang/String;I)V
+    Code:
+       0: aload_0
+       1: getfield      #8                  // Field permissions:Ljava/util/List;
+       4: invokeinterface #11,  1           // InterfaceMethod java/util/List.size:()I
+       9: iconst_1
+      10: isub
+      11: istore_3
+      12: iload_3
+      13: iflt          76
+      16: aload_0
+      17: getfield      #8                  // Field permissions:Ljava/util/List;
+      20: iload_3
+      21: invokeinterface #12,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+      26: checkcast     #13                 // class java/lang/String
+      29: aload_1
+      30: invokevirtual #14                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      33: ifeq          70
+      36: aload_0
+      37: getfield      #8                  // Field permissions:Ljava/util/List;
+      40: iload_3
+      41: invokeinterface #15,  2           // InterfaceMethod java/util/List.remove:(I)Ljava/lang/Object;
+      46: pop
+      47: aload_0
+      48: getfield      #10                 // Field skippedPermissions:Ljava/util/List;
+      51: new           #16                 // class s3ePermissions$PermissionRequestResult
+      54: dup
+      55: aload_0
+      56: getfield      #1                  // Field this$0:Ls3ePermissions;
+      59: aload_1
+      60: iload_2
+      61: invokespecial #17                 // Method s3ePermissions$PermissionRequestResult."<init>":(Ls3ePermissions;Ljava/lang/String;I)V
+      64: invokeinterface #18,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      69: pop
+      70: iinc          3, -1
+      73: goto          12
+      76: return
+
+  public java.lang.String[] getResPermissions(java.lang.String[]);
+    descriptor: ([Ljava/lang/String;)[Ljava/lang/String;
+    Code:
+       0: aload_1
+       1: ifnonnull     12
+       4: iconst_0
+       5: anewarray     #13                 // class java/lang/String
+       8: astore_1
+       9: goto          42
+      12: aload_1
+      13: arraylength
+      14: ifne          42
+      17: aload_0
+      18: getfield      #8                  // Field permissions:Ljava/util/List;
+      21: aload_0
+      22: getfield      #8                  // Field permissions:Ljava/util/List;
+      25: invokeinterface #11,  1           // InterfaceMethod java/util/List.size:()I
+      30: anewarray     #13                 // class java/lang/String
+      33: invokeinterface #19,  2           // InterfaceMethod java/util/List.toArray:([Ljava/lang/Object;)[Ljava/lang/Object;
+      38: checkcast     #20                 // class "[Ljava/lang/String;"
+      41: astore_1
+      42: aload_1
+      43: arraylength
+      44: aload_0
+      45: getfield      #10                 // Field skippedPermissions:Ljava/util/List;
+      48: invokeinterface #11,  1           // InterfaceMethod java/util/List.size:()I
+      53: iadd
+      54: istore_2
+      55: iload_2
+      56: anewarray     #13                 // class java/lang/String
+      59: astore_3
+      60: iconst_0
+      61: istore        4
+      63: iload         4
+      65: aload_1
+      66: arraylength
+      67: if_icmpge     84
+      70: aload_3
+      71: iload         4
+      73: aload_1
+      74: iload         4
+      76: aaload
+      77: aastore
+      78: iinc          4, 1
+      81: goto          63
+      84: iconst_0
+      85: istore        4
+      87: iload         4
+      89: aload_0
+      90: getfield      #10                 // Field skippedPermissions:Ljava/util/List;
+      93: invokeinterface #11,  1           // InterfaceMethod java/util/List.size:()I
+      98: if_icmpge     131
+     101: aload_3
+     102: aload_1
+     103: arraylength
+     104: iload         4
+     106: iadd
+     107: aload_0
+     108: getfield      #10                 // Field skippedPermissions:Ljava/util/List;
+     111: iload         4
+     113: invokeinterface #12,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     118: checkcast     #16                 // class s3ePermissions$PermissionRequestResult
+     121: getfield      #21                 // Field s3ePermissions$PermissionRequestResult.permission:Ljava/lang/String;
+     124: aastore
+     125: iinc          4, 1
+     128: goto          87
+     131: aload_3
+     132: areturn
+
+  public int[] getResGrantResults(int[]);
+    descriptor: ([I)[I
+    Code:
+       0: aload_1
+       1: ifnonnull     11
+       4: iconst_0
+       5: newarray       int
+       7: astore_1
+       8: goto          68
+      11: aload_1
+      12: arraylength
+      13: ifne          68
+      16: aload_0
+      17: getfield      #8                  // Field permissions:Ljava/util/List;
+      20: invokeinterface #11,  1           // InterfaceMethod java/util/List.size:()I
+      25: newarray       int
+      27: astore_1
+      28: iconst_0
+      29: istore_2
+      30: iload_2
+      31: aload_0
+      32: getfield      #8                  // Field permissions:Ljava/util/List;
+      35: invokeinterface #11,  1           // InterfaceMethod java/util/List.size:()I
+      40: if_icmpge     68
+      43: aload_1
+      44: iload_2
+      45: aload_0
+      46: getfield      #8                  // Field permissions:Ljava/util/List;
+      49: iload_2
+      50: invokeinterface #12,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+      55: checkcast     #13                 // class java/lang/String
+      58: invokestatic  #22                 // Method s3ePermissions.access$000:(Ljava/lang/String;)I
+      61: iastore
+      62: iinc          2, 1
+      65: goto          30
+      68: aload_1
+      69: arraylength
+      70: aload_0
+      71: getfield      #10                 // Field skippedPermissions:Ljava/util/List;
+      74: invokeinterface #11,  1           // InterfaceMethod java/util/List.size:()I
+      79: iadd
+      80: istore_2
+      81: iload_2
+      82: newarray       int
+      84: astore_3
+      85: iconst_0
+      86: istore        4
+      88: iload         4
+      90: aload_1
+      91: arraylength
+      92: if_icmpge     109
+      95: aload_3
+      96: iload         4
+      98: aload_1
+      99: iload         4
+     101: iaload
+     102: iastore
+     103: iinc          4, 1
+     106: goto          88
+     109: iconst_0
+     110: istore        4
+     112: iload         4
+     114: aload_0
+     115: getfield      #10                 // Field skippedPermissions:Ljava/util/List;
+     118: invokeinterface #11,  1           // InterfaceMethod java/util/List.size:()I
+     123: if_icmpge     265
+     126: aload_0
+     127: getfield      #10                 // Field skippedPermissions:Ljava/util/List;
+     130: iload         4
+     132: invokeinterface #12,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     137: checkcast     #16                 // class s3ePermissions$PermissionRequestResult
+     140: invokevirtual #23                 // Method s3ePermissions$PermissionRequestResult.isSet:()Z
+     143: ifne          192
+     146: ldc           #24                 // String s3ePermissions
+     148: new           #25                 // class java/lang/StringBuilder
+     151: dup
+     152: invokespecial #26                 // Method java/lang/StringBuilder."<init>":()V
+     155: ldc           #27                 // String Warning: permission
+     157: invokevirtual #28                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     160: aload_0
+     161: getfield      #10                 // Field skippedPermissions:Ljava/util/List;
+     164: iload         4
+     166: invokeinterface #12,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     171: checkcast     #16                 // class s3ePermissions$PermissionRequestResult
+     174: getfield      #21                 // Field s3ePermissions$PermissionRequestResult.permission:Ljava/lang/String;
+     177: invokevirtual #28                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     180: ldc           #29                 // String  is expected to be set as part of another request.
+     182: invokevirtual #28                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     185: invokevirtual #30                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     188: invokestatic  #31                 // Method android/util/Log.i:(Ljava/lang/String;Ljava/lang/String;)I
+     191: pop
+     192: aload_3
+     193: aload_1
+     194: arraylength
+     195: iload         4
+     197: iadd
+     198: aload_0
+     199: getfield      #10                 // Field skippedPermissions:Ljava/util/List;
+     202: iload         4
+     204: invokeinterface #12,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     209: checkcast     #16                 // class s3ePermissions$PermissionRequestResult
+     212: invokevirtual #23                 // Method s3ePermissions$PermissionRequestResult.isSet:()Z
+     215: ifeq          238
+     218: aload_0
+     219: getfield      #10                 // Field skippedPermissions:Ljava/util/List;
+     222: iload         4
+     224: invokeinterface #12,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     229: checkcast     #16                 // class s3ePermissions$PermissionRequestResult
+     232: getfield      #32                 // Field s3ePermissions$PermissionRequestResult.result:I
+     235: goto          258
+     238: aload_0
+     239: getfield      #10                 // Field skippedPermissions:Ljava/util/List;
+     242: iload         4
+     244: invokeinterface #12,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     249: checkcast     #16                 // class s3ePermissions$PermissionRequestResult
+     252: getfield      #21                 // Field s3ePermissions$PermissionRequestResult.permission:Ljava/lang/String;
+     255: invokestatic  #22                 // Method s3ePermissions.access$000:(Ljava/lang/String;)I
+     258: iastore
+     259: iinc          4, 1
+     262: goto          112
+     265: aload_3
+     266: areturn
+
+  public boolean request();
+    descriptor: ()Z
+    Code:
+       0: ldc           #24                 // String s3ePermissions
+       2: new           #25                 // class java/lang/StringBuilder
+       5: dup
+       6: invokespecial #26                 // Method java/lang/StringBuilder."<init>":()V
+       9: ldc           #33                 // String Executing permissions request with id:
+      11: invokevirtual #28                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      14: aload_0
+      15: getfield      #3                  // Field requestId:I
+      18: invokevirtual #34                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      21: invokevirtual #30                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      24: invokestatic  #31                 // Method android/util/Log.i:(Ljava/lang/String;Ljava/lang/String;)I
+      27: pop
+      28: aload_0
+      29: getfield      #8                  // Field permissions:Ljava/util/List;
+      32: invokeinterface #11,  1           // InterfaceMethod java/util/List.size:()I
+      37: iconst_1
+      38: isub
+      39: istore_1
+      40: iload_1
+      41: iflt          159
+      44: aload_0
+      45: getfield      #4                  // Field skipGranted:Z
+      48: ifeq          153
+      51: aload_0
+      52: getfield      #8                  // Field permissions:Ljava/util/List;
+      55: iload_1
+      56: invokeinterface #12,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+      61: checkcast     #13                 // class java/lang/String
+      64: invokestatic  #22                 // Method s3ePermissions.access$000:(Ljava/lang/String;)I
+      67: ifne          153
+      70: ldc           #24                 // String s3ePermissions
+      72: new           #25                 // class java/lang/StringBuilder
+      75: dup
+      76: invokespecial #26                 // Method java/lang/StringBuilder."<init>":()V
+      79: ldc           #35                 // String Skipping permission check (already granted):
+      81: invokevirtual #28                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      84: aload_0
+      85: getfield      #8                  // Field permissions:Ljava/util/List;
+      88: iload_1
+      89: invokeinterface #12,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+      94: checkcast     #13                 // class java/lang/String
+      97: invokevirtual #28                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     100: invokevirtual #30                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     103: invokestatic  #31                 // Method android/util/Log.i:(Ljava/lang/String;Ljava/lang/String;)I
+     106: pop
+     107: aload_0
+     108: getfield      #10                 // Field skippedPermissions:Ljava/util/List;
+     111: new           #16                 // class s3ePermissions$PermissionRequestResult
+     114: dup
+     115: aload_0
+     116: getfield      #1                  // Field this$0:Ls3ePermissions;
+     119: aload_0
+     120: getfield      #8                  // Field permissions:Ljava/util/List;
+     123: iload_1
+     124: invokeinterface #12,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     129: checkcast     #13                 // class java/lang/String
+     132: iconst_0
+     133: invokespecial #17                 // Method s3ePermissions$PermissionRequestResult."<init>":(Ls3ePermissions;Ljava/lang/String;I)V
+     136: invokeinterface #18,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     141: pop
+     142: aload_0
+     143: getfield      #8                  // Field permissions:Ljava/util/List;
+     146: iload_1
+     147: invokeinterface #15,  2           // InterfaceMethod java/util/List.remove:(I)Ljava/lang/Object;
+     152: pop
+     153: iinc          1, -1
+     156: goto          40
+     159: aload_0
+     160: getfield      #8                  // Field permissions:Ljava/util/List;
+     163: invokeinterface #11,  1           // InterfaceMethod java/util/List.size:()I
+     168: ifne          191
+     171: aload_0
+     172: getfield      #3                  // Field requestId:I
+     175: aload_0
+     176: aconst_null
+     177: invokevirtual #36                 // Method getResPermissions:([Ljava/lang/String;)[Ljava/lang/String;
+     180: aload_0
+     181: aconst_null
+     182: invokevirtual #37                 // Method getResGrantResults:([I)[I
+     185: invokestatic  #38                 // Method s3ePermissions.access$100:(I[Ljava/lang/String;[I)V
+     188: goto          246
+     191: getstatic     #39                 // Field android/os/Build$VERSION.SDK_INT:I
+     194: bipush        23
+     196: if_icmplt     236
+     199: invokestatic  #40                 // Method com/ideaworks3d/marmalade/LoaderAPI.getActivity:()Lcom/ideaworks3d/marmalade/LoaderActivity;
+     202: aload_0
+     203: getfield      #8                  // Field permissions:Ljava/util/List;
+     206: aload_0
+     207: getfield      #8                  // Field permissions:Ljava/util/List;
+     210: invokeinterface #11,  1           // InterfaceMethod java/util/List.size:()I
+     215: anewarray     #13                 // class java/lang/String
+     218: invokeinterface #19,  2           // InterfaceMethod java/util/List.toArray:([Ljava/lang/Object;)[Ljava/lang/Object;
+     223: checkcast     #41                 // class "[Ljava/lang/String;"
+     226: aload_0
+     227: getfield      #3                  // Field requestId:I
+     230: invokevirtual #42                 // Method com/ideaworks3d/marmalade/LoaderActivity.requestPermissions:([Ljava/lang/String;I)V
+     233: goto          244
+     236: ldc           #24                 // String s3ePermissions
+     238: ldc           #43                 // String Warning: Attempt to request permissions on API level < 23
+     240: invokestatic  #31                 // Method android/util/Log.i:(Ljava/lang/String;Ljava/lang/String;)I
+     243: pop
+     244: iconst_1
+     245: ireturn
+     246: iconst_0
+     247: ireturn
+}

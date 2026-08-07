@@ -1,0 +1,253 @@
+Compiled from "LoaderAPI.java"
+public class com.ideaworks3d.marmalade.LoaderAPI {
+  public static final int S3E_RESULT_SUCCESS = 0;
+    descriptor: I
+
+  public static final int S3E_RESULT_ERROR = 1;
+    descriptor: I
+
+  public com.ideaworks3d.marmalade.LoaderAPI();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static native void s3eDebugTraceLine(java.lang.String);
+    descriptor: (Ljava/lang/String;)V
+
+  public static native void s3eDeviceYield(int);
+    descriptor: (I)V
+
+  public static native int s3eConfigGetInt(java.lang.String, java.lang.String, int[]);
+    descriptor: (Ljava/lang/String;Ljava/lang/String;[I)I
+
+  public static native int s3eConfigGetString(java.lang.String, java.lang.String, java.lang.String[]);
+    descriptor: (Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+
+  public static native int s3eConfigGet(java.lang.String, int);
+    descriptor: (Ljava/lang/String;I)I
+
+  public static void traceChan(java.lang.String, java.lang.String);
+    descriptor: (Ljava/lang/String;Ljava/lang/String;)V
+    Code:
+       0: new           #2                  // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #3                  // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #4                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      11: ldc           #5                  // String :
+      13: invokevirtual #4                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      16: aload_1
+      17: invokevirtual #4                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      20: invokevirtual #6                  // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      23: invokestatic  #7                  // Method trace:(Ljava/lang/String;)V
+      26: return
+
+  public static void trace(java.lang.String);
+    descriptor: (Ljava/lang/String;)V
+    Code:
+       0: getstatic     #8                  // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       3: ifnull        13
+       6: aload_0
+       7: invokestatic  #9                  // Method s3eDebugTraceLine:(Ljava/lang/String;)V
+      10: goto          20
+      13: ldc           #10                 // String MARMALADE
+      15: aload_0
+      16: invokestatic  #11                 // Method android/util/Log.i:(Ljava/lang/String;Ljava/lang/String;)I
+      19: pop
+      20: return
+
+  public static java.lang.String getStackTrace(java.lang.Throwable);
+    descriptor: (Ljava/lang/Throwable;)Ljava/lang/String;
+    Code:
+       0: new           #12                 // class java/io/StringWriter
+       3: dup
+       4: invokespecial #13                 // Method java/io/StringWriter."<init>":()V
+       7: astore_1
+       8: new           #14                 // class java/io/PrintWriter
+      11: dup
+      12: aload_1
+      13: invokespecial #15                 // Method java/io/PrintWriter."<init>":(Ljava/io/Writer;)V
+      16: astore_2
+      17: aload_0
+      18: aload_2
+      19: invokevirtual #16                 // Method java/lang/Throwable.printStackTrace:(Ljava/io/PrintWriter;)V
+      22: aload_1
+      23: invokevirtual #17                 // Method java/lang/Object.toString:()Ljava/lang/String;
+      26: areturn
+
+  public static java.lang.String getStackTrace();
+    descriptor: ()Ljava/lang/String;
+    Code:
+       0: new           #18                 // class java/lang/Exception
+       3: dup
+       4: ldc           #19                 // String Tracer
+       6: invokespecial #20                 // Method java/lang/Exception."<init>":(Ljava/lang/String;)V
+       9: athrow
+      10: astore_0
+      11: new           #12                 // class java/io/StringWriter
+      14: dup
+      15: invokespecial #13                 // Method java/io/StringWriter."<init>":()V
+      18: astore_1
+      19: new           #14                 // class java/io/PrintWriter
+      22: dup
+      23: aload_1
+      24: invokespecial #15                 // Method java/io/PrintWriter."<init>":(Ljava/io/Writer;)V
+      27: astore_2
+      28: aload_0
+      29: aload_2
+      30: invokevirtual #21                 // Method java/lang/Exception.printStackTrace:(Ljava/io/PrintWriter;)V
+      33: aload_1
+      34: invokevirtual #17                 // Method java/lang/Object.toString:()Ljava/lang/String;
+      37: areturn
+    Exception table:
+       from    to  target type
+           0    10    10   Class java/lang/Exception
+
+  public static com.ideaworks3d.marmalade.LoaderActivity getActivity();
+    descriptor: ()Lcom/ideaworks3d/marmalade/LoaderActivity;
+    Code:
+       0: getstatic     #8                  // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       3: areturn
+
+  public static android.view.View getMainView();
+    descriptor: ()Landroid/view/View;
+    Code:
+       0: getstatic     #8                  // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       3: getfield      #22                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+       6: areturn
+
+  public static android.widget.FrameLayout getFrameLayout();
+    descriptor: ()Landroid/widget/FrameLayout;
+    Code:
+       0: getstatic     #8                  // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       3: getfield      #23                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_FrameLayout:Landroid/widget/FrameLayout;
+       6: areturn
+
+  public static com.ideaworks3d.marmalade.event.ListenerManager getListenerManager();
+    descriptor: ()Lcom/ideaworks3d/marmalade/event/ListenerManager;
+    Code:
+       0: getstatic     #8                  // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       3: getfield      #24                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_ListenerManager:Lcom/ideaworks3d/marmalade/event/ListenerManager;
+       6: ifnonnull     22
+       9: getstatic     #8                  // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      12: new           #25                 // class com/ideaworks3d/marmalade/event/ListenerManager
+      15: dup
+      16: invokespecial #26                 // Method com/ideaworks3d/marmalade/event/ListenerManager."<init>":()V
+      19: putfield      #24                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_ListenerManager:Lcom/ideaworks3d/marmalade/event/ListenerManager;
+      22: getstatic     #8                  // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      25: getfield      #24                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_ListenerManager:Lcom/ideaworks3d/marmalade/event/ListenerManager;
+      28: areturn
+
+  public static void addActivityResultListener(com.ideaworks3d.marmalade.event.ActivityResultListener);
+    descriptor: (Lcom/ideaworks3d/marmalade/event/ActivityResultListener;)V
+    Code:
+       0: invokestatic  #27                 // Method getListenerManager:()Lcom/ideaworks3d/marmalade/event/ListenerManager;
+       3: aload_0
+       4: invokevirtual #28                 // Method com/ideaworks3d/marmalade/event/ListenerManager.addActivityResultListener:(Lcom/ideaworks3d/marmalade/event/ActivityResultListener;)V
+       7: return
+
+  public static boolean removeActivityResultListener(com.ideaworks3d.marmalade.event.ActivityResultListener);
+    descriptor: (Lcom/ideaworks3d/marmalade/event/ActivityResultListener;)Z
+    Code:
+       0: invokestatic  #27                 // Method getListenerManager:()Lcom/ideaworks3d/marmalade/event/ListenerManager;
+       3: aload_0
+       4: invokevirtual #29                 // Method com/ideaworks3d/marmalade/event/ListenerManager.removeActivityResultListener:(Lcom/ideaworks3d/marmalade/event/ActivityResultListener;)Z
+       7: ireturn
+
+  public static void notifyActivityResultListeners(com.ideaworks3d.marmalade.event.ActivityResultEvent);
+    descriptor: (Lcom/ideaworks3d/marmalade/event/ActivityResultEvent;)V
+    Code:
+       0: invokestatic  #27                 // Method getListenerManager:()Lcom/ideaworks3d/marmalade/event/ListenerManager;
+       3: aload_0
+       4: invokevirtual #30                 // Method com/ideaworks3d/marmalade/event/ListenerManager.notifyActivityResultListeners:(Lcom/ideaworks3d/marmalade/event/ActivityResultEvent;)V
+       7: return
+
+  public static void addRequestPermissionsResultListener(com.ideaworks3d.marmalade.event.RequestPermissionsResultListener);
+    descriptor: (Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultListener;)V
+    Code:
+       0: invokestatic  #27                 // Method getListenerManager:()Lcom/ideaworks3d/marmalade/event/ListenerManager;
+       3: aload_0
+       4: invokevirtual #31                 // Method com/ideaworks3d/marmalade/event/ListenerManager.addRequestPermissionsResultListener:(Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultListener;)V
+       7: return
+
+  public static boolean removeRequestPermissionsResultListener(com.ideaworks3d.marmalade.event.RequestPermissionsResultListener);
+    descriptor: (Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultListener;)Z
+    Code:
+       0: invokestatic  #27                 // Method getListenerManager:()Lcom/ideaworks3d/marmalade/event/ListenerManager;
+       3: aload_0
+       4: invokevirtual #32                 // Method com/ideaworks3d/marmalade/event/ListenerManager.removeRequestPermissionsResultListener:(Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultListener;)Z
+       7: ireturn
+
+  public static void notifyRequestPermissionsResultListeners(com.ideaworks3d.marmalade.event.RequestPermissionsResultEvent);
+    descriptor: (Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultEvent;)V
+    Code:
+       0: invokestatic  #27                 // Method getListenerManager:()Lcom/ideaworks3d/marmalade/event/ListenerManager;
+       3: aload_0
+       4: invokevirtual #33                 // Method com/ideaworks3d/marmalade/event/ListenerManager.notifyRequestPermissionsResultListeners:(Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultEvent;)V
+       7: return
+
+  public static void addSuspendResumeListener(com.ideaworks3d.marmalade.SuspendResumeListener);
+    descriptor: (Lcom/ideaworks3d/marmalade/SuspendResumeListener;)V
+    Code:
+       0: invokestatic  #27                 // Method getListenerManager:()Lcom/ideaworks3d/marmalade/event/ListenerManager;
+       3: aload_0
+       4: invokevirtual #34                 // Method com/ideaworks3d/marmalade/event/ListenerManager.addSuspendResumeListener:(Lcom/ideaworks3d/marmalade/SuspendResumeListener;)V
+       7: return
+
+  public static boolean removeSuspendResumeListener(com.ideaworks3d.marmalade.SuspendResumeListener);
+    descriptor: (Lcom/ideaworks3d/marmalade/SuspendResumeListener;)Z
+    Code:
+       0: invokestatic  #27                 // Method getListenerManager:()Lcom/ideaworks3d/marmalade/event/ListenerManager;
+       3: aload_0
+       4: invokevirtual #35                 // Method com/ideaworks3d/marmalade/event/ListenerManager.removeSuspendResumeListener:(Lcom/ideaworks3d/marmalade/SuspendResumeListener;)Z
+       7: ireturn
+
+  public static void notifySuspendResumeListeners(com.ideaworks3d.marmalade.SuspendResumeEvent);
+    descriptor: (Lcom/ideaworks3d/marmalade/SuspendResumeEvent;)V
+    Code:
+       0: invokestatic  #27                 // Method getListenerManager:()Lcom/ideaworks3d/marmalade/event/ListenerManager;
+       3: aload_0
+       4: invokevirtual #36                 // Method com/ideaworks3d/marmalade/event/ListenerManager.notifySuspendResumeListeners:(Lcom/ideaworks3d/marmalade/SuspendResumeEvent;)V
+       7: return
+
+  public static void addNewIntentListener(com.ideaworks3d.marmalade.NewIntentListener);
+    descriptor: (Lcom/ideaworks3d/marmalade/NewIntentListener;)V
+    Code:
+       0: invokestatic  #27                 // Method getListenerManager:()Lcom/ideaworks3d/marmalade/event/ListenerManager;
+       3: aload_0
+       4: invokevirtual #37                 // Method com/ideaworks3d/marmalade/event/ListenerManager.addNewIntentListener:(Lcom/ideaworks3d/marmalade/NewIntentListener;)V
+       7: return
+
+  public static boolean removeNewIntentListener(com.ideaworks3d.marmalade.NewIntentListener);
+    descriptor: (Lcom/ideaworks3d/marmalade/NewIntentListener;)Z
+    Code:
+       0: invokestatic  #27                 // Method getListenerManager:()Lcom/ideaworks3d/marmalade/event/ListenerManager;
+       3: aload_0
+       4: invokevirtual #38                 // Method com/ideaworks3d/marmalade/event/ListenerManager.removeNewIntentListener:(Lcom/ideaworks3d/marmalade/NewIntentListener;)Z
+       7: ireturn
+
+  public static void notifyNewIntentListeners(com.ideaworks3d.marmalade.NewIntentEvent);
+    descriptor: (Lcom/ideaworks3d/marmalade/NewIntentEvent;)V
+    Code:
+       0: invokestatic  #27                 // Method getListenerManager:()Lcom/ideaworks3d/marmalade/event/ListenerManager;
+       3: aload_0
+       4: invokevirtual #39                 // Method com/ideaworks3d/marmalade/event/ListenerManager.notifyNewIntentListeners:(Lcom/ideaworks3d/marmalade/NewIntentEvent;)V
+       7: return
+
+  public static void pushKeyListener(android.view.View$OnKeyListener);
+    descriptor: (Landroid/view/View$OnKeyListener;)V
+    Code:
+       0: invokestatic  #27                 // Method getListenerManager:()Lcom/ideaworks3d/marmalade/event/ListenerManager;
+       3: aload_0
+       4: invokevirtual #40                 // Method com/ideaworks3d/marmalade/event/ListenerManager.pushKeyListener:(Landroid/view/View$OnKeyListener;)V
+       7: return
+
+  public static android.view.View$OnKeyListener popKeyListener();
+    descriptor: ()Landroid/view/View$OnKeyListener;
+    Code:
+       0: invokestatic  #27                 // Method getListenerManager:()Lcom/ideaworks3d/marmalade/event/ListenerManager;
+       3: invokevirtual #41                 // Method com/ideaworks3d/marmalade/event/ListenerManager.popKeyListener:()Landroid/view/View$OnKeyListener;
+       6: areturn
+}

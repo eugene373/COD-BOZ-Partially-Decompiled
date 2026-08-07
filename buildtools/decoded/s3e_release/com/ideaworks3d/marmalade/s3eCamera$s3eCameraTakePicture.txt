@@ -1,0 +1,73 @@
+Compiled from "s3eCamera.java"
+class com.ideaworks3d.marmalade.s3eCamera$s3eCameraTakePicture implements android.hardware.Camera$PictureCallback {
+  public java.lang.String m_strFile;
+    descriptor: Ljava/lang/String;
+
+  public boolean m_bToFile;
+    descriptor: Z
+
+  public int m_nType;
+    descriptor: I
+
+  final com.ideaworks3d.marmalade.s3eCamera this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/s3eCamera;
+
+  com.ideaworks3d.marmalade.s3eCamera$s3eCameraTakePicture(com.ideaworks3d.marmalade.s3eCamera);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eCamera;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: aload_0
+      10: aconst_null
+      11: putfield      #3                  // Field m_strFile:Ljava/lang/String;
+      14: aload_0
+      15: iconst_0
+      16: putfield      #4                  // Field m_bToFile:Z
+      19: aload_0
+      20: iconst_0
+      21: putfield      #5                  // Field m_nType:I
+      24: return
+
+  public void onPictureTaken(byte[], android.hardware.Camera);
+    descriptor: ([BLandroid/hardware/Camera;)V
+    Code:
+       0: new           #6                  // class java/lang/String
+       3: dup
+       4: invokespecial #7                  // Method java/lang/String."<init>":()V
+       7: astore_3
+       8: new           #8                  // class java/util/concurrent/atomic/AtomicInteger
+      11: dup
+      12: iconst_0
+      13: invokespecial #9                  // Method java/util/concurrent/atomic/AtomicInteger."<init>":(I)V
+      16: astore        4
+      18: aload_0
+      19: getfield      #4                  // Field m_bToFile:Z
+      22: ifeq          59
+      25: aload_0
+      26: getfield      #3                  // Field m_strFile:Ljava/lang/String;
+      29: aload_1
+      30: aload_0
+      31: getfield      #5                  // Field m_nType:I
+      34: aload         4
+      36: invokestatic  #10                 // Method com/ideaworks3d/marmalade/s3eCameraHelpAPI.SaveToFile:(Ljava/lang/String;[BILjava/util/concurrent/atomic/AtomicInteger;)[B
+      39: astore        5
+      41: aload_0
+      42: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera;
+      45: aload         5
+      47: iconst_1
+      48: aload         4
+      50: invokevirtual #11                 // Method java/util/concurrent/atomic/AtomicInteger.get:()I
+      53: invokestatic  #12                 // Method com/ideaworks3d/marmalade/s3eCamera.access$500:(Lcom/ideaworks3d/marmalade/s3eCamera;[BII)V
+      56: goto          73
+      59: aload_0
+      60: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera;
+      63: aload_1
+      64: iconst_2
+      65: aload         4
+      67: invokevirtual #11                 // Method java/util/concurrent/atomic/AtomicInteger.get:()I
+      70: invokestatic  #12                 // Method com/ideaworks3d/marmalade/s3eCamera.access$500:(Lcom/ideaworks3d/marmalade/s3eCamera;[BII)V
+      73: return
+}

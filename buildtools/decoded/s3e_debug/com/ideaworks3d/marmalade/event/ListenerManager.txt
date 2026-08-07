@@ -1,0 +1,226 @@
+Compiled from "ListenerManager.java"
+public class com.ideaworks3d.marmalade.event.ListenerManager {
+  private com.ideaworks3d.marmalade.event.SuspendResumeListenerList m_SuspendResumeListeners;
+    descriptor: Lcom/ideaworks3d/marmalade/event/SuspendResumeListenerList;
+
+  private com.ideaworks3d.marmalade.event.ActivityResultListenerList m_ActivityResultListeners;
+    descriptor: Lcom/ideaworks3d/marmalade/event/ActivityResultListenerList;
+
+  private com.ideaworks3d.marmalade.event.RequestPermissionsResultListenerList m_RequestPermissionsResultListeners;
+    descriptor: Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultListenerList;
+
+  private com.ideaworks3d.marmalade.event.NewIntentListenerList m_NewIntentListeners;
+    descriptor: Lcom/ideaworks3d/marmalade/event/NewIntentListenerList;
+
+  private java.util.Stack<android.view.View$OnKeyListener> m_KeyListeners;
+    descriptor: Ljava/util/Stack;
+
+  public com.ideaworks3d.marmalade.event.ListenerManager();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aconst_null
+       6: putfield      #2                  // Field m_SuspendResumeListeners:Lcom/ideaworks3d/marmalade/event/SuspendResumeListenerList;
+       9: aload_0
+      10: aconst_null
+      11: putfield      #3                  // Field m_ActivityResultListeners:Lcom/ideaworks3d/marmalade/event/ActivityResultListenerList;
+      14: aload_0
+      15: aconst_null
+      16: putfield      #4                  // Field m_RequestPermissionsResultListeners:Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultListenerList;
+      19: aload_0
+      20: aconst_null
+      21: putfield      #5                  // Field m_NewIntentListeners:Lcom/ideaworks3d/marmalade/event/NewIntentListenerList;
+      24: aload_0
+      25: aconst_null
+      26: putfield      #6                  // Field m_KeyListeners:Ljava/util/Stack;
+      29: new           #7                  // class java/lang/StringBuilder
+      32: dup
+      33: invokespecial #8                  // Method java/lang/StringBuilder."<init>":()V
+      36: aload_0
+      37: invokevirtual #9                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      40: invokevirtual #10                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      43: aload_0
+      44: invokevirtual #9                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      47: invokevirtual #10                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      50: bipush        46
+      52: invokevirtual #11                 // Method java/lang/String.lastIndexOf:(I)I
+      55: iconst_1
+      56: iadd
+      57: invokevirtual #12                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      60: invokevirtual #13                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      63: ldc           #14                 // String -
+      65: invokevirtual #13                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      68: invokestatic  #15                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      71: invokevirtual #16                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      74: invokevirtual #13                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      77: invokevirtual #17                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      80: ldc           #18                 // String ListenerManager create lists
+      82: invokestatic  #19                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      85: aload_0
+      86: new           #20                 // class com/ideaworks3d/marmalade/event/SuspendResumeListenerList
+      89: dup
+      90: invokespecial #21                 // Method com/ideaworks3d/marmalade/event/SuspendResumeListenerList."<init>":()V
+      93: putfield      #2                  // Field m_SuspendResumeListeners:Lcom/ideaworks3d/marmalade/event/SuspendResumeListenerList;
+      96: aload_0
+      97: new           #22                 // class com/ideaworks3d/marmalade/event/ActivityResultListenerList
+     100: dup
+     101: invokespecial #23                 // Method com/ideaworks3d/marmalade/event/ActivityResultListenerList."<init>":()V
+     104: putfield      #3                  // Field m_ActivityResultListeners:Lcom/ideaworks3d/marmalade/event/ActivityResultListenerList;
+     107: aload_0
+     108: new           #24                 // class com/ideaworks3d/marmalade/event/RequestPermissionsResultListenerList
+     111: dup
+     112: invokespecial #25                 // Method com/ideaworks3d/marmalade/event/RequestPermissionsResultListenerList."<init>":()V
+     115: putfield      #4                  // Field m_RequestPermissionsResultListeners:Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultListenerList;
+     118: aload_0
+     119: new           #26                 // class com/ideaworks3d/marmalade/event/NewIntentListenerList
+     122: dup
+     123: invokespecial #27                 // Method com/ideaworks3d/marmalade/event/NewIntentListenerList."<init>":()V
+     126: putfield      #5                  // Field m_NewIntentListeners:Lcom/ideaworks3d/marmalade/event/NewIntentListenerList;
+     129: aload_0
+     130: new           #28                 // class java/util/Stack
+     133: dup
+     134: invokespecial #29                 // Method java/util/Stack."<init>":()V
+     137: putfield      #6                  // Field m_KeyListeners:Ljava/util/Stack;
+     140: return
+
+  public void addActivityResultListener(com.ideaworks3d.marmalade.event.ActivityResultListener);
+    descriptor: (Lcom/ideaworks3d/marmalade/event/ActivityResultListener;)V
+    Code:
+       0: aload_0
+       1: getfield      #3                  // Field m_ActivityResultListeners:Lcom/ideaworks3d/marmalade/event/ActivityResultListenerList;
+       4: aload_1
+       5: invokevirtual #30                 // Method com/ideaworks3d/marmalade/event/ActivityResultListenerList.add:(Ljava/lang/Object;)Z
+       8: pop
+       9: return
+
+  public boolean removeActivityResultListener(com.ideaworks3d.marmalade.event.ActivityResultListener);
+    descriptor: (Lcom/ideaworks3d/marmalade/event/ActivityResultListener;)Z
+    Code:
+       0: aload_0
+       1: getfield      #3                  // Field m_ActivityResultListeners:Lcom/ideaworks3d/marmalade/event/ActivityResultListenerList;
+       4: aload_1
+       5: invokevirtual #31                 // Method com/ideaworks3d/marmalade/event/ActivityResultListenerList.remove:(Ljava/lang/Object;)Z
+       8: ireturn
+
+  public void notifyActivityResultListeners(com.ideaworks3d.marmalade.event.ActivityResultEvent);
+    descriptor: (Lcom/ideaworks3d/marmalade/event/ActivityResultEvent;)V
+    Code:
+       0: aload_0
+       1: getfield      #3                  // Field m_ActivityResultListeners:Lcom/ideaworks3d/marmalade/event/ActivityResultListenerList;
+       4: aload_1
+       5: invokevirtual #32                 // Method com/ideaworks3d/marmalade/event/ActivityResultListenerList.notifyAll:(Lcom/ideaworks3d/marmalade/event/ActivityResultEvent;)V
+       8: return
+
+  public void addRequestPermissionsResultListener(com.ideaworks3d.marmalade.event.RequestPermissionsResultListener);
+    descriptor: (Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultListener;)V
+    Code:
+       0: aload_0
+       1: getfield      #4                  // Field m_RequestPermissionsResultListeners:Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultListenerList;
+       4: aload_1
+       5: invokevirtual #33                 // Method com/ideaworks3d/marmalade/event/RequestPermissionsResultListenerList.add:(Ljava/lang/Object;)Z
+       8: pop
+       9: return
+
+  public boolean removeRequestPermissionsResultListener(com.ideaworks3d.marmalade.event.RequestPermissionsResultListener);
+    descriptor: (Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultListener;)Z
+    Code:
+       0: aload_0
+       1: getfield      #4                  // Field m_RequestPermissionsResultListeners:Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultListenerList;
+       4: aload_1
+       5: invokevirtual #34                 // Method com/ideaworks3d/marmalade/event/RequestPermissionsResultListenerList.remove:(Ljava/lang/Object;)Z
+       8: ireturn
+
+  public void notifyRequestPermissionsResultListeners(com.ideaworks3d.marmalade.event.RequestPermissionsResultEvent);
+    descriptor: (Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultEvent;)V
+    Code:
+       0: aload_0
+       1: getfield      #4                  // Field m_RequestPermissionsResultListeners:Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultListenerList;
+       4: aload_1
+       5: invokevirtual #35                 // Method com/ideaworks3d/marmalade/event/RequestPermissionsResultListenerList.notifyAll:(Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultEvent;)V
+       8: return
+
+  public void addSuspendResumeListener(com.ideaworks3d.marmalade.SuspendResumeListener);
+    descriptor: (Lcom/ideaworks3d/marmalade/SuspendResumeListener;)V
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field m_SuspendResumeListeners:Lcom/ideaworks3d/marmalade/event/SuspendResumeListenerList;
+       4: aload_1
+       5: invokevirtual #36                 // Method com/ideaworks3d/marmalade/event/SuspendResumeListenerList.add:(Ljava/lang/Object;)Z
+       8: pop
+       9: return
+
+  public boolean removeSuspendResumeListener(com.ideaworks3d.marmalade.SuspendResumeListener);
+    descriptor: (Lcom/ideaworks3d/marmalade/SuspendResumeListener;)Z
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field m_SuspendResumeListeners:Lcom/ideaworks3d/marmalade/event/SuspendResumeListenerList;
+       4: aload_1
+       5: invokevirtual #37                 // Method com/ideaworks3d/marmalade/event/SuspendResumeListenerList.remove:(Ljava/lang/Object;)Z
+       8: ireturn
+
+  public void notifySuspendResumeListeners(com.ideaworks3d.marmalade.SuspendResumeEvent);
+    descriptor: (Lcom/ideaworks3d/marmalade/SuspendResumeEvent;)V
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field m_SuspendResumeListeners:Lcom/ideaworks3d/marmalade/event/SuspendResumeListenerList;
+       4: aload_1
+       5: invokevirtual #38                 // Method com/ideaworks3d/marmalade/event/SuspendResumeListenerList.notifyAll:(Lcom/ideaworks3d/marmalade/SuspendResumeEvent;)V
+       8: return
+
+  public void addNewIntentListener(com.ideaworks3d.marmalade.NewIntentListener);
+    descriptor: (Lcom/ideaworks3d/marmalade/NewIntentListener;)V
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field m_NewIntentListeners:Lcom/ideaworks3d/marmalade/event/NewIntentListenerList;
+       4: aload_1
+       5: invokevirtual #39                 // Method com/ideaworks3d/marmalade/event/NewIntentListenerList.add:(Ljava/lang/Object;)Z
+       8: pop
+       9: return
+
+  public boolean removeNewIntentListener(com.ideaworks3d.marmalade.NewIntentListener);
+    descriptor: (Lcom/ideaworks3d/marmalade/NewIntentListener;)Z
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field m_NewIntentListeners:Lcom/ideaworks3d/marmalade/event/NewIntentListenerList;
+       4: aload_1
+       5: invokevirtual #40                 // Method com/ideaworks3d/marmalade/event/NewIntentListenerList.remove:(Ljava/lang/Object;)Z
+       8: ireturn
+
+  public void notifyNewIntentListeners(com.ideaworks3d.marmalade.NewIntentEvent);
+    descriptor: (Lcom/ideaworks3d/marmalade/NewIntentEvent;)V
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field m_NewIntentListeners:Lcom/ideaworks3d/marmalade/event/NewIntentListenerList;
+       4: aload_1
+       5: invokevirtual #41                 // Method com/ideaworks3d/marmalade/event/NewIntentListenerList.notifyAll:(Lcom/ideaworks3d/marmalade/NewIntentEvent;)V
+       8: return
+
+  public void pushKeyListener(android.view.View$OnKeyListener);
+    descriptor: (Landroid/view/View$OnKeyListener;)V
+    Code:
+       0: aload_0
+       1: getfield      #6                  // Field m_KeyListeners:Ljava/util/Stack;
+       4: aload_1
+       5: invokevirtual #42                 // Method java/util/Stack.push:(Ljava/lang/Object;)Ljava/lang/Object;
+       8: pop
+       9: invokestatic  #43                 // Method com/ideaworks3d/marmalade/LoaderAPI.getMainView:()Landroid/view/View;
+      12: aload_1
+      13: invokevirtual #44                 // Method android/view/View.setOnKeyListener:(Landroid/view/View$OnKeyListener;)V
+      16: return
+
+  public android.view.View$OnKeyListener popKeyListener();
+    descriptor: ()Landroid/view/View$OnKeyListener;
+    Code:
+       0: aload_0
+       1: getfield      #6                  // Field m_KeyListeners:Ljava/util/Stack;
+       4: invokevirtual #45                 // Method java/util/Stack.pop:()Ljava/lang/Object;
+       7: checkcast     #46                 // class android/view/View$OnKeyListener
+      10: astore_1
+      11: invokestatic  #43                 // Method com/ideaworks3d/marmalade/LoaderAPI.getMainView:()Landroid/view/View;
+      14: aload_1
+      15: invokevirtual #44                 // Method android/view/View.setOnKeyListener:(Landroid/view/View$OnKeyListener;)V
+      18: aload_1
+      19: areturn
+}

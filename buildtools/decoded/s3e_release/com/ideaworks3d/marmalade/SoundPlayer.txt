@@ -1,0 +1,377 @@
+Compiled from "SoundPlayer.java"
+public class com.ideaworks3d.marmalade.SoundPlayer implements android.media.AudioTrack$OnPlaybackPositionUpdateListener {
+  private android.media.AudioTrack m_Track;
+    descriptor: Landroid/media/AudioTrack;
+
+  private short[] m_SampleData;
+    descriptor: [S
+
+  private int m_BufSize;
+    descriptor: I
+
+  private int m_Period;
+    descriptor: I
+
+  private int m_FrameSize;
+    descriptor: I
+
+  private int m_Volume;
+    descriptor: I
+
+  private boolean m_Stereo;
+    descriptor: Z
+
+  private boolean m_NeedsPrime;
+    descriptor: Z
+
+  private int m_SampleRate;
+    descriptor: I
+
+  private static final int INITIAL_BUFFER_SIZE_MULTIPLIER = 2;
+    descriptor: I
+
+  private static final int PERIODS_IN_BUFFER = 2;
+    descriptor: I
+
+  public com.ideaworks3d.marmalade.SoundPlayer();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iconst_0
+       6: putfield      #2                  // Field m_Stereo:Z
+       9: aload_0
+      10: iconst_0
+      11: putfield      #3                  // Field m_NeedsPrime:Z
+      14: aload_0
+      15: iconst_0
+      16: putfield      #4                  // Field m_SampleRate:I
+      19: return
+
+  private native void generateAudio(short[], int);
+    descriptor: ([SI)V
+
+  int init(int, boolean, int);
+    descriptor: (IZI)I
+    Code:
+       0: aload_0
+       1: iload_3
+       2: putfield      #4                  // Field m_SampleRate:I
+       5: aload_0
+       6: iload_2
+       7: putfield      #2                  // Field m_Stereo:Z
+      10: aload_0
+      11: iload_1
+      12: putfield      #5                  // Field m_Volume:I
+      15: aload_0
+      16: getfield      #4                  // Field m_SampleRate:I
+      19: ifne          30
+      22: aload_0
+      23: iconst_3
+      24: invokestatic  #6                  // Method android/media/AudioTrack.getNativeOutputSampleRate:(I)I
+      27: putfield      #4                  // Field m_SampleRate:I
+      30: iconst_2
+      31: istore        4
+      33: iconst_1
+      34: istore        5
+      36: iconst_4
+      37: istore        6
+      39: aload_0
+      40: getfield      #2                  // Field m_Stereo:Z
+      43: ifeq          50
+      46: bipush        12
+      48: istore        6
+      50: aload_0
+      51: iconst_2
+      52: putfield      #7                  // Field m_FrameSize:I
+      55: aload_0
+      56: getfield      #2                  // Field m_Stereo:Z
+      59: ifeq          72
+      62: aload_0
+      63: dup
+      64: getfield      #7                  // Field m_FrameSize:I
+      67: iconst_2
+      68: imul
+      69: putfield      #7                  // Field m_FrameSize:I
+      72: aload_0
+      73: getfield      #4                  // Field m_SampleRate:I
+      76: iload         6
+      78: iload         4
+      80: invokestatic  #8                  // Method android/media/AudioTrack.getMinBufferSize:(III)I
+      83: istore        7
+      85: aload_0
+      86: iload         7
+      88: putfield      #9                  // Field m_BufSize:I
+      91: aload_0
+      92: getfield      #9                  // Field m_BufSize:I
+      95: aload_0
+      96: getfield      #7                  // Field m_FrameSize:I
+      99: idiv
+     100: istore        8
+     102: aload_0
+     103: iload         8
+     105: iconst_2
+     106: idiv
+     107: putfield      #10                 // Field m_Period:I
+     110: aload_0
+     111: new           #11                 // class android/media/AudioTrack
+     114: dup
+     115: iconst_3
+     116: aload_0
+     117: getfield      #4                  // Field m_SampleRate:I
+     120: iload         6
+     122: iload         4
+     124: aload_0
+     125: getfield      #9                  // Field m_BufSize:I
+     128: iconst_2
+     129: imul
+     130: iload         5
+     132: invokespecial #12                 // Method android/media/AudioTrack."<init>":(IIIIII)V
+     135: putfield      #13                 // Field m_Track:Landroid/media/AudioTrack;
+     138: aload_0
+     139: invokespecial #14                 // Method applyVolume:()V
+     142: goto          149
+     145: astore        9
+     147: iconst_0
+     148: ireturn
+     149: aload_0
+     150: getfield      #13                 // Field m_Track:Landroid/media/AudioTrack;
+     153: invokevirtual #16                 // Method android/media/AudioTrack.getState:()I
+     156: iconst_1
+     157: if_icmpeq     162
+     160: iconst_0
+     161: ireturn
+     162: aload_0
+     163: aload_0
+     164: getfield      #9                  // Field m_BufSize:I
+     167: iconst_2
+     168: imul
+     169: newarray       short
+     171: putfield      #17                 // Field m_SampleData:[S
+     174: aload_0
+     175: getfield      #13                 // Field m_Track:Landroid/media/AudioTrack;
+     178: aload_0
+     179: invokevirtual #18                 // Method android/media/AudioTrack.setPlaybackPositionUpdateListener:(Landroid/media/AudioTrack$OnPlaybackPositionUpdateListener;)V
+     182: aload_0
+     183: getfield      #13                 // Field m_Track:Landroid/media/AudioTrack;
+     186: aload_0
+     187: getfield      #10                 // Field m_Period:I
+     190: invokevirtual #19                 // Method android/media/AudioTrack.setPositionNotificationPeriod:(I)I
+     193: pop
+     194: aload_0
+     195: iconst_1
+     196: putfield      #3                  // Field m_NeedsPrime:Z
+     199: aload_0
+     200: getfield      #4                  // Field m_SampleRate:I
+     203: ireturn
+    Exception table:
+       from    to  target type
+         110   142   145   Class java/lang/IllegalArgumentException
+
+  void start();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field m_Track:Landroid/media/AudioTrack;
+       4: ifnonnull     24
+       7: aload_0
+       8: aload_0
+       9: getfield      #5                  // Field m_Volume:I
+      12: aload_0
+      13: getfield      #2                  // Field m_Stereo:Z
+      16: aload_0
+      17: getfield      #4                  // Field m_SampleRate:I
+      20: invokevirtual #20                 // Method init:(IZI)I
+      23: pop
+      24: aload_0
+      25: getfield      #13                 // Field m_Track:Landroid/media/AudioTrack;
+      28: invokevirtual #21                 // Method android/media/AudioTrack.play:()V
+      31: aload_0
+      32: getfield      #3                  // Field m_NeedsPrime:Z
+      35: ifeq          56
+      38: aload_0
+      39: iconst_0
+      40: putfield      #3                  // Field m_NeedsPrime:Z
+      43: aload_0
+      44: aload_0
+      45: getfield      #10                 // Field m_Period:I
+      48: iconst_2
+      49: imul
+      50: iconst_2
+      51: imul
+      52: invokespecial #22                 // Method writeSamples:(I)Z
+      55: pop
+      56: return
+
+  public void onMarkerReached(android.media.AudioTrack);
+    descriptor: (Landroid/media/AudioTrack;)V
+    Code:
+       0: return
+
+  private boolean writeSamples(int);
+    descriptor: (I)Z
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field m_Track:Landroid/media/AudioTrack;
+       4: ifnull        14
+       7: aload_0
+       8: getfield      #17                 // Field m_SampleData:[S
+      11: ifnonnull     16
+      14: iconst_0
+      15: ireturn
+      16: aload_0
+      17: aload_0
+      18: getfield      #17                 // Field m_SampleData:[S
+      21: iload_1
+      22: invokespecial #23                 // Method generateAudio:([SI)V
+      25: iload_1
+      26: istore_2
+      27: aload_0
+      28: getfield      #2                  // Field m_Stereo:Z
+      31: ifeq          38
+      34: iload_2
+      35: iconst_2
+      36: imul
+      37: istore_2
+      38: aload_0
+      39: getfield      #13                 // Field m_Track:Landroid/media/AudioTrack;
+      42: ifnull        52
+      45: aload_0
+      46: getfield      #17                 // Field m_SampleData:[S
+      49: ifnonnull     54
+      52: iconst_0
+      53: ireturn
+      54: invokestatic  #24                 // Method android/os/SystemClock.uptimeMillis:()J
+      57: lstore_3
+      58: aload_0
+      59: getfield      #13                 // Field m_Track:Landroid/media/AudioTrack;
+      62: aload_0
+      63: getfield      #17                 // Field m_SampleData:[S
+      66: iconst_0
+      67: iload_2
+      68: invokevirtual #25                 // Method android/media/AudioTrack.write:([SII)I
+      71: pop
+      72: invokestatic  #24                 // Method android/os/SystemClock.uptimeMillis:()J
+      75: lload_3
+      76: lsub
+      77: lstore        5
+      79: lload         5
+      81: lconst_1
+      82: lcmp
+      83: ifle          86
+      86: iconst_1
+      87: ireturn
+
+  public synchronized void onPeriodicNotification(android.media.AudioTrack);
+    descriptor: (Landroid/media/AudioTrack;)V
+    Code:
+       0: aload_0
+       1: aload_0
+       2: getfield      #10                 // Field m_Period:I
+       5: invokespecial #22                 // Method writeSamples:(I)Z
+       8: istore_2
+       9: iload_2
+      10: ifne          13
+      13: return
+
+  synchronized void stop();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field m_Track:Landroid/media/AudioTrack;
+       4: ifnonnull     8
+       7: return
+       8: aload_0
+       9: getfield      #13                 // Field m_Track:Landroid/media/AudioTrack;
+      12: aconst_null
+      13: invokevirtual #18                 // Method android/media/AudioTrack.setPlaybackPositionUpdateListener:(Landroid/media/AudioTrack$OnPlaybackPositionUpdateListener;)V
+      16: aload_0
+      17: getfield      #13                 // Field m_Track:Landroid/media/AudioTrack;
+      20: invokevirtual #26                 // Method android/media/AudioTrack.stop:()V
+      23: aload_0
+      24: getfield      #13                 // Field m_Track:Landroid/media/AudioTrack;
+      27: invokevirtual #27                 // Method android/media/AudioTrack.flush:()V
+      30: aload_0
+      31: getfield      #13                 // Field m_Track:Landroid/media/AudioTrack;
+      34: invokevirtual #28                 // Method android/media/AudioTrack.release:()V
+      37: aload_0
+      38: aconst_null
+      39: putfield      #13                 // Field m_Track:Landroid/media/AudioTrack;
+      42: return
+
+  synchronized void pause();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field m_Track:Landroid/media/AudioTrack;
+       4: ifnonnull     8
+       7: return
+       8: aload_0
+       9: getfield      #13                 // Field m_Track:Landroid/media/AudioTrack;
+      12: invokevirtual #29                 // Method android/media/AudioTrack.getPlayState:()I
+      15: iconst_3
+      16: if_icmpne     26
+      19: aload_0
+      20: getfield      #13                 // Field m_Track:Landroid/media/AudioTrack;
+      23: invokevirtual #30                 // Method android/media/AudioTrack.pause:()V
+      26: return
+
+  synchronized void resume();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #13                 // Field m_Track:Landroid/media/AudioTrack;
+       4: ifnonnull     8
+       7: return
+       8: aload_0
+       9: getfield      #13                 // Field m_Track:Landroid/media/AudioTrack;
+      12: invokevirtual #29                 // Method android/media/AudioTrack.getPlayState:()I
+      15: iconst_2
+      16: if_icmpne     36
+      19: aload_0
+      20: invokevirtual #31                 // Method start:()V
+      23: aload_0
+      24: aload_0
+      25: getfield      #10                 // Field m_Period:I
+      28: iconst_2
+      29: imul
+      30: iconst_2
+      31: imul
+      32: invokespecial #22                 // Method writeSamples:(I)Z
+      35: pop
+      36: return
+
+  synchronized void setVolume(int);
+    descriptor: (I)V
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #5                  // Field m_Volume:I
+       5: aload_0
+       6: getfield      #13                 // Field m_Track:Landroid/media/AudioTrack;
+       9: ifnonnull     13
+      12: return
+      13: aload_0
+      14: invokespecial #14                 // Method applyVolume:()V
+      17: return
+
+  private synchronized void applyVolume();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field m_Volume:I
+       4: i2f
+       5: invokestatic  #32                 // Method android/media/AudioTrack.getMaxVolume:()F
+       8: fmul
+       9: ldc           #33                 // float 100.0f
+      11: fdiv
+      12: fstore_1
+      13: aload_0
+      14: getfield      #13                 // Field m_Track:Landroid/media/AudioTrack;
+      17: fload_1
+      18: fload_1
+      19: invokevirtual #34                 // Method android/media/AudioTrack.setStereoVolume:(FF)I
+      22: istore_2
+      23: return
+}

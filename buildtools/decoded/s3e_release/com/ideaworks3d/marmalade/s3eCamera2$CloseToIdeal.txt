@@ -1,0 +1,62 @@
+Compiled from "s3eCamera2.java"
+class com.ideaworks3d.marmalade.s3eCamera2$CloseToIdeal implements java.util.Comparator<android.util.Size> {
+  android.util.Size m_IdealSize;
+    descriptor: Landroid/util/Size;
+
+  com.ideaworks3d.marmalade.s3eCamera2$CloseToIdeal(android.util.Size);
+    descriptor: (Landroid/util/Size;)V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #2                  // Field m_IdealSize:Landroid/util/Size;
+       9: return
+
+  public int compare(android.util.Size, android.util.Size);
+    descriptor: (Landroid/util/Size;Landroid/util/Size;)I
+    Code:
+       0: aload_1
+       1: invokevirtual #3                  // Method android/util/Size.getHeight:()I
+       4: aload_0
+       5: getfield      #2                  // Field m_IdealSize:Landroid/util/Size;
+       8: invokevirtual #3                  // Method android/util/Size.getHeight:()I
+      11: isub
+      12: invokestatic  #4                  // Method java/lang/Math.abs:(I)I
+      15: aload_1
+      16: invokevirtual #5                  // Method android/util/Size.getWidth:()I
+      19: aload_0
+      20: getfield      #2                  // Field m_IdealSize:Landroid/util/Size;
+      23: invokevirtual #5                  // Method android/util/Size.getWidth:()I
+      26: isub
+      27: invokestatic  #4                  // Method java/lang/Math.abs:(I)I
+      30: iadd
+      31: aload_2
+      32: invokevirtual #3                  // Method android/util/Size.getHeight:()I
+      35: aload_0
+      36: getfield      #2                  // Field m_IdealSize:Landroid/util/Size;
+      39: invokevirtual #3                  // Method android/util/Size.getHeight:()I
+      42: isub
+      43: invokestatic  #4                  // Method java/lang/Math.abs:(I)I
+      46: aload_2
+      47: invokevirtual #5                  // Method android/util/Size.getWidth:()I
+      50: aload_0
+      51: getfield      #2                  // Field m_IdealSize:Landroid/util/Size;
+      54: invokevirtual #5                  // Method android/util/Size.getWidth:()I
+      57: isub
+      58: invokestatic  #4                  // Method java/lang/Math.abs:(I)I
+      61: iadd
+      62: isub
+      63: ireturn
+
+  public int compare(java.lang.Object, java.lang.Object);
+    descriptor: (Ljava/lang/Object;Ljava/lang/Object;)I
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #6                  // class android/util/Size
+       5: aload_2
+       6: checkcast     #6                  // class android/util/Size
+       9: invokevirtual #7                  // Method compare:(Landroid/util/Size;Landroid/util/Size;)I
+      12: ireturn
+}

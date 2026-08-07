@@ -1,0 +1,16 @@
+.gradle
+.kotlin
+.idea
+app/build
+build
+/keystore
+/app/release
+/OBB DAT
+SignKeys
+gradle.properties
+app/usage.txt
+app/mapping.txt
+/app/debug
+local.properties
+keystore.properties
+upload-keystore.jks

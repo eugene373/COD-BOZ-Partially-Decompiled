@@ -1,0 +1,220 @@
+Compiled from "s3eCamera2.java"
+class com.ideaworks3d.marmalade.s3eCamera2$2 implements android.media.ImageReader$OnImageAvailableListener {
+  final com.ideaworks3d.marmalade.s3eCamera2 this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/s3eCamera2;
+
+  com.ideaworks3d.marmalade.s3eCamera2$2(com.ideaworks3d.marmalade.s3eCamera2);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eCamera2;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera2;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: return
+
+  public void onImageAvailable(android.media.ImageReader);
+    descriptor: (Landroid/media/ImageReader;)V
+    Code:
+       0: invokestatic  #3                  // Method com/ideaworks3d/marmalade/s3eCamera2.access$200:()Ljava/lang/Object;
+       3: dup
+       4: astore_2
+       5: monitorenter
+       6: aload_0
+       7: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera2;
+      10: invokestatic  #4                  // Method com/ideaworks3d/marmalade/s3eCamera2.access$300:(Lcom/ideaworks3d/marmalade/s3eCamera2;)Landroid/hardware/camera2/CameraDevice;
+      13: ifnonnull     19
+      16: aload_2
+      17: monitorexit
+      18: return
+      19: aload_1
+      20: invokevirtual #5                  // Method android/media/ImageReader.acquireNextImage:()Landroid/media/Image;
+      23: astore_3
+      24: aload_3
+      25: invokevirtual #6                  // Method android/media/Image.getPlanes:()[Landroid/media/Image$Plane;
+      28: astore        4
+      30: aload         4
+      32: arraylength
+      33: iconst_3
+      34: if_icmpeq     44
+      37: aload_3
+      38: invokevirtual #7                  // Method android/media/Image.close:()V
+      41: aload_2
+      42: monitorexit
+      43: return
+      44: aload_3
+      45: invokevirtual #8                  // Method android/media/Image.getWidth:()I
+      48: istore        5
+      50: aload_3
+      51: invokevirtual #9                  // Method android/media/Image.getHeight:()I
+      54: istore        6
+      56: iconst_2
+      57: aload         4
+      59: iconst_2
+      60: aaload
+      61: invokevirtual #10                 // Method android/media/Image$Plane.getRowStride:()I
+      64: imul
+      65: iload         5
+      67: idiv
+      68: iconst_2
+      69: if_icmplt     82
+      72: aload         4
+      74: iconst_2
+      75: aaload
+      76: invokevirtual #10                 // Method android/media/Image$Plane.getRowStride:()I
+      79: goto          83
+      82: iconst_0
+      83: istore        7
+      85: iconst_3
+      86: iload         5
+      88: imul
+      89: iload         6
+      91: imul
+      92: iconst_2
+      93: idiv
+      94: iload         7
+      96: iadd
+      97: newarray       byte
+      99: astore        8
+     101: iconst_0
+     102: istore        9
+     104: iconst_0
+     105: istore        10
+     107: aload         4
+     109: iconst_1
+     110: aaload
+     111: invokevirtual #11                 // Method android/media/Image$Plane.getPixelStride:()I
+     114: iconst_1
+     115: if_icmpne     187
+     118: aload         8
+     120: iload         10
+     122: iload         5
+     124: iload         6
+     126: aload         4
+     128: iconst_0
+     129: aaload
+     130: iconst_0
+     131: invokestatic  #12                 // Method com/ideaworks3d/marmalade/s3eCamera2.access$400:([BIIILandroid/media/Image$Plane;I)I
+     134: istore        10
+     136: aload         8
+     138: iload         10
+     140: iload         5
+     142: iconst_2
+     143: idiv
+     144: iload         6
+     146: iconst_2
+     147: idiv
+     148: aload         4
+     150: iconst_1
+     151: aaload
+     152: iconst_0
+     153: invokestatic  #12                 // Method com/ideaworks3d/marmalade/s3eCamera2.access$400:([BIIILandroid/media/Image$Plane;I)I
+     156: istore        10
+     158: aload         8
+     160: iload         10
+     162: iload         5
+     164: iconst_2
+     165: idiv
+     166: iload         6
+     168: iconst_2
+     169: idiv
+     170: aload         4
+     172: iconst_2
+     173: aaload
+     174: iconst_0
+     175: invokestatic  #12                 // Method com/ideaworks3d/marmalade/s3eCamera2.access$400:([BIIILandroid/media/Image$Plane;I)I
+     178: istore        10
+     180: ldc           #13                 // int 842094169
+     182: istore        9
+     184: goto          298
+     187: aload         4
+     189: iconst_0
+     190: aaload
+     191: invokevirtual #14                 // Method android/media/Image$Plane.getBuffer:()Ljava/nio/ByteBuffer;
+     194: invokevirtual #15                 // Method java/nio/ByteBuffer.get:()B
+     197: pop
+     198: aload         4
+     200: iconst_1
+     201: aaload
+     202: invokevirtual #14                 // Method android/media/Image$Plane.getBuffer:()Ljava/nio/ByteBuffer;
+     205: invokevirtual #15                 // Method java/nio/ByteBuffer.get:()B
+     208: pop
+     209: aload         4
+     211: iconst_2
+     212: aaload
+     213: invokevirtual #14                 // Method android/media/Image$Plane.getBuffer:()Ljava/nio/ByteBuffer;
+     216: invokevirtual #15                 // Method java/nio/ByteBuffer.get:()B
+     219: pop
+     220: iconst_1
+     221: istore        11
+     223: aload         8
+     225: iload         10
+     227: iload         5
+     229: iload         6
+     231: aload         4
+     233: iconst_0
+     234: aaload
+     235: iload         11
+     237: invokestatic  #12                 // Method com/ideaworks3d/marmalade/s3eCamera2.access$400:([BIIILandroid/media/Image$Plane;I)I
+     240: istore        10
+     242: aload         8
+     244: iload         10
+     246: iload         5
+     248: iload         6
+     250: iconst_2
+     251: idiv
+     252: aload         4
+     254: iconst_1
+     255: aaload
+     256: iconst_1
+     257: iload         11
+     259: iadd
+     260: invokestatic  #12                 // Method com/ideaworks3d/marmalade/s3eCamera2.access$400:([BIIILandroid/media/Image$Plane;I)I
+     263: istore        10
+     265: aload         8
+     267: iload         10
+     269: iconst_1
+     270: isub
+     271: aload         4
+     273: iconst_2
+     274: aaload
+     275: invokevirtual #14                 // Method android/media/Image$Plane.getBuffer:()Ljava/nio/ByteBuffer;
+     278: aload         4
+     280: iconst_2
+     281: aaload
+     282: invokevirtual #14                 // Method android/media/Image$Plane.getBuffer:()Ljava/nio/ByteBuffer;
+     285: invokevirtual #16                 // Method java/nio/ByteBuffer.remaining:()I
+     288: iconst_1
+     289: isub
+     290: invokevirtual #17                 // Method java/nio/ByteBuffer.get:(I)B
+     293: bastore
+     294: bipush        17
+     296: istore        9
+     298: aload_0
+     299: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera2;
+     302: aload         8
+     304: iload         9
+     306: iload         5
+     308: iload         6
+     310: getstatic     #18                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+     313: invokevirtual #19                 // Method com/ideaworks3d/marmalade/LoaderActivity.LoaderThread:()Lcom/ideaworks3d/marmalade/LoaderThread;
+     316: invokevirtual #20                 // Method com/ideaworks3d/marmalade/LoaderThread.getOrientation:()I
+     319: invokestatic  #21                 // Method com/ideaworks3d/marmalade/s3eCamera2.access$500:(Lcom/ideaworks3d/marmalade/s3eCamera2;[BIIII)V
+     322: aload_3
+     323: invokevirtual #7                  // Method android/media/Image.close:()V
+     326: aload_2
+     327: monitorexit
+     328: goto          338
+     331: astore        12
+     333: aload_2
+     334: monitorexit
+     335: aload         12
+     337: athrow
+     338: return
+    Exception table:
+       from    to  target type
+           6    18   331   any
+          19    43   331   any
+          44   328   331   any
+         331   335   331   any
+}

@@ -1,0 +1,53 @@
+Compiled from "AppLink.java"
+public class bolts.AppLink {
+  private android.net.Uri sourceUrl;
+    descriptor: Landroid/net/Uri;
+
+  private java.util.List<bolts.AppLink$Target> targets;
+    descriptor: Ljava/util/List;
+
+  private android.net.Uri webUrl;
+    descriptor: Landroid/net/Uri;
+
+  public bolts.AppLink(android.net.Uri, java.util.List<bolts.AppLink$Target>, android.net.Uri);
+    descriptor: (Landroid/net/Uri;Ljava/util/List;Landroid/net/Uri;)V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #2                  // Field sourceUrl:Landroid/net/Uri;
+       9: aload_2
+      10: ifnonnull     17
+      13: invokestatic  #3                  // Method java/util/Collections.emptyList:()Ljava/util/List;
+      16: astore_2
+      17: aload_0
+      18: aload_2
+      19: putfield      #4                  // Field targets:Ljava/util/List;
+      22: aload_0
+      23: aload_3
+      24: putfield      #5                  // Field webUrl:Landroid/net/Uri;
+      27: return
+
+  public android.net.Uri getSourceUrl();
+    descriptor: ()Landroid/net/Uri;
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field sourceUrl:Landroid/net/Uri;
+       4: areturn
+
+  public java.util.List<bolts.AppLink$Target> getTargets();
+    descriptor: ()Ljava/util/List;
+    Code:
+       0: aload_0
+       1: getfield      #4                  // Field targets:Ljava/util/List;
+       4: invokestatic  #6                  // Method java/util/Collections.unmodifiableList:(Ljava/util/List;)Ljava/util/List;
+       7: areturn
+
+  public android.net.Uri getWebUrl();
+    descriptor: ()Landroid/net/Uri;
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field webUrl:Landroid/net/Uri;
+       4: areturn
+}

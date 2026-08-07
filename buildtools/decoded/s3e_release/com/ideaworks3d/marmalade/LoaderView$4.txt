@@ -1,0 +1,45 @@
+Compiled from "LoaderView.java"
+class com.ideaworks3d.marmalade.LoaderView$4 implements java.lang.Runnable {
+  final com.ideaworks3d.marmalade.LoaderView this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderView;
+
+  com.ideaworks3d.marmalade.LoaderView$4(com.ideaworks3d.marmalade.LoaderView);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderView;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: return
+
+  public void run();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+       4: invokestatic  #3                  // Method com/ideaworks3d/marmalade/LoaderView.access$100:(Lcom/ideaworks3d/marmalade/LoaderView;)Ljava/lang/Runnable;
+       7: dup
+       8: astore_1
+       9: monitorenter
+      10: aload_0
+      11: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+      14: invokestatic  #4                  // Method com/ideaworks3d/marmalade/LoaderView.access$200:(Lcom/ideaworks3d/marmalade/LoaderView;)V
+      17: aload_0
+      18: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+      21: invokestatic  #3                  // Method com/ideaworks3d/marmalade/LoaderView.access$100:(Lcom/ideaworks3d/marmalade/LoaderView;)Ljava/lang/Runnable;
+      24: invokevirtual #5                  // Method java/lang/Object.notify:()V
+      27: aload_1
+      28: monitorexit
+      29: goto          37
+      32: astore_2
+      33: aload_1
+      34: monitorexit
+      35: aload_2
+      36: athrow
+      37: return
+    Exception table:
+       from    to  target type
+          10    29    32   any
+          32    35    32   any
+}

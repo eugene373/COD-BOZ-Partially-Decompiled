@@ -1,0 +1,93 @@
+Compiled from "WeakArrayList.java"
+public class com.ideaworks3d.marmalade.util.WeakArrayList<E> extends java.util.AbstractList<E> {
+  private java.util.List<java.lang.ref.WeakReference<E>> m_list;
+    descriptor: Ljava/util/List;
+
+  public com.ideaworks3d.marmalade.util.WeakArrayList();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #2                  // Method java/util/AbstractList."<init>":()V
+       4: aload_0
+       5: new           #3                  // class java/util/ArrayList
+       8: dup
+       9: invokespecial #4                  // Method java/util/ArrayList."<init>":()V
+      12: putfield      #1                  // Field m_list:Ljava/util/List;
+      15: return
+
+  public void expunge();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokevirtual #5                  // Method iterator:()Ljava/util/Iterator;
+       4: astore_1
+       5: aload_1
+       6: invokeinterface #6,  1            // InterfaceMethod java/util/Iterator.hasNext:()Z
+      11: ifeq          32
+      14: aload_1
+      15: invokeinterface #7,  1            // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      20: ifnonnull     5
+      23: aload_1
+      24: invokeinterface #8,  1            // InterfaceMethod java/util/Iterator.remove:()V
+      29: goto          5
+      32: return
+
+  public boolean add(E);
+    descriptor: (Ljava/lang/Object;)Z
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #9                  // Method contains:(Ljava/lang/Object;)Z
+       5: ifne          26
+       8: aload_0
+       9: getfield      #1                  // Field m_list:Ljava/util/List;
+      12: new           #10                 // class java/lang/ref/WeakReference
+      15: dup
+      16: aload_1
+      17: invokespecial #11                 // Method java/lang/ref/WeakReference."<init>":(Ljava/lang/Object;)V
+      20: invokeinterface #12,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      25: ireturn
+      26: iconst_0
+      27: ireturn
+
+  public E get(int);
+    descriptor: (I)Ljava/lang/Object;
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field m_list:Ljava/util/List;
+       4: iload_1
+       5: invokeinterface #13,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+      10: checkcast     #10                 // class java/lang/ref/WeakReference
+      13: astore_2
+      14: aload_2
+      15: ifnonnull     22
+      18: aconst_null
+      19: goto          26
+      22: aload_2
+      23: invokevirtual #14                 // Method java/lang/ref/WeakReference.get:()Ljava/lang/Object;
+      26: areturn
+
+  public int size();
+    descriptor: ()I
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field m_list:Ljava/util/List;
+       4: invokeinterface #15,  1           // InterfaceMethod java/util/List.size:()I
+       9: ireturn
+
+  public java.util.Iterator<E> iterator();
+    descriptor: ()Ljava/util/Iterator;
+    Code:
+       0: new           #16                 // class com/ideaworks3d/marmalade/util/WeakArrayList$1
+       3: dup
+       4: aload_0
+       5: invokespecial #17                 // Method com/ideaworks3d/marmalade/util/WeakArrayList$1."<init>":(Lcom/ideaworks3d/marmalade/util/WeakArrayList;)V
+       8: areturn
+
+  static java.util.List access$000(com.ideaworks3d.marmalade.util.WeakArrayList);
+    descriptor: (Lcom/ideaworks3d/marmalade/util/WeakArrayList;)Ljava/util/List;
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field m_list:Ljava/util/List;
+       4: areturn
+}

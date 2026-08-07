@@ -1,0 +1,245 @@
+Compiled from "SoundRecord.java"
+public class com.ideaworks3d.marmalade.SoundRecord implements android.media.AudioRecord$OnRecordPositionUpdateListener {
+  private android.media.AudioRecord m_AudioRecord;
+    descriptor: Landroid/media/AudioRecord;
+
+  private short[] m_Buffer;
+    descriptor: [S
+
+  private int m_BufSize;
+    descriptor: I
+
+  private int m_Period;
+    descriptor: I
+
+  private int m_Frequency;
+    descriptor: I
+
+  private int m_BufferSizeHintMs;
+    descriptor: I
+
+  private static final int PERIODS_IN_BUFFER = 2;
+    descriptor: I
+
+  public com.ideaworks3d.marmalade.SoundRecord();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aconst_null
+       6: putfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+       9: return
+
+  private native void recordAudio(short[], int, int);
+    descriptor: ([SII)V
+
+  public static int available();
+    descriptor: ()I
+    Code:
+       0: getstatic     #3                  // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       3: invokevirtual #4                  // Method com/ideaworks3d/marmalade/LoaderActivity.getPackageManager:()Landroid/content/pm/PackageManager;
+       6: ldc           #5                  // String android.hardware.microphone
+       8: invokevirtual #6                  // Method android/content/pm/PackageManager.hasSystemFeature:(Ljava/lang/String;)Z
+      11: ifeq          18
+      14: iconst_1
+      15: goto          19
+      18: iconst_0
+      19: ireturn
+
+  public int start(int, int);
+    descriptor: (II)I
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+       4: ifnonnull     13
+       7: invokestatic  #7                  // Method available:()I
+      10: ifne          15
+      13: iconst_0
+      14: ireturn
+      15: iload_1
+      16: iconst_m1
+      17: if_icmpeq     25
+      20: aload_0
+      21: iload_1
+      22: putfield      #8                  // Field m_Frequency:I
+      25: iload_2
+      26: iconst_m1
+      27: if_icmpeq     35
+      30: aload_0
+      31: iload_2
+      32: putfield      #9                  // Field m_BufferSizeHintMs:I
+      35: bipush        16
+      37: istore_3
+      38: iconst_2
+      39: istore        4
+      41: aload_0
+      42: aload_0
+      43: getfield      #8                  // Field m_Frequency:I
+      46: iload_3
+      47: iload         4
+      49: invokestatic  #10                 // Method android/media/AudioRecord.getMinBufferSize:(III)I
+      52: putfield      #11                 // Field m_BufSize:I
+      55: aload_0
+      56: getfield      #11                 // Field m_BufSize:I
+      59: bipush        -2
+      61: if_icmpne     96
+      64: aload_0
+      65: sipush        8000
+      68: putfield      #8                  // Field m_Frequency:I
+      71: aload_0
+      72: aload_0
+      73: getfield      #8                  // Field m_Frequency:I
+      76: iload_3
+      77: iload         4
+      79: invokestatic  #10                 // Method android/media/AudioRecord.getMinBufferSize:(III)I
+      82: putfield      #11                 // Field m_BufSize:I
+      85: aload_0
+      86: getfield      #11                 // Field m_BufSize:I
+      89: bipush        -2
+      91: if_icmpne     96
+      94: iconst_0
+      95: ireturn
+      96: aload_0
+      97: getfield      #9                  // Field m_BufferSizeHintMs:I
+     100: ifle          140
+     103: aload_0
+     104: getfield      #8                  // Field m_Frequency:I
+     107: aload_0
+     108: getfield      #9                  // Field m_BufferSizeHintMs:I
+     111: imul
+     112: sipush        999
+     115: iadd
+     116: sipush        1000
+     119: idiv
+     120: istore        5
+     122: iload         5
+     124: aload_0
+     125: getfield      #11                 // Field m_BufSize:I
+     128: if_icmple     137
+     131: aload_0
+     132: iload         5
+     134: putfield      #11                 // Field m_BufSize:I
+     137: goto          160
+     140: aload_0
+     141: getfield      #11                 // Field m_BufSize:I
+     144: sipush        4096
+     147: if_icmpgt     160
+     150: aload_0
+     151: aload_0
+     152: getfield      #11                 // Field m_BufSize:I
+     155: iconst_2
+     156: imul
+     157: putfield      #11                 // Field m_BufSize:I
+     160: aload_0
+     161: aload_0
+     162: getfield      #11                 // Field m_BufSize:I
+     165: iconst_2
+     166: idiv
+     167: putfield      #12                 // Field m_Period:I
+     170: aload_0
+     171: aload_0
+     172: getfield      #11                 // Field m_BufSize:I
+     175: newarray       short
+     177: putfield      #13                 // Field m_Buffer:[S
+     180: aload_0
+     181: new           #14                 // class android/media/AudioRecord
+     184: dup
+     185: iconst_1
+     186: aload_0
+     187: getfield      #8                  // Field m_Frequency:I
+     190: iload_3
+     191: iload         4
+     193: aload_0
+     194: getfield      #11                 // Field m_BufSize:I
+     197: invokespecial #15                 // Method android/media/AudioRecord."<init>":(IIIII)V
+     200: putfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+     203: aload_0
+     204: getfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+     207: aload_0
+     208: invokevirtual #16                 // Method android/media/AudioRecord.setRecordPositionUpdateListener:(Landroid/media/AudioRecord$OnRecordPositionUpdateListener;)V
+     211: aload_0
+     212: getfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+     215: aload_0
+     216: getfield      #12                 // Field m_Period:I
+     219: invokevirtual #17                 // Method android/media/AudioRecord.setPositionNotificationPeriod:(I)I
+     222: pop
+     223: aload_0
+     224: getfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+     227: invokevirtual #18                 // Method android/media/AudioRecord.startRecording:()V
+     230: goto          237
+     233: astore        5
+     235: iconst_0
+     236: ireturn
+     237: aload_0
+     238: getfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+     241: aload_0
+     242: getfield      #13                 // Field m_Buffer:[S
+     245: iconst_0
+     246: aload_0
+     247: getfield      #12                 // Field m_Period:I
+     250: invokevirtual #20                 // Method android/media/AudioRecord.read:([SII)I
+     253: istore        5
+     255: aload_0
+     256: aload_0
+     257: getfield      #13                 // Field m_Buffer:[S
+     260: iload         5
+     262: aload_0
+     263: getfield      #8                  // Field m_Frequency:I
+     266: invokespecial #21                 // Method recordAudio:([SII)V
+     269: aload_0
+     270: getfield      #8                  // Field m_Frequency:I
+     273: ireturn
+    Exception table:
+       from    to  target type
+         223   230   233   Class java/lang/IllegalStateException
+
+  public void onMarkerReached(android.media.AudioRecord);
+    descriptor: (Landroid/media/AudioRecord;)V
+    Code:
+       0: return
+
+  public void onPeriodicNotification(android.media.AudioRecord);
+    descriptor: (Landroid/media/AudioRecord;)V
+    Code:
+       0: aload_1
+       1: aload_0
+       2: getfield      #13                 // Field m_Buffer:[S
+       5: iconst_0
+       6: aload_0
+       7: getfield      #12                 // Field m_Period:I
+      10: invokevirtual #20                 // Method android/media/AudioRecord.read:([SII)I
+      13: istore_2
+      14: aload_0
+      15: aload_0
+      16: getfield      #13                 // Field m_Buffer:[S
+      19: iload_2
+      20: aload_0
+      21: getfield      #8                  // Field m_Frequency:I
+      24: invokespecial #21                 // Method recordAudio:([SII)V
+      27: return
+
+  public int stop();
+    descriptor: ()I
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+       4: ifnonnull     9
+       7: iconst_1
+       8: ireturn
+       9: aload_0
+      10: getfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+      13: aconst_null
+      14: invokevirtual #16                 // Method android/media/AudioRecord.setRecordPositionUpdateListener:(Landroid/media/AudioRecord$OnRecordPositionUpdateListener;)V
+      17: aload_0
+      18: getfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+      21: invokevirtual #22                 // Method android/media/AudioRecord.stop:()V
+      24: aload_0
+      25: getfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+      28: invokevirtual #23                 // Method android/media/AudioRecord.release:()V
+      31: aload_0
+      32: aconst_null
+      33: putfield      #2                  // Field m_AudioRecord:Landroid/media/AudioRecord;
+      36: iconst_0
+      37: ireturn
+}

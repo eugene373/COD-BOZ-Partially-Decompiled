@@ -1,0 +1,37 @@
+Compiled from "LoaderView.java"
+class com.ideaworks3d.marmalade.LoaderView$3 implements java.lang.Runnable {
+  final com.ideaworks3d.marmalade.LoaderView this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderView;
+
+  com.ideaworks3d.marmalade.LoaderView$3(com.ideaworks3d.marmalade.LoaderView);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderView;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: return
+
+  public void run();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderView;
+       4: getfield      #3                  // Field com/ideaworks3d/marmalade/LoaderView.m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       7: ldc           #4                  // String power
+       9: invokevirtual #5                  // Method com/ideaworks3d/marmalade/LoaderActivity.getSystemService:(Ljava/lang/String;)Ljava/lang/Object;
+      12: checkcast     #6                  // class android/os/PowerManager
+      15: astore_1
+      16: aload_1
+      17: bipush        26
+      19: aload_0
+      20: invokevirtual #7                  // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      23: invokevirtual #8                  // Method java/lang/Class.getName:()Ljava/lang/String;
+      26: invokevirtual #9                  // Method android/os/PowerManager.newWakeLock:(ILjava/lang/String;)Landroid/os/PowerManager$WakeLock;
+      29: astore_2
+      30: aload_2
+      31: ldc2_w        #10                 // long 3000l
+      34: invokevirtual #12                 // Method android/os/PowerManager$WakeLock.acquire:(J)V
+      37: return
+}

@@ -1,0 +1,89 @@
+Compiled from "LoaderActivity.java"
+class com.ideaworks3d.marmalade.LoaderActivity$DelayedResumeTask extends android.os.AsyncTask<java.lang.Void, java.lang.Void, java.lang.Void> {
+  final com.ideaworks3d.marmalade.LoaderActivity this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderActivity;
+
+  private com.ideaworks3d.marmalade.LoaderActivity$DelayedResumeTask(com.ideaworks3d.marmalade.LoaderActivity);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderActivity;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       5: aload_0
+       6: invokespecial #3                  // Method android/os/AsyncTask."<init>":()V
+       9: return
+
+  protected void onPostExecute(java.lang.Void);
+    descriptor: (Ljava/lang/Void;)V
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       4: invokestatic  #4                  // Method com/ideaworks3d/marmalade/LoaderActivity.access$000:(Lcom/ideaworks3d/marmalade/LoaderActivity;)Z
+       7: ifeq          37
+      10: aload_0
+      11: getfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      14: invokestatic  #5                  // Method com/ideaworks3d/marmalade/LoaderActivity.access$100:(Lcom/ideaworks3d/marmalade/LoaderActivity;)Z
+      17: ifne          30
+      20: aload_0
+      21: getfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      24: invokevirtual #6                  // Method com/ideaworks3d/marmalade/LoaderActivity.onResume:()V
+      27: goto          37
+      30: aload_0
+      31: getfield      #2                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      34: invokestatic  #7                  // Method com/ideaworks3d/marmalade/LoaderActivity.access$200:(Lcom/ideaworks3d/marmalade/LoaderActivity;)V
+      37: return
+
+  protected java.lang.Void doInBackground(java.lang.Void...);
+    descriptor: ([Ljava/lang/Void;)Ljava/lang/Void;
+    Code:
+       0: aload_0
+       1: dup
+       2: astore_2
+       3: monitorenter
+       4: aload_0
+       5: ldc2_w        #8                  // long 300l
+       8: invokevirtual #10                 // Method java/lang/Object.wait:(J)V
+      11: aload_2
+      12: monitorexit
+      13: goto          21
+      16: astore_3
+      17: aload_2
+      18: monitorexit
+      19: aload_3
+      20: athrow
+      21: goto          25
+      24: astore_2
+      25: aconst_null
+      26: areturn
+    Exception table:
+       from    to  target type
+           4    13    16   any
+          16    19    16   any
+           0    21    24   Class java/lang/InterruptedException
+
+  protected void onPostExecute(java.lang.Object);
+    descriptor: (Ljava/lang/Object;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #12                 // class java/lang/Void
+       5: invokevirtual #13                 // Method onPostExecute:(Ljava/lang/Void;)V
+       8: return
+
+  protected java.lang.Object doInBackground(java.lang.Object[]);
+    descriptor: ([Ljava/lang/Object;)Ljava/lang/Object;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #14                 // class "[Ljava/lang/Void;"
+       5: invokevirtual #15                 // Method doInBackground:([Ljava/lang/Void;)Ljava/lang/Void;
+       8: areturn
+
+  com.ideaworks3d.marmalade.LoaderActivity$DelayedResumeTask(com.ideaworks3d.marmalade.LoaderActivity, com.ideaworks3d.marmalade.LoaderActivity$1);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderActivity;Lcom/ideaworks3d/marmalade/LoaderActivity$1;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method "<init>":(Lcom/ideaworks3d/marmalade/LoaderActivity;)V
+       5: return
+}

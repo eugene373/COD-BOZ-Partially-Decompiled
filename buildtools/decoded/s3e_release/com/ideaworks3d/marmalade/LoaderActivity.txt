@@ -1,0 +1,830 @@
+Compiled from "LoaderActivity.java"
+public class com.ideaworks3d.marmalade.LoaderActivity extends android.app.Activity {
+  public static com.ideaworks3d.marmalade.LoaderActivity m_Activity;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderActivity;
+
+  public com.ideaworks3d.marmalade.event.ListenerManager m_ListenerManager;
+    descriptor: Lcom/ideaworks3d/marmalade/event/ListenerManager;
+
+  private com.ideaworks3d.marmalade.LoaderThread m_LoaderThread;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderThread;
+
+  public com.ideaworks3d.marmalade.LoaderView m_View;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderView;
+
+  public android.widget.RelativeLayout m_TopLevel;
+    descriptor: Landroid/widget/RelativeLayout;
+
+  public android.widget.FrameLayout m_FrameLayout;
+    descriptor: Landroid/widget/FrameLayout;
+
+  public boolean m_IgnoreFocusLoss;
+    descriptor: Z
+
+  private volatile boolean m_IntentBlocking;
+    descriptor: Z
+
+  private boolean m_ExecuteIntentActivityNotFoundException;
+    descriptor: Z
+
+  private static final int INTENT_CODE = 123456;
+    descriptor: I
+
+  private android.content.Intent m_Data;
+    descriptor: Landroid/content/Intent;
+
+  private android.os.Handler m_ProgressDialogHandler;
+    descriptor: Landroid/os/Handler;
+
+  private android.view.OrientationEventListener m_orientationEventListener;
+    descriptor: Landroid/view/OrientationEventListener;
+
+  private boolean m_LegacySuspendMode;
+    descriptor: Z
+
+  private native void onOrientationChangedNative();
+    descriptor: ()V
+
+  private native void setART(boolean);
+    descriptor: (Z)V
+
+  public com.ideaworks3d.marmalade.LoaderThread LoaderThread();
+    descriptor: ()Lcom/ideaworks3d/marmalade/LoaderThread;
+    Code:
+       0: aload_0
+       1: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+       4: areturn
+
+  public com.ideaworks3d.marmalade.LoaderActivity();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #7                  // Method android/app/Activity."<init>":()V
+       4: aload_0
+       5: aconst_null
+       6: putfield      #8                  // Field m_ListenerManager:Lcom/ideaworks3d/marmalade/event/ListenerManager;
+       9: aload_0
+      10: iconst_0
+      11: putfield      #9                  // Field m_IgnoreFocusLoss:Z
+      14: aload_0
+      15: iconst_0
+      16: putfield      #1                  // Field m_ExecuteIntentActivityNotFoundException:Z
+      19: aload_0
+      20: aconst_null
+      21: putfield      #10                 // Field m_orientationEventListener:Landroid/view/OrientationEventListener;
+      24: aload_0
+      25: iconst_0
+      26: putfield      #11                 // Field m_LegacySuspendMode:Z
+      29: return
+
+  protected void attachBaseContext(android.content.Context);
+    descriptor: (Landroid/content/Context;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #12                 // Method android/app/Activity.attachBaseContext:(Landroid/content/Context;)V
+       5: ldc           #13                 // String android.support.multidex.MultiDex
+       7: invokestatic  #14                 // Method java/lang/Class.forName:(Ljava/lang/String;)Ljava/lang/Class;
+      10: pop
+      11: goto          16
+      14: astore_2
+      15: return
+      16: aload_0
+      17: invokestatic  #16                 // Method android/support/multidex/MultiDex.install:(Landroid/content/Context;)V
+      20: return
+    Exception table:
+       from    to  target type
+           5    11    14   Class java/lang/ClassNotFoundException
+
+  protected void onCreate(android.os.Bundle);
+    descriptor: (Landroid/os/Bundle;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #17                 // Method android/app/Activity.onCreate:(Landroid/os/Bundle;)V
+       5: getstatic     #18                 // Field m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       8: ifnull        11
+      11: ldc           #19                 // String s3e_android
+      13: astore_2
+      14: aload_2
+      15: invokestatic  #20                 // Method java/lang/System.loadLibrary:(Ljava/lang/String;)V
+      18: aload_0
+      19: putstatic     #18                 // Field m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      22: aload_0
+      23: invokestatic  #21                 // Method com/ideaworks3d/marmalade/LoaderAPI.getListenerManager:()Lcom/ideaworks3d/marmalade/event/ListenerManager;
+      26: putfield      #8                  // Field m_ListenerManager:Lcom/ideaworks3d/marmalade/event/ListenerManager;
+      29: aload_0
+      30: aload_0
+      31: invokespecial #22                 // Method IsRunningART:()Z
+      34: invokespecial #23                 // Method setART:(Z)V
+      37: aload_0
+      38: new           #24                 // class com/ideaworks3d/marmalade/ProgressDialogHandler
+      41: dup
+      42: invokespecial #25                 // Method com/ideaworks3d/marmalade/ProgressDialogHandler."<init>":()V
+      45: putfield      #26                 // Field m_ProgressDialogHandler:Landroid/os/Handler;
+      48: aload_0
+      49: new           #27                 // class android/widget/RelativeLayout
+      52: dup
+      53: aload_0
+      54: invokespecial #28                 // Method android/widget/RelativeLayout."<init>":(Landroid/content/Context;)V
+      57: putfield      #29                 // Field m_TopLevel:Landroid/widget/RelativeLayout;
+      60: aload_0
+      61: new           #30                 // class android/widget/FrameLayout
+      64: dup
+      65: aload_0
+      66: invokespecial #31                 // Method android/widget/FrameLayout."<init>":(Landroid/content/Context;)V
+      69: putfield      #32                 // Field m_FrameLayout:Landroid/widget/FrameLayout;
+      72: aload_0
+      73: getfield      #29                 // Field m_TopLevel:Landroid/widget/RelativeLayout;
+      76: aload_0
+      77: getfield      #32                 // Field m_FrameLayout:Landroid/widget/FrameLayout;
+      80: invokevirtual #33                 // Method android/widget/RelativeLayout.addView:(Landroid/view/View;)V
+      83: aload_0
+      84: iconst_0
+      85: invokevirtual #34                 // Method createView:(Z)V
+      88: aload_0
+      89: aload_0
+      90: getfield      #29                 // Field m_TopLevel:Landroid/widget/RelativeLayout;
+      93: invokevirtual #35                 // Method setContentView:(Landroid/view/View;)V
+      96: aload_0
+      97: new           #36                 // class com/ideaworks3d/marmalade/LoaderActivity$1
+     100: dup
+     101: aload_0
+     102: aload_0
+     103: iconst_3
+     104: invokespecial #37                 // Method com/ideaworks3d/marmalade/LoaderActivity$1."<init>":(Lcom/ideaworks3d/marmalade/LoaderActivity;Landroid/content/Context;I)V
+     107: putfield      #10                 // Field m_orientationEventListener:Landroid/view/OrientationEventListener;
+     110: aload_0
+     111: getfield      #10                 // Field m_orientationEventListener:Landroid/view/OrientationEventListener;
+     114: invokevirtual #38                 // Method android/view/OrientationEventListener.enable:()V
+     117: aload_0
+     118: getfield      #10                 // Field m_orientationEventListener:Landroid/view/OrientationEventListener;
+     121: invokevirtual #39                 // Method android/view/OrientationEventListener.canDetectOrientation:()Z
+     124: ifne          127
+     127: return
+
+  public void createView(boolean);
+    descriptor: (Z)V
+    Code:
+       0: aload_0
+       1: getfield      #40                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+       4: ifnull        26
+       7: aload_0
+       8: getfield      #32                 // Field m_FrameLayout:Landroid/widget/FrameLayout;
+      11: aload_0
+      12: getfield      #40                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+      15: invokevirtual #41                 // Method android/widget/FrameLayout.removeView:(Landroid/view/View;)V
+      18: aload_0
+      19: aconst_null
+      20: putfield      #40                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+      23: invokestatic  #42                 // Method java/lang/System.gc:()V
+      26: aload_0
+      27: new           #43                 // class com/ideaworks3d/marmalade/LoaderView
+      30: dup
+      31: aload_0
+      32: iload_1
+      33: invokespecial #44                 // Method com/ideaworks3d/marmalade/LoaderView."<init>":(Lcom/ideaworks3d/marmalade/LoaderActivity;Z)V
+      36: putfield      #40                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+      39: aload_0
+      40: getfield      #32                 // Field m_FrameLayout:Landroid/widget/FrameLayout;
+      43: aload_0
+      44: getfield      #40                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+      47: iconst_0
+      48: invokevirtual #45                 // Method android/widget/FrameLayout.addView:(Landroid/view/View;I)V
+      51: aload_0
+      52: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+      55: ifnull        69
+      58: aload_0
+      59: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+      62: aload_0
+      63: getfield      #40                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+      66: invokevirtual #46                 // Method com/ideaworks3d/marmalade/LoaderThread.setView:(Lcom/ideaworks3d/marmalade/LoaderView;)V
+      69: return
+
+  public void onWindowFocusChanged(boolean);
+    descriptor: (Z)V
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokespecial #47                 // Method android/app/Activity.onWindowFocusChanged:(Z)V
+       5: return
+
+  public void onConfigurationChanged(android.content.res.Configuration);
+    descriptor: (Landroid/content/res/Configuration;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #48                 // Method android/app/Activity.onConfigurationChanged:(Landroid/content/res/Configuration;)V
+       5: aload_1
+       6: getfield      #49                 // Field android/content/res/Configuration.hardKeyboardHidden:I
+       9: iconst_1
+      10: if_icmpne     27
+      13: aload_0
+      14: getfield      #40                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+      17: getfield      #50                 // Field com/ideaworks3d/marmalade/LoaderView.m_LoaderKeyboard:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+      20: iconst_1
+      21: invokevirtual #51                 // Method com/ideaworks3d/marmalade/LoaderKeyboard.hardKeyboardConfigurationChanged:(Z)V
+      24: goto          46
+      27: aload_1
+      28: getfield      #49                 // Field android/content/res/Configuration.hardKeyboardHidden:I
+      31: iconst_2
+      32: if_icmpne     46
+      35: aload_0
+      36: getfield      #40                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+      39: getfield      #50                 // Field com/ideaworks3d/marmalade/LoaderView.m_LoaderKeyboard:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+      42: iconst_0
+      43: invokevirtual #51                 // Method com/ideaworks3d/marmalade/LoaderKeyboard.hardKeyboardConfigurationChanged:(Z)V
+      46: return
+
+  protected void onStart();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #52                 // Method android/app/Activity.onStart:()V
+       4: aload_0
+       5: invokespecial #53                 // Method startLoader:()V
+       8: return
+
+  protected void onRestart();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #54                 // Method android/app/Activity.onRestart:()V
+       4: return
+
+  protected void onResume();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #55                 // Method android/app/Activity.onResume:()V
+       4: aload_0
+       5: invokespecial #4                  // Method isScreenLocked:()Z
+       8: ifeq          23
+      11: aload_0
+      12: invokespecial #5                  // Method isScreenOn:()Z
+      15: ifeq          44
+      18: aload_0
+      19: invokespecial #3                  // Method startDelayedResume:()V
+      22: return
+      23: aload_0
+      24: getfield      #10                 // Field m_orientationEventListener:Landroid/view/OrientationEventListener;
+      27: invokevirtual #38                 // Method android/view/OrientationEventListener.enable:()V
+      30: aload_0
+      31: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+      34: ifnull        44
+      37: aload_0
+      38: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+      41: invokevirtual #56                 // Method com/ideaworks3d/marmalade/LoaderThread.onResume:()V
+      44: return
+
+  protected void onPause();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: invokevirtual #57                 // Method isReadyForSuspend:(Z)Z
+       5: ifeq          29
+       8: aload_0
+       9: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+      12: ifnull        22
+      15: aload_0
+      16: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+      19: invokevirtual #58                 // Method com/ideaworks3d/marmalade/LoaderThread.onStop:()V
+      22: aload_0
+      23: getfield      #10                 // Field m_orientationEventListener:Landroid/view/OrientationEventListener;
+      26: invokevirtual #59                 // Method android/view/OrientationEventListener.disable:()V
+      29: aload_0
+      30: invokespecial #60                 // Method android/app/Activity.onPause:()V
+      33: return
+
+  protected void onStop();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokevirtual #57                 // Method isReadyForSuspend:(Z)Z
+       5: ifeq          29
+       8: aload_0
+       9: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+      12: ifnull        22
+      15: aload_0
+      16: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+      19: invokevirtual #58                 // Method com/ideaworks3d/marmalade/LoaderThread.onStop:()V
+      22: aload_0
+      23: getfield      #10                 // Field m_orientationEventListener:Landroid/view/OrientationEventListener;
+      26: invokevirtual #59                 // Method android/view/OrientationEventListener.disable:()V
+      29: aload_0
+      30: invokespecial #61                 // Method android/app/Activity.onStop:()V
+      33: return
+
+  protected void onDestroy();
+    descriptor: ()V
+    Code:
+       0: getstatic     #18                 // Field m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       3: aload_0
+       4: if_acmpeq     12
+       7: aload_0
+       8: invokespecial #62                 // Method android/app/Activity.onDestroy:()V
+      11: return
+      12: iconst_0
+      13: istore_1
+      14: aload_0
+      15: invokevirtual #63                 // Method isFinishing:()Z
+      18: ifeq          66
+      21: aload_0
+      22: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+      25: ifnull        66
+      28: aload_0
+      29: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+      32: invokevirtual #64                 // Method com/ideaworks3d/marmalade/LoaderThread.soundStop:()V
+      35: aload_0
+      36: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+      39: invokevirtual #65                 // Method com/ideaworks3d/marmalade/LoaderThread.audioStopAll:()V
+      42: aload_0
+      43: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+      46: invokevirtual #66                 // Method com/ideaworks3d/marmalade/LoaderThread.onDestroy:()V
+      49: aload_0
+      50: aconst_null
+      51: putfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+      54: aconst_null
+      55: putstatic     #18                 // Field m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      58: aload_0
+      59: getfield      #40                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+      62: getfield      #67                 // Field com/ideaworks3d/marmalade/LoaderView.m_TerminateApplication:Z
+      65: istore_1
+      66: aload_0
+      67: getfield      #10                 // Field m_orientationEventListener:Landroid/view/OrientationEventListener;
+      70: invokevirtual #59                 // Method android/view/OrientationEventListener.disable:()V
+      73: aload_0
+      74: invokespecial #62                 // Method android/app/Activity.onDestroy:()V
+      77: iload_1
+      78: ifeq          87
+      81: invokestatic  #68                 // Method android/os/Process.myPid:()I
+      84: invokestatic  #69                 // Method android/os/Process.killProcess:(I)V
+      87: return
+
+  public void onLowMemory();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+       4: ifnull        14
+       7: aload_0
+       8: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+      11: invokevirtual #70                 // Method com/ideaworks3d/marmalade/LoaderThread.onLowMemory:()V
+      14: return
+
+  private boolean isScreenLocked();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: ldc           #71                 // String keyguard
+       3: invokevirtual #72                 // Method getSystemService:(Ljava/lang/String;)Ljava/lang/Object;
+       6: checkcast     #73                 // class android/app/KeyguardManager
+       9: astore_1
+      10: aload_1
+      11: invokevirtual #74                 // Method android/app/KeyguardManager.inKeyguardRestrictedInputMode:()Z
+      14: istore_2
+      15: iload_2
+      16: ireturn
+
+  private boolean isScreenOn();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: ldc           #75                 // String power
+       3: invokevirtual #72                 // Method getSystemService:(Ljava/lang/String;)Ljava/lang/Object;
+       6: checkcast     #76                 // class android/os/PowerManager
+       9: astore_1
+      10: aload_1
+      11: invokevirtual #77                 // Method android/os/PowerManager.isScreenOn:()Z
+      14: istore_2
+      15: iload_2
+      16: ireturn
+
+  private void startDelayedResume();
+    descriptor: ()V
+    Code:
+       0: new           #78                 // class com/ideaworks3d/marmalade/LoaderActivity$DelayedResumeTask
+       3: dup
+       4: aload_0
+       5: aconst_null
+       6: invokespecial #79                 // Method com/ideaworks3d/marmalade/LoaderActivity$DelayedResumeTask."<init>":(Lcom/ideaworks3d/marmalade/LoaderActivity;Lcom/ideaworks3d/marmalade/LoaderActivity$1;)V
+       9: astore_1
+      10: aload_1
+      11: iconst_0
+      12: anewarray     #80                 // class java/lang/Void
+      15: invokevirtual #81                 // Method com/ideaworks3d/marmalade/LoaderActivity$DelayedResumeTask.execute:([Ljava/lang/Object;)Landroid/os/AsyncTask;
+      18: pop
+      19: return
+
+  private void startLoader();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: aload_0
+       2: aload_0
+       3: invokevirtual #82                 // Method getAssets:()Landroid/content/res/AssetManager;
+       6: aload_0
+       7: invokevirtual #83                 // Method getFilesDir:()Ljava/io/File;
+      10: aload_0
+      11: getfield      #40                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+      14: invokestatic  #84                 // Method com/ideaworks3d/marmalade/LoaderThread.getInstance:(Lcom/ideaworks3d/marmalade/LoaderActivity;Landroid/content/res/AssetManager;Ljava/io/File;Lcom/ideaworks3d/marmalade/LoaderView;)Lcom/ideaworks3d/marmalade/LoaderThread;
+      17: putfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+      20: return
+
+  public boolean dispatchTouchEvent(android.view.MotionEvent);
+    descriptor: (Landroid/view/MotionEvent;)Z
+    Code:
+       0: aload_1
+       1: invokestatic  #85                 // Method com/ideaworks3d/marmalade/s3eTouchpad.onTouchEvent:(Landroid/view/MotionEvent;)Z
+       4: ifeq          9
+       7: iconst_1
+       8: ireturn
+       9: aload_0
+      10: aload_1
+      11: invokespecial #86                 // Method android/app/Activity.dispatchTouchEvent:(Landroid/view/MotionEvent;)Z
+      14: ireturn
+
+  private boolean onKeyEvent(int, int, android.view.KeyEvent);
+    descriptor: (IILandroid/view/KeyEvent;)Z
+    Code:
+       0: iconst_0
+       1: istore        4
+       3: aload_0
+       4: getfield      #40                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+       7: ifnull        22
+      10: aload_0
+      11: getfield      #40                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+      14: iload_1
+      15: iload_2
+      16: aload_3
+      17: invokevirtual #87                 // Method com/ideaworks3d/marmalade/LoaderView.onKeyEvent:(IILandroid/view/KeyEvent;)Z
+      20: istore        4
+      22: iload         4
+      24: ireturn
+
+  public boolean onKeyDown(int, android.view.KeyEvent);
+    descriptor: (ILandroid/view/KeyEvent;)Z
+    Code:
+       0: aload_0
+       1: iload_1
+       2: iconst_1
+       3: aload_2
+       4: invokespecial #88                 // Method onKeyEvent:(IILandroid/view/KeyEvent;)Z
+       7: ifeq          12
+      10: iconst_1
+      11: ireturn
+      12: aload_0
+      13: iload_1
+      14: aload_2
+      15: invokespecial #89                 // Method android/app/Activity.onKeyDown:(ILandroid/view/KeyEvent;)Z
+      18: ireturn
+
+  public boolean onKeyUp(int, android.view.KeyEvent);
+    descriptor: (ILandroid/view/KeyEvent;)Z
+    Code:
+       0: aload_0
+       1: iload_1
+       2: iconst_0
+       3: aload_2
+       4: invokespecial #88                 // Method onKeyEvent:(IILandroid/view/KeyEvent;)Z
+       7: ifeq          12
+      10: iconst_1
+      11: ireturn
+      12: aload_0
+      13: iload_1
+      14: aload_2
+      15: invokespecial #90                 // Method android/app/Activity.onKeyUp:(ILandroid/view/KeyEvent;)Z
+      18: ireturn
+
+  public boolean dispatchKeyEvent(android.view.KeyEvent);
+    descriptor: (Landroid/view/KeyEvent;)Z
+    Code:
+       0: aload_1
+       1: invokevirtual #91                 // Method android/view/KeyEvent.getCharacters:()Ljava/lang/String;
+       4: ifnull        86
+       7: aload_1
+       8: invokevirtual #91                 // Method android/view/KeyEvent.getCharacters:()Ljava/lang/String;
+      11: invokevirtual #92                 // Method java/lang/String.isEmpty:()Z
+      14: ifne          86
+      17: aload_1
+      18: invokevirtual #93                 // Method android/view/KeyEvent.getKeyCode:()I
+      21: ifne          86
+      24: aload_1
+      25: invokevirtual #94                 // Method android/view/KeyEvent.getAction:()I
+      28: tableswitch   { // 0 to 2
+                     0: 67
+                     1: 56
+                     2: 78
+               default: 86
+          }
+      56: aload_0
+      57: iconst_0
+      58: iconst_0
+      59: aload_1
+      60: invokespecial #88                 // Method onKeyEvent:(IILandroid/view/KeyEvent;)Z
+      63: pop
+      64: goto          86
+      67: aload_0
+      68: iconst_0
+      69: iconst_1
+      70: aload_1
+      71: invokespecial #88                 // Method onKeyEvent:(IILandroid/view/KeyEvent;)Z
+      74: pop
+      75: goto          86
+      78: aload_0
+      79: iconst_0
+      80: iconst_1
+      81: aload_1
+      82: invokespecial #88                 // Method onKeyEvent:(IILandroid/view/KeyEvent;)Z
+      85: pop
+      86: aload_0
+      87: aload_1
+      88: invokespecial #95                 // Method android/app/Activity.dispatchKeyEvent:(Landroid/view/KeyEvent;)Z
+      91: ireturn
+
+  public boolean getIgnoreFocusLoss();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: getfield      #9                  // Field m_IgnoreFocusLoss:Z
+       4: ireturn
+
+  public void setIgnoreFocusLoss(boolean);
+    descriptor: (Z)V
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #9                  // Field m_IgnoreFocusLoss:Z
+       5: return
+
+  public android.content.Intent ExecuteIntent(android.content.Intent);
+    descriptor: (Landroid/content/Intent;)Landroid/content/Intent;
+    Code:
+       0: aload_0
+       1: aconst_null
+       2: putfield      #96                 // Field m_Data:Landroid/content/Intent;
+       5: aload_0
+       6: iconst_1
+       7: putfield      #97                 // Field m_IntentBlocking:Z
+      10: aload_0
+      11: iconst_0
+      12: putfield      #1                  // Field m_ExecuteIntentActivityNotFoundException:Z
+      15: aload_0
+      16: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+      19: ifnull        58
+      22: aload_0
+      23: invokevirtual #98                 // Method LoaderThread:()Lcom/ideaworks3d/marmalade/LoaderThread;
+      26: new           #99                 // class com/ideaworks3d/marmalade/LoaderActivity$2
+      29: dup
+      30: aload_0
+      31: aload_1
+      32: invokespecial #100                // Method com/ideaworks3d/marmalade/LoaderActivity$2."<init>":(Lcom/ideaworks3d/marmalade/LoaderActivity;Landroid/content/Intent;)V
+      35: invokevirtual #101                // Method com/ideaworks3d/marmalade/LoaderThread.runOnOSThread:(Ljava/lang/Runnable;)V
+      38: aload_0
+      39: getfield      #97                 // Field m_IntentBlocking:Z
+      42: ifeq          53
+      45: bipush        20
+      47: invokestatic  #102                // Method com/ideaworks3d/marmalade/LoaderAPI.s3eDeviceYield:(I)V
+      50: goto          38
+      53: aload_0
+      54: getfield      #96                 // Field m_Data:Landroid/content/Intent;
+      57: areturn
+      58: aconst_null
+      59: areturn
+
+  public boolean executeIntentActivityNotFoundException();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field m_ExecuteIntentActivityNotFoundException:Z
+       4: ireturn
+
+  protected void onActivityResult(int, int, android.content.Intent);
+    descriptor: (IILandroid/content/Intent;)V
+    Code:
+       0: aload_0
+       1: iload_1
+       2: iload_2
+       3: aload_3
+       4: invokespecial #103                // Method android/app/Activity.onActivityResult:(IILandroid/content/Intent;)V
+       7: iload_1
+       8: ldc           #104                // int 123456
+      10: if_icmpne     53
+      13: iload_2
+      14: iconst_m1
+      15: if_icmpeq     31
+      18: ldc           #105                // String Intent cancelled
+      20: invokestatic  #106                // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+      23: aload_0
+      24: aconst_null
+      25: putfield      #96                 // Field m_Data:Landroid/content/Intent;
+      28: goto          48
+      31: aload_3
+      32: ifnonnull     43
+      35: new           #107                // class android/content/Intent
+      38: dup
+      39: invokespecial #108                // Method android/content/Intent."<init>":()V
+      42: astore_3
+      43: aload_0
+      44: aload_3
+      45: putfield      #96                 // Field m_Data:Landroid/content/Intent;
+      48: aload_0
+      49: iconst_0
+      50: putfield      #97                 // Field m_IntentBlocking:Z
+      53: new           #109                // class com/ideaworks3d/marmalade/event/ActivityResultEvent
+      56: dup
+      57: aload_3
+      58: iload_1
+      59: iload_2
+      60: invokespecial #110                // Method com/ideaworks3d/marmalade/event/ActivityResultEvent."<init>":(Landroid/content/Intent;II)V
+      63: invokestatic  #111                // Method com/ideaworks3d/marmalade/LoaderAPI.notifyActivityResultListeners:(Lcom/ideaworks3d/marmalade/event/ActivityResultEvent;)V
+      66: return
+
+  public void onRequestPermissionsResult(int, java.lang.String[], int[]);
+    descriptor: (I[Ljava/lang/String;[I)V
+    Code:
+       0: aload_0
+       1: iload_1
+       2: aload_2
+       3: aload_3
+       4: invokespecial #112                // Method android/app/Activity.onRequestPermissionsResult:(I[Ljava/lang/String;[I)V
+       7: new           #113                // class com/ideaworks3d/marmalade/event/RequestPermissionsResultEvent
+      10: dup
+      11: iload_1
+      12: aload_2
+      13: aload_3
+      14: invokespecial #114                // Method com/ideaworks3d/marmalade/event/RequestPermissionsResultEvent."<init>":(I[Ljava/lang/String;[I)V
+      17: invokestatic  #115                // Method com/ideaworks3d/marmalade/LoaderAPI.notifyRequestPermissionsResultListeners:(Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultEvent;)V
+      20: return
+
+  public void getCursor(android.net.Uri, java.lang.String[], com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener);
+    descriptor: (Landroid/net/Uri;[Ljava/lang/String;Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;)V
+    Code:
+       0: aload_0
+       1: invokevirtual #98                 // Method LoaderThread:()Lcom/ideaworks3d/marmalade/LoaderThread;
+       4: new           #116                // class com/ideaworks3d/marmalade/LoaderActivity$3
+       7: dup
+       8: aload_0
+       9: aload_1
+      10: aload_2
+      11: aload_3
+      12: invokespecial #117                // Method com/ideaworks3d/marmalade/LoaderActivity$3."<init>":(Lcom/ideaworks3d/marmalade/LoaderActivity;Landroid/net/Uri;[Ljava/lang/String;Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;)V
+      15: invokevirtual #101                // Method com/ideaworks3d/marmalade/LoaderThread.runOnOSThread:(Ljava/lang/Runnable;)V
+      18: return
+
+  public void ShowProgressDialog();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #26                 // Field m_ProgressDialogHandler:Landroid/os/Handler;
+       4: ifnull        29
+       7: new           #118                // class android/os/Message
+      10: dup
+      11: invokespecial #119                // Method android/os/Message."<init>":()V
+      14: astore_1
+      15: aload_1
+      16: iconst_0
+      17: putfield      #120                // Field android/os/Message.what:I
+      20: aload_0
+      21: getfield      #26                 // Field m_ProgressDialogHandler:Landroid/os/Handler;
+      24: aload_1
+      25: invokevirtual #121                // Method android/os/Handler.sendMessage:(Landroid/os/Message;)Z
+      28: pop
+      29: return
+
+  public void HideProgressDialog();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #26                 // Field m_ProgressDialogHandler:Landroid/os/Handler;
+       4: ifnull        29
+       7: new           #118                // class android/os/Message
+      10: dup
+      11: invokespecial #119                // Method android/os/Message."<init>":()V
+      14: astore_1
+      15: aload_1
+      16: iconst_1
+      17: putfield      #120                // Field android/os/Message.what:I
+      20: aload_0
+      21: getfield      #26                 // Field m_ProgressDialogHandler:Landroid/os/Handler;
+      24: aload_1
+      25: invokevirtual #121                // Method android/os/Handler.sendMessage:(Landroid/os/Message;)Z
+      28: pop
+      29: return
+
+  protected void onNewIntent(android.content.Intent);
+    descriptor: (Landroid/content/Intent;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #122                // Method android/app/Activity.onNewIntent:(Landroid/content/Intent;)V
+       5: new           #123                // class com/ideaworks3d/marmalade/NewIntentEvent
+       8: dup
+       9: getstatic     #124                // Field com/ideaworks3d/marmalade/NewIntentEvent$EventType.NEWINTENT:Lcom/ideaworks3d/marmalade/NewIntentEvent$EventType;
+      12: aload_1
+      13: invokespecial #125                // Method com/ideaworks3d/marmalade/NewIntentEvent."<init>":(Lcom/ideaworks3d/marmalade/NewIntentEvent$EventType;Landroid/content/Intent;)V
+      16: invokestatic  #126                // Method com/ideaworks3d/marmalade/LoaderAPI.notifyNewIntentListeners:(Lcom/ideaworks3d/marmalade/NewIntentEvent;)V
+      19: return
+
+  private boolean IsRunningART();
+    descriptor: ()Z
+    Code:
+       0: ldc           #127                // String java.vm.version
+       2: invokestatic  #128                // Method java/lang/System.getProperty:(Ljava/lang/String;)Ljava/lang/String;
+       5: astore_1
+       6: aload_1
+       7: ifnull        23
+      10: aload_1
+      11: ldc           #129                // String 1.
+      13: invokevirtual #130                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+      16: ifeq          23
+      19: iconst_1
+      20: goto          24
+      23: iconst_0
+      24: istore_2
+      25: iload_2
+      26: ifeq          29
+      29: iload_2
+      30: ifne          37
+      33: iconst_1
+      34: goto          38
+      37: iconst_0
+      38: ireturn
+
+  public boolean isReadyForSuspend(boolean);
+    descriptor: (Z)Z
+    Code:
+       0: iconst_0
+       1: istore_2
+       2: getstatic     #131                // Field android/os/Build$VERSION.SDK_INT:I
+       5: bipush        24
+       7: if_icmplt     15
+      10: aload_0
+      11: invokevirtual #132                // Method isInMultiWindowMode:()Z
+      14: istore_2
+      15: iconst_0
+      16: istore_3
+      17: iload_1
+      18: ifeq          39
+      21: iload_2
+      22: ifne          29
+      25: iconst_1
+      26: goto          30
+      29: iconst_0
+      30: istore_3
+      31: aload_0
+      32: iload_3
+      33: putfield      #11                 // Field m_LegacySuspendMode:Z
+      36: goto          57
+      39: aload_0
+      40: getfield      #11                 // Field m_LegacySuspendMode:Z
+      43: ifne          50
+      46: iconst_1
+      47: goto          51
+      50: iconst_0
+      51: istore_3
+      52: aload_0
+      53: iconst_0
+      54: putfield      #11                 // Field m_LegacySuspendMode:Z
+      57: iload_3
+      58: ireturn
+
+  static boolean access$000(com.ideaworks3d.marmalade.LoaderActivity);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderActivity;)Z
+    Code:
+       0: aload_0
+       1: invokespecial #5                  // Method isScreenOn:()Z
+       4: ireturn
+
+  static boolean access$100(com.ideaworks3d.marmalade.LoaderActivity);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderActivity;)Z
+    Code:
+       0: aload_0
+       1: invokespecial #4                  // Method isScreenLocked:()Z
+       4: ireturn
+
+  static void access$200(com.ideaworks3d.marmalade.LoaderActivity);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderActivity;)V
+    Code:
+       0: aload_0
+       1: invokespecial #3                  // Method startDelayedResume:()V
+       4: return
+
+  static void access$300(com.ideaworks3d.marmalade.LoaderActivity);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderActivity;)V
+    Code:
+       0: aload_0
+       1: invokespecial #2                  // Method onOrientationChangedNative:()V
+       4: return
+
+  static boolean access$502(com.ideaworks3d.marmalade.LoaderActivity, boolean);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderActivity;Z)Z
+    Code:
+       0: aload_0
+       1: iload_1
+       2: dup_x1
+       3: putfield      #1                  // Field m_ExecuteIntentActivityNotFoundException:Z
+       6: ireturn
+}

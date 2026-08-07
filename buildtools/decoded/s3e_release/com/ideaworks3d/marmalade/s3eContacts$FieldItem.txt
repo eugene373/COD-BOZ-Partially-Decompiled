@@ -1,0 +1,71 @@
+Compiled from "s3eContacts.java"
+class com.ideaworks3d.marmalade.s3eContacts$FieldItem {
+  public java.lang.String mimeType;
+    descriptor: Ljava/lang/String;
+
+  public java.lang.String searchColumn;
+    descriptor: Ljava/lang/String;
+
+  public int maxEntries;
+    descriptor: I
+
+  public java.lang.String fieldTypeColumn;
+    descriptor: Ljava/lang/String;
+
+  public int fieldType;
+    descriptor: I
+
+  final com.ideaworks3d.marmalade.s3eContacts this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/s3eContacts;
+
+  public com.ideaworks3d.marmalade.s3eContacts$FieldItem(com.ideaworks3d.marmalade.s3eContacts, java.lang.String, java.lang.String, int);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eContacts;Ljava/lang/String;Ljava/lang/String;I)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eContacts;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: aload_0
+      10: aconst_null
+      11: putfield      #3                  // Field mimeType:Ljava/lang/String;
+      14: aload_0
+      15: aconst_null
+      16: putfield      #4                  // Field searchColumn:Ljava/lang/String;
+      19: aload_0
+      20: iconst_0
+      21: putfield      #5                  // Field maxEntries:I
+      24: aload_0
+      25: aconst_null
+      26: putfield      #6                  // Field fieldTypeColumn:Ljava/lang/String;
+      29: aload_0
+      30: iconst_0
+      31: putfield      #7                  // Field fieldType:I
+      34: aload_0
+      35: aload_2
+      36: putfield      #3                  // Field mimeType:Ljava/lang/String;
+      39: aload_0
+      40: aload_3
+      41: putfield      #4                  // Field searchColumn:Ljava/lang/String;
+      44: aload_0
+      45: iload         4
+      47: putfield      #5                  // Field maxEntries:I
+      50: return
+
+  public com.ideaworks3d.marmalade.s3eContacts$FieldItem(com.ideaworks3d.marmalade.s3eContacts, java.lang.String, java.lang.String, int, java.lang.String, int);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eContacts;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;I)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: iload         4
+       6: invokespecial #8                  // Method "<init>":(Lcom/ideaworks3d/marmalade/s3eContacts;Ljava/lang/String;Ljava/lang/String;I)V
+       9: aload_0
+      10: aload         5
+      12: putfield      #6                  // Field fieldTypeColumn:Ljava/lang/String;
+      15: aload_0
+      16: iload         6
+      18: putfield      #7                  // Field fieldType:I
+      21: return
+}

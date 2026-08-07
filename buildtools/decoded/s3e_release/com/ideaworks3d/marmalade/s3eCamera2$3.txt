@@ -1,0 +1,52 @@
+Compiled from "s3eCamera2.java"
+class com.ideaworks3d.marmalade.s3eCamera2$3 implements java.util.Comparator<android.util.Size> {
+  final com.ideaworks3d.marmalade.s3eCamera2 this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/s3eCamera2;
+
+  com.ideaworks3d.marmalade.s3eCamera2$3(com.ideaworks3d.marmalade.s3eCamera2);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eCamera2;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera2;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: return
+
+  public int compare(android.util.Size, android.util.Size);
+    descriptor: (Landroid/util/Size;Landroid/util/Size;)I
+    Code:
+       0: aload_1
+       1: invokevirtual #3                  // Method android/util/Size.getWidth:()I
+       4: aload_2
+       5: invokevirtual #3                  // Method android/util/Size.getWidth:()I
+       8: if_icmpne     27
+      11: aload_1
+      12: invokevirtual #4                  // Method android/util/Size.getHeight:()I
+      15: aload_2
+      16: invokevirtual #4                  // Method android/util/Size.getHeight:()I
+      19: isub
+      20: i2f
+      21: invokestatic  #5                  // Method java/lang/Math.signum:(F)F
+      24: goto          40
+      27: aload_1
+      28: invokevirtual #3                  // Method android/util/Size.getWidth:()I
+      31: aload_2
+      32: invokevirtual #3                  // Method android/util/Size.getWidth:()I
+      35: isub
+      36: i2f
+      37: invokestatic  #5                  // Method java/lang/Math.signum:(F)F
+      40: f2i
+      41: ireturn
+
+  public int compare(java.lang.Object, java.lang.Object);
+    descriptor: (Ljava/lang/Object;Ljava/lang/Object;)I
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #6                  // class android/util/Size
+       5: aload_2
+       6: checkcast     #6                  // class android/util/Size
+       9: invokevirtual #7                  // Method compare:(Landroid/util/Size;Landroid/util/Size;)I
+      12: ireturn
+}

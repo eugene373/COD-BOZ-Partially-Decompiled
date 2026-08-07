@@ -1,0 +1,218 @@
+Compiled from "Task.java"
+public class bolts.Task$TaskCompletionSource {
+  final bolts.Task this$0;
+    descriptor: Lbolts/Task;
+
+  private bolts.Task$TaskCompletionSource(bolts.Task);
+    descriptor: (Lbolts/Task;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #2                  // Field this$0:Lbolts/Task;
+       5: aload_0
+       6: invokespecial #3                  // Method java/lang/Object."<init>":()V
+       9: return
+
+  public bolts.Task<TResult> getTask();
+    descriptor: ()Lbolts/Task;
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field this$0:Lbolts/Task;
+       4: areturn
+
+  public boolean trySetCancelled();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field this$0:Lbolts/Task;
+       4: invokestatic  #4                  // Method bolts/Task.access$300:(Lbolts/Task;)Ljava/lang/Object;
+       7: dup
+       8: astore_1
+       9: monitorenter
+      10: aload_0
+      11: getfield      #2                  // Field this$0:Lbolts/Task;
+      14: invokestatic  #5                  // Method bolts/Task.access$400:(Lbolts/Task;)Z
+      17: ifeq          24
+      20: iconst_0
+      21: aload_1
+      22: monitorexit
+      23: ireturn
+      24: aload_0
+      25: getfield      #2                  // Field this$0:Lbolts/Task;
+      28: iconst_1
+      29: invokestatic  #6                  // Method bolts/Task.access$402:(Lbolts/Task;Z)Z
+      32: pop
+      33: aload_0
+      34: getfield      #2                  // Field this$0:Lbolts/Task;
+      37: iconst_1
+      38: invokestatic  #7                  // Method bolts/Task.access$502:(Lbolts/Task;Z)Z
+      41: pop
+      42: aload_0
+      43: getfield      #2                  // Field this$0:Lbolts/Task;
+      46: invokestatic  #4                  // Method bolts/Task.access$300:(Lbolts/Task;)Ljava/lang/Object;
+      49: invokevirtual #8                  // Method java/lang/Object.notifyAll:()V
+      52: aload_0
+      53: getfield      #2                  // Field this$0:Lbolts/Task;
+      56: invokestatic  #9                  // Method bolts/Task.access$600:(Lbolts/Task;)V
+      59: iconst_1
+      60: aload_1
+      61: monitorexit
+      62: ireturn
+      63: astore_2
+      64: aload_1
+      65: monitorexit
+      66: aload_2
+      67: athrow
+    Exception table:
+       from    to  target type
+          10    23    63   any
+          24    62    63   any
+          63    66    63   any
+
+  public boolean trySetResult(TResult);
+    descriptor: (Ljava/lang/Object;)Z
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field this$0:Lbolts/Task;
+       4: invokestatic  #4                  // Method bolts/Task.access$300:(Lbolts/Task;)Ljava/lang/Object;
+       7: dup
+       8: astore_2
+       9: monitorenter
+      10: aload_0
+      11: getfield      #2                  // Field this$0:Lbolts/Task;
+      14: invokestatic  #5                  // Method bolts/Task.access$400:(Lbolts/Task;)Z
+      17: ifeq          24
+      20: iconst_0
+      21: aload_2
+      22: monitorexit
+      23: ireturn
+      24: aload_0
+      25: getfield      #2                  // Field this$0:Lbolts/Task;
+      28: iconst_1
+      29: invokestatic  #6                  // Method bolts/Task.access$402:(Lbolts/Task;Z)Z
+      32: pop
+      33: aload_0
+      34: getfield      #2                  // Field this$0:Lbolts/Task;
+      37: aload_1
+      38: invokestatic  #10                 // Method bolts/Task.access$702:(Lbolts/Task;Ljava/lang/Object;)Ljava/lang/Object;
+      41: pop
+      42: aload_0
+      43: getfield      #2                  // Field this$0:Lbolts/Task;
+      46: invokestatic  #4                  // Method bolts/Task.access$300:(Lbolts/Task;)Ljava/lang/Object;
+      49: invokevirtual #8                  // Method java/lang/Object.notifyAll:()V
+      52: aload_0
+      53: getfield      #2                  // Field this$0:Lbolts/Task;
+      56: invokestatic  #9                  // Method bolts/Task.access$600:(Lbolts/Task;)V
+      59: iconst_1
+      60: aload_2
+      61: monitorexit
+      62: ireturn
+      63: astore_3
+      64: aload_2
+      65: monitorexit
+      66: aload_3
+      67: athrow
+    Exception table:
+       from    to  target type
+          10    23    63   any
+          24    62    63   any
+          63    66    63   any
+
+  public boolean trySetError(java.lang.Exception);
+    descriptor: (Ljava/lang/Exception;)Z
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field this$0:Lbolts/Task;
+       4: invokestatic  #4                  // Method bolts/Task.access$300:(Lbolts/Task;)Ljava/lang/Object;
+       7: dup
+       8: astore_2
+       9: monitorenter
+      10: aload_0
+      11: getfield      #2                  // Field this$0:Lbolts/Task;
+      14: invokestatic  #5                  // Method bolts/Task.access$400:(Lbolts/Task;)Z
+      17: ifeq          24
+      20: iconst_0
+      21: aload_2
+      22: monitorexit
+      23: ireturn
+      24: aload_0
+      25: getfield      #2                  // Field this$0:Lbolts/Task;
+      28: iconst_1
+      29: invokestatic  #6                  // Method bolts/Task.access$402:(Lbolts/Task;Z)Z
+      32: pop
+      33: aload_0
+      34: getfield      #2                  // Field this$0:Lbolts/Task;
+      37: aload_1
+      38: invokestatic  #11                 // Method bolts/Task.access$802:(Lbolts/Task;Ljava/lang/Exception;)Ljava/lang/Exception;
+      41: pop
+      42: aload_0
+      43: getfield      #2                  // Field this$0:Lbolts/Task;
+      46: invokestatic  #4                  // Method bolts/Task.access$300:(Lbolts/Task;)Ljava/lang/Object;
+      49: invokevirtual #8                  // Method java/lang/Object.notifyAll:()V
+      52: aload_0
+      53: getfield      #2                  // Field this$0:Lbolts/Task;
+      56: invokestatic  #9                  // Method bolts/Task.access$600:(Lbolts/Task;)V
+      59: iconst_1
+      60: aload_2
+      61: monitorexit
+      62: ireturn
+      63: astore_3
+      64: aload_2
+      65: monitorexit
+      66: aload_3
+      67: athrow
+    Exception table:
+       from    to  target type
+          10    23    63   any
+          24    62    63   any
+          63    66    63   any
+
+  public void setCancelled();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokevirtual #12                 // Method trySetCancelled:()Z
+       4: ifne          17
+       7: new           #13                 // class java/lang/IllegalStateException
+      10: dup
+      11: ldc           #14                 // String Cannot cancel a completed task.
+      13: invokespecial #15                 // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      16: athrow
+      17: return
+
+  public void setResult(TResult);
+    descriptor: (Ljava/lang/Object;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #16                 // Method trySetResult:(Ljava/lang/Object;)Z
+       5: ifne          18
+       8: new           #13                 // class java/lang/IllegalStateException
+      11: dup
+      12: ldc           #17                 // String Cannot set the result of a completed task.
+      14: invokespecial #15                 // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      17: athrow
+      18: return
+
+  public void setError(java.lang.Exception);
+    descriptor: (Ljava/lang/Exception;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #18                 // Method trySetError:(Ljava/lang/Exception;)Z
+       5: ifne          18
+       8: new           #13                 // class java/lang/IllegalStateException
+      11: dup
+      12: ldc           #19                 // String Cannot set the error on a completed task.
+      14: invokespecial #15                 // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      17: athrow
+      18: return
+
+  bolts.Task$TaskCompletionSource(bolts.Task, bolts.Task$1);
+    descriptor: (Lbolts/Task;Lbolts/Task$1;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #1                  // Method "<init>":(Lbolts/Task;)V
+       5: return
+}

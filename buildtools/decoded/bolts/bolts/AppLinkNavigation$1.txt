@@ -1,0 +1,34 @@
+Compiled from "AppLinkNavigation.java"
+final class bolts.AppLinkNavigation$1 implements bolts.Continuation<bolts.AppLink, bolts.AppLinkNavigation$NavigationResult> {
+  final android.content.Context val$context;
+    descriptor: Landroid/content/Context;
+
+  bolts.AppLinkNavigation$1(android.content.Context);
+    descriptor: (Landroid/content/Context;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field val$context:Landroid/content/Context;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: return
+
+  public bolts.AppLinkNavigation$NavigationResult then(bolts.Task<bolts.AppLink>) throws java.lang.Exception;
+    descriptor: (Lbolts/Task;)Lbolts/AppLinkNavigation$NavigationResult;
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field val$context:Landroid/content/Context;
+       4: aload_1
+       5: invokevirtual #3                  // Method bolts/Task.getResult:()Ljava/lang/Object;
+       8: checkcast     #4                  // class bolts/AppLink
+      11: invokestatic  #5                  // Method bolts/AppLinkNavigation.navigate:(Landroid/content/Context;Lbolts/AppLink;)Lbolts/AppLinkNavigation$NavigationResult;
+      14: areturn
+
+  public java.lang.Object then(bolts.Task) throws java.lang.Exception;
+    descriptor: (Lbolts/Task;)Ljava/lang/Object;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #6                  // Method then:(Lbolts/Task;)Lbolts/AppLinkNavigation$NavigationResult;
+       5: areturn
+}

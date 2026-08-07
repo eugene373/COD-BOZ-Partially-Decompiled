@@ -1,0 +1,159 @@
+Compiled from "LoaderActivitySlave.java"
+public abstract class com.ideaworks3d.marmalade.LoaderActivitySlave implements com.ideaworks3d.marmalade.event.ActivityResultListener,com.ideaworks3d.marmalade.SuspendResumeListener,com.ideaworks3d.marmalade.event.RequestPermissionsResultListener,com.ideaworks3d.marmalade.NewIntentListener {
+  protected com.ideaworks3d.marmalade.LoaderActivitySlave();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: invokestatic  #2                  // Method com/ideaworks3d/marmalade/LoaderAPI.addSuspendResumeListener:(Lcom/ideaworks3d/marmalade/SuspendResumeListener;)V
+       8: aload_0
+       9: invokestatic  #3                  // Method com/ideaworks3d/marmalade/LoaderAPI.addActivityResultListener:(Lcom/ideaworks3d/marmalade/event/ActivityResultListener;)V
+      12: aload_0
+      13: invokestatic  #4                  // Method com/ideaworks3d/marmalade/LoaderAPI.addRequestPermissionsResultListener:(Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultListener;)V
+      16: aload_0
+      17: invokestatic  #5                  // Method com/ideaworks3d/marmalade/LoaderAPI.addNewIntentListener:(Lcom/ideaworks3d/marmalade/NewIntentListener;)V
+      20: return
+
+  protected void onStart();
+    descriptor: ()V
+    Code:
+       0: return
+
+  protected void onCreate(android.os.Bundle);
+    descriptor: (Landroid/os/Bundle;)V
+    Code:
+       0: return
+
+  protected void onStop();
+    descriptor: ()V
+    Code:
+       0: return
+
+  protected void onDestroy();
+    descriptor: ()V
+    Code:
+       0: return
+
+  protected void onPause();
+    descriptor: ()V
+    Code:
+       0: return
+
+  protected void onResume();
+    descriptor: ()V
+    Code:
+       0: return
+
+  protected void onActivityResult(int, int, android.content.Intent);
+    descriptor: (IILandroid/content/Intent;)V
+    Code:
+       0: return
+
+  protected void onRequestPermissionsResult(int, java.lang.String[], int[]);
+    descriptor: (I[Ljava/lang/String;[I)V
+    Code:
+       0: return
+
+  protected void onNewIntent(android.content.Intent);
+    descriptor: (Landroid/content/Intent;)V
+    Code:
+       0: return
+
+  protected android.app.Activity getActivity();
+    descriptor: ()Landroid/app/Activity;
+    Code:
+       0: getstatic     #6                  // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       3: areturn
+
+  public void onActivityResultEvent(com.ideaworks3d.marmalade.event.ActivityResultEvent);
+    descriptor: (Lcom/ideaworks3d/marmalade/event/ActivityResultEvent;)V
+    Code:
+       0: ldc           #7                  // String LoaderActivitySlave
+       2: new           #8                  // class java/lang/StringBuilder
+       5: dup
+       6: invokespecial #9                  // Method java/lang/StringBuilder."<init>":()V
+       9: ldc           #10                 // String onActivityResultEvent request:
+      11: invokevirtual #11                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      14: aload_1
+      15: getfield      #12                 // Field com/ideaworks3d/marmalade/event/ActivityResultEvent.m_requestCode:I
+      18: invokevirtual #13                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      21: ldc           #14                 // String  result:
+      23: invokevirtual #11                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      26: aload_1
+      27: getfield      #15                 // Field com/ideaworks3d/marmalade/event/ActivityResultEvent.m_resultCode:I
+      30: invokevirtual #13                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      33: invokevirtual #16                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      36: invokestatic  #17                 // Method android/util/Log.i:(Ljava/lang/String;Ljava/lang/String;)I
+      39: pop
+      40: aload_0
+      41: aload_1
+      42: getfield      #12                 // Field com/ideaworks3d/marmalade/event/ActivityResultEvent.m_requestCode:I
+      45: aload_1
+      46: getfield      #15                 // Field com/ideaworks3d/marmalade/event/ActivityResultEvent.m_resultCode:I
+      49: aload_1
+      50: getfield      #18                 // Field com/ideaworks3d/marmalade/event/ActivityResultEvent.m_intent:Landroid/content/Intent;
+      53: invokevirtual #19                 // Method onActivityResult:(IILandroid/content/Intent;)V
+      56: return
+
+  public void onRequestPermissionsResultEvent(com.ideaworks3d.marmalade.event.RequestPermissionsResultEvent);
+    descriptor: (Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultEvent;)V
+    Code:
+       0: ldc           #7                  // String LoaderActivitySlave
+       2: new           #8                  // class java/lang/StringBuilder
+       5: dup
+       6: invokespecial #9                  // Method java/lang/StringBuilder."<init>":()V
+       9: ldc           #20                 // String onRequestPermissionsResult request:
+      11: invokevirtual #11                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      14: aload_1
+      15: getfield      #21                 // Field com/ideaworks3d/marmalade/event/RequestPermissionsResultEvent.m_requestCode:I
+      18: invokevirtual #13                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      21: invokevirtual #16                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      24: invokestatic  #17                 // Method android/util/Log.i:(Ljava/lang/String;Ljava/lang/String;)I
+      27: pop
+      28: aload_0
+      29: aload_1
+      30: getfield      #21                 // Field com/ideaworks3d/marmalade/event/RequestPermissionsResultEvent.m_requestCode:I
+      33: aload_1
+      34: getfield      #22                 // Field com/ideaworks3d/marmalade/event/RequestPermissionsResultEvent.m_permissions:[Ljava/lang/String;
+      37: aload_1
+      38: getfield      #23                 // Field com/ideaworks3d/marmalade/event/RequestPermissionsResultEvent.m_grantResults:[I
+      41: invokevirtual #24                 // Method onRequestPermissionsResult:(I[Ljava/lang/String;[I)V
+      44: return
+
+  public void onSuspendResumeEvent(com.ideaworks3d.marmalade.SuspendResumeEvent);
+    descriptor: (Lcom/ideaworks3d/marmalade/SuspendResumeEvent;)V
+    Code:
+       0: aload_1
+       1: getfield      #25                 // Field com/ideaworks3d/marmalade/SuspendResumeEvent.eventType:Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+       4: getstatic     #26                 // Field com/ideaworks3d/marmalade/SuspendResumeEvent$EventType.RESUME:Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+       7: if_acmpne     14
+      10: aload_0
+      11: invokevirtual #27                 // Method onResume:()V
+      14: aload_1
+      15: getfield      #25                 // Field com/ideaworks3d/marmalade/SuspendResumeEvent.eventType:Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+      18: getstatic     #28                 // Field com/ideaworks3d/marmalade/SuspendResumeEvent$EventType.SUSPEND:Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+      21: if_acmpne     28
+      24: aload_0
+      25: invokevirtual #29                 // Method onPause:()V
+      28: aload_1
+      29: getfield      #25                 // Field com/ideaworks3d/marmalade/SuspendResumeEvent.eventType:Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+      32: getstatic     #30                 // Field com/ideaworks3d/marmalade/SuspendResumeEvent$EventType.SHUTDOWN:Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+      35: if_acmpne     42
+      38: aload_0
+      39: invokevirtual #31                 // Method onDestroy:()V
+      42: return
+
+  public void onNewIntentEvent(com.ideaworks3d.marmalade.NewIntentEvent);
+    descriptor: (Lcom/ideaworks3d/marmalade/NewIntentEvent;)V
+    Code:
+       0: aload_1
+       1: getfield      #32                 // Field com/ideaworks3d/marmalade/NewIntentEvent.eventType:Lcom/ideaworks3d/marmalade/NewIntentEvent$EventType;
+       4: getstatic     #33                 // Field com/ideaworks3d/marmalade/NewIntentEvent$EventType.NEWINTENT:Lcom/ideaworks3d/marmalade/NewIntentEvent$EventType;
+       7: if_acmpne     18
+      10: aload_0
+      11: aload_1
+      12: getfield      #34                 // Field com/ideaworks3d/marmalade/NewIntentEvent.intent:Landroid/content/Intent;
+      15: invokevirtual #35                 // Method onNewIntent:(Landroid/content/Intent;)V
+      18: return
+}

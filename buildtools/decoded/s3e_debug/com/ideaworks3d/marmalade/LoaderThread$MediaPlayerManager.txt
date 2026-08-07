@@ -1,0 +1,1405 @@
+Compiled from "LoaderThread.java"
+class com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager {
+  private final int m_NumAudioChannels = 16;
+    descriptor: I
+
+  private android.media.MediaPlayer[] m_MediaPlayer;
+    descriptor: [Landroid/media/MediaPlayer;
+
+  private com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener[] m_MediaPlayerListener;
+    descriptor: [Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager$MediaPlayerListener;
+
+  private com.ideaworks3d.marmalade.LoaderThread$AudioState[] m_AudioState;
+    descriptor: [Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+
+  private java.lang.Boolean[] m_AudioIsPaused;
+    descriptor: [Ljava/lang/Boolean;
+
+  private int[] m_AudioPlayRepeats;
+    descriptor: [I
+
+  private int[] m_AudioVolume;
+    descriptor: [I
+
+  final com.ideaworks3d.marmalade.LoaderThread this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderThread;
+
+  public com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager(com.ideaworks3d.marmalade.LoaderThread);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderThread;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #6                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderThread;
+       5: aload_0
+       6: invokespecial #7                  // Method java/lang/Object."<init>":()V
+       9: aload_0
+      10: bipush        16
+      12: putfield      #8                  // Field m_NumAudioChannels:I
+      15: aload_0
+      16: bipush        16
+      18: anewarray     #9                  // class android/media/MediaPlayer
+      21: putfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+      24: aload_0
+      25: bipush        16
+      27: anewarray     #10                 // class com/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager$MediaPlayerListener
+      30: putfield      #11                 // Field m_MediaPlayerListener:[Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager$MediaPlayerListener;
+      33: aload_0
+      34: bipush        16
+      36: anewarray     #12                 // class com/ideaworks3d/marmalade/LoaderThread$AudioState
+      39: putfield      #5                  // Field m_AudioState:[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      42: aload_0
+      43: bipush        16
+      45: anewarray     #13                 // class java/lang/Boolean
+      48: putfield      #14                 // Field m_AudioIsPaused:[Ljava/lang/Boolean;
+      51: aload_0
+      52: bipush        16
+      54: newarray       int
+      56: putfield      #1                  // Field m_AudioPlayRepeats:[I
+      59: aload_0
+      60: bipush        16
+      62: newarray       int
+      64: putfield      #15                 // Field m_AudioVolume:[I
+      67: iconst_0
+      68: istore_2
+      69: iload_2
+      70: bipush        16
+      72: if_icmpge     137
+      75: aload_0
+      76: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+      79: iload_2
+      80: aconst_null
+      81: aastore
+      82: aload_0
+      83: getfield      #11                 // Field m_MediaPlayerListener:[Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager$MediaPlayerListener;
+      86: iload_2
+      87: new           #10                 // class com/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager$MediaPlayerListener
+      90: dup
+      91: aload_0
+      92: iload_2
+      93: invokespecial #16                 // Method com/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager$MediaPlayerListener."<init>":(Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;I)V
+      96: aastore
+      97: aload_0
+      98: getfield      #5                  // Field m_AudioState:[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     101: iload_2
+     102: getstatic     #17                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.None:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     105: aastore
+     106: aload_0
+     107: getfield      #14                 // Field m_AudioIsPaused:[Ljava/lang/Boolean;
+     110: iload_2
+     111: iconst_0
+     112: invokestatic  #18                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+     115: aastore
+     116: aload_0
+     117: getfield      #1                  // Field m_AudioPlayRepeats:[I
+     120: iload_2
+     121: iconst_0
+     122: iastore
+     123: aload_0
+     124: getfield      #15                 // Field m_AudioVolume:[I
+     127: iload_2
+     128: bipush        100
+     130: iastore
+     131: iinc          2, 1
+     134: goto          69
+     137: return
+
+  public int audioGetNumChannels();
+    descriptor: ()I
+    Code:
+       0: bipush        16
+       2: ireturn
+
+  private void audioStopped(int);
+    descriptor: (I)V
+    Code:
+       0: new           #19                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #23                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #24                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #26                 // String -
+      36: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #27                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #28                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: new           #19                 // class java/lang/StringBuilder
+      54: dup
+      55: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+      58: ldc           #30                 // String Audio channel:
+      60: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      63: iload_1
+      64: invokevirtual #31                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      67: ldc           #32                 // String , audioStopped
+      69: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      72: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      75: invokestatic  #33                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      78: aload_0
+      79: getfield      #6                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderThread;
+      82: iload_1
+      83: invokestatic  #34                 // Method com/ideaworks3d/marmalade/LoaderThread.access$500:(Lcom/ideaworks3d/marmalade/LoaderThread;I)V
+      86: return
+
+  public int audioPlay(java.lang.String, int, long, long, int);
+    descriptor: (Ljava/lang/String;IJJI)I
+    Code:
+       0: new           #19                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #23                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #24                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #26                 // String -
+      36: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #27                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #28                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: new           #19                 // class java/lang/StringBuilder
+      54: dup
+      55: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+      58: ldc           #35                 // String audioPlay:
+      60: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      63: aload_0
+      64: getfield      #5                  // Field m_AudioState:[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      67: iload         7
+      69: aaload
+      70: invokevirtual #36                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      73: ldc           #37                 // String :
+      75: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      78: aload_1
+      79: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      82: ldc           #38                 // String  (
+      84: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      87: iload_2
+      88: invokevirtual #31                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      91: ldc           #39                 // String )
+      93: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      96: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      99: invokestatic  #33                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     102: aload_0
+     103: iload         7
+     105: invokevirtual #40                 // Method audioStop:(I)V
+     108: aload_0
+     109: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+     112: iload         7
+     114: aaload
+     115: ifnonnull     166
+     118: aload_0
+     119: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+     122: iload         7
+     124: new           #9                  // class android/media/MediaPlayer
+     127: dup
+     128: invokespecial #41                 // Method android/media/MediaPlayer."<init>":()V
+     131: aastore
+     132: aload_0
+     133: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+     136: iload         7
+     138: aaload
+     139: aload_0
+     140: getfield      #11                 // Field m_MediaPlayerListener:[Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager$MediaPlayerListener;
+     143: iload         7
+     145: aaload
+     146: invokevirtual #42                 // Method android/media/MediaPlayer.setOnErrorListener:(Landroid/media/MediaPlayer$OnErrorListener;)V
+     149: aload_0
+     150: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+     153: iload         7
+     155: aaload
+     156: aload_0
+     157: getfield      #11                 // Field m_MediaPlayerListener:[Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager$MediaPlayerListener;
+     160: iload         7
+     162: aaload
+     163: invokevirtual #43                 // Method android/media/MediaPlayer.setOnCompletionListener:(Landroid/media/MediaPlayer$OnCompletionListener;)V
+     166: aload_0
+     167: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+     170: iload         7
+     172: aaload
+     173: invokevirtual #44                 // Method android/media/MediaPlayer.reset:()V
+     176: aload_0
+     177: getstatic     #45                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Idle:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     180: iload         7
+     182: invokespecial #4                  // Method audioChangeState:(Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;I)V
+     185: lload         5
+     187: lconst_0
+     188: lcmp
+     189: ifle          365
+     192: new           #19                 // class java/lang/StringBuilder
+     195: dup
+     196: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     199: aload_0
+     200: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     203: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     206: aload_0
+     207: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     210: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     213: bipush        46
+     215: invokevirtual #23                 // Method java/lang/String.lastIndexOf:(I)I
+     218: iconst_1
+     219: iadd
+     220: invokevirtual #24                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     223: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     226: ldc           #26                 // String -
+     228: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     231: invokestatic  #27                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     234: invokevirtual #28                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     237: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     240: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     243: new           #19                 // class java/lang/StringBuilder
+     246: dup
+     247: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     250: ldc           #30                 // String Audio channel:
+     252: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     255: iload         7
+     257: invokevirtual #31                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     260: ldc           #46                 // String , Playing from zipfile:
+     262: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     265: aload_1
+     266: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     269: ldc           #47                 // String , offset:
+     271: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     274: lload_3
+     275: invokevirtual #48                 // Method java/lang/StringBuilder.append:(J)Ljava/lang/StringBuilder;
+     278: ldc           #49                 // String , size:
+     280: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     283: lload         5
+     285: invokevirtual #48                 // Method java/lang/StringBuilder.append:(J)Ljava/lang/StringBuilder;
+     288: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     291: invokestatic  #33                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     294: new           #50                 // class java/io/File
+     297: dup
+     298: aload_1
+     299: invokespecial #51                 // Method java/io/File."<init>":(Ljava/lang/String;)V
+     302: astore        8
+     304: aload         8
+     306: ldc           #52                 // int 268435456
+     308: invokestatic  #53                 // Method android/os/ParcelFileDescriptor.open:(Ljava/io/File;I)Landroid/os/ParcelFileDescriptor;
+     311: astore        9
+     313: new           #54                 // class android/content/res/AssetFileDescriptor
+     316: dup
+     317: aload         9
+     319: lload_3
+     320: lload         5
+     322: invokespecial #55                 // Method android/content/res/AssetFileDescriptor."<init>":(Landroid/os/ParcelFileDescriptor;JJ)V
+     325: astore        10
+     327: aload_0
+     328: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+     331: iload         7
+     333: aaload
+     334: aload         10
+     336: invokevirtual #56                 // Method android/content/res/AssetFileDescriptor.getFileDescriptor:()Ljava/io/FileDescriptor;
+     339: aload         10
+     341: invokevirtual #57                 // Method android/content/res/AssetFileDescriptor.getStartOffset:()J
+     344: aload         10
+     346: invokevirtual #58                 // Method android/content/res/AssetFileDescriptor.getLength:()J
+     349: invokevirtual #59                 // Method android/media/MediaPlayer.setDataSource:(Ljava/io/FileDescriptor;JJ)V
+     352: aload         10
+     354: invokevirtual #60                 // Method android/content/res/AssetFileDescriptor.close:()V
+     357: aload         9
+     359: invokevirtual #61                 // Method android/os/ParcelFileDescriptor.close:()V
+     362: goto          560
+     365: aload_1
+     366: ldc           #62                 // String http://
+     368: invokevirtual #63                 // Method java/lang/String.indexOf:(Ljava/lang/String;)I
+     371: iconst_m1
+     372: if_icmpne     385
+     375: aload_1
+     376: ldc           #64                 // String https://
+     378: invokevirtual #63                 // Method java/lang/String.indexOf:(Ljava/lang/String;)I
+     381: iconst_m1
+     382: if_icmpeq     482
+     385: new           #19                 // class java/lang/StringBuilder
+     388: dup
+     389: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     392: aload_0
+     393: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     396: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     399: aload_0
+     400: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     403: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     406: bipush        46
+     408: invokevirtual #23                 // Method java/lang/String.lastIndexOf:(I)I
+     411: iconst_1
+     412: iadd
+     413: invokevirtual #24                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     416: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     419: ldc           #26                 // String -
+     421: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     424: invokestatic  #27                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     427: invokevirtual #28                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     430: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     433: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     436: new           #19                 // class java/lang/StringBuilder
+     439: dup
+     440: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     443: ldc           #30                 // String Audio channel:
+     445: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     448: iload         7
+     450: invokevirtual #31                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     453: ldc           #65                 // String , Playing from URL:
+     455: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     458: aload_1
+     459: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     462: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     465: invokestatic  #33                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     468: aload_0
+     469: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+     472: iload         7
+     474: aaload
+     475: aload_1
+     476: invokevirtual #66                 // Method android/media/MediaPlayer.setDataSource:(Ljava/lang/String;)V
+     479: goto          560
+     482: new           #67                 // class java/io/FileInputStream
+     485: dup
+     486: aload_1
+     487: invokespecial #68                 // Method java/io/FileInputStream."<init>":(Ljava/lang/String;)V
+     490: astore        8
+     492: aload_0
+     493: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+     496: iload         7
+     498: aaload
+     499: aload         8
+     501: invokevirtual #69                 // Method java/io/FileInputStream.getFD:()Ljava/io/FileDescriptor;
+     504: invokevirtual #70                 // Method android/media/MediaPlayer.setDataSource:(Ljava/io/FileDescriptor;)V
+     507: aload         8
+     509: invokevirtual #71                 // Method java/io/FileInputStream.close:()V
+     512: goto          560
+     515: astore        8
+     517: aload_0
+     518: getfield      #6                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderThread;
+     521: invokestatic  #73                 // Method com/ideaworks3d/marmalade/LoaderThread.access$600:(Lcom/ideaworks3d/marmalade/LoaderThread;)Landroid/content/res/AssetManager;
+     524: aload_1
+     525: invokevirtual #74                 // Method android/content/res/AssetManager.openFd:(Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+     528: astore        9
+     530: aload_0
+     531: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+     534: iload         7
+     536: aaload
+     537: aload         9
+     539: invokevirtual #56                 // Method android/content/res/AssetFileDescriptor.getFileDescriptor:()Ljava/io/FileDescriptor;
+     542: aload         9
+     544: invokevirtual #57                 // Method android/content/res/AssetFileDescriptor.getStartOffset:()J
+     547: aload         9
+     549: invokevirtual #58                 // Method android/content/res/AssetFileDescriptor.getLength:()J
+     552: invokevirtual #59                 // Method android/media/MediaPlayer.setDataSource:(Ljava/io/FileDescriptor;JJ)V
+     555: aload         9
+     557: invokevirtual #60                 // Method android/content/res/AssetFileDescriptor.close:()V
+     560: aload_0
+     561: getstatic     #75                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Initialized:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     564: iload         7
+     566: invokespecial #4                  // Method audioChangeState:(Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;I)V
+     569: aload_0
+     570: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+     573: iload         7
+     575: aaload
+     576: invokevirtual #76                 // Method android/media/MediaPlayer.prepare:()V
+     579: aload_0
+     580: getstatic     #77                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Prepared:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     583: iload         7
+     585: invokespecial #4                  // Method audioChangeState:(Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;I)V
+     588: goto          776
+     591: astore        8
+     593: new           #19                 // class java/lang/StringBuilder
+     596: dup
+     597: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     600: aload_0
+     601: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     604: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     607: aload_0
+     608: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     611: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     614: bipush        46
+     616: invokevirtual #23                 // Method java/lang/String.lastIndexOf:(I)I
+     619: iconst_1
+     620: iadd
+     621: invokevirtual #24                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     624: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     627: ldc           #26                 // String -
+     629: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     632: invokestatic  #27                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     635: invokevirtual #28                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     638: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     641: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     644: new           #19                 // class java/lang/StringBuilder
+     647: dup
+     648: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     651: ldc           #78                 // String FileNotFoundException: error playing audio file:
+     653: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     656: aload         8
+     658: invokevirtual #36                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+     661: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     664: invokestatic  #33                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     667: aload_0
+     668: getstatic     #79                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Error:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     671: iload         7
+     673: invokespecial #4                  // Method audioChangeState:(Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;I)V
+     676: aload         8
+     678: invokevirtual #80                 // Method java/io/FileNotFoundException.printStackTrace:()V
+     681: iconst_m1
+     682: ireturn
+     683: astore        8
+     685: new           #19                 // class java/lang/StringBuilder
+     688: dup
+     689: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     692: aload_0
+     693: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     696: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     699: aload_0
+     700: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     703: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     706: bipush        46
+     708: invokevirtual #23                 // Method java/lang/String.lastIndexOf:(I)I
+     711: iconst_1
+     712: iadd
+     713: invokevirtual #24                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     716: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     719: ldc           #26                 // String -
+     721: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     724: invokestatic  #27                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     727: invokevirtual #28                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     730: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     733: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     736: new           #19                 // class java/lang/StringBuilder
+     739: dup
+     740: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     743: ldc           #82                 // String IOException: error playing audio file:
+     745: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     748: aload         8
+     750: invokevirtual #36                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+     753: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     756: invokestatic  #33                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     759: aload_0
+     760: getstatic     #79                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Error:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     763: iload         7
+     765: invokespecial #4                  // Method audioChangeState:(Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;I)V
+     768: aload         8
+     770: invokevirtual #83                 // Method java/io/IOException.printStackTrace:()V
+     773: bipush        -2
+     775: ireturn
+     776: aload_0
+     777: iload         7
+     779: invokespecial #84                 // Method audioSetVolumeInternal:(I)V
+     782: aload_0
+     783: getfield      #1                  // Field m_AudioPlayRepeats:[I
+     786: iload         7
+     788: iload_2
+     789: iastore
+     790: aload_0
+     791: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+     794: iload         7
+     796: aaload
+     797: aload_0
+     798: getfield      #1                  // Field m_AudioPlayRepeats:[I
+     801: iload         7
+     803: iaload
+     804: ifne          811
+     807: iconst_1
+     808: goto          812
+     811: iconst_0
+     812: invokevirtual #85                 // Method android/media/MediaPlayer.setLooping:(Z)V
+     815: new           #19                 // class java/lang/StringBuilder
+     818: dup
+     819: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     822: aload_0
+     823: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     826: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     829: aload_0
+     830: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     833: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     836: bipush        46
+     838: invokevirtual #23                 // Method java/lang/String.lastIndexOf:(I)I
+     841: iconst_1
+     842: iadd
+     843: invokevirtual #24                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     846: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     849: ldc           #26                 // String -
+     851: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     854: invokestatic  #27                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     857: invokevirtual #28                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     860: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     863: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     866: new           #19                 // class java/lang/StringBuilder
+     869: dup
+     870: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     873: ldc           #30                 // String Audio channel:
+     875: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     878: iload         7
+     880: invokevirtual #31                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     883: ldc           #86                 // String , audioPlay: starting
+     885: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     888: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     891: invokestatic  #33                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     894: aload_0
+     895: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+     898: iload         7
+     900: aaload
+     901: invokevirtual #87                 // Method android/media/MediaPlayer.start:()V
+     904: goto          1001
+     907: astore        8
+     909: new           #19                 // class java/lang/StringBuilder
+     912: dup
+     913: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     916: aload_0
+     917: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     920: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     923: aload_0
+     924: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     927: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     930: bipush        46
+     932: invokevirtual #23                 // Method java/lang/String.lastIndexOf:(I)I
+     935: iconst_1
+     936: iadd
+     937: invokevirtual #24                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     940: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     943: ldc           #26                 // String -
+     945: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     948: invokestatic  #27                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     951: invokevirtual #28                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     954: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     957: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     960: new           #19                 // class java/lang/StringBuilder
+     963: dup
+     964: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     967: ldc           #30                 // String Audio channel:
+     969: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     972: iload         7
+     974: invokevirtual #31                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     977: ldc           #89                 // String , IllegalStateException: start(): error playing audio file:
+     979: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     982: aload         8
+     984: invokevirtual #36                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+     987: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     990: invokestatic  #33                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     993: aload         8
+     995: invokevirtual #90                 // Method java/lang/IllegalStateException.printStackTrace:()V
+     998: bipush        -2
+    1000: ireturn
+    1001: new           #19                 // class java/lang/StringBuilder
+    1004: dup
+    1005: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+    1008: aload_0
+    1009: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+    1012: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+    1015: aload_0
+    1016: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+    1019: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+    1022: bipush        46
+    1024: invokevirtual #23                 // Method java/lang/String.lastIndexOf:(I)I
+    1027: iconst_1
+    1028: iadd
+    1029: invokevirtual #24                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+    1032: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    1035: ldc           #26                 // String -
+    1037: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    1040: invokestatic  #27                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+    1043: invokevirtual #28                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+    1046: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    1049: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+    1052: new           #19                 // class java/lang/StringBuilder
+    1055: dup
+    1056: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+    1059: ldc           #30                 // String Audio channel:
+    1061: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    1064: iload         7
+    1066: invokevirtual #31                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+    1069: ldc           #91                 // String , audioPlay: started
+    1071: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    1074: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+    1077: invokestatic  #33                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+    1080: aload_0
+    1081: getstatic     #92                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Started:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+    1084: iload         7
+    1086: invokespecial #4                  // Method audioChangeState:(Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;I)V
+    1089: iconst_0
+    1090: ireturn
+    Exception table:
+       from    to  target type
+         482   512   515   Class java/io/FileNotFoundException
+         166   588   591   Class java/io/FileNotFoundException
+         166   588   683   Class java/io/IOException
+         894   904   907   Class java/lang/IllegalStateException
+
+  public void doPause();
+    descriptor: ()V
+    Code:
+       0: iconst_0
+       1: istore_1
+       2: iload_1
+       3: bipush        16
+       5: if_icmpge     58
+       8: aload_0
+       9: getfield      #14                 // Field m_AudioIsPaused:[Ljava/lang/Boolean;
+      12: iload_1
+      13: aload_0
+      14: getfield      #5                  // Field m_AudioState:[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      17: iload_1
+      18: aaload
+      19: getstatic     #93                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Paused:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      22: if_acmpne     29
+      25: iconst_1
+      26: goto          30
+      29: iconst_0
+      30: invokestatic  #18                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      33: aastore
+      34: aload_0
+      35: getfield      #14                 // Field m_AudioIsPaused:[Ljava/lang/Boolean;
+      38: iload_1
+      39: aaload
+      40: invokevirtual #94                 // Method java/lang/Boolean.booleanValue:()Z
+      43: ifne          52
+      46: aload_0
+      47: iload_1
+      48: invokevirtual #95                 // Method audioPause:(I)I
+      51: pop
+      52: iinc          1, 1
+      55: goto          2
+      58: return
+
+  public void doResume();
+    descriptor: ()V
+    Code:
+       0: iconst_0
+       1: istore_1
+       2: iload_1
+       3: bipush        16
+       5: if_icmpge     32
+       8: aload_0
+       9: getfield      #14                 // Field m_AudioIsPaused:[Ljava/lang/Boolean;
+      12: iload_1
+      13: aaload
+      14: invokevirtual #94                 // Method java/lang/Boolean.booleanValue:()Z
+      17: ifne          26
+      20: aload_0
+      21: iload_1
+      22: invokevirtual #96                 // Method audioResume:(I)I
+      25: pop
+      26: iinc          1, 1
+      29: goto          2
+      32: return
+
+  public int audioPause(int);
+    descriptor: (I)I
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field m_AudioState:[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+       4: iload_1
+       5: aaload
+       6: getstatic     #92                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Started:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+       9: if_acmpeq     14
+      12: iconst_m1
+      13: ireturn
+      14: aload_0
+      15: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+      18: iload_1
+      19: aaload
+      20: ifnonnull     103
+      23: new           #19                 // class java/lang/StringBuilder
+      26: dup
+      27: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+      30: aload_0
+      31: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      34: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      37: aload_0
+      38: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      41: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      44: bipush        46
+      46: invokevirtual #23                 // Method java/lang/String.lastIndexOf:(I)I
+      49: iconst_1
+      50: iadd
+      51: invokevirtual #24                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      54: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      57: ldc           #26                 // String -
+      59: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      62: invokestatic  #27                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      65: invokevirtual #28                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      68: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      71: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      74: new           #19                 // class java/lang/StringBuilder
+      77: dup
+      78: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+      81: ldc           #30                 // String Audio channel:
+      83: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      86: iload_1
+      87: invokevirtual #31                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      90: ldc           #97                 // String , MediaPlayer.pause(): no MediaPlayer
+      92: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      95: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      98: invokestatic  #33                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     101: iconst_m1
+     102: ireturn
+     103: new           #19                 // class java/lang/StringBuilder
+     106: dup
+     107: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     110: aload_0
+     111: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     114: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     117: aload_0
+     118: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     121: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     124: bipush        46
+     126: invokevirtual #23                 // Method java/lang/String.lastIndexOf:(I)I
+     129: iconst_1
+     130: iadd
+     131: invokevirtual #24                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     134: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     137: ldc           #26                 // String -
+     139: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     142: invokestatic  #27                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     145: invokevirtual #28                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     148: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     151: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     154: new           #19                 // class java/lang/StringBuilder
+     157: dup
+     158: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     161: ldc           #30                 // String Audio channel:
+     163: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     166: iload_1
+     167: invokevirtual #31                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     170: ldc           #98                 // String , audioPause:
+     172: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     175: aload_0
+     176: getfield      #5                  // Field m_AudioState:[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     179: invokevirtual #36                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+     182: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     185: invokestatic  #33                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     188: aload_0
+     189: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+     192: iload_1
+     193: aaload
+     194: invokevirtual #99                 // Method android/media/MediaPlayer.pause:()V
+     197: aload_0
+     198: getstatic     #93                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Paused:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     201: iload_1
+     202: invokespecial #4                  // Method audioChangeState:(Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;I)V
+     205: goto          289
+     208: astore_2
+     209: new           #19                 // class java/lang/StringBuilder
+     212: dup
+     213: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     216: aload_0
+     217: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     220: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     223: aload_0
+     224: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     227: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     230: bipush        46
+     232: invokevirtual #23                 // Method java/lang/String.lastIndexOf:(I)I
+     235: iconst_1
+     236: iadd
+     237: invokevirtual #24                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     240: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     243: ldc           #26                 // String -
+     245: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     248: invokestatic  #27                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     251: invokevirtual #28                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     254: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     257: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     260: new           #19                 // class java/lang/StringBuilder
+     263: dup
+     264: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     267: ldc           #30                 // String Audio channel:
+     269: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     272: iload_1
+     273: invokevirtual #31                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     276: ldc           #100                // String , MediaPlayer.pause(): illegal state
+     278: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     281: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     284: invokestatic  #33                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     287: iconst_m1
+     288: ireturn
+     289: iconst_0
+     290: ireturn
+    Exception table:
+       from    to  target type
+         188   205   208   Class java/lang/IllegalStateException
+
+  public int audioResume(int);
+    descriptor: (I)I
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field m_AudioState:[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+       4: iload_1
+       5: aaload
+       6: getstatic     #93                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Paused:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+       9: if_acmpeq     92
+      12: new           #19                 // class java/lang/StringBuilder
+      15: dup
+      16: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+      19: aload_0
+      20: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      23: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      26: aload_0
+      27: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      30: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      33: bipush        46
+      35: invokevirtual #23                 // Method java/lang/String.lastIndexOf:(I)I
+      38: iconst_1
+      39: iadd
+      40: invokevirtual #24                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      43: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      46: ldc           #26                 // String -
+      48: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      51: invokestatic  #27                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      54: invokevirtual #28                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      57: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      60: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      63: new           #19                 // class java/lang/StringBuilder
+      66: dup
+      67: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+      70: ldc           #30                 // String Audio channel:
+      72: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      75: iload_1
+      76: invokevirtual #31                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      79: ldc           #101                // String  has not been resumed because it is not paused before.
+      81: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      84: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      87: invokestatic  #33                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      90: iconst_m1
+      91: ireturn
+      92: aload_0
+      93: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+      96: iload_1
+      97: aaload
+      98: ifnonnull     181
+     101: new           #19                 // class java/lang/StringBuilder
+     104: dup
+     105: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     108: aload_0
+     109: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     112: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     115: aload_0
+     116: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     119: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     122: bipush        46
+     124: invokevirtual #23                 // Method java/lang/String.lastIndexOf:(I)I
+     127: iconst_1
+     128: iadd
+     129: invokevirtual #24                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     132: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     135: ldc           #26                 // String -
+     137: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     140: invokestatic  #27                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     143: invokevirtual #28                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     146: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     149: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     152: new           #19                 // class java/lang/StringBuilder
+     155: dup
+     156: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     159: ldc           #30                 // String Audio channel:
+     161: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     164: iload_1
+     165: invokevirtual #31                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     168: ldc           #102                // String , MediaPlayer.start(): no MediaPlayer
+     170: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     173: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     176: invokestatic  #33                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     179: iconst_m1
+     180: ireturn
+     181: new           #19                 // class java/lang/StringBuilder
+     184: dup
+     185: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     188: aload_0
+     189: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     192: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     195: aload_0
+     196: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     199: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     202: bipush        46
+     204: invokevirtual #23                 // Method java/lang/String.lastIndexOf:(I)I
+     207: iconst_1
+     208: iadd
+     209: invokevirtual #24                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     212: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     215: ldc           #26                 // String -
+     217: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     220: invokestatic  #27                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     223: invokevirtual #28                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     226: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     229: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     232: new           #19                 // class java/lang/StringBuilder
+     235: dup
+     236: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     239: ldc           #30                 // String Audio channel:
+     241: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     244: iload_1
+     245: invokevirtual #31                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     248: ldc           #103                // String , audioResume:
+     250: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     253: aload_0
+     254: getfield      #5                  // Field m_AudioState:[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     257: iload_1
+     258: aaload
+     259: invokevirtual #36                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+     262: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     265: invokestatic  #33                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     268: aload_0
+     269: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+     272: iload_1
+     273: aaload
+     274: invokevirtual #87                 // Method android/media/MediaPlayer.start:()V
+     277: aload_0
+     278: getstatic     #92                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Started:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     281: iload_1
+     282: invokespecial #4                  // Method audioChangeState:(Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;I)V
+     285: goto          369
+     288: astore_2
+     289: new           #19                 // class java/lang/StringBuilder
+     292: dup
+     293: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     296: aload_0
+     297: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     300: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     303: aload_0
+     304: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     307: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     310: bipush        46
+     312: invokevirtual #23                 // Method java/lang/String.lastIndexOf:(I)I
+     315: iconst_1
+     316: iadd
+     317: invokevirtual #24                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     320: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     323: ldc           #26                 // String -
+     325: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     328: invokestatic  #27                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     331: invokevirtual #28                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     334: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     337: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     340: new           #19                 // class java/lang/StringBuilder
+     343: dup
+     344: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     347: ldc           #30                 // String Audio channel:
+     349: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     352: iload_1
+     353: invokevirtual #31                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     356: ldc           #104                // String , MediaPlayer.start(): illegal state
+     358: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     361: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     364: invokestatic  #33                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     367: iconst_m1
+     368: ireturn
+     369: iconst_0
+     370: ireturn
+    Exception table:
+       from    to  target type
+         268   285   288   Class java/lang/IllegalStateException
+
+  public void audioStopAll();
+    descriptor: ()V
+    Code:
+       0: iconst_0
+       1: istore_1
+       2: iload_1
+       3: bipush        16
+       5: if_icmpge     19
+       8: aload_0
+       9: iload_1
+      10: invokevirtual #40                 // Method audioStop:(I)V
+      13: iinc          1, 1
+      16: goto          2
+      19: return
+
+  public void audioStop(int);
+    descriptor: (I)V
+    Code:
+       0: new           #19                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #23                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #24                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #26                 // String -
+      36: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #27                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #28                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: new           #19                 // class java/lang/StringBuilder
+      54: dup
+      55: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+      58: ldc           #105                // String Getting audio state for channel:
+      60: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      63: iload_1
+      64: invokevirtual #31                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      67: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      70: invokestatic  #33                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      73: aload_0
+      74: getfield      #5                  // Field m_AudioState:[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      77: iload_1
+      78: aaload
+      79: astore_2
+      80: new           #19                 // class java/lang/StringBuilder
+      83: dup
+      84: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+      87: aload_0
+      88: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      91: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      94: aload_0
+      95: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      98: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     101: bipush        46
+     103: invokevirtual #23                 // Method java/lang/String.lastIndexOf:(I)I
+     106: iconst_1
+     107: iadd
+     108: invokevirtual #24                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     111: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     114: ldc           #26                 // String -
+     116: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     119: invokestatic  #27                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     122: invokevirtual #28                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     125: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     128: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     131: new           #19                 // class java/lang/StringBuilder
+     134: dup
+     135: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     138: ldc           #30                 // String Audio channel:
+     140: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     143: iload_1
+     144: invokevirtual #31                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     147: ldc           #106                // String , audioStop:
+     149: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     152: aload_2
+     153: invokevirtual #36                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+     156: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     159: invokestatic  #33                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     162: aload_0
+     163: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+     166: iload_1
+     167: aaload
+     168: ifnull        313
+     171: aload_2
+     172: getstatic     #92                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Started:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     175: if_acmpeq     192
+     178: aload_2
+     179: getstatic     #93                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Paused:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     182: if_acmpeq     192
+     185: aload_2
+     186: getstatic     #107                // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.PlaybackCompleted:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     189: if_acmpne     313
+     192: new           #19                 // class java/lang/StringBuilder
+     195: dup
+     196: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     199: aload_0
+     200: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     203: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     206: aload_0
+     207: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     210: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     213: bipush        46
+     215: invokevirtual #23                 // Method java/lang/String.lastIndexOf:(I)I
+     218: iconst_1
+     219: iadd
+     220: invokevirtual #24                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     223: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     226: ldc           #26                 // String -
+     228: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     231: invokestatic  #27                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     234: invokevirtual #28                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     237: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     240: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     243: new           #19                 // class java/lang/StringBuilder
+     246: dup
+     247: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+     250: ldc           #30                 // String Audio channel:
+     252: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     255: iload_1
+     256: invokevirtual #31                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     259: ldc           #108                // String , audioStop: stopping
+     261: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     264: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     267: invokestatic  #33                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     270: aload_0
+     271: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+     274: iload_1
+     275: aaload
+     276: invokevirtual #109                // Method android/media/MediaPlayer.stop:()V
+     279: aload_0
+     280: getstatic     #110                // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Stopped:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     283: iload_1
+     284: invokespecial #4                  // Method audioChangeState:(Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;I)V
+     287: goto          291
+     290: astore_3
+     291: aload_0
+     292: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+     295: iload_1
+     296: aaload
+     297: invokevirtual #44                 // Method android/media/MediaPlayer.reset:()V
+     300: aload_0
+     301: getstatic     #45                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Idle:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+     304: iload_1
+     305: invokespecial #4                  // Method audioChangeState:(Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;I)V
+     308: aload_0
+     309: iload_1
+     310: invokespecial #2                  // Method audioStopped:(I)V
+     313: return
+    Exception table:
+       from    to  target type
+         270   287   290   Class java/lang/IllegalStateException
+
+  public boolean audioIsPlaying(int);
+    descriptor: (I)Z
+    Code:
+       0: aload_0
+       1: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+       4: iload_1
+       5: aaload
+       6: ifnull        25
+       9: aload_0
+      10: getfield      #5                  // Field m_AudioState:[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      13: iload_1
+      14: aaload
+      15: getstatic     #92                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Started:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      18: if_acmpne     25
+      21: iconst_1
+      22: goto          26
+      25: iconst_0
+      26: ireturn
+
+  public int audioGetStatus(int);
+    descriptor: (I)I
+    Code:
+       0: getstatic     #111                // Field com/ideaworks3d/marmalade/LoaderThread$5.$SwitchMap$com$ideaworks3d$marmalade$LoaderThread$AudioState:[I
+       3: aload_0
+       4: getfield      #5                  // Field m_AudioState:[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+       7: iload_1
+       8: aaload
+       9: invokevirtual #112                // Method com/ideaworks3d/marmalade/LoaderThread$AudioState.ordinal:()I
+      12: iaload
+      13: tableswitch   { // 1 to 3
+                     1: 40
+                     2: 42
+                     3: 44
+               default: 46
+          }
+      40: iconst_1
+      41: ireturn
+      42: iconst_2
+      43: ireturn
+      44: iconst_3
+      45: ireturn
+      46: iconst_0
+      47: ireturn
+
+  public int audioGetPosition(int);
+    descriptor: (I)I
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field m_AudioState:[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+       4: iload_1
+       5: aaload
+       6: getstatic     #92                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Started:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+       9: if_acmpeq     26
+      12: aload_0
+      13: getfield      #5                  // Field m_AudioState:[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      16: iload_1
+      17: aaload
+      18: getstatic     #93                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Paused:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      21: if_acmpeq     26
+      24: iconst_0
+      25: ireturn
+      26: aload_0
+      27: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+      30: iload_1
+      31: aaload
+      32: invokevirtual #113                // Method android/media/MediaPlayer.getCurrentPosition:()I
+      35: ireturn
+
+  public int audioGetDuration(int);
+    descriptor: (I)I
+    Code:
+       0: aload_0
+       1: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+       4: iload_1
+       5: aaload
+       6: ifnull        45
+       9: aload_0
+      10: getfield      #5                  // Field m_AudioState:[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      13: iload_1
+      14: aaload
+      15: getstatic     #79                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Error:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      18: if_acmpeq     45
+      21: aload_0
+      22: getfield      #5                  // Field m_AudioState:[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      25: iload_1
+      26: aaload
+      27: getstatic     #45                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Idle:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      30: if_acmpeq     45
+      33: aload_0
+      34: getfield      #5                  // Field m_AudioState:[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      37: iload_1
+      38: aaload
+      39: getstatic     #75                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Initialized:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      42: if_acmpne     47
+      45: iconst_0
+      46: ireturn
+      47: aload_0
+      48: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+      51: iload_1
+      52: aaload
+      53: invokevirtual #114                // Method android/media/MediaPlayer.getDuration:()I
+      56: ireturn
+
+  public void audioSetPosition(int, int);
+    descriptor: (II)V
+    Code:
+       0: new           #19                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #21                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #22                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #23                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #24                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #26                 // String -
+      36: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #27                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #28                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: new           #19                 // class java/lang/StringBuilder
+      54: dup
+      55: invokespecial #20                 // Method java/lang/StringBuilder."<init>":()V
+      58: ldc           #30                 // String Audio channel:
+      60: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      63: iload_2
+      64: invokevirtual #31                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      67: ldc           #115                // String , audioSetPosition to:
+      69: invokevirtual #25                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      72: iload_1
+      73: invokevirtual #31                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      76: invokevirtual #29                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      79: invokestatic  #33                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      82: aload_0
+      83: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+      86: iload_2
+      87: aaload
+      88: iload_1
+      89: invokevirtual #116                // Method android/media/MediaPlayer.seekTo:(I)V
+      92: return
+
+  public void audioSetVolume(int, int);
+    descriptor: (II)V
+    Code:
+       0: aload_0
+       1: getfield      #15                 // Field m_AudioVolume:[I
+       4: iload_2
+       5: iload_1
+       6: iastore
+       7: aload_0
+       8: iload_2
+       9: invokespecial #84                 // Method audioSetVolumeInternal:(I)V
+      12: return
+
+  private void audioSetVolumeInternal(int);
+    descriptor: (I)V
+    Code:
+       0: aload_0
+       1: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+       4: iload_1
+       5: aaload
+       6: ifnull        21
+       9: aload_0
+      10: getfield      #5                  // Field m_AudioState:[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      13: iload_1
+      14: aaload
+      15: getstatic     #79                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Error:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      18: if_acmpne     22
+      21: return
+      22: aload_0
+      23: getfield      #15                 // Field m_AudioVolume:[I
+      26: iload_1
+      27: iaload
+      28: i2f
+      29: ldc           #117                // float 100.0f
+      31: fdiv
+      32: fstore_2
+      33: aload_0
+      34: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+      37: iload_1
+      38: aaload
+      39: fload_2
+      40: fload_2
+      41: invokevirtual #118                // Method android/media/MediaPlayer.setVolume:(FF)V
+      44: return
+
+  private void audioChangeState(com.ideaworks3d.marmalade.LoaderThread$AudioState, int);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;I)V
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field m_AudioState:[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+       4: iload_2
+       5: aload_1
+       6: aastore
+       7: return
+
+  static com.ideaworks3d.marmalade.LoaderThread$AudioState[] access$000(com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;)[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field m_AudioState:[Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+       4: areturn
+
+  static void access$100(com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager, com.ideaworks3d.marmalade.LoaderThread$AudioState, int);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;I)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: invokespecial #4                  // Method audioChangeState:(Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;I)V
+       6: return
+
+  static android.media.MediaPlayer[] access$200(com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;)[Landroid/media/MediaPlayer;
+    Code:
+       0: aload_0
+       1: getfield      #3                  // Field m_MediaPlayer:[Landroid/media/MediaPlayer;
+       4: areturn
+
+  static void access$300(com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager, int);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;I)V
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokespecial #2                  // Method audioStopped:(I)V
+       5: return
+
+  static int[] access$400(com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;)[I
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field m_AudioPlayRepeats:[I
+       4: areturn
+}

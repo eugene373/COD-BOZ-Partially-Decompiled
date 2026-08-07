@@ -1,0 +1,137 @@
+Compiled from "ResourceUtility.java"
+public class com.ideaworks3d.marmalade.ResourceUtility {
+  public com.ideaworks3d.marmalade.ResourceUtility();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static int getResId(java.lang.String, java.lang.String, android.content.Context);
+    descriptor: (Ljava/lang/String;Ljava/lang/String;Landroid/content/Context;)I
+    Code:
+       0: iconst_0
+       1: istore_3
+       2: aload_2
+       3: invokevirtual #2                  // Method android/content/Context.getResources:()Landroid/content/res/Resources;
+       6: aload_1
+       7: aload_0
+       8: aload_2
+       9: invokevirtual #3                  // Method android/content/Context.getPackageName:()Ljava/lang/String;
+      12: invokevirtual #4                  // Method android/content/res/Resources.getIdentifier:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+      15: istore_3
+      16: goto          104
+      19: astore        4
+      21: ldc           #6                  // String getResId
+      23: new           #7                  // class java/lang/StringBuilder
+      26: dup
+      27: invokespecial #8                  // Method java/lang/StringBuilder."<init>":()V
+      30: ldc           #9                  // String unknown class/resourceName :
+      32: invokevirtual #10                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      35: aload_0
+      36: invokevirtual #10                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: ldc           #11                 // String /
+      41: invokevirtual #10                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      44: aload_1
+      45: invokevirtual #10                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #12                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: invokestatic  #13                 // Method android/util/Log.v:(Ljava/lang/String;Ljava/lang/String;)I
+      54: pop
+      55: aload         4
+      57: invokevirtual #14                 // Method java/lang/IllegalArgumentException.printStackTrace:()V
+      60: goto          104
+      63: astore        4
+      65: ldc           #6                  // String getResId
+      67: new           #7                  // class java/lang/StringBuilder
+      70: dup
+      71: invokespecial #8                  // Method java/lang/StringBuilder."<init>":()V
+      74: ldc           #9                  // String unknown class/resourceName :
+      76: invokevirtual #10                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      79: aload_0
+      80: invokevirtual #10                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      83: ldc           #11                 // String /
+      85: invokevirtual #10                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      88: aload_1
+      89: invokevirtual #10                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      92: invokevirtual #12                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      95: invokestatic  #13                 // Method android/util/Log.v:(Ljava/lang/String;Ljava/lang/String;)I
+      98: pop
+      99: aload         4
+     101: invokevirtual #16                 // Method java/lang/SecurityException.printStackTrace:()V
+     104: iload_3
+     105: ireturn
+    Exception table:
+       from    to  target type
+           2    16    19   Class java/lang/IllegalArgumentException
+           2    16    63   Class java/lang/SecurityException
+
+  public static int getResId(java.lang.String, java.lang.String);
+    descriptor: (Ljava/lang/String;Ljava/lang/String;)I
+    Code:
+       0: iconst_0
+       1: istore_2
+       2: getstatic     #17                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       5: astore_3
+       6: aload_0
+       7: aload_1
+       8: aload_3
+       9: invokestatic  #18                 // Method getResId:(Ljava/lang/String;Ljava/lang/String;Landroid/content/Context;)I
+      12: istore_2
+      13: iload_2
+      14: ireturn
+
+  public static final int[] getResourceDeclareStyleableIntArray(java.lang.String);
+    descriptor: (Ljava/lang/String;)[I
+    Code:
+       0: getstatic     #17                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       3: astore_1
+       4: new           #7                  // class java/lang/StringBuilder
+       7: dup
+       8: invokespecial #8                  // Method java/lang/StringBuilder."<init>":()V
+      11: aload_1
+      12: invokevirtual #3                  // Method android/content/Context.getPackageName:()Ljava/lang/String;
+      15: invokevirtual #10                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      18: ldc           #19                 // String .R$styleable
+      20: invokevirtual #10                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      23: invokevirtual #12                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      26: invokestatic  #20                 // Method java/lang/Class.forName:(Ljava/lang/String;)Ljava/lang/Class;
+      29: invokevirtual #21                 // Method java/lang/Class.getFields:()[Ljava/lang/reflect/Field;
+      32: astore_2
+      33: aload_2
+      34: astore_3
+      35: aload_3
+      36: arraylength
+      37: istore        4
+      39: iconst_0
+      40: istore        5
+      42: iload         5
+      44: iload         4
+      46: if_icmpge     90
+      49: aload_3
+      50: iload         5
+      52: aaload
+      53: astore        6
+      55: aload         6
+      57: invokevirtual #22                 // Method java/lang/reflect/Field.getName:()Ljava/lang/String;
+      60: aload_0
+      61: invokevirtual #23                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      64: ifeq          84
+      67: aload         6
+      69: aconst_null
+      70: invokevirtual #24                 // Method java/lang/reflect/Field.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      73: checkcast     #25                 // class "[I"
+      76: checkcast     #25                 // class "[I"
+      79: astore        7
+      81: aload         7
+      83: areturn
+      84: iinc          5, 1
+      87: goto          42
+      90: goto          94
+      93: astore_2
+      94: aconst_null
+      95: areturn
+    Exception table:
+       from    to  target type
+           4    83    93   Class java/lang/Throwable
+          84    90    93   Class java/lang/Throwable
+}

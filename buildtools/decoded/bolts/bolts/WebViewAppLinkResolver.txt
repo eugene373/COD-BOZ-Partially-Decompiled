@@ -1,0 +1,595 @@
+Compiled from "WebViewAppLinkResolver.java"
+public class bolts.WebViewAppLinkResolver implements bolts.AppLinkResolver {
+  private final android.content.Context context;
+    descriptor: Landroid/content/Context;
+
+  private static final java.lang.String TAG_EXTRACTION_JAVASCRIPT = "javascript:boltsWebViewAppLinkResolverResult.setValue((function() {  var metaTags = document.getElementsByTagName('meta');  var results = [];  for (var i = 0; i < metaTags.length; i++) {    var property = metaTags[i].getAttribute('property');    if (property && property.substring(0, 'al:'.length) === 'al:') {      var tag = { \"property\": metaTags[i].getAttribute('property') };      if (metaTags[i].hasAttribute('content')) {        tag['content'] = metaTags[i].getAttribute('content');      }      results.push(tag);    }  }  return JSON.stringify(results);})())";
+    descriptor: Ljava/lang/String;
+
+  private static final java.lang.String PREFER_HEADER = "Prefer-Html-Meta-Tags";
+    descriptor: Ljava/lang/String;
+
+  private static final java.lang.String META_TAG_PREFIX = "al";
+    descriptor: Ljava/lang/String;
+
+  private static final java.lang.String KEY_AL_VALUE = "value";
+    descriptor: Ljava/lang/String;
+
+  private static final java.lang.String KEY_APP_NAME = "app_name";
+    descriptor: Ljava/lang/String;
+
+  private static final java.lang.String KEY_CLASS = "class";
+    descriptor: Ljava/lang/String;
+
+  private static final java.lang.String KEY_PACKAGE = "package";
+    descriptor: Ljava/lang/String;
+
+  private static final java.lang.String KEY_URL = "url";
+    descriptor: Ljava/lang/String;
+
+  private static final java.lang.String KEY_SHOULD_FALLBACK = "should_fallback";
+    descriptor: Ljava/lang/String;
+
+  private static final java.lang.String KEY_WEB_URL = "url";
+    descriptor: Ljava/lang/String;
+
+  private static final java.lang.String KEY_WEB = "web";
+    descriptor: Ljava/lang/String;
+
+  private static final java.lang.String KEY_ANDROID = "android";
+    descriptor: Ljava/lang/String;
+
+  public bolts.WebViewAppLinkResolver(android.content.Context);
+    descriptor: (Landroid/content/Context;)V
+    Code:
+       0: aload_0
+       1: invokespecial #5                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #2                  // Field context:Landroid/content/Context;
+       9: return
+
+  public bolts.Task<bolts.AppLink> getAppLinkFromUrlInBackground(android.net.Uri);
+    descriptor: (Landroid/net/Uri;)Lbolts/Task;
+    Code:
+       0: new           #6                  // class bolts/Capture
+       3: dup
+       4: invokespecial #7                  // Method bolts/Capture."<init>":()V
+       7: astore_2
+       8: new           #6                  // class bolts/Capture
+      11: dup
+      12: invokespecial #7                  // Method bolts/Capture."<init>":()V
+      15: astore_3
+      16: new           #8                  // class bolts/WebViewAppLinkResolver$3
+      19: dup
+      20: aload_0
+      21: aload_1
+      22: aload_2
+      23: aload_3
+      24: invokespecial #9                  // Method bolts/WebViewAppLinkResolver$3."<init>":(Lbolts/WebViewAppLinkResolver;Landroid/net/Uri;Lbolts/Capture;Lbolts/Capture;)V
+      27: invokestatic  #10                 // Method bolts/Task.callInBackground:(Ljava/util/concurrent/Callable;)Lbolts/Task;
+      30: new           #11                 // class bolts/WebViewAppLinkResolver$2
+      33: dup
+      34: aload_0
+      35: aload_3
+      36: aload_1
+      37: aload_2
+      38: invokespecial #12                 // Method bolts/WebViewAppLinkResolver$2."<init>":(Lbolts/WebViewAppLinkResolver;Lbolts/Capture;Landroid/net/Uri;Lbolts/Capture;)V
+      41: getstatic     #13                 // Field bolts/Task.UI_THREAD_EXECUTOR:Ljava/util/concurrent/Executor;
+      44: invokevirtual #14                 // Method bolts/Task.onSuccessTask:(Lbolts/Continuation;Ljava/util/concurrent/Executor;)Lbolts/Task;
+      47: new           #15                 // class bolts/WebViewAppLinkResolver$1
+      50: dup
+      51: aload_0
+      52: aload_1
+      53: invokespecial #16                 // Method bolts/WebViewAppLinkResolver$1."<init>":(Lbolts/WebViewAppLinkResolver;Landroid/net/Uri;)V
+      56: invokevirtual #17                 // Method bolts/Task.onSuccess:(Lbolts/Continuation;)Lbolts/Task;
+      59: areturn
+
+  private static java.util.Map<java.lang.String, java.lang.Object> parseAlData(org.json.JSONArray) throws org.json.JSONException;
+    descriptor: (Lorg/json/JSONArray;)Ljava/util/Map;
+    Code:
+       0: new           #18                 // class java/util/HashMap
+       3: dup
+       4: invokespecial #19                 // Method java/util/HashMap."<init>":()V
+       7: astore_1
+       8: iconst_0
+       9: istore_2
+      10: iload_2
+      11: aload_0
+      12: invokevirtual #20                 // Method org/json/JSONArray.length:()I
+      15: if_icmpge     249
+      18: aload_0
+      19: iload_2
+      20: invokevirtual #21                 // Method org/json/JSONArray.getJSONObject:(I)Lorg/json/JSONObject;
+      23: astore_3
+      24: aload_3
+      25: ldc           #22                 // String property
+      27: invokevirtual #23                 // Method org/json/JSONObject.getString:(Ljava/lang/String;)Ljava/lang/String;
+      30: astore        4
+      32: aload         4
+      34: ldc           #24                 // String :
+      36: invokevirtual #25                 // Method java/lang/String.split:(Ljava/lang/String;)[Ljava/lang/String;
+      39: astore        5
+      41: aload         5
+      43: iconst_0
+      44: aaload
+      45: ldc           #26                 // String al
+      47: invokevirtual #27                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      50: ifne          56
+      53: goto          243
+      56: aload_1
+      57: astore        6
+      59: iconst_1
+      60: istore        7
+      62: iload         7
+      64: aload         5
+      66: arraylength
+      67: if_icmpge     195
+      70: aload         6
+      72: aload         5
+      74: iload         7
+      76: aaload
+      77: invokeinterface #28,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      82: checkcast     #29                 // class java/util/List
+      85: astore        8
+      87: aload         8
+      89: ifnonnull     116
+      92: new           #30                 // class java/util/ArrayList
+      95: dup
+      96: invokespecial #31                 // Method java/util/ArrayList."<init>":()V
+      99: astore        8
+     101: aload         6
+     103: aload         5
+     105: iload         7
+     107: aaload
+     108: aload         8
+     110: invokeinterface #32,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     115: pop
+     116: aload         8
+     118: invokeinterface #33,  1           // InterfaceMethod java/util/List.size:()I
+     123: ifle          148
+     126: aload         8
+     128: aload         8
+     130: invokeinterface #33,  1           // InterfaceMethod java/util/List.size:()I
+     135: iconst_1
+     136: isub
+     137: invokeinterface #34,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     142: checkcast     #35                 // class java/util/Map
+     145: goto          149
+     148: aconst_null
+     149: astore        9
+     151: aload         9
+     153: ifnull        166
+     156: iload         7
+     158: aload         5
+     160: arraylength
+     161: iconst_1
+     162: isub
+     163: if_icmpne     185
+     166: new           #18                 // class java/util/HashMap
+     169: dup
+     170: invokespecial #19                 // Method java/util/HashMap."<init>":()V
+     173: astore        9
+     175: aload         8
+     177: aload         9
+     179: invokeinterface #36,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     184: pop
+     185: aload         9
+     187: astore        6
+     189: iinc          7, 1
+     192: goto          62
+     195: aload_3
+     196: ldc           #37                 // String content
+     198: invokevirtual #38                 // Method org/json/JSONObject.has:(Ljava/lang/String;)Z
+     201: ifeq          243
+     204: aload_3
+     205: ldc           #37                 // String content
+     207: invokevirtual #39                 // Method org/json/JSONObject.isNull:(Ljava/lang/String;)Z
+     210: ifeq          227
+     213: aload         6
+     215: ldc           #40                 // String value
+     217: aconst_null
+     218: invokeinterface #32,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     223: pop
+     224: goto          243
+     227: aload         6
+     229: ldc           #40                 // String value
+     231: aload_3
+     232: ldc           #37                 // String content
+     234: invokevirtual #23                 // Method org/json/JSONObject.getString:(Ljava/lang/String;)Ljava/lang/String;
+     237: invokeinterface #32,  3           // InterfaceMethod java/util/Map.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+     242: pop
+     243: iinc          2, 1
+     246: goto          10
+     249: aload_1
+     250: areturn
+
+  private static java.util.List<java.util.Map<java.lang.String, java.lang.Object>> getAlList(java.util.Map<java.lang.String, java.lang.Object>, java.lang.String);
+    descriptor: (Ljava/util/Map;Ljava/lang/String;)Ljava/util/List;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokeinterface #28,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+       7: checkcast     #29                 // class java/util/List
+      10: astore_2
+      11: aload_2
+      12: ifnonnull     19
+      15: invokestatic  #41                 // Method java/util/Collections.emptyList:()Ljava/util/List;
+      18: areturn
+      19: aload_2
+      20: areturn
+
+  private static bolts.AppLink makeAppLinkFromAlData(java.util.Map<java.lang.String, java.lang.Object>, android.net.Uri);
+    descriptor: (Ljava/util/Map;Landroid/net/Uri;)Lbolts/AppLink;
+    Code:
+       0: new           #30                 // class java/util/ArrayList
+       3: dup
+       4: invokespecial #31                 // Method java/util/ArrayList."<init>":()V
+       7: astore_2
+       8: aload_0
+       9: ldc           #42                 // String android
+      11: invokeinterface #28,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+      16: checkcast     #29                 // class java/util/List
+      19: astore_3
+      20: aload_3
+      21: ifnonnull     28
+      24: invokestatic  #41                 // Method java/util/Collections.emptyList:()Ljava/util/List;
+      27: astore_3
+      28: aload_3
+      29: invokeinterface #43,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      34: astore        4
+      36: aload         4
+      38: invokeinterface #44,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      43: ifeq          357
+      46: aload         4
+      48: invokeinterface #45,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      53: checkcast     #35                 // class java/util/Map
+      56: astore        5
+      58: aload         5
+      60: ldc           #46                 // String url
+      62: invokestatic  #47                 // Method getAlList:(Ljava/util/Map;Ljava/lang/String;)Ljava/util/List;
+      65: astore        6
+      67: aload         5
+      69: ldc           #48                 // String package
+      71: invokestatic  #47                 // Method getAlList:(Ljava/util/Map;Ljava/lang/String;)Ljava/util/List;
+      74: astore        7
+      76: aload         5
+      78: ldc           #49                 // String class
+      80: invokestatic  #47                 // Method getAlList:(Ljava/util/Map;Ljava/lang/String;)Ljava/util/List;
+      83: astore        8
+      85: aload         5
+      87: ldc           #50                 // String app_name
+      89: invokestatic  #47                 // Method getAlList:(Ljava/util/Map;Ljava/lang/String;)Ljava/util/List;
+      92: astore        9
+      94: aload         6
+      96: invokeinterface #33,  1           // InterfaceMethod java/util/List.size:()I
+     101: aload         7
+     103: invokeinterface #33,  1           // InterfaceMethod java/util/List.size:()I
+     108: aload         8
+     110: invokeinterface #33,  1           // InterfaceMethod java/util/List.size:()I
+     115: aload         9
+     117: invokeinterface #33,  1           // InterfaceMethod java/util/List.size:()I
+     122: invokestatic  #51                 // Method java/lang/Math.max:(II)I
+     125: invokestatic  #51                 // Method java/lang/Math.max:(II)I
+     128: invokestatic  #51                 // Method java/lang/Math.max:(II)I
+     131: istore        10
+     133: iconst_0
+     134: istore        11
+     136: iload         11
+     138: iload         10
+     140: if_icmpge     354
+     143: aload         6
+     145: invokeinterface #33,  1           // InterfaceMethod java/util/List.size:()I
+     150: iload         11
+     152: if_icmple     177
+     155: aload         6
+     157: iload         11
+     159: invokeinterface #34,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     164: checkcast     #35                 // class java/util/Map
+     167: ldc           #40                 // String value
+     169: invokeinterface #28,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     174: goto          178
+     177: aconst_null
+     178: checkcast     #52                 // class java/lang/String
+     181: checkcast     #52                 // class java/lang/String
+     184: astore        12
+     186: aload         12
+     188: invokestatic  #53                 // Method tryCreateUrl:(Ljava/lang/String;)Landroid/net/Uri;
+     191: astore        13
+     193: aload         7
+     195: invokeinterface #33,  1           // InterfaceMethod java/util/List.size:()I
+     200: iload         11
+     202: if_icmple     227
+     205: aload         7
+     207: iload         11
+     209: invokeinterface #34,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     214: checkcast     #35                 // class java/util/Map
+     217: ldc           #40                 // String value
+     219: invokeinterface #28,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     224: goto          228
+     227: aconst_null
+     228: checkcast     #52                 // class java/lang/String
+     231: checkcast     #52                 // class java/lang/String
+     234: astore        14
+     236: aload         8
+     238: invokeinterface #33,  1           // InterfaceMethod java/util/List.size:()I
+     243: iload         11
+     245: if_icmple     270
+     248: aload         8
+     250: iload         11
+     252: invokeinterface #34,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     257: checkcast     #35                 // class java/util/Map
+     260: ldc           #40                 // String value
+     262: invokeinterface #28,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     267: goto          271
+     270: aconst_null
+     271: checkcast     #52                 // class java/lang/String
+     274: checkcast     #52                 // class java/lang/String
+     277: astore        15
+     279: aload         9
+     281: invokeinterface #33,  1           // InterfaceMethod java/util/List.size:()I
+     286: iload         11
+     288: if_icmple     313
+     291: aload         9
+     293: iload         11
+     295: invokeinterface #34,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     300: checkcast     #35                 // class java/util/Map
+     303: ldc           #40                 // String value
+     305: invokeinterface #28,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     310: goto          314
+     313: aconst_null
+     314: checkcast     #52                 // class java/lang/String
+     317: checkcast     #52                 // class java/lang/String
+     320: astore        16
+     322: new           #54                 // class bolts/AppLink$Target
+     325: dup
+     326: aload         14
+     328: aload         15
+     330: aload         13
+     332: aload         16
+     334: invokespecial #55                 // Method bolts/AppLink$Target."<init>":(Ljava/lang/String;Ljava/lang/String;Landroid/net/Uri;Ljava/lang/String;)V
+     337: astore        17
+     339: aload_2
+     340: aload         17
+     342: invokeinterface #36,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     347: pop
+     348: iinc          11, 1
+     351: goto          136
+     354: goto          36
+     357: aload_1
+     358: astore        4
+     360: aload_0
+     361: ldc           #56                 // String web
+     363: invokeinterface #28,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     368: checkcast     #29                 // class java/util/List
+     371: astore        5
+     373: aload         5
+     375: ifnull        555
+     378: aload         5
+     380: invokeinterface #33,  1           // InterfaceMethod java/util/List.size:()I
+     385: ifle          555
+     388: aload         5
+     390: iconst_0
+     391: invokeinterface #34,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     396: checkcast     #35                 // class java/util/Map
+     399: astore        6
+     401: aload         6
+     403: ldc           #46                 // String url
+     405: invokeinterface #28,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     410: checkcast     #29                 // class java/util/List
+     413: astore        7
+     415: aload         6
+     417: ldc           #57                 // String should_fallback
+     419: invokeinterface #28,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     424: checkcast     #29                 // class java/util/List
+     427: astore        8
+     429: aload         8
+     431: ifnull        505
+     434: aload         8
+     436: invokeinterface #33,  1           // InterfaceMethod java/util/List.size:()I
+     441: ifle          505
+     444: aload         8
+     446: iconst_0
+     447: invokeinterface #34,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     452: checkcast     #35                 // class java/util/Map
+     455: ldc           #40                 // String value
+     457: invokeinterface #28,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     462: checkcast     #52                 // class java/lang/String
+     465: astore        9
+     467: iconst_3
+     468: anewarray     #52                 // class java/lang/String
+     471: dup
+     472: iconst_0
+     473: ldc           #58                 // String no
+     475: aastore
+     476: dup
+     477: iconst_1
+     478: ldc           #59                 // String false
+     480: aastore
+     481: dup
+     482: iconst_2
+     483: ldc           #60                 // String 0
+     485: aastore
+     486: invokestatic  #61                 // Method java/util/Arrays.asList:([Ljava/lang/Object;)Ljava/util/List;
+     489: aload         9
+     491: invokevirtual #62                 // Method java/lang/String.toLowerCase:()Ljava/lang/String;
+     494: invokeinterface #63,  2           // InterfaceMethod java/util/List.contains:(Ljava/lang/Object;)Z
+     499: ifeq          505
+     502: aconst_null
+     503: astore        4
+     505: aload         4
+     507: ifnull        555
+     510: aload         7
+     512: ifnull        555
+     515: aload         7
+     517: invokeinterface #33,  1           // InterfaceMethod java/util/List.size:()I
+     522: ifle          555
+     525: aload         7
+     527: iconst_0
+     528: invokeinterface #34,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     533: checkcast     #35                 // class java/util/Map
+     536: ldc           #40                 // String value
+     538: invokeinterface #28,  2           // InterfaceMethod java/util/Map.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     543: checkcast     #52                 // class java/lang/String
+     546: astore        9
+     548: aload         9
+     550: invokestatic  #53                 // Method tryCreateUrl:(Ljava/lang/String;)Landroid/net/Uri;
+     553: astore        4
+     555: new           #64                 // class bolts/AppLink
+     558: dup
+     559: aload_1
+     560: aload_2
+     561: aload         4
+     563: invokespecial #65                 // Method bolts/AppLink."<init>":(Landroid/net/Uri;Ljava/util/List;Landroid/net/Uri;)V
+     566: areturn
+
+  private static android.net.Uri tryCreateUrl(java.lang.String);
+    descriptor: (Ljava/lang/String;)Landroid/net/Uri;
+    Code:
+       0: aload_0
+       1: ifnonnull     6
+       4: aconst_null
+       5: areturn
+       6: aload_0
+       7: invokestatic  #66                 // Method android/net/Uri.parse:(Ljava/lang/String;)Landroid/net/Uri;
+      10: areturn
+
+  private static java.lang.String readFromConnection(java.net.URLConnection) throws java.io.IOException;
+    descriptor: (Ljava/net/URLConnection;)Ljava/lang/String;
+    Code:
+       0: aload_0
+       1: instanceof    #67                 // class java/net/HttpURLConnection
+       4: ifeq          29
+       7: aload_0
+       8: checkcast     #67                 // class java/net/HttpURLConnection
+      11: astore_2
+      12: aload_0
+      13: invokevirtual #68                 // Method java/net/URLConnection.getInputStream:()Ljava/io/InputStream;
+      16: astore_1
+      17: goto          26
+      20: astore_3
+      21: aload_2
+      22: invokevirtual #70                 // Method java/net/HttpURLConnection.getErrorStream:()Ljava/io/InputStream;
+      25: astore_1
+      26: goto          34
+      29: aload_0
+      30: invokevirtual #68                 // Method java/net/URLConnection.getInputStream:()Ljava/io/InputStream;
+      33: astore_1
+      34: new           #71                 // class java/io/ByteArrayOutputStream
+      37: dup
+      38: invokespecial #72                 // Method java/io/ByteArrayOutputStream."<init>":()V
+      41: astore_2
+      42: sipush        1024
+      45: newarray       byte
+      47: astore_3
+      48: iconst_0
+      49: istore        4
+      51: aload_1
+      52: aload_3
+      53: invokevirtual #73                 // Method java/io/InputStream.read:([B)I
+      56: dup
+      57: istore        4
+      59: iconst_m1
+      60: if_icmpeq     74
+      63: aload_2
+      64: aload_3
+      65: iconst_0
+      66: iload         4
+      68: invokevirtual #74                 // Method java/io/ByteArrayOutputStream.write:([BII)V
+      71: goto          51
+      74: aload_0
+      75: invokevirtual #75                 // Method java/net/URLConnection.getContentEncoding:()Ljava/lang/String;
+      78: astore        5
+      80: aload         5
+      82: ifnonnull     173
+      85: aload_0
+      86: invokevirtual #76                 // Method java/net/URLConnection.getContentType:()Ljava/lang/String;
+      89: astore        6
+      91: aload         6
+      93: ldc           #77                 // String ;
+      95: invokevirtual #25                 // Method java/lang/String.split:(Ljava/lang/String;)[Ljava/lang/String;
+      98: astore        7
+     100: aload         7
+     102: astore        8
+     104: aload         8
+     106: arraylength
+     107: istore        9
+     109: iconst_0
+     110: istore        10
+     112: iload         10
+     114: iload         9
+     116: if_icmpge     164
+     119: aload         8
+     121: iload         10
+     123: aaload
+     124: astore        11
+     126: aload         11
+     128: invokevirtual #78                 // Method java/lang/String.trim:()Ljava/lang/String;
+     131: astore        11
+     133: aload         11
+     135: ldc           #79                 // String charset=
+     137: invokevirtual #80                 // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+     140: ifeq          158
+     143: aload         11
+     145: ldc           #79                 // String charset=
+     147: invokevirtual #81                 // Method java/lang/String.length:()I
+     150: invokevirtual #82                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     153: astore        5
+     155: goto          164
+     158: iinc          10, 1
+     161: goto          112
+     164: aload         5
+     166: ifnonnull     173
+     169: ldc           #83                 // String UTF-8
+     171: astore        5
+     173: new           #52                 // class java/lang/String
+     176: dup
+     177: aload_2
+     178: invokevirtual #84                 // Method java/io/ByteArrayOutputStream.toByteArray:()[B
+     181: aload         5
+     183: invokespecial #85                 // Method java/lang/String."<init>":([BLjava/lang/String;)V
+     186: astore        6
+     188: aload_1
+     189: invokevirtual #86                 // Method java/io/InputStream.close:()V
+     192: aload         6
+     194: areturn
+     195: astore        12
+     197: aload_1
+     198: invokevirtual #86                 // Method java/io/InputStream.close:()V
+     201: aload         12
+     203: athrow
+    Exception table:
+       from    to  target type
+          12    17    20   Class java/lang/Exception
+          34   188   195   any
+         195   197   195   any
+
+  static java.util.Map access$000(org.json.JSONArray) throws org.json.JSONException;
+    descriptor: (Lorg/json/JSONArray;)Ljava/util/Map;
+    Code:
+       0: aload_0
+       1: invokestatic  #4                  // Method parseAlData:(Lorg/json/JSONArray;)Ljava/util/Map;
+       4: areturn
+
+  static bolts.AppLink access$100(java.util.Map, android.net.Uri);
+    descriptor: (Ljava/util/Map;Landroid/net/Uri;)Lbolts/AppLink;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #3                  // Method makeAppLinkFromAlData:(Ljava/util/Map;Landroid/net/Uri;)Lbolts/AppLink;
+       5: areturn
+
+  static android.content.Context access$200(bolts.WebViewAppLinkResolver);
+    descriptor: (Lbolts/WebViewAppLinkResolver;)Landroid/content/Context;
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field context:Landroid/content/Context;
+       4: areturn
+
+  static java.lang.String access$300(java.net.URLConnection) throws java.io.IOException;
+    descriptor: (Ljava/net/URLConnection;)Ljava/lang/String;
+    Code:
+       0: aload_0
+       1: invokestatic  #1                  // Method readFromConnection:(Ljava/net/URLConnection;)Ljava/lang/String;
+       4: areturn
+}

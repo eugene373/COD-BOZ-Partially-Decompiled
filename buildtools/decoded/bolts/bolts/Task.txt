@@ -1,0 +1,717 @@
+Compiled from "Task.java"
+public class bolts.Task<TResult> {
+  public static final java.util.concurrent.ExecutorService BACKGROUND_EXECUTOR;
+    descriptor: Ljava/util/concurrent/ExecutorService;
+
+  private static final java.util.concurrent.Executor IMMEDIATE_EXECUTOR;
+    descriptor: Ljava/util/concurrent/Executor;
+
+  public static final java.util.concurrent.Executor UI_THREAD_EXECUTOR;
+    descriptor: Ljava/util/concurrent/Executor;
+
+  private final java.lang.Object lock;
+    descriptor: Ljava/lang/Object;
+
+  private boolean complete;
+    descriptor: Z
+
+  private boolean cancelled;
+    descriptor: Z
+
+  private TResult result;
+    descriptor: Ljava/lang/Object;
+
+  private java.lang.Exception error;
+    descriptor: Ljava/lang/Exception;
+
+  private java.util.List<bolts.Continuation<TResult, java.lang.Void>> continuations;
+    descriptor: Ljava/util/List;
+
+  private bolts.Task();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #9                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #10                 // class java/lang/Object
+       8: dup
+       9: invokespecial #9                  // Method java/lang/Object."<init>":()V
+      12: putfield      #6                  // Field lock:Ljava/lang/Object;
+      15: aload_0
+      16: new           #11                 // class java/util/ArrayList
+      19: dup
+      20: invokespecial #12                 // Method java/util/ArrayList."<init>":()V
+      23: putfield      #13                 // Field continuations:Ljava/util/List;
+      26: return
+
+  public static <TResult> bolts.Task<TResult>.TaskCompletionSource create();
+    descriptor: ()Lbolts/Task$TaskCompletionSource;
+    Code:
+       0: new           #14                 // class bolts/Task
+       3: dup
+       4: invokespecial #15                 // Method "<init>":()V
+       7: astore_0
+       8: new           #16                 // class bolts/Task$TaskCompletionSource
+      11: dup
+      12: aload_0
+      13: dup
+      14: invokevirtual #17                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      17: pop
+      18: aconst_null
+      19: invokespecial #18                 // Method bolts/Task$TaskCompletionSource."<init>":(Lbolts/Task;Lbolts/Task$1;)V
+      22: areturn
+
+  public boolean isCompleted();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: getfield      #6                  // Field lock:Ljava/lang/Object;
+       4: dup
+       5: astore_1
+       6: monitorenter
+       7: aload_0
+       8: getfield      #5                  // Field complete:Z
+      11: aload_1
+      12: monitorexit
+      13: ireturn
+      14: astore_2
+      15: aload_1
+      16: monitorexit
+      17: aload_2
+      18: athrow
+    Exception table:
+       from    to  target type
+           7    13    14   any
+          14    17    14   any
+
+  public boolean isCancelled();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: getfield      #6                  // Field lock:Ljava/lang/Object;
+       4: dup
+       5: astore_1
+       6: monitorenter
+       7: aload_0
+       8: getfield      #4                  // Field cancelled:Z
+      11: aload_1
+      12: monitorexit
+      13: ireturn
+      14: astore_2
+      15: aload_1
+      16: monitorexit
+      17: aload_2
+      18: athrow
+    Exception table:
+       from    to  target type
+           7    13    14   any
+          14    17    14   any
+
+  public boolean isFaulted();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: getfield      #6                  // Field lock:Ljava/lang/Object;
+       4: dup
+       5: astore_1
+       6: monitorenter
+       7: aload_0
+       8: getfield      #1                  // Field error:Ljava/lang/Exception;
+      11: ifnull        18
+      14: iconst_1
+      15: goto          19
+      18: iconst_0
+      19: aload_1
+      20: monitorexit
+      21: ireturn
+      22: astore_2
+      23: aload_1
+      24: monitorexit
+      25: aload_2
+      26: athrow
+    Exception table:
+       from    to  target type
+           7    21    22   any
+          22    25    22   any
+
+  public TResult getResult();
+    descriptor: ()Ljava/lang/Object;
+    Code:
+       0: aload_0
+       1: getfield      #6                  // Field lock:Ljava/lang/Object;
+       4: dup
+       5: astore_1
+       6: monitorenter
+       7: aload_0
+       8: getfield      #2                  // Field result:Ljava/lang/Object;
+      11: aload_1
+      12: monitorexit
+      13: areturn
+      14: astore_2
+      15: aload_1
+      16: monitorexit
+      17: aload_2
+      18: athrow
+    Exception table:
+       from    to  target type
+           7    13    14   any
+          14    17    14   any
+
+  public java.lang.Exception getError();
+    descriptor: ()Ljava/lang/Exception;
+    Code:
+       0: aload_0
+       1: getfield      #6                  // Field lock:Ljava/lang/Object;
+       4: dup
+       5: astore_1
+       6: monitorenter
+       7: aload_0
+       8: getfield      #1                  // Field error:Ljava/lang/Exception;
+      11: aload_1
+      12: monitorexit
+      13: areturn
+      14: astore_2
+      15: aload_1
+      16: monitorexit
+      17: aload_2
+      18: athrow
+    Exception table:
+       from    to  target type
+           7    13    14   any
+          14    17    14   any
+
+  public void waitForCompletion() throws java.lang.InterruptedException;
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #6                  // Field lock:Ljava/lang/Object;
+       4: dup
+       5: astore_1
+       6: monitorenter
+       7: aload_0
+       8: invokevirtual #19                 // Method isCompleted:()Z
+      11: ifne          21
+      14: aload_0
+      15: getfield      #6                  // Field lock:Ljava/lang/Object;
+      18: invokevirtual #20                 // Method java/lang/Object.wait:()V
+      21: aload_1
+      22: monitorexit
+      23: goto          31
+      26: astore_2
+      27: aload_1
+      28: monitorexit
+      29: aload_2
+      30: athrow
+      31: return
+    Exception table:
+       from    to  target type
+           7    23    26   any
+          26    29    26   any
+
+  public static <TResult> bolts.Task<TResult> forResult(TResult);
+    descriptor: (Ljava/lang/Object;)Lbolts/Task;
+    Code:
+       0: invokestatic  #21                 // Method create:()Lbolts/Task$TaskCompletionSource;
+       3: astore_1
+       4: aload_1
+       5: aload_0
+       6: invokevirtual #22                 // Method bolts/Task$TaskCompletionSource.setResult:(Ljava/lang/Object;)V
+       9: aload_1
+      10: invokevirtual #23                 // Method bolts/Task$TaskCompletionSource.getTask:()Lbolts/Task;
+      13: areturn
+
+  public static <TResult> bolts.Task<TResult> forError(java.lang.Exception);
+    descriptor: (Ljava/lang/Exception;)Lbolts/Task;
+    Code:
+       0: invokestatic  #21                 // Method create:()Lbolts/Task$TaskCompletionSource;
+       3: astore_1
+       4: aload_1
+       5: aload_0
+       6: invokevirtual #24                 // Method bolts/Task$TaskCompletionSource.setError:(Ljava/lang/Exception;)V
+       9: aload_1
+      10: invokevirtual #23                 // Method bolts/Task$TaskCompletionSource.getTask:()Lbolts/Task;
+      13: areturn
+
+  public static <TResult> bolts.Task<TResult> cancelled();
+    descriptor: ()Lbolts/Task;
+    Code:
+       0: invokestatic  #21                 // Method create:()Lbolts/Task$TaskCompletionSource;
+       3: astore_0
+       4: aload_0
+       5: invokevirtual #25                 // Method bolts/Task$TaskCompletionSource.setCancelled:()V
+       8: aload_0
+       9: invokevirtual #23                 // Method bolts/Task$TaskCompletionSource.getTask:()Lbolts/Task;
+      12: areturn
+
+  public <TOut> bolts.Task<TOut> cast();
+    descriptor: ()Lbolts/Task;
+    Code:
+       0: aload_0
+       1: astore_1
+       2: aload_1
+       3: areturn
+
+  public bolts.Task<java.lang.Void> makeVoid();
+    descriptor: ()Lbolts/Task;
+    Code:
+       0: aload_0
+       1: new           #26                 // class bolts/Task$1
+       4: dup
+       5: aload_0
+       6: invokespecial #27                 // Method bolts/Task$1."<init>":(Lbolts/Task;)V
+       9: invokevirtual #28                 // Method continueWithTask:(Lbolts/Continuation;)Lbolts/Task;
+      12: areturn
+
+  public static <TResult> bolts.Task<TResult> callInBackground(java.util.concurrent.Callable<TResult>);
+    descriptor: (Ljava/util/concurrent/Callable;)Lbolts/Task;
+    Code:
+       0: aload_0
+       1: getstatic     #29                 // Field BACKGROUND_EXECUTOR:Ljava/util/concurrent/ExecutorService;
+       4: invokestatic  #30                 // Method call:(Ljava/util/concurrent/Callable;Ljava/util/concurrent/Executor;)Lbolts/Task;
+       7: areturn
+
+  public static <TResult> bolts.Task<TResult> call(java.util.concurrent.Callable<TResult>, java.util.concurrent.Executor);
+    descriptor: (Ljava/util/concurrent/Callable;Ljava/util/concurrent/Executor;)Lbolts/Task;
+    Code:
+       0: invokestatic  #21                 // Method create:()Lbolts/Task$TaskCompletionSource;
+       3: astore_2
+       4: aload_1
+       5: new           #31                 // class bolts/Task$2
+       8: dup
+       9: aload_2
+      10: aload_0
+      11: invokespecial #32                 // Method bolts/Task$2."<init>":(Lbolts/Task$TaskCompletionSource;Ljava/util/concurrent/Callable;)V
+      14: invokeinterface #33,  2           // InterfaceMethod java/util/concurrent/Executor.execute:(Ljava/lang/Runnable;)V
+      19: aload_2
+      20: invokevirtual #23                 // Method bolts/Task$TaskCompletionSource.getTask:()Lbolts/Task;
+      23: areturn
+
+  public static <TResult> bolts.Task<TResult> call(java.util.concurrent.Callable<TResult>);
+    descriptor: (Ljava/util/concurrent/Callable;)Lbolts/Task;
+    Code:
+       0: aload_0
+       1: getstatic     #34                 // Field IMMEDIATE_EXECUTOR:Ljava/util/concurrent/Executor;
+       4: invokestatic  #30                 // Method call:(Ljava/util/concurrent/Callable;Ljava/util/concurrent/Executor;)Lbolts/Task;
+       7: areturn
+
+  public static bolts.Task<java.lang.Void> whenAll(java.util.Collection<? extends bolts.Task<?>>);
+    descriptor: (Ljava/util/Collection;)Lbolts/Task;
+    Code:
+       0: aload_0
+       1: invokeinterface #35,  1           // InterfaceMethod java/util/Collection.size:()I
+       6: ifne          14
+       9: aconst_null
+      10: invokestatic  #36                 // Method forResult:(Ljava/lang/Object;)Lbolts/Task;
+      13: areturn
+      14: invokestatic  #21                 // Method create:()Lbolts/Task$TaskCompletionSource;
+      17: astore_1
+      18: new           #11                 // class java/util/ArrayList
+      21: dup
+      22: invokespecial #12                 // Method java/util/ArrayList."<init>":()V
+      25: astore_2
+      26: new           #10                 // class java/lang/Object
+      29: dup
+      30: invokespecial #9                  // Method java/lang/Object."<init>":()V
+      33: astore_3
+      34: new           #37                 // class java/util/concurrent/atomic/AtomicInteger
+      37: dup
+      38: aload_0
+      39: invokeinterface #35,  1           // InterfaceMethod java/util/Collection.size:()I
+      44: invokespecial #38                 // Method java/util/concurrent/atomic/AtomicInteger."<init>":(I)V
+      47: astore        4
+      49: new           #39                 // class java/util/concurrent/atomic/AtomicBoolean
+      52: dup
+      53: iconst_0
+      54: invokespecial #40                 // Method java/util/concurrent/atomic/AtomicBoolean."<init>":(Z)V
+      57: astore        5
+      59: aload_0
+      60: invokeinterface #41,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      65: astore        6
+      67: aload         6
+      69: invokeinterface #42,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      74: ifeq          116
+      77: aload         6
+      79: invokeinterface #43,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      84: checkcast     #14                 // class bolts/Task
+      87: astore        7
+      89: aload         7
+      91: astore        8
+      93: aload         8
+      95: new           #44                 // class bolts/Task$3
+      98: dup
+      99: aload_3
+     100: aload_2
+     101: aload         5
+     103: aload         4
+     105: aload_1
+     106: invokespecial #45                 // Method bolts/Task$3."<init>":(Ljava/lang/Object;Ljava/util/ArrayList;Ljava/util/concurrent/atomic/AtomicBoolean;Ljava/util/concurrent/atomic/AtomicInteger;Lbolts/Task$TaskCompletionSource;)V
+     109: invokevirtual #46                 // Method continueWith:(Lbolts/Continuation;)Lbolts/Task;
+     112: pop
+     113: goto          67
+     116: aload_1
+     117: invokevirtual #23                 // Method bolts/Task$TaskCompletionSource.getTask:()Lbolts/Task;
+     120: areturn
+
+  public bolts.Task<java.lang.Void> continueWhile(java.util.concurrent.Callable<java.lang.Boolean>, bolts.Continuation<java.lang.Void, bolts.Task<java.lang.Void>>);
+    descriptor: (Ljava/util/concurrent/Callable;Lbolts/Continuation;)Lbolts/Task;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: getstatic     #34                 // Field IMMEDIATE_EXECUTOR:Ljava/util/concurrent/Executor;
+       6: invokevirtual #47                 // Method continueWhile:(Ljava/util/concurrent/Callable;Lbolts/Continuation;Ljava/util/concurrent/Executor;)Lbolts/Task;
+       9: areturn
+
+  public bolts.Task<java.lang.Void> continueWhile(java.util.concurrent.Callable<java.lang.Boolean>, bolts.Continuation<java.lang.Void, bolts.Task<java.lang.Void>>, java.util.concurrent.Executor);
+    descriptor: (Ljava/util/concurrent/Callable;Lbolts/Continuation;Ljava/util/concurrent/Executor;)Lbolts/Task;
+    Code:
+       0: new           #48                 // class bolts/Capture
+       3: dup
+       4: invokespecial #49                 // Method bolts/Capture."<init>":()V
+       7: astore        4
+       9: aload         4
+      11: new           #50                 // class bolts/Task$4
+      14: dup
+      15: aload_0
+      16: aload_1
+      17: aload_2
+      18: aload_3
+      19: aload         4
+      21: invokespecial #51                 // Method bolts/Task$4."<init>":(Lbolts/Task;Ljava/util/concurrent/Callable;Lbolts/Continuation;Ljava/util/concurrent/Executor;Lbolts/Capture;)V
+      24: invokevirtual #52                 // Method bolts/Capture.set:(Ljava/lang/Object;)V
+      27: aload_0
+      28: invokevirtual #53                 // Method makeVoid:()Lbolts/Task;
+      31: aload         4
+      33: invokevirtual #54                 // Method bolts/Capture.get:()Ljava/lang/Object;
+      36: checkcast     #55                 // class bolts/Continuation
+      39: aload_3
+      40: invokevirtual #56                 // Method continueWithTask:(Lbolts/Continuation;Ljava/util/concurrent/Executor;)Lbolts/Task;
+      43: areturn
+
+  public <TContinuationResult> bolts.Task<TContinuationResult> continueWith(bolts.Continuation<TResult, TContinuationResult>, java.util.concurrent.Executor);
+    descriptor: (Lbolts/Continuation;Ljava/util/concurrent/Executor;)Lbolts/Task;
+    Code:
+       0: invokestatic  #21                 // Method create:()Lbolts/Task$TaskCompletionSource;
+       3: astore        4
+       5: aload_0
+       6: getfield      #6                  // Field lock:Ljava/lang/Object;
+       9: dup
+      10: astore        5
+      12: monitorenter
+      13: aload_0
+      14: invokevirtual #19                 // Method isCompleted:()Z
+      17: istore_3
+      18: iload_3
+      19: ifne          44
+      22: aload_0
+      23: getfield      #13                 // Field continuations:Ljava/util/List;
+      26: new           #57                 // class bolts/Task$5
+      29: dup
+      30: aload_0
+      31: aload         4
+      33: aload_1
+      34: aload_2
+      35: invokespecial #58                 // Method bolts/Task$5."<init>":(Lbolts/Task;Lbolts/Task$TaskCompletionSource;Lbolts/Continuation;Ljava/util/concurrent/Executor;)V
+      38: invokeinterface #59,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      43: pop
+      44: aload         5
+      46: monitorexit
+      47: goto          58
+      50: astore        6
+      52: aload         5
+      54: monitorexit
+      55: aload         6
+      57: athrow
+      58: iload_3
+      59: ifeq          70
+      62: aload         4
+      64: aload_1
+      65: aload_0
+      66: aload_2
+      67: invokestatic  #8                  // Method completeImmediately:(Lbolts/Task$TaskCompletionSource;Lbolts/Continuation;Lbolts/Task;Ljava/util/concurrent/Executor;)V
+      70: aload         4
+      72: invokevirtual #23                 // Method bolts/Task$TaskCompletionSource.getTask:()Lbolts/Task;
+      75: areturn
+    Exception table:
+       from    to  target type
+          13    47    50   any
+          50    55    50   any
+
+  public <TContinuationResult> bolts.Task<TContinuationResult> continueWith(bolts.Continuation<TResult, TContinuationResult>);
+    descriptor: (Lbolts/Continuation;)Lbolts/Task;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: getstatic     #34                 // Field IMMEDIATE_EXECUTOR:Ljava/util/concurrent/Executor;
+       5: invokevirtual #60                 // Method continueWith:(Lbolts/Continuation;Ljava/util/concurrent/Executor;)Lbolts/Task;
+       8: areturn
+
+  public <TContinuationResult> bolts.Task<TContinuationResult> continueWithTask(bolts.Continuation<TResult, bolts.Task<TContinuationResult>>, java.util.concurrent.Executor);
+    descriptor: (Lbolts/Continuation;Ljava/util/concurrent/Executor;)Lbolts/Task;
+    Code:
+       0: invokestatic  #21                 // Method create:()Lbolts/Task$TaskCompletionSource;
+       3: astore        4
+       5: aload_0
+       6: getfield      #6                  // Field lock:Ljava/lang/Object;
+       9: dup
+      10: astore        5
+      12: monitorenter
+      13: aload_0
+      14: invokevirtual #19                 // Method isCompleted:()Z
+      17: istore_3
+      18: iload_3
+      19: ifne          44
+      22: aload_0
+      23: getfield      #13                 // Field continuations:Ljava/util/List;
+      26: new           #61                 // class bolts/Task$6
+      29: dup
+      30: aload_0
+      31: aload         4
+      33: aload_1
+      34: aload_2
+      35: invokespecial #62                 // Method bolts/Task$6."<init>":(Lbolts/Task;Lbolts/Task$TaskCompletionSource;Lbolts/Continuation;Ljava/util/concurrent/Executor;)V
+      38: invokeinterface #59,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      43: pop
+      44: aload         5
+      46: monitorexit
+      47: goto          58
+      50: astore        6
+      52: aload         5
+      54: monitorexit
+      55: aload         6
+      57: athrow
+      58: iload_3
+      59: ifeq          70
+      62: aload         4
+      64: aload_1
+      65: aload_0
+      66: aload_2
+      67: invokestatic  #7                  // Method completeAfterTask:(Lbolts/Task$TaskCompletionSource;Lbolts/Continuation;Lbolts/Task;Ljava/util/concurrent/Executor;)V
+      70: aload         4
+      72: invokevirtual #23                 // Method bolts/Task$TaskCompletionSource.getTask:()Lbolts/Task;
+      75: areturn
+    Exception table:
+       from    to  target type
+          13    47    50   any
+          50    55    50   any
+
+  public <TContinuationResult> bolts.Task<TContinuationResult> continueWithTask(bolts.Continuation<TResult, bolts.Task<TContinuationResult>>);
+    descriptor: (Lbolts/Continuation;)Lbolts/Task;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: getstatic     #34                 // Field IMMEDIATE_EXECUTOR:Ljava/util/concurrent/Executor;
+       5: invokevirtual #56                 // Method continueWithTask:(Lbolts/Continuation;Ljava/util/concurrent/Executor;)Lbolts/Task;
+       8: areturn
+
+  public <TContinuationResult> bolts.Task<TContinuationResult> onSuccess(bolts.Continuation<TResult, TContinuationResult>, java.util.concurrent.Executor);
+    descriptor: (Lbolts/Continuation;Ljava/util/concurrent/Executor;)Lbolts/Task;
+    Code:
+       0: aload_0
+       1: new           #63                 // class bolts/Task$7
+       4: dup
+       5: aload_0
+       6: aload_1
+       7: invokespecial #64                 // Method bolts/Task$7."<init>":(Lbolts/Task;Lbolts/Continuation;)V
+      10: aload_2
+      11: invokevirtual #56                 // Method continueWithTask:(Lbolts/Continuation;Ljava/util/concurrent/Executor;)Lbolts/Task;
+      14: areturn
+
+  public <TContinuationResult> bolts.Task<TContinuationResult> onSuccess(bolts.Continuation<TResult, TContinuationResult>);
+    descriptor: (Lbolts/Continuation;)Lbolts/Task;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: getstatic     #34                 // Field IMMEDIATE_EXECUTOR:Ljava/util/concurrent/Executor;
+       5: invokevirtual #65                 // Method onSuccess:(Lbolts/Continuation;Ljava/util/concurrent/Executor;)Lbolts/Task;
+       8: areturn
+
+  public <TContinuationResult> bolts.Task<TContinuationResult> onSuccessTask(bolts.Continuation<TResult, bolts.Task<TContinuationResult>>, java.util.concurrent.Executor);
+    descriptor: (Lbolts/Continuation;Ljava/util/concurrent/Executor;)Lbolts/Task;
+    Code:
+       0: aload_0
+       1: new           #66                 // class bolts/Task$8
+       4: dup
+       5: aload_0
+       6: aload_1
+       7: invokespecial #67                 // Method bolts/Task$8."<init>":(Lbolts/Task;Lbolts/Continuation;)V
+      10: aload_2
+      11: invokevirtual #56                 // Method continueWithTask:(Lbolts/Continuation;Ljava/util/concurrent/Executor;)Lbolts/Task;
+      14: areturn
+
+  public <TContinuationResult> bolts.Task<TContinuationResult> onSuccessTask(bolts.Continuation<TResult, bolts.Task<TContinuationResult>>);
+    descriptor: (Lbolts/Continuation;)Lbolts/Task;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: getstatic     #34                 // Field IMMEDIATE_EXECUTOR:Ljava/util/concurrent/Executor;
+       5: invokevirtual #68                 // Method onSuccessTask:(Lbolts/Continuation;Ljava/util/concurrent/Executor;)Lbolts/Task;
+       8: areturn
+
+  private static <TContinuationResult, TResult> void completeImmediately(bolts.Task<TContinuationResult>.TaskCompletionSource, bolts.Continuation<TResult, TContinuationResult>, bolts.Task<TResult>, java.util.concurrent.Executor);
+    descriptor: (Lbolts/Task$TaskCompletionSource;Lbolts/Continuation;Lbolts/Task;Ljava/util/concurrent/Executor;)V
+    Code:
+       0: aload_3
+       1: new           #69                 // class bolts/Task$9
+       4: dup
+       5: aload_1
+       6: aload_2
+       7: aload_0
+       8: invokespecial #70                 // Method bolts/Task$9."<init>":(Lbolts/Continuation;Lbolts/Task;Lbolts/Task$TaskCompletionSource;)V
+      11: invokeinterface #33,  2           // InterfaceMethod java/util/concurrent/Executor.execute:(Ljava/lang/Runnable;)V
+      16: return
+
+  private static <TContinuationResult, TResult> void completeAfterTask(bolts.Task<TContinuationResult>.TaskCompletionSource, bolts.Continuation<TResult, bolts.Task<TContinuationResult>>, bolts.Task<TResult>, java.util.concurrent.Executor);
+    descriptor: (Lbolts/Task$TaskCompletionSource;Lbolts/Continuation;Lbolts/Task;Ljava/util/concurrent/Executor;)V
+    Code:
+       0: aload_3
+       1: new           #71                 // class bolts/Task$10
+       4: dup
+       5: aload_1
+       6: aload_2
+       7: aload_0
+       8: invokespecial #72                 // Method bolts/Task$10."<init>":(Lbolts/Continuation;Lbolts/Task;Lbolts/Task$TaskCompletionSource;)V
+      11: invokeinterface #33,  2           // InterfaceMethod java/util/concurrent/Executor.execute:(Ljava/lang/Runnable;)V
+      16: return
+
+  private void runContinuations();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #6                  // Field lock:Ljava/lang/Object;
+       4: dup
+       5: astore_1
+       6: monitorenter
+       7: aload_0
+       8: getfield      #13                 // Field continuations:Ljava/util/List;
+      11: invokeinterface #73,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      16: astore_2
+      17: aload_2
+      18: invokeinterface #42,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      23: ifeq          67
+      26: aload_2
+      27: invokeinterface #43,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      32: checkcast     #55                 // class bolts/Continuation
+      35: astore_3
+      36: aload_3
+      37: aload_0
+      38: invokeinterface #74,  2           // InterfaceMethod bolts/Continuation.then:(Lbolts/Task;)Ljava/lang/Object;
+      43: pop
+      44: goto          64
+      47: astore        4
+      49: aload         4
+      51: athrow
+      52: astore        4
+      54: new           #75                 // class java/lang/RuntimeException
+      57: dup
+      58: aload         4
+      60: invokespecial #77                 // Method java/lang/RuntimeException."<init>":(Ljava/lang/Throwable;)V
+      63: athrow
+      64: goto          17
+      67: aload_0
+      68: aconst_null
+      69: putfield      #13                 // Field continuations:Ljava/util/List;
+      72: aload_1
+      73: monitorexit
+      74: goto          84
+      77: astore        5
+      79: aload_1
+      80: monitorexit
+      81: aload         5
+      83: athrow
+      84: return
+    Exception table:
+       from    to  target type
+          36    44    47   Class java/lang/RuntimeException
+          36    44    52   Class java/lang/Exception
+           7    74    77   any
+          77    81    77   any
+
+  static void access$100(bolts.Task$TaskCompletionSource, bolts.Continuation, bolts.Task, java.util.concurrent.Executor);
+    descriptor: (Lbolts/Task$TaskCompletionSource;Lbolts/Continuation;Lbolts/Task;Ljava/util/concurrent/Executor;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: invokestatic  #8                  // Method completeImmediately:(Lbolts/Task$TaskCompletionSource;Lbolts/Continuation;Lbolts/Task;Ljava/util/concurrent/Executor;)V
+       7: return
+
+  static void access$200(bolts.Task$TaskCompletionSource, bolts.Continuation, bolts.Task, java.util.concurrent.Executor);
+    descriptor: (Lbolts/Task$TaskCompletionSource;Lbolts/Continuation;Lbolts/Task;Ljava/util/concurrent/Executor;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: invokestatic  #7                  // Method completeAfterTask:(Lbolts/Task$TaskCompletionSource;Lbolts/Continuation;Lbolts/Task;Ljava/util/concurrent/Executor;)V
+       7: return
+
+  static java.lang.Object access$300(bolts.Task);
+    descriptor: (Lbolts/Task;)Ljava/lang/Object;
+    Code:
+       0: aload_0
+       1: getfield      #6                  // Field lock:Ljava/lang/Object;
+       4: areturn
+
+  static boolean access$400(bolts.Task);
+    descriptor: (Lbolts/Task;)Z
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field complete:Z
+       4: ireturn
+
+  static boolean access$402(bolts.Task, boolean);
+    descriptor: (Lbolts/Task;Z)Z
+    Code:
+       0: aload_0
+       1: iload_1
+       2: dup_x1
+       3: putfield      #5                  // Field complete:Z
+       6: ireturn
+
+  static boolean access$502(bolts.Task, boolean);
+    descriptor: (Lbolts/Task;Z)Z
+    Code:
+       0: aload_0
+       1: iload_1
+       2: dup_x1
+       3: putfield      #4                  // Field cancelled:Z
+       6: ireturn
+
+  static void access$600(bolts.Task);
+    descriptor: (Lbolts/Task;)V
+    Code:
+       0: aload_0
+       1: invokespecial #3                  // Method runContinuations:()V
+       4: return
+
+  static java.lang.Object access$702(bolts.Task, java.lang.Object);
+    descriptor: (Lbolts/Task;Ljava/lang/Object;)Ljava/lang/Object;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: dup_x1
+       3: putfield      #2                  // Field result:Ljava/lang/Object;
+       6: areturn
+
+  static java.lang.Exception access$802(bolts.Task, java.lang.Exception);
+    descriptor: (Lbolts/Task;Ljava/lang/Exception;)Ljava/lang/Exception;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: dup_x1
+       3: putfield      #1                  // Field error:Ljava/lang/Exception;
+       6: areturn
+
+  static {};
+    descriptor: ()V
+    Code:
+       0: invokestatic  #78                 // Method bolts/BoltsExecutors.background:()Ljava/util/concurrent/ExecutorService;
+       3: putstatic     #29                 // Field BACKGROUND_EXECUTOR:Ljava/util/concurrent/ExecutorService;
+       6: invokestatic  #79                 // Method bolts/BoltsExecutors.immediate:()Ljava/util/concurrent/Executor;
+       9: putstatic     #34                 // Field IMMEDIATE_EXECUTOR:Ljava/util/concurrent/Executor;
+      12: invokestatic  #80                 // Method bolts/AndroidExecutors.uiThread:()Ljava/util/concurrent/Executor;
+      15: putstatic     #81                 // Field UI_THREAD_EXECUTOR:Ljava/util/concurrent/Executor;
+      18: return
+}

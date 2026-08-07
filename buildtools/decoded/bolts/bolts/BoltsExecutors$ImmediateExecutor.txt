@@ -1,0 +1,116 @@
+Compiled from "BoltsExecutors.java"
+class bolts.BoltsExecutors$ImmediateExecutor implements java.util.concurrent.Executor {
+  private static final int MAX_DEPTH = 15;
+    descriptor: I
+
+  private java.lang.ThreadLocal<java.lang.Integer> executionDepth;
+    descriptor: Ljava/lang/ThreadLocal;
+
+  private bolts.BoltsExecutors$ImmediateExecutor();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #3                  // class java/lang/ThreadLocal
+       8: dup
+       9: invokespecial #4                  // Method java/lang/ThreadLocal."<init>":()V
+      12: putfield      #5                  // Field executionDepth:Ljava/lang/ThreadLocal;
+      15: return
+
+  private int incrementDepth();
+    descriptor: ()I
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field executionDepth:Ljava/lang/ThreadLocal;
+       4: invokevirtual #6                  // Method java/lang/ThreadLocal.get:()Ljava/lang/Object;
+       7: checkcast     #7                  // class java/lang/Integer
+      10: astore_1
+      11: aload_1
+      12: ifnonnull     20
+      15: iconst_0
+      16: invokestatic  #8                  // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      19: astore_1
+      20: aload_1
+      21: invokevirtual #9                  // Method java/lang/Integer.intValue:()I
+      24: iconst_1
+      25: iadd
+      26: istore_2
+      27: aload_0
+      28: getfield      #5                  // Field executionDepth:Ljava/lang/ThreadLocal;
+      31: iload_2
+      32: invokestatic  #8                  // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      35: invokevirtual #10                 // Method java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
+      38: iload_2
+      39: ireturn
+
+  private int decrementDepth();
+    descriptor: ()I
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field executionDepth:Ljava/lang/ThreadLocal;
+       4: invokevirtual #6                  // Method java/lang/ThreadLocal.get:()Ljava/lang/Object;
+       7: checkcast     #7                  // class java/lang/Integer
+      10: astore_1
+      11: aload_1
+      12: ifnonnull     20
+      15: iconst_0
+      16: invokestatic  #8                  // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      19: astore_1
+      20: aload_1
+      21: invokevirtual #9                  // Method java/lang/Integer.intValue:()I
+      24: iconst_1
+      25: isub
+      26: istore_2
+      27: iload_2
+      28: ifne          41
+      31: aload_0
+      32: getfield      #5                  // Field executionDepth:Ljava/lang/ThreadLocal;
+      35: invokevirtual #11                 // Method java/lang/ThreadLocal.remove:()V
+      38: goto          52
+      41: aload_0
+      42: getfield      #5                  // Field executionDepth:Ljava/lang/ThreadLocal;
+      45: iload_2
+      46: invokestatic  #8                  // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      49: invokevirtual #10                 // Method java/lang/ThreadLocal.set:(Ljava/lang/Object;)V
+      52: iload_2
+      53: ireturn
+
+  public void execute(java.lang.Runnable);
+    descriptor: (Ljava/lang/Runnable;)V
+    Code:
+       0: aload_0
+       1: invokespecial #12                 // Method incrementDepth:()I
+       4: istore_2
+       5: iload_2
+       6: bipush        15
+       8: if_icmpgt     20
+      11: aload_1
+      12: invokeinterface #13,  1           // InterfaceMethod java/lang/Runnable.run:()V
+      17: goto          29
+      20: invokestatic  #14                 // Method bolts/BoltsExecutors.background:()Ljava/util/concurrent/ExecutorService;
+      23: aload_1
+      24: invokeinterface #15,  2           // InterfaceMethod java/util/concurrent/ExecutorService.execute:(Ljava/lang/Runnable;)V
+      29: aload_0
+      30: invokespecial #16                 // Method decrementDepth:()I
+      33: pop
+      34: goto          45
+      37: astore_3
+      38: aload_0
+      39: invokespecial #16                 // Method decrementDepth:()I
+      42: pop
+      43: aload_3
+      44: athrow
+      45: return
+    Exception table:
+       from    to  target type
+           5    29    37   any
+          37    38    37   any
+
+  bolts.BoltsExecutors$ImmediateExecutor(bolts.BoltsExecutors$1);
+    descriptor: (Lbolts/BoltsExecutors$1;)V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method "<init>":()V
+       4: return
+}

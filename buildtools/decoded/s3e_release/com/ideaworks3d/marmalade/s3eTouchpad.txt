@@ -1,0 +1,365 @@
+Compiled from "s3eTouchpad.java"
+class com.ideaworks3d.marmalade.s3eTouchpad {
+  private boolean processPositionEvents;
+    descriptor: Z
+
+  private int inputDeviceId;
+    descriptor: I
+
+  private static int m_Width;
+    descriptor: I
+
+  private static int m_Height;
+    descriptor: I
+
+  static final int S3E_TOUCHPAD_AVAILABLE = 0;
+    descriptor: I
+
+  static final int S3E_TOUCHPAD_WIDTH = 1;
+    descriptor: I
+
+  static final int S3E_TOUCHPAD_HEIGHT = 2;
+    descriptor: I
+
+  com.ideaworks3d.marmalade.s3eTouchpad();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iconst_m1
+       6: putfield      #2                  // Field inputDeviceId:I
+       9: return
+
+  public static native void onMotionEvent(int, int, int, int);
+    descriptor: (IIII)V
+
+  public static boolean onTouchEvent(android.view.MotionEvent);
+    descriptor: (Landroid/view/MotionEvent;)Z
+    Code:
+       0: ldc           #3                  // int 1048584
+       2: aload_0
+       3: invokevirtual #4                  // Method android/view/MotionEvent.getSource:()I
+       6: if_icmpeq     11
+       9: iconst_0
+      10: ireturn
+      11: aload_0
+      12: invokevirtual #5                  // Method android/view/MotionEvent.getAction:()I
+      15: istore_1
+      16: aload_0
+      17: invokevirtual #6                  // Method android/view/MotionEvent.getActionIndex:()I
+      20: istore_2
+      21: iload_1
+      22: iconst_2
+      23: if_icmpne     79
+      26: aload_0
+      27: invokevirtual #7                  // Method android/view/MotionEvent.getPointerCount:()I
+      30: istore_3
+      31: iconst_0
+      32: istore        4
+      34: iload         4
+      36: iload_3
+      37: if_icmpge     76
+      40: aload_0
+      41: iload         4
+      43: invokevirtual #8                  // Method android/view/MotionEvent.getPointerId:(I)I
+      46: iload_1
+      47: iconst_4
+      48: iadd
+      49: aload_0
+      50: iload         4
+      52: invokevirtual #9                  // Method android/view/MotionEvent.getX:(I)F
+      55: f2i
+      56: getstatic     #10                 // Field m_Height:I
+      59: aload_0
+      60: iload         4
+      62: invokevirtual #11                 // Method android/view/MotionEvent.getY:(I)F
+      65: f2i
+      66: isub
+      67: invokestatic  #12                 // Method onMotionEvent:(IIII)V
+      70: iinc          4, 1
+      73: goto          34
+      76: goto          167
+      79: iload_1
+      80: ifeq          88
+      83: iload_1
+      84: iconst_1
+      85: if_icmpne     118
+      88: aload_0
+      89: iconst_0
+      90: invokevirtual #8                  // Method android/view/MotionEvent.getPointerId:(I)I
+      93: istore_3
+      94: iload_3
+      95: iload_1
+      96: iconst_4
+      97: iadd
+      98: aload_0
+      99: invokevirtual #13                 // Method android/view/MotionEvent.getX:()F
+     102: f2i
+     103: getstatic     #10                 // Field m_Height:I
+     106: aload_0
+     107: invokevirtual #14                 // Method android/view/MotionEvent.getY:()F
+     110: f2i
+     111: isub
+     112: invokestatic  #12                 // Method onMotionEvent:(IIII)V
+     115: goto          167
+     118: aload_0
+     119: iload_2
+     120: invokevirtual #8                  // Method android/view/MotionEvent.getPointerId:(I)I
+     123: istore_3
+     124: iload_1
+     125: sipush        255
+     128: iand
+     129: istore_1
+     130: iload_1
+     131: bipush        6
+     133: if_icmpeq     141
+     136: iload_1
+     137: iconst_5
+     138: if_icmpne     167
+     141: iinc          1, -5
+     144: iload_3
+     145: iload_1
+     146: iconst_4
+     147: iadd
+     148: aload_0
+     149: iload_2
+     150: invokevirtual #9                  // Method android/view/MotionEvent.getX:(I)F
+     153: f2i
+     154: getstatic     #10                 // Field m_Height:I
+     157: aload_0
+     158: iload_2
+     159: invokevirtual #11                 // Method android/view/MotionEvent.getY:(I)F
+     162: f2i
+     163: isub
+     164: invokestatic  #12                 // Method onMotionEvent:(IIII)V
+     167: iconst_1
+     168: ireturn
+
+  public boolean s3eTouchpadInit();
+    descriptor: ()Z
+    Code:
+       0: invokestatic  #15                 // Method android/view/InputDevice.getDeviceIds:()[I
+       3: astore_1
+       4: aload_1
+       5: astore_2
+       6: aload_2
+       7: arraylength
+       8: istore_3
+       9: iconst_0
+      10: istore        4
+      12: iload         4
+      14: iload_3
+      15: if_icmpge     122
+      18: aload_2
+      19: iload         4
+      21: iaload
+      22: istore        5
+      24: iload         5
+      26: invokestatic  #16                 // Method android/view/InputDevice.getDevice:(I)Landroid/view/InputDevice;
+      29: astore        6
+      31: aload         6
+      33: invokevirtual #17                 // Method android/view/InputDevice.getSources:()I
+      36: ldc           #3                  // int 1048584
+      38: iand
+      39: ifle          116
+      42: aload         6
+      44: iconst_0
+      45: invokevirtual #18                 // Method android/view/InputDevice.getMotionRange:(I)Landroid/view/InputDevice$MotionRange;
+      48: astore        7
+      50: aload         6
+      52: iconst_1
+      53: invokevirtual #18                 // Method android/view/InputDevice.getMotionRange:(I)Landroid/view/InputDevice$MotionRange;
+      56: astore        8
+      58: aload         7
+      60: ifnull        116
+      63: aload         8
+      65: ifnull        116
+      68: aload         7
+      70: invokevirtual #19                 // Method android/view/InputDevice$MotionRange.getMax:()F
+      73: f2i
+      74: putstatic     #20                 // Field m_Width:I
+      77: aload         8
+      79: invokevirtual #19                 // Method android/view/InputDevice$MotionRange.getMax:()F
+      82: f2i
+      83: putstatic     #10                 // Field m_Height:I
+      86: getstatic     #20                 // Field m_Width:I
+      89: ifle          116
+      92: getstatic     #10                 // Field m_Height:I
+      95: ifle          116
+      98: aload_0
+      99: iconst_1
+     100: invokevirtual #21                 // Method setProcessPositionEvents:(Z)Z
+     103: ifeq          114
+     106: aload_0
+     107: iload         5
+     109: putfield      #2                  // Field inputDeviceId:I
+     112: iconst_1
+     113: ireturn
+     114: iconst_0
+     115: ireturn
+     116: iinc          4, 1
+     119: goto          12
+     122: iconst_0
+     123: ireturn
+
+  public void s3eTouchpadTerminate();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #22                 // Field processPositionEvents:Z
+       4: ifeq          13
+       7: aload_0
+       8: iconst_0
+       9: invokevirtual #21                 // Method setProcessPositionEvents:(Z)Z
+      12: pop
+      13: return
+
+  public int s3eTouchpadGetInt(int);
+    descriptor: (I)I
+    Code:
+       0: iload_1
+       1: ifne          177
+       4: ldc           #23                 // String Touchpad GetInt S3E_TOUCHPAD_AVAILABLE
+       6: invokestatic  #24                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+       9: aload_0
+      10: getfield      #2                  // Field inputDeviceId:I
+      13: iconst_m1
+      14: if_icmpne     19
+      17: iconst_0
+      18: ireturn
+      19: getstatic     #25                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      22: invokevirtual #26                 // Method com/ideaworks3d/marmalade/LoaderActivity.getResources:()Landroid/content/res/Resources;
+      25: invokevirtual #27                 // Method android/content/res/Resources.getConfiguration:()Landroid/content/res/Configuration;
+      28: astore_2
+      29: ldc           #28                 // String 3.0.A.2.
+      31: astore_3
+      32: new           #29                 // class java/lang/StringBuilder
+      35: dup
+      36: invokespecial #30                 // Method java/lang/StringBuilder."<init>":()V
+      39: ldc           #31                 // String Android build:
+      41: invokevirtual #32                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      44: getstatic     #33                 // Field android/os/Build.ID:Ljava/lang/String;
+      47: invokevirtual #32                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      50: invokevirtual #34                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      53: invokestatic  #24                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+      56: new           #29                 // class java/lang/StringBuilder
+      59: dup
+      60: invokespecial #30                 // Method java/lang/StringBuilder."<init>":()V
+      63: ldc           #35                 // String Checking for legacy Xperia Play build ID:
+      65: invokevirtual #32                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      68: aload_3
+      69: invokevirtual #32                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      72: invokevirtual #34                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      75: invokestatic  #24                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+      78: getstatic     #33                 // Field android/os/Build.ID:Ljava/lang/String;
+      81: aload_3
+      82: invokevirtual #36                 // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+      85: ifeq          126
+      88: getstatic     #33                 // Field android/os/Build.ID:Ljava/lang/String;
+      91: aload_3
+      92: invokevirtual #37                 // Method java/lang/String.length:()I
+      95: invokevirtual #38                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      98: invokestatic  #39                 // Method java/lang/Integer.parseInt:(Ljava/lang/String;)I
+     101: sipush        181
+     104: if_icmpgt     126
+     107: ldc           #40                 // String Found... Using legacy Configuration enum
+     109: invokestatic  #24                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+     112: aload_2
+     113: getfield      #41                 // Field android/content/res/Configuration.hardKeyboardHidden:I
+     116: iconst_2
+     117: if_icmpeq     124
+     120: iconst_1
+     121: goto          125
+     124: iconst_0
+     125: ireturn
+     126: goto          136
+     129: astore        4
+     131: ldc           #43                 // String Error parsing build ID
+     133: invokestatic  #24                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+     136: aload_2
+     137: getfield      #44                 // Field android/content/res/Configuration.navigationHidden:I
+     140: iconst_2
+     141: if_icmpeq     148
+     144: iconst_1
+     145: goto          149
+     148: iconst_0
+     149: istore        4
+     151: new           #29                 // class java/lang/StringBuilder
+     154: dup
+     155: invokespecial #30                 // Method java/lang/StringBuilder."<init>":()V
+     158: ldc           #45                 // String Touchpad available:
+     160: invokevirtual #32                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     163: iload         4
+     165: invokevirtual #46                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     168: invokevirtual #34                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     171: invokestatic  #24                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+     174: iload         4
+     176: ireturn
+     177: iload_1
+     178: iconst_1
+     179: if_icmpne     186
+     182: getstatic     #20                 // Field m_Width:I
+     185: ireturn
+     186: iload_1
+     187: iconst_2
+     188: if_icmpne     195
+     191: getstatic     #10                 // Field m_Height:I
+     194: ireturn
+     195: iconst_0
+     196: ireturn
+    Exception table:
+       from    to  target type
+          32   125   129   Class java/lang/NumberFormatException
+
+  public boolean setProcessPositionEvents(boolean);
+    descriptor: (Z)Z
+    Code:
+       0: getstatic     #25                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       3: invokevirtual #47                 // Method com/ideaworks3d/marmalade/LoaderActivity.getWindow:()Landroid/view/Window;
+       6: invokevirtual #48                 // Method android/view/Window.getDecorView:()Landroid/view/View;
+       9: invokevirtual #49                 // Method android/view/View.getRootView:()Landroid/view/View;
+      12: invokevirtual #50                 // Method android/view/View.getParent:()Landroid/view/ViewParent;
+      15: astore_2
+      16: ldc           #51                 // String android.view.ViewRoot
+      18: invokestatic  #52                 // Method java/lang/Class.forName:(Ljava/lang/String;)Ljava/lang/Class;
+      21: astore_3
+      22: aload_3
+      23: ldc           #53                 // String setProcessPositionEvents
+      25: iconst_1
+      26: anewarray     #54                 // class java/lang/Class
+      29: dup
+      30: iconst_0
+      31: getstatic     #55                 // Field java/lang/Boolean.TYPE:Ljava/lang/Class;
+      34: aastore
+      35: invokevirtual #56                 // Method java/lang/Class.getMethod:(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+      38: astore        4
+      40: aload         4
+      42: aload_2
+      43: iconst_1
+      44: anewarray     #57                 // class java/lang/Object
+      47: dup
+      48: iconst_0
+      49: iload_1
+      50: invokestatic  #58                 // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      53: aastore
+      54: invokevirtual #59                 // Method java/lang/reflect/Method.invoke:(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+      57: pop
+      58: iconst_1
+      59: ireturn
+      60: astore_2
+      61: iconst_0
+      62: ireturn
+    Exception table:
+       from    to  target type
+           0    59    60   Class java/lang/Exception
+
+  static {};
+    descriptor: ()V
+    Code:
+       0: iconst_0
+       1: putstatic     #20                 // Field m_Width:I
+       4: iconst_0
+       5: putstatic     #10                 // Field m_Height:I
+       8: return
+}

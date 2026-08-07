@@ -1,0 +1,90 @@
+Compiled from "s3eCameraCapture.java"
+final class com.ideaworks3d.marmalade.CameraCapture$1 implements com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener {
+  final java.io.File[] val$holder;
+    descriptor: [Ljava/io/File;
+
+  com.ideaworks3d.marmalade.CameraCapture$1(java.io.File[]);
+    descriptor: ([Ljava/io/File;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field val$holder:[Ljava/io/File;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: return
+
+  public void cursorLoadComplete(android.database.Cursor);
+    descriptor: (Landroid/database/Cursor;)V
+    Code:
+       0: aload_1
+       1: ldc           #3                  // String _data
+       3: invokeinterface #4,  2            // InterfaceMethod android/database/Cursor.getColumnIndexOrThrow:(Ljava/lang/String;)I
+       8: istore_2
+       9: aload_1
+      10: invokeinterface #5,  1            // InterfaceMethod android/database/Cursor.moveToFirst:()Z
+      15: ifeq          38
+      18: aload_0
+      19: getfield      #1                  // Field val$holder:[Ljava/io/File;
+      22: iconst_0
+      23: new           #6                  // class java/io/File
+      26: dup
+      27: aload_1
+      28: iload_2
+      29: invokeinterface #7,  2            // InterfaceMethod android/database/Cursor.getString:(I)Ljava/lang/String;
+      34: invokespecial #8                  // Method java/io/File."<init>":(Ljava/lang/String;)V
+      37: aastore
+      38: aload_1
+      39: ifnull        48
+      42: aload_1
+      43: invokeinterface #9,  1            // InterfaceMethod android/database/Cursor.close:()V
+      48: ldc           #10                 // String Finished waiting for file cursor
+      50: invokestatic  #11                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+      53: iconst_0
+      54: invokestatic  #12                 // Method com/ideaworks3d/marmalade/CameraCapture.access$002:(Z)Z
+      57: pop
+      58: goto          142
+      61: astore_2
+      62: new           #14                 // class java/lang/StringBuilder
+      65: dup
+      66: invokespecial #15                 // Method java/lang/StringBuilder."<init>":()V
+      69: ldc           #16                 // String Exception in convertUriToFile:
+      71: invokevirtual #17                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      74: aload_2
+      75: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      78: ldc           #19                 // String
+      80: invokevirtual #17                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      83: aload_2
+      84: invokevirtual #20                 // Method java/lang/RuntimeException.getMessage:()Ljava/lang/String;
+      87: invokevirtual #17                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      90: invokevirtual #21                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      93: invokestatic  #11                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+      96: aload_1
+      97: ifnull        106
+     100: aload_1
+     101: invokeinterface #9,  1            // InterfaceMethod android/database/Cursor.close:()V
+     106: ldc           #10                 // String Finished waiting for file cursor
+     108: invokestatic  #11                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+     111: iconst_0
+     112: invokestatic  #12                 // Method com/ideaworks3d/marmalade/CameraCapture.access$002:(Z)Z
+     115: pop
+     116: goto          142
+     119: astore_3
+     120: aload_1
+     121: ifnull        130
+     124: aload_1
+     125: invokeinterface #9,  1            // InterfaceMethod android/database/Cursor.close:()V
+     130: ldc           #10                 // String Finished waiting for file cursor
+     132: invokestatic  #11                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+     135: iconst_0
+     136: invokestatic  #12                 // Method com/ideaworks3d/marmalade/CameraCapture.access$002:(Z)Z
+     139: pop
+     140: aload_3
+     141: athrow
+     142: return
+    Exception table:
+       from    to  target type
+           0    38    61   Class java/lang/RuntimeException
+           0    38   119   any
+          61    96   119   any
+         119   120   119   any
+}

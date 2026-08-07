@@ -1,0 +1,147 @@
+Compiled from "s3ePermissions.java"
+class s3ePermissions$PendingRequestsQueue implements java.lang.Iterable<s3ePermissions$PendingRequest> {
+  private java.util.List<s3ePermissions$PendingRequest> pendingRequests;
+    descriptor: Ljava/util/List;
+
+  private java.util.List<s3ePermissions$PermissionRequestResult> sessionRequestResults;
+    descriptor: Ljava/util/List;
+
+  final s3ePermissions this$0;
+    descriptor: Ls3ePermissions;
+
+  s3ePermissions$PendingRequestsQueue(s3ePermissions);
+    descriptor: (Ls3ePermissions;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Ls3ePermissions;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: aload_0
+      10: new           #3                  // class java/util/ArrayList
+      13: dup
+      14: invokespecial #4                  // Method java/util/ArrayList."<init>":()V
+      17: putfield      #5                  // Field pendingRequests:Ljava/util/List;
+      20: aload_0
+      21: new           #3                  // class java/util/ArrayList
+      24: dup
+      25: invokespecial #4                  // Method java/util/ArrayList."<init>":()V
+      28: putfield      #6                  // Field sessionRequestResults:Ljava/util/List;
+      31: return
+
+  public java.util.Iterator<s3ePermissions$PendingRequest> iterator();
+    descriptor: ()Ljava/util/Iterator;
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field pendingRequests:Ljava/util/List;
+       4: invokeinterface #7,  1            // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       9: areturn
+
+  boolean add(s3ePermissions$PendingRequest);
+    descriptor: (Ls3ePermissions$PendingRequest;)Z
+    Code:
+       0: aload_0
+       1: getfield      #6                  // Field sessionRequestResults:Ljava/util/List;
+       4: invokeinterface #8,  1            // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       9: astore_2
+      10: aload_2
+      11: invokeinterface #9,  1            // InterfaceMethod java/util/Iterator.hasNext:()Z
+      16: ifeq          44
+      19: aload_2
+      20: invokeinterface #10,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      25: checkcast     #11                 // class s3ePermissions$PermissionRequestResult
+      28: astore_3
+      29: aload_1
+      30: aload_3
+      31: getfield      #12                 // Field s3ePermissions$PermissionRequestResult.permission:Ljava/lang/String;
+      34: aload_3
+      35: getfield      #13                 // Field s3ePermissions$PermissionRequestResult.result:I
+      38: invokevirtual #14                 // Method s3ePermissions$PendingRequest.updatePermission:(Ljava/lang/String;I)V
+      41: goto          10
+      44: aload_0
+      45: getfield      #5                  // Field pendingRequests:Ljava/util/List;
+      48: aload_1
+      49: invokeinterface #15,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      54: ireturn
+
+  s3ePermissions$PendingRequest get(int);
+    descriptor: (I)Ls3ePermissions$PendingRequest;
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field pendingRequests:Ljava/util/List;
+       4: iload_1
+       5: invokeinterface #16,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+      10: checkcast     #17                 // class s3ePermissions$PendingRequest
+      13: areturn
+
+  int size();
+    descriptor: ()I
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field pendingRequests:Ljava/util/List;
+       4: invokeinterface #18,  1           // InterfaceMethod java/util/List.size:()I
+       9: ireturn
+
+  s3ePermissions$PendingRequest remove(int);
+    descriptor: (I)Ls3ePermissions$PendingRequest;
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field pendingRequests:Ljava/util/List;
+       4: iload_1
+       5: invokeinterface #19,  2           // InterfaceMethod java/util/List.remove:(I)Ljava/lang/Object;
+      10: checkcast     #17                 // class s3ePermissions$PendingRequest
+      13: areturn
+
+  boolean remove(java.lang.Object);
+    descriptor: (Ljava/lang/Object;)Z
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field pendingRequests:Ljava/util/List;
+       4: aload_1
+       5: invokeinterface #20,  2           // InterfaceMethod java/util/List.remove:(Ljava/lang/Object;)Z
+      10: ireturn
+
+  void updatePermission(java.lang.String, int);
+    descriptor: (Ljava/lang/String;I)V
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field pendingRequests:Ljava/util/List;
+       4: invokeinterface #8,  1            // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       9: astore_3
+      10: aload_3
+      11: invokeinterface #9,  1            // InterfaceMethod java/util/Iterator.hasNext:()Z
+      16: ifeq          40
+      19: aload_3
+      20: invokeinterface #10,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      25: checkcast     #17                 // class s3ePermissions$PendingRequest
+      28: astore        4
+      30: aload         4
+      32: aload_1
+      33: iload_2
+      34: invokevirtual #14                 // Method s3ePermissions$PendingRequest.updatePermission:(Ljava/lang/String;I)V
+      37: goto          10
+      40: aload_0
+      41: getfield      #6                  // Field sessionRequestResults:Ljava/util/List;
+      44: new           #11                 // class s3ePermissions$PermissionRequestResult
+      47: dup
+      48: aload_0
+      49: getfield      #1                  // Field this$0:Ls3ePermissions;
+      52: aload_1
+      53: iload_2
+      54: invokespecial #21                 // Method s3ePermissions$PermissionRequestResult."<init>":(Ls3ePermissions;Ljava/lang/String;I)V
+      57: invokeinterface #15,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      62: pop
+      63: return
+
+  public void cleanup();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field pendingRequests:Ljava/util/List;
+       4: invokeinterface #18,  1           // InterfaceMethod java/util/List.size:()I
+       9: ifne          21
+      12: aload_0
+      13: getfield      #6                  // Field sessionRequestResults:Ljava/util/List;
+      16: invokeinterface #22,  1           // InterfaceMethod java/util/List.clear:()V
+      21: return
+}

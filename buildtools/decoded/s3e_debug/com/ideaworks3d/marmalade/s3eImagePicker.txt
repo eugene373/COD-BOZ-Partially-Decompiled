@@ -1,0 +1,596 @@
+Compiled from "s3eImagePicker.java"
+class com.ideaworks3d.marmalade.s3eImagePicker {
+  static final int S3E_IMAGEPICKER_FORMAT_ANY = 0;
+    descriptor: I
+
+  static final int S3E_IMAGEPICKER_FORMAT_JPG = 1;
+    descriptor: I
+
+  static final int S3E_IMAGEPICKER_FORMAT_PNG = 2;
+    descriptor: I
+
+  static final int S3E_IMAGEPICKER_FORMAT_BMP = 3;
+    descriptor: I
+
+  static final int S3E_IMAGEPICKER_FORMAT_GIF = 4;
+    descriptor: I
+
+  static final int S3E_IMAGEPICKER_FORMAT_ANYVIDEO = 5;
+    descriptor: I
+
+  static final int S3E_IMAGEPICKER_FORMAT_ANYIMAGE = 6;
+    descriptor: I
+
+  static final int S3E_IMAGEPICKER_FORMAT_UNKNOWN = 7;
+    descriptor: I
+
+  static final int S3E_IMAGEPICKER_ERR_NONE = 0;
+    descriptor: I
+
+  static final int S3E_IMAGEPICKER_ERR_PARAM = 1;
+    descriptor: I
+
+  static final int S3E_IMAGEPICKER_ERR_NOT_FOUND = 4;
+    descriptor: I
+
+  static final int S3E_IMAGEPICKER_ERR_UNAVAIL = 5;
+    descriptor: I
+
+  static final int S3E_IMAGEPICKER_ERR_DEVICE = 6;
+    descriptor: I
+
+  static final int S3E_IMAGEPICKER_ERR_UNSUPPORTED = 7;
+    descriptor: I
+
+  static final int S3E_IMAGEPICKER_ERR_MEM = 8;
+    descriptor: I
+
+  static final int S3E_IMAGEPICKER_ERR_ACCESS = 13;
+    descriptor: I
+
+  static final int S3E_IMAGEPICKER_ERR_CANCELLED = 1001;
+    descriptor: I
+
+  static final int S3E_IMAGEPICKER_ERR_ALREADY_IN_PROGRESS = 1002;
+    descriptor: I
+
+  static final java.lang.String[] CURSOR_TYPE;
+    descriptor: [Ljava/lang/String;
+
+  private volatile boolean waitingForFile;
+    descriptor: Z
+
+  com.ideaworks3d.marmalade.s3eImagePicker();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #3                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public native boolean ImagePicker_addResultString(java.lang.String);
+    descriptor: (Ljava/lang/String;)Z
+
+  public int s3eImagePickerSaveToGallery(boolean, int, int, java.lang.String, byte[]);
+    descriptor: (ZIILjava/lang/String;[B)I
+    Code:
+       0: new           #4                  // class java/text/SimpleDateFormat
+       3: dup
+       4: ldc           #5                  // String yyyyMMdd_HHmmss
+       6: invokespecial #6                  // Method java/text/SimpleDateFormat."<init>":(Ljava/lang/String;)V
+       9: new           #7                  // class java/util/Date
+      12: dup
+      13: invokespecial #8                  // Method java/util/Date."<init>":()V
+      16: invokevirtual #9                  // Method java/text/SimpleDateFormat.format:(Ljava/util/Date;)Ljava/lang/String;
+      19: astore        6
+      21: ldc           #10                 // String
+      23: astore        7
+      25: iload_1
+      26: ifeq          87
+      29: aload         4
+      31: ldc           #11                 // String raw://
+      33: ldc           #10                 // String
+      35: invokevirtual #12                 // Method java/lang/String.replace:(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+      38: astore        4
+      40: getstatic     #13                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      43: invokevirtual #14                 // Method com/ideaworks3d/marmalade/LoaderActivity.getContentResolver:()Landroid/content/ContentResolver;
+      46: aload         4
+      48: aload         6
+      50: ldc           #15                 // String
+      52: invokestatic  #16                 // Method android/provider/MediaStore$Images$Media.insertImage:(Landroid/content/ContentResolver;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      55: astore        7
+      57: goto          77
+      60: astore        8
+      62: aload         8
+      64: invokevirtual #18                 // Method java/io/FileNotFoundException.toString:()Ljava/lang/String;
+      67: astore        9
+      69: ldc           #19                 // String IMAGEPICKER
+      71: aload         9
+      73: invokestatic  #20                 // Method android/util/Log.d:(Ljava/lang/String;Ljava/lang/String;)I
+      76: pop
+      77: aload         7
+      79: ifnonnull     85
+      82: bipush        6
+      84: ireturn
+      85: iconst_0
+      86: ireturn
+      87: ldc           #19                 // String IMAGEPICKER
+      89: ldc           #21                 // String saving to gallery from file
+      91: invokestatic  #20                 // Method android/util/Log.d:(Ljava/lang/String;Ljava/lang/String;)I
+      94: pop
+      95: new           #22                 // class android/graphics/BitmapFactory
+      98: dup
+      99: invokespecial #23                 // Method android/graphics/BitmapFactory."<init>":()V
+     102: astore        9
+     104: aload         5
+     106: arraylength
+     107: istore        10
+     109: aload         9
+     111: pop
+     112: aload         5
+     114: iconst_0
+     115: iload         10
+     117: invokestatic  #24                 // Method android/graphics/BitmapFactory.decodeByteArray:([BII)Landroid/graphics/Bitmap;
+     120: astore        8
+     122: getstatic     #13                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+     125: invokevirtual #14                 // Method com/ideaworks3d/marmalade/LoaderActivity.getContentResolver:()Landroid/content/ContentResolver;
+     128: aload         8
+     130: aload         6
+     132: ldc           #15                 // String
+     134: invokestatic  #25                 // Method android/provider/MediaStore$Images$Media.insertImage:(Landroid/content/ContentResolver;Landroid/graphics/Bitmap;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     137: astore        7
+     139: aload         7
+     141: ifnonnull     173
+     144: ldc           #19                 // String IMAGEPICKER
+     146: new           #26                 // class java/lang/StringBuilder
+     149: dup
+     150: invokespecial #27                 // Method java/lang/StringBuilder."<init>":()V
+     153: ldc           #28                 // String insertImage result : error not saved from buffer to galery
+     155: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     158: aload         7
+     160: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     163: invokevirtual #30                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     166: invokestatic  #20                 // Method android/util/Log.d:(Ljava/lang/String;Ljava/lang/String;)I
+     169: pop
+     170: bipush        6
+     172: ireturn
+     173: ldc           #19                 // String IMAGEPICKER
+     175: new           #26                 // class java/lang/StringBuilder
+     178: dup
+     179: invokespecial #27                 // Method java/lang/StringBuilder."<init>":()V
+     182: ldc           #31                 // String insertImage result :
+     184: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     187: aload         7
+     189: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     192: invokevirtual #30                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     195: invokestatic  #20                 // Method android/util/Log.d:(Ljava/lang/String;Ljava/lang/String;)I
+     198: pop
+     199: iconst_0
+     200: ireturn
+    Exception table:
+       from    to  target type
+          40    57    60   Class java/io/FileNotFoundException
+
+  public java.lang.String s3eImagePickerToFile(int, int);
+    descriptor: (II)Ljava/lang/String;
+    Code:
+       0: new           #32                 // class android/content/Intent
+       3: dup
+       4: ldc           #33                 // String android.intent.action.PICK
+       6: getstatic     #34                 // Field android/provider/MediaStore$Images$Media.EXTERNAL_CONTENT_URI:Landroid/net/Uri;
+       9: invokespecial #35                 // Method android/content/Intent."<init>":(Ljava/lang/String;Landroid/net/Uri;)V
+      12: astore_3
+      13: iload_1
+      14: tableswitch   { // 0 to 6
+                     0: 89
+                     1: 56
+                     2: 56
+                     3: 56
+                     4: 56
+                     5: 66
+                     6: 56
+               default: 109
+          }
+      56: aload_3
+      57: ldc           #36                 // String image/*
+      59: invokevirtual #37                 // Method android/content/Intent.setType:(Ljava/lang/String;)Landroid/content/Intent;
+      62: pop
+      63: goto          111
+      66: new           #32                 // class android/content/Intent
+      69: dup
+      70: ldc           #33                 // String android.intent.action.PICK
+      72: getstatic     #38                 // Field android/provider/MediaStore$Video$Media.EXTERNAL_CONTENT_URI:Landroid/net/Uri;
+      75: invokespecial #35                 // Method android/content/Intent."<init>":(Ljava/lang/String;Landroid/net/Uri;)V
+      78: astore_3
+      79: aload_3
+      80: ldc           #39                 // String video/*
+      82: invokevirtual #37                 // Method android/content/Intent.setType:(Ljava/lang/String;)Landroid/content/Intent;
+      85: pop
+      86: goto          111
+      89: new           #32                 // class android/content/Intent
+      92: dup
+      93: ldc           #33                 // String android.intent.action.PICK
+      95: invokespecial #40                 // Method android/content/Intent."<init>":(Ljava/lang/String;)V
+      98: astore_3
+      99: aload_3
+     100: ldc           #41                 // String */*
+     102: invokevirtual #37                 // Method android/content/Intent.setType:(Ljava/lang/String;)Landroid/content/Intent;
+     105: pop
+     106: goto          111
+     109: aconst_null
+     110: areturn
+     111: getstatic     #13                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+     114: aload_3
+     115: invokevirtual #42                 // Method com/ideaworks3d/marmalade/LoaderActivity.ExecuteIntent:(Landroid/content/Intent;)Landroid/content/Intent;
+     118: astore        4
+     120: aload         4
+     122: ifnonnull     127
+     125: aconst_null
+     126: areturn
+     127: aload         4
+     129: invokevirtual #43                 // Method android/content/Intent.getData:()Landroid/net/Uri;
+     132: astore        5
+     134: aload_0
+     135: aload         5
+     137: invokespecial #44                 // Method convertUriToFile:(Landroid/net/Uri;)Ljava/io/File;
+     140: astore        6
+     142: aload         6
+     144: ifnonnull     149
+     147: aconst_null
+     148: areturn
+     149: new           #26                 // class java/lang/StringBuilder
+     152: dup
+     153: invokespecial #27                 // Method java/lang/StringBuilder."<init>":()V
+     156: ldc           #11                 // String raw://
+     158: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     161: aload         6
+     163: invokevirtual #45                 // Method java/io/File.getPath:()Ljava/lang/String;
+     166: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     169: invokevirtual #30                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     172: astore        7
+     174: aload_0
+     175: aload         7
+     177: invokevirtual #46                 // Method ImagePicker_addResultString:(Ljava/lang/String;)Z
+     180: ifne          185
+     183: aconst_null
+     184: areturn
+     185: aload         7
+     187: areturn
+
+  private boolean CopyStream(java.io.InputStream, java.io.OutputStream);
+    descriptor: (Ljava/io/InputStream;Ljava/io/OutputStream;)Z
+    Code:
+       0: iconst_0
+       1: istore        4
+       3: sipush        1024
+       6: newarray       byte
+       8: astore        5
+      10: aload_1
+      11: aload         5
+      13: iconst_0
+      14: sipush        1024
+      17: invokevirtual #47                 // Method java/io/InputStream.read:([BII)I
+      20: istore        6
+      22: iload         6
+      24: iconst_m1
+      25: if_icmpne     31
+      28: goto          50
+      31: aload_2
+      32: aload         5
+      34: iconst_0
+      35: iload         6
+      37: invokevirtual #48                 // Method java/io/OutputStream.write:([BII)V
+      40: iload         4
+      42: iload         6
+      44: iadd
+      45: istore        4
+      47: goto          10
+      50: goto          134
+      53: astore        5
+      55: new           #26                 // class java/lang/StringBuilder
+      58: dup
+      59: invokespecial #27                 // Method java/lang/StringBuilder."<init>":()V
+      62: aload_0
+      63: invokevirtual #50                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      66: invokevirtual #51                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      69: aload_0
+      70: invokevirtual #50                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      73: invokevirtual #51                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      76: bipush        46
+      78: invokevirtual #52                 // Method java/lang/String.lastIndexOf:(I)I
+      81: iconst_1
+      82: iadd
+      83: invokevirtual #53                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      86: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      89: ldc           #54                 // String -
+      91: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      94: invokestatic  #55                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      97: invokevirtual #56                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     100: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     103: invokevirtual #30                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     106: new           #26                 // class java/lang/StringBuilder
+     109: dup
+     110: invokespecial #27                 // Method java/lang/StringBuilder."<init>":()V
+     113: ldc           #57                 // String Exception:
+     115: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     118: aload         5
+     120: invokevirtual #58                 // Method java/lang/Exception.getMessage:()Ljava/lang/String;
+     123: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     126: invokevirtual #30                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     129: invokestatic  #59                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     132: iconst_0
+     133: ireturn
+     134: iload         4
+     136: ifeq          143
+     139: iconst_1
+     140: goto          144
+     143: iconst_0
+     144: ireturn
+    Exception table:
+       from    to  target type
+           3    50    53   Class java/lang/Exception
+
+  private java.io.File getPicasaFile(android.net.Uri);
+    descriptor: (Landroid/net/Uri;)Ljava/io/File;
+    Code:
+       0: invokestatic  #60                 // Method android/os/Environment.getExternalStorageState:()Ljava/lang/String;
+       3: ldc           #61                 // String mounted
+       5: invokevirtual #62                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+       8: ifeq          30
+      11: new           #63                 // class java/io/File
+      14: dup
+      15: getstatic     #13                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      18: invokevirtual #64                 // Method com/ideaworks3d/marmalade/LoaderActivity.getExternalCacheDir:()Ljava/io/File;
+      21: ldc           #65                 // String Picasa
+      23: invokespecial #66                 // Method java/io/File."<init>":(Ljava/io/File;Ljava/lang/String;)V
+      26: astore_2
+      27: goto          37
+      30: getstatic     #13                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      33: invokevirtual #67                 // Method com/ideaworks3d/marmalade/LoaderActivity.getCacheDir:()Ljava/io/File;
+      36: astore_2
+      37: aload_2
+      38: invokevirtual #68                 // Method java/io/File.exists:()Z
+      41: ifne          49
+      44: aload_2
+      45: invokevirtual #69                 // Method java/io/File.mkdirs:()Z
+      48: pop
+      49: ldc           #70                 // String img
+      51: ldc           #71                 // String .jpg
+      53: aload_2
+      54: invokestatic  #72                 // Method java/io/File.createTempFile:(Ljava/lang/String;Ljava/lang/String;Ljava/io/File;)Ljava/io/File;
+      57: astore_3
+      58: aconst_null
+      59: astore        4
+      61: aload_1
+      62: invokevirtual #73                 // Method android/net/Uri.toString:()Ljava/lang/String;
+      65: ldc           #74                 // String content://com.android.gallery3d
+      67: invokevirtual #75                 // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+      70: ifne          85
+      73: aload_1
+      74: invokevirtual #73                 // Method android/net/Uri.toString:()Ljava/lang/String;
+      77: ldc           #76                 // String content://com.google.android.gallery3d
+      79: invokevirtual #75                 // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+      82: ifeq          100
+      85: getstatic     #13                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      88: invokevirtual #14                 // Method com/ideaworks3d/marmalade/LoaderActivity.getContentResolver:()Landroid/content/ContentResolver;
+      91: aload_1
+      92: invokevirtual #77                 // Method android/content/ContentResolver.openInputStream:(Landroid/net/Uri;)Ljava/io/InputStream;
+      95: astore        4
+      97: goto          116
+     100: new           #78                 // class java/net/URL
+     103: dup
+     104: aload_1
+     105: invokevirtual #73                 // Method android/net/Uri.toString:()Ljava/lang/String;
+     108: invokespecial #79                 // Method java/net/URL."<init>":(Ljava/lang/String;)V
+     111: invokevirtual #80                 // Method java/net/URL.openStream:()Ljava/io/InputStream;
+     114: astore        4
+     116: new           #81                 // class java/io/FileOutputStream
+     119: dup
+     120: aload_3
+     121: invokespecial #82                 // Method java/io/FileOutputStream."<init>":(Ljava/io/File;)V
+     124: astore        5
+     126: aload_0
+     127: aload         4
+     129: aload         5
+     131: invokespecial #83                 // Method CopyStream:(Ljava/io/InputStream;Ljava/io/OutputStream;)Z
+     134: istore        6
+     136: aload         5
+     138: invokevirtual #84                 // Method java/io/OutputStream.close:()V
+     141: iload         6
+     143: ifne          153
+     146: aload_3
+     147: invokevirtual #85                 // Method java/io/File.delete:()Z
+     150: pop
+     151: aconst_null
+     152: areturn
+     153: aload_3
+     154: areturn
+     155: astore_3
+     156: new           #26                 // class java/lang/StringBuilder
+     159: dup
+     160: invokespecial #27                 // Method java/lang/StringBuilder."<init>":()V
+     163: aload_0
+     164: invokevirtual #50                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     167: invokevirtual #51                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     170: aload_0
+     171: invokevirtual #50                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     174: invokevirtual #51                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     177: bipush        46
+     179: invokevirtual #52                 // Method java/lang/String.lastIndexOf:(I)I
+     182: iconst_1
+     183: iadd
+     184: invokevirtual #53                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     187: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     190: ldc           #54                 // String -
+     192: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     195: invokestatic  #55                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     198: invokevirtual #56                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     201: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     204: invokevirtual #30                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     207: new           #26                 // class java/lang/StringBuilder
+     210: dup
+     211: invokespecial #27                 // Method java/lang/StringBuilder."<init>":()V
+     214: ldc           #57                 // String Exception:
+     216: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     219: aload_3
+     220: invokevirtual #58                 // Method java/lang/Exception.getMessage:()Ljava/lang/String;
+     223: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     226: invokevirtual #30                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     229: invokestatic  #59                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     232: aconst_null
+     233: areturn
+    Exception table:
+       from    to  target type
+          49   152   155   Class java/lang/Exception
+         153   154   155   Class java/lang/Exception
+
+  private java.io.File convertUriToFile(android.net.Uri);
+    descriptor: (Landroid/net/Uri;)Ljava/io/File;
+    Code:
+       0: iconst_1
+       1: anewarray     #63                 // class java/io/File
+       4: astore_2
+       5: iconst_2
+       6: anewarray     #86                 // class java/lang/String
+       9: dup
+      10: iconst_0
+      11: ldc           #87                 // String _data
+      13: aastore
+      14: dup
+      15: iconst_1
+      16: ldc           #88                 // String _display_name
+      18: aastore
+      19: astore_3
+      20: getstatic     #13                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      23: invokevirtual #14                 // Method com/ideaworks3d/marmalade/LoaderActivity.getContentResolver:()Landroid/content/ContentResolver;
+      26: aload_1
+      27: aload_3
+      28: aconst_null
+      29: aconst_null
+      30: aconst_null
+      31: invokevirtual #89                 // Method android/content/ContentResolver.query:(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+      34: astore        4
+      36: aload         4
+      38: ifnull        170
+      41: aload         4
+      43: invokeinterface #90,  1           // InterfaceMethod android/database/Cursor.moveToFirst:()Z
+      48: pop
+      49: aload         4
+      51: ldc           #87                 // String _data
+      53: invokeinterface #91,  2           // InterfaceMethod android/database/Cursor.getColumnIndex:(Ljava/lang/String;)I
+      58: istore        5
+      60: aload_1
+      61: invokevirtual #73                 // Method android/net/Uri.toString:()Ljava/lang/String;
+      64: ldc           #74                 // String content://com.android.gallery3d
+      66: invokevirtual #75                 // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+      69: ifne          84
+      72: aload_1
+      73: invokevirtual #73                 // Method android/net/Uri.toString:()Ljava/lang/String;
+      76: ldc           #76                 // String content://com.google.android.gallery3d
+      78: invokevirtual #75                 // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+      81: ifeq          139
+      84: aload         4
+      86: ldc           #88                 // String _display_name
+      88: invokeinterface #91,  2           // InterfaceMethod android/database/Cursor.getColumnIndex:(Ljava/lang/String;)I
+      93: istore        5
+      95: iload         5
+      97: iconst_m1
+      98: if_icmpeq     167
+     101: aload_1
+     102: astore        6
+     104: aload_0
+     105: iconst_1
+     106: putfield      #1                  // Field waitingForFile:Z
+     109: getstatic     #13                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+     112: invokevirtual #92                 // Method com/ideaworks3d/marmalade/LoaderActivity.ShowProgressDialog:()V
+     115: new           #93                 // class java/lang/Thread
+     118: dup
+     119: new           #94                 // class com/ideaworks3d/marmalade/s3eImagePicker$1
+     122: dup
+     123: aload_0
+     124: aload_2
+     125: aload         6
+     127: invokespecial #95                 // Method com/ideaworks3d/marmalade/s3eImagePicker$1."<init>":(Lcom/ideaworks3d/marmalade/s3eImagePicker;[Ljava/io/File;Landroid/net/Uri;)V
+     130: invokespecial #96                 // Method java/lang/Thread."<init>":(Ljava/lang/Runnable;)V
+     133: invokevirtual #97                 // Method java/lang/Thread.start:()V
+     136: goto          167
+     139: aload         4
+     141: iload         5
+     143: invokeinterface #98,  2           // InterfaceMethod android/database/Cursor.getString:(I)Ljava/lang/String;
+     148: astore        6
+     150: aload         4
+     152: invokeinterface #99,  1           // InterfaceMethod android/database/Cursor.close:()V
+     157: new           #63                 // class java/io/File
+     160: dup
+     161: aload         6
+     163: invokespecial #100                // Method java/io/File."<init>":(Ljava/lang/String;)V
+     166: areturn
+     167: goto          219
+     170: aload_1
+     171: ifnull        219
+     174: aload_1
+     175: invokevirtual #73                 // Method android/net/Uri.toString:()Ljava/lang/String;
+     178: invokevirtual #101                // Method java/lang/String.length:()I
+     181: ifle          219
+     184: aload_1
+     185: astore        5
+     187: aload_0
+     188: iconst_1
+     189: putfield      #1                  // Field waitingForFile:Z
+     192: getstatic     #13                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+     195: invokevirtual #92                 // Method com/ideaworks3d/marmalade/LoaderActivity.ShowProgressDialog:()V
+     198: new           #93                 // class java/lang/Thread
+     201: dup
+     202: new           #102                // class com/ideaworks3d/marmalade/s3eImagePicker$2
+     205: dup
+     206: aload_0
+     207: aload_2
+     208: aload         5
+     210: invokespecial #103                // Method com/ideaworks3d/marmalade/s3eImagePicker$2."<init>":(Lcom/ideaworks3d/marmalade/s3eImagePicker;[Ljava/io/File;Landroid/net/Uri;)V
+     213: invokespecial #96                 // Method java/lang/Thread."<init>":(Ljava/lang/Runnable;)V
+     216: invokevirtual #97                 // Method java/lang/Thread.start:()V
+     219: aload_0
+     220: getfield      #1                  // Field waitingForFile:Z
+     223: ifeq          233
+     226: iconst_1
+     227: invokestatic  #104                // Method com/ideaworks3d/marmalade/LoaderAPI.s3eDeviceYield:(I)V
+     230: goto          219
+     233: getstatic     #13                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+     236: invokevirtual #105                // Method com/ideaworks3d/marmalade/LoaderActivity.HideProgressDialog:()V
+     239: aload_2
+     240: iconst_0
+     241: aaload
+     242: areturn
+
+  static java.io.File access$000(com.ideaworks3d.marmalade.s3eImagePicker, android.net.Uri);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eImagePicker;Landroid/net/Uri;)Ljava/io/File;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #2                  // Method getPicasaFile:(Landroid/net/Uri;)Ljava/io/File;
+       5: areturn
+
+  static boolean access$102(com.ideaworks3d.marmalade.s3eImagePicker, boolean);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eImagePicker;Z)Z
+    Code:
+       0: aload_0
+       1: iload_1
+       2: dup_x1
+       3: putfield      #1                  // Field waitingForFile:Z
+       6: ireturn
+
+  static {};
+    descriptor: ()V
+    Code:
+       0: iconst_2
+       1: anewarray     #86                 // class java/lang/String
+       4: dup
+       5: iconst_0
+       6: ldc           #87                 // String _data
+       8: aastore
+       9: dup
+      10: iconst_1
+      11: ldc           #106                // String _id
+      13: aastore
+      14: putstatic     #107                // Field CURSOR_TYPE:[Ljava/lang/String;
+      17: return
+}

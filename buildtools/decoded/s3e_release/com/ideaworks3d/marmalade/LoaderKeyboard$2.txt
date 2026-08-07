@@ -1,0 +1,94 @@
+Compiled from "LoaderKeyboard.java"
+class com.ideaworks3d.marmalade.LoaderKeyboard$2 implements java.lang.Runnable {
+  final boolean val$show;
+    descriptor: Z
+
+  final android.view.inputmethod.InputMethodManager val$imm;
+    descriptor: Landroid/view/inputmethod/InputMethodManager;
+
+  final com.ideaworks3d.marmalade.LoaderKeyboard this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+
+  com.ideaworks3d.marmalade.LoaderKeyboard$2(com.ideaworks3d.marmalade.LoaderKeyboard, boolean, android.view.inputmethod.InputMethodManager);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderKeyboard;ZLandroid/view/inputmethod/InputMethodManager;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+       5: aload_0
+       6: iload_2
+       7: putfield      #2                  // Field val$show:Z
+      10: aload_0
+      11: aload_3
+      12: putfield      #3                  // Field val$imm:Landroid/view/inputmethod/InputMethodManager;
+      15: aload_0
+      16: invokespecial #4                  // Method java/lang/Object."<init>":()V
+      19: return
+
+  public void run();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field val$show:Z
+       4: ifeq          95
+       7: aload_0
+       8: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+      11: invokestatic  #5                  // Method com/ideaworks3d/marmalade/LoaderKeyboard.access$200:(Lcom/ideaworks3d/marmalade/LoaderKeyboard;)Lcom/ideaworks3d/marmalade/LoaderView;
+      14: invokevirtual #6                  // Method com/ideaworks3d/marmalade/LoaderView.requestFocus:()Z
+      17: pop
+      18: aload_0
+      19: getfield      #3                  // Field val$imm:Landroid/view/inputmethod/InputMethodManager;
+      22: aload_0
+      23: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+      26: invokestatic  #5                  // Method com/ideaworks3d/marmalade/LoaderKeyboard.access$200:(Lcom/ideaworks3d/marmalade/LoaderKeyboard;)Lcom/ideaworks3d/marmalade/LoaderView;
+      29: iconst_2
+      30: aload_0
+      31: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+      34: invokestatic  #7                  // Method com/ideaworks3d/marmalade/LoaderKeyboard.access$300:(Lcom/ideaworks3d/marmalade/LoaderKeyboard;)Lcom/ideaworks3d/marmalade/LoaderKeyboard$SoftInputReceiver;
+      37: invokevirtual #8                  // Method android/view/inputmethod/InputMethodManager.showSoftInput:(Landroid/view/View;ILandroid/os/ResultReceiver;)Z
+      40: istore_1
+      41: iload_1
+      42: ifne          92
+      45: aload_0
+      46: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+      49: invokestatic  #5                  // Method com/ideaworks3d/marmalade/LoaderKeyboard.access$200:(Lcom/ideaworks3d/marmalade/LoaderKeyboard;)Lcom/ideaworks3d/marmalade/LoaderView;
+      52: invokevirtual #9                  // Method com/ideaworks3d/marmalade/LoaderView.hasWindowFocus:()Z
+      55: ifeq          92
+      58: aload_0
+      59: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+      62: invokestatic  #5                  // Method com/ideaworks3d/marmalade/LoaderKeyboard.access$200:(Lcom/ideaworks3d/marmalade/LoaderKeyboard;)Lcom/ideaworks3d/marmalade/LoaderView;
+      65: iconst_1
+      66: invokevirtual #10                 // Method com/ideaworks3d/marmalade/LoaderView.onWindowFocusChanged:(Z)V
+      69: aload_0
+      70: getfield      #3                  // Field val$imm:Landroid/view/inputmethod/InputMethodManager;
+      73: aload_0
+      74: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+      77: invokestatic  #5                  // Method com/ideaworks3d/marmalade/LoaderKeyboard.access$200:(Lcom/ideaworks3d/marmalade/LoaderKeyboard;)Lcom/ideaworks3d/marmalade/LoaderView;
+      80: iconst_2
+      81: aload_0
+      82: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+      85: invokestatic  #7                  // Method com/ideaworks3d/marmalade/LoaderKeyboard.access$300:(Lcom/ideaworks3d/marmalade/LoaderKeyboard;)Lcom/ideaworks3d/marmalade/LoaderKeyboard$SoftInputReceiver;
+      88: invokevirtual #8                  // Method android/view/inputmethod/InputMethodManager.showSoftInput:(Landroid/view/View;ILandroid/os/ResultReceiver;)Z
+      91: istore_1
+      92: goto          134
+      95: aload_0
+      96: getfield      #3                  // Field val$imm:Landroid/view/inputmethod/InputMethodManager;
+      99: aload_0
+     100: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+     103: invokestatic  #5                  // Method com/ideaworks3d/marmalade/LoaderKeyboard.access$200:(Lcom/ideaworks3d/marmalade/LoaderKeyboard;)Lcom/ideaworks3d/marmalade/LoaderView;
+     106: invokevirtual #11                 // Method com/ideaworks3d/marmalade/LoaderView.getWindowToken:()Landroid/os/IBinder;
+     109: iconst_0
+     110: aload_0
+     111: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+     114: invokestatic  #7                  // Method com/ideaworks3d/marmalade/LoaderKeyboard.access$300:(Lcom/ideaworks3d/marmalade/LoaderKeyboard;)Lcom/ideaworks3d/marmalade/LoaderKeyboard$SoftInputReceiver;
+     117: invokevirtual #12                 // Method android/view/inputmethod/InputMethodManager.hideSoftInputFromWindow:(Landroid/os/IBinder;ILandroid/os/ResultReceiver;)Z
+     120: istore_1
+     121: iload_1
+     122: ifne          134
+     125: aload_0
+     126: getfield      #3                  // Field val$imm:Landroid/view/inputmethod/InputMethodManager;
+     129: iconst_0
+     130: iconst_0
+     131: invokevirtual #13                 // Method android/view/inputmethod/InputMethodManager.toggleSoftInput:(II)V
+     134: return
+}

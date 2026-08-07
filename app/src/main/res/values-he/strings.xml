@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="IDS_SAPPS_POP_AN_ERROR_OCCURRED_WHILE_RESETTING_SAMSUNG_IN_APP_PURCHASE">אירעה שגיאה בעת איפוס Samsung In-App Purchase</string>
+    <string name="IDS_SAPPS_POP_AN_INVALID_VALUE_HAS_BEEN_PROVIDED_FOR_SAMSUNG_IN_APP_PURCHASE">סופק ערך לא תקין עבור רכישה מתוך היישום של Samsung</string>
+    <string name="IDS_SAPPS_POP_AN_UNEXPECTED_ERROR_HAS_OCCURRED_SAMSUNG_ACCOUNT_AUTHENTICATION_HAS_BEEN_CANCELLED">אירעה שגיאה בלתי צפויה. אימות חשבון סמסונג בוטל.</string>
+    <string name="IDS_SAPPS_POP_YOUR_PURCHASE_VIA_SAMSUNG_IN_APP_PURCHASE_IS_INVALID_A_FAKE_APPLICATION_HAS_BEEN_DETECTED_CHECK_THE_APP_MSG">הרכישה שלך דרך ’רכישה מתוך היישום של Samsung‘ אינה תקינה. זוהה יישום מזויף. בדוק את היישום שאתה מנסה לרכוש ונסה שוב.</string>
+    <string name="IDS_SAPPS_POP_UNKNOWN_ERROR_OCCURRED">ארעה שגיאה לא ידועה</string>
+    <string name="IDS_SAPPS_POP_SAMSUNG_IN_APP_PURCHASE">Samsung In-App Purchase</string>
+    <string name="IDS_SAPPS_POP_SAMSUNG_IN_APP_PURCHASE_NEEDS_TO_BE_UPDATED">יש לעדכן את Samsung In-App Purchase</string>
+    <string name="IDS_SAPPS_POP_TO_PURCHASE_ITEMS_YOU_NEED_TO_INSTALL_SAMSUNG_IN_APP_PURCHASE_INSTALL_Q">כדי לרכוש פריטים, עליך להתקין את ’רכישה מתוך היישום של Samsung‘. להתקין?</string>
+    <string name="IDS_SAPPS_POP_A_NEW_VERSION_OF_SAMSUNG_IN_APP_PURCHASE_IS_AVAILABLE_UPDATE_Q">גרסה חדשה של ’רכישה מתוך היישום של Samsung‘ זמינה כעת. לעדכן?</string>
+    <string name="IDS_SAPPS_BODY_WAITING_ING">ממתין...</string>
+    <string name="IDS_SAPPS_POP_PRODUCT_DOES_NOT_EXIST_IN_THIS_STORE">המוצר אינו קיים בחנות זו</string>
+    <string name="IDS_SAPPS_POP_ALREADY_PURCHASED">נרכש כבר</string>
+    <string name="IDS_SAPPS_POP_PAYMENT_CANCELLED">התשלום בוטל</string>
+    <string name="IDS_SAPPS_POP_NETWORK_UNAVAILABLE">הרשת אינה זמינה</string>
+    <string name="IDS_SAPPS_HEADER_ITEM_PURCHASED">הפריט שנרכש</string>
+    <string name="com_facebook_dialogloginactivity_ok_button">אישור</string>
+    <string name="com_facebook_loginview_log_out_button">התנתק</string>
+    <string name="com_facebook_loginview_log_in_button">התחבר לפייסבוק</string>
+    <string name="com_facebook_loginview_logged_in_as">מחובר בשם: %1$s</string>
+    <string name="com_facebook_loginview_logged_in_using_facebook">מחובר באמצעות פייסבוק</string>
+    <string name="com_facebook_loginview_log_out_action">התנתק</string>
+    <string name="com_facebook_loginview_cancel_action">בטל</string>
+    <string name="com_facebook_logo_content_description">פייסבוק לוגו</string>
+    <string name="com_facebook_usersettingsfragment_log_in_button">התחבר…</string>
+    <string name="com_facebook_usersettingsfragment_logged_in">מחובר</string>
+    <string name="com_facebook_usersettingsfragment_not_logged_in">לא מחובר</string>
+    <string name="com_facebook_placepicker_subtitle_format">%1$s • %2$,d היו פה</string>
+    <string name="com_facebook_placepicker_subtitle_catetory_only_format">%1$s</string>
+    <string name="com_facebook_placepicker_subtitle_were_here_only_format">%1$,d היו פה</string>
+    <string name="com_facebook_picker_done_button_text">בצע</string>
+    <string name="com_facebook_choose_friends">בחר חברים</string>
+    <string name="com_facebook_nearby">קרוב אליי</string>
+    <string name="com_facebook_loading">..מעלה</string>
+    <string name="com_facebook_internet_permission_error_title">AndroidManifest שגיאת</string>
+    <string name="com_facebook_internet_permission_error_message">ההתחברות לתצוגת אתר דורשת אישור אינטרנט</string>
+    <string name="com_facebook_requesterror_web_login">.כדי לאפשר מחדש לאפליקציה להתחבר עם פייסבוק https://www.facebook.com או https://m.facebook.com אנא היכנס דרך</string>
+    <string name="com_facebook_requesterror_relogin">.האפליקציה אינה מחוברת לפייסבוק, אנא היכנס וחבר מחדש את האפליקציה</string>
+    <string name="com_facebook_requesterror_password_changed">.הסיסמה שלך בפייסבוק השתנתה, אנא חבר מחדש את האפליקציה עם פייסבוק</string>
+    <string name="com_facebook_requesterror_reconnect">.ארעה שגיאה בעת החיבור עם פייסבוק, חבר בבקשה מחדש את האפליקציה עם פייסבוק</string>
+    <string name="com_facebook_requesterror_permissions">.חיבור האפליקציה עם פייסבוק נכשל בשל הרשאות לא מספקות, אנא הענק הרשאות לאפליקציה בכדי שהפעולה תוכל להתבצע</string>
+    <string name="com_facebook_image_download_unknown_error">שגיאה בעת הורדת תמונה</string>
+</resources>

@@ -1,0 +1,45 @@
+Compiled from "WebViewAppLinkResolver.java"
+class bolts.WebViewAppLinkResolver$1 implements bolts.Continuation<org.json.JSONArray, bolts.AppLink> {
+  final android.net.Uri val$url;
+    descriptor: Landroid/net/Uri;
+
+  final bolts.WebViewAppLinkResolver this$0;
+    descriptor: Lbolts/WebViewAppLinkResolver;
+
+  bolts.WebViewAppLinkResolver$1(bolts.WebViewAppLinkResolver, android.net.Uri);
+    descriptor: (Lbolts/WebViewAppLinkResolver;Landroid/net/Uri;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lbolts/WebViewAppLinkResolver;
+       5: aload_0
+       6: aload_2
+       7: putfield      #2                  // Field val$url:Landroid/net/Uri;
+      10: aload_0
+      11: invokespecial #3                  // Method java/lang/Object."<init>":()V
+      14: return
+
+  public bolts.AppLink then(bolts.Task<org.json.JSONArray>) throws java.lang.Exception;
+    descriptor: (Lbolts/Task;)Lbolts/AppLink;
+    Code:
+       0: aload_1
+       1: invokevirtual #4                  // Method bolts/Task.getResult:()Ljava/lang/Object;
+       4: checkcast     #5                  // class org/json/JSONArray
+       7: invokestatic  #6                  // Method bolts/WebViewAppLinkResolver.access$000:(Lorg/json/JSONArray;)Ljava/util/Map;
+      10: astore_2
+      11: aload_2
+      12: aload_0
+      13: getfield      #2                  // Field val$url:Landroid/net/Uri;
+      16: invokestatic  #7                  // Method bolts/WebViewAppLinkResolver.access$100:(Ljava/util/Map;Landroid/net/Uri;)Lbolts/AppLink;
+      19: astore_3
+      20: aload_3
+      21: areturn
+
+  public java.lang.Object then(bolts.Task) throws java.lang.Exception;
+    descriptor: (Lbolts/Task;)Ljava/lang/Object;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #8                  // Method then:(Lbolts/Task;)Lbolts/AppLink;
+       5: areturn
+}

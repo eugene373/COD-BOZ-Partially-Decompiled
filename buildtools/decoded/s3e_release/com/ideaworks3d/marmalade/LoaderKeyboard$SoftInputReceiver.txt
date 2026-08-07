@@ -1,0 +1,64 @@
+Compiled from "LoaderKeyboard.java"
+class com.ideaworks3d.marmalade.LoaderKeyboard$SoftInputReceiver extends android.os.ResultReceiver {
+  final com.ideaworks3d.marmalade.LoaderKeyboard this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+
+  public com.ideaworks3d.marmalade.LoaderKeyboard$SoftInputReceiver(com.ideaworks3d.marmalade.LoaderKeyboard, android.os.Handler);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderKeyboard;Landroid/os/Handler;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+       5: aload_0
+       6: aload_2
+       7: invokespecial #2                  // Method android/os/ResultReceiver."<init>":(Landroid/os/Handler;)V
+      10: return
+
+  protected void onReceiveResult(int, android.os.Bundle);
+    descriptor: (ILandroid/os/Bundle;)V
+    Code:
+       0: iconst_0
+       1: istore_3
+       2: iload_1
+       3: tableswitch   { // 0 to 3
+                     0: 32
+                     1: 58
+                     2: 32
+                     3: 58
+               default: 80
+          }
+      32: aload_0
+      33: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+      36: invokestatic  #3                  // Method com/ideaworks3d/marmalade/LoaderKeyboard.access$000:(Lcom/ideaworks3d/marmalade/LoaderKeyboard;)Z
+      39: iconst_1
+      40: if_icmpeq     80
+      43: aload_0
+      44: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+      47: invokestatic  #4                  // Method com/ideaworks3d/marmalade/LoaderKeyboard.access$100:(Lcom/ideaworks3d/marmalade/LoaderKeyboard;)Z
+      50: ifne          80
+      53: iconst_1
+      54: istore_3
+      55: goto          80
+      58: aload_0
+      59: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+      62: invokestatic  #3                  // Method com/ideaworks3d/marmalade/LoaderKeyboard.access$000:(Lcom/ideaworks3d/marmalade/LoaderKeyboard;)Z
+      65: ifeq          80
+      68: aload_0
+      69: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+      72: invokestatic  #4                  // Method com/ideaworks3d/marmalade/LoaderKeyboard.access$100:(Lcom/ideaworks3d/marmalade/LoaderKeyboard;)Z
+      75: ifne          80
+      78: iconst_1
+      79: istore_3
+      80: iload_3
+      81: ifeq          104
+      84: getstatic     #5                  // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      87: ldc           #6                  // String input_method
+      89: invokevirtual #7                  // Method com/ideaworks3d/marmalade/LoaderActivity.getSystemService:(Ljava/lang/String;)Ljava/lang/Object;
+      92: checkcast     #8                  // class android/view/inputmethod/InputMethodManager
+      95: astore        4
+      97: aload         4
+      99: iconst_0
+     100: iconst_0
+     101: invokevirtual #9                  // Method android/view/inputmethod/InputMethodManager.toggleSoftInput:(II)V
+     104: return
+}

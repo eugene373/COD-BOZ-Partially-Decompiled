@@ -1,0 +1,15 @@
+Compiled from "SuspendResumeEvent.java"
+public class com.ideaworks3d.marmalade.SuspendResumeEvent {
+  public final com.ideaworks3d.marmalade.SuspendResumeEvent$EventType eventType;
+    descriptor: Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+
+  public com.ideaworks3d.marmalade.SuspendResumeEvent(com.ideaworks3d.marmalade.SuspendResumeEvent$EventType);
+    descriptor: (Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;)V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #2                  // Field eventType:Lcom/ideaworks3d/marmalade/SuspendResumeEvent$EventType;
+       9: return
+}

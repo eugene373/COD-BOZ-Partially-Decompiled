@@ -1,0 +1,1935 @@
+Compiled from "LoaderActivity.java"
+public class com.ideaworks3d.marmalade.LoaderActivity extends android.app.Activity {
+  public static com.ideaworks3d.marmalade.LoaderActivity m_Activity;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderActivity;
+
+  public com.ideaworks3d.marmalade.event.ListenerManager m_ListenerManager;
+    descriptor: Lcom/ideaworks3d/marmalade/event/ListenerManager;
+
+  private com.ideaworks3d.marmalade.LoaderThread m_LoaderThread;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderThread;
+
+  public com.ideaworks3d.marmalade.LoaderView m_View;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderView;
+
+  public android.widget.RelativeLayout m_TopLevel;
+    descriptor: Landroid/widget/RelativeLayout;
+
+  public android.widget.FrameLayout m_FrameLayout;
+    descriptor: Landroid/widget/FrameLayout;
+
+  public boolean m_IgnoreFocusLoss;
+    descriptor: Z
+
+  private volatile boolean m_IntentBlocking;
+    descriptor: Z
+
+  private boolean m_ExecuteIntentActivityNotFoundException;
+    descriptor: Z
+
+  private static final int INTENT_CODE = 123456;
+    descriptor: I
+
+  private android.content.Intent m_Data;
+    descriptor: Landroid/content/Intent;
+
+  private android.os.Handler m_ProgressDialogHandler;
+    descriptor: Landroid/os/Handler;
+
+  private android.view.OrientationEventListener m_orientationEventListener;
+    descriptor: Landroid/view/OrientationEventListener;
+
+  private boolean m_LegacySuspendMode;
+    descriptor: Z
+
+  private native void onOrientationChangedNative();
+    descriptor: ()V
+
+  private native void setART(boolean);
+    descriptor: (Z)V
+
+  public com.ideaworks3d.marmalade.LoaderThread LoaderThread();
+    descriptor: ()Lcom/ideaworks3d/marmalade/LoaderThread;
+    Code:
+       0: aload_0
+       1: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+       4: areturn
+
+  public com.ideaworks3d.marmalade.LoaderActivity();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #7                  // Method android/app/Activity."<init>":()V
+       4: aload_0
+       5: aconst_null
+       6: putfield      #8                  // Field m_ListenerManager:Lcom/ideaworks3d/marmalade/event/ListenerManager;
+       9: aload_0
+      10: iconst_0
+      11: putfield      #9                  // Field m_IgnoreFocusLoss:Z
+      14: aload_0
+      15: iconst_0
+      16: putfield      #1                  // Field m_ExecuteIntentActivityNotFoundException:Z
+      19: aload_0
+      20: aconst_null
+      21: putfield      #10                 // Field m_orientationEventListener:Landroid/view/OrientationEventListener;
+      24: aload_0
+      25: iconst_0
+      26: putfield      #11                 // Field m_LegacySuspendMode:Z
+      29: new           #12                 // class java/lang/StringBuilder
+      32: dup
+      33: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      36: aload_0
+      37: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      40: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      43: aload_0
+      44: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      47: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      50: bipush        46
+      52: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      55: iconst_1
+      56: iadd
+      57: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      60: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      63: ldc           #19                 // String -
+      65: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      68: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      71: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      74: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      77: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      80: new           #12                 // class java/lang/StringBuilder
+      83: dup
+      84: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      87: ldc           #23                 // String XXX new LoaderActivity XXX:
+      89: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      92: aload_0
+      93: invokevirtual #24                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      96: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      99: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     102: return
+
+  protected void attachBaseContext(android.content.Context);
+    descriptor: (Landroid/content/Context;)V
+    Code:
+       0: new           #12                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #19                 // String -
+      36: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: ldc           #26                 // String XXX attachBaseContext XXX
+      53: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      56: aload_0
+      57: aload_1
+      58: invokespecial #27                 // Method android/app/Activity.attachBaseContext:(Landroid/content/Context;)V
+      61: ldc           #28                 // String android.support.multidex.MultiDex
+      63: invokestatic  #29                 // Method java/lang/Class.forName:(Ljava/lang/String;)Ljava/lang/Class;
+      66: pop
+      67: goto          128
+      70: astore_2
+      71: new           #12                 // class java/lang/StringBuilder
+      74: dup
+      75: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      78: aload_0
+      79: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      82: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      85: aload_0
+      86: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      89: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      92: bipush        46
+      94: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      97: iconst_1
+      98: iadd
+      99: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     102: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     105: ldc           #19                 // String -
+     107: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     110: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     113: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     116: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     119: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     122: ldc           #31                 // String XXX Multidex support library is not detected XXX
+     124: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     127: return
+     128: new           #12                 // class java/lang/StringBuilder
+     131: dup
+     132: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     135: aload_0
+     136: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     139: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     142: aload_0
+     143: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     146: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     149: bipush        46
+     151: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     154: iconst_1
+     155: iadd
+     156: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     159: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     162: ldc           #19                 // String -
+     164: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     167: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     170: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     173: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     176: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     179: ldc           #32                 // String XXX Installing multidex XXX
+     181: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     184: aload_0
+     185: invokestatic  #33                 // Method android/support/multidex/MultiDex.install:(Landroid/content/Context;)V
+     188: return
+    Exception table:
+       from    to  target type
+          61    67    70   Class java/lang/ClassNotFoundException
+
+  protected void onCreate(android.os.Bundle);
+    descriptor: (Landroid/os/Bundle;)V
+    Code:
+       0: new           #12                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #19                 // String -
+      36: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: ldc           #34                 // String XXX onCreate XXX
+      53: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      56: aload_0
+      57: aload_1
+      58: invokespecial #35                 // Method android/app/Activity.onCreate:(Landroid/os/Bundle;)V
+      61: getstatic     #36                 // Field m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      64: ifnull        123
+      67: new           #12                 // class java/lang/StringBuilder
+      70: dup
+      71: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      74: aload_0
+      75: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      78: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      81: aload_0
+      82: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      85: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      88: bipush        46
+      90: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      93: iconst_1
+      94: iadd
+      95: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      98: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     101: ldc           #19                 // String -
+     103: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     106: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     109: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     112: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     115: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     118: ldc           #37                 // String XXX onCreate called while another activity is still active
+     120: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     123: ldc           #38                 // String s3e_android
+     125: astore_2
+     126: new           #12                 // class java/lang/StringBuilder
+     129: dup
+     130: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     133: aload_0
+     134: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     137: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     140: aload_0
+     141: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     144: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     147: bipush        46
+     149: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     152: iconst_1
+     153: iadd
+     154: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     157: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     160: ldc           #19                 // String -
+     162: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     165: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     168: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     171: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     174: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     177: new           #12                 // class java/lang/StringBuilder
+     180: dup
+     181: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     184: ldc           #39                 // String XXX Loading Library XXX:
+     186: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     189: aload_2
+     190: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     193: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     196: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     199: aload_2
+     200: invokestatic  #40                 // Method java/lang/System.loadLibrary:(Ljava/lang/String;)V
+     203: aload_0
+     204: putstatic     #36                 // Field m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+     207: new           #12                 // class java/lang/StringBuilder
+     210: dup
+     211: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     214: aload_0
+     215: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     218: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     221: aload_0
+     222: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     225: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     228: bipush        46
+     230: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     233: iconst_1
+     234: iadd
+     235: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     238: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     241: ldc           #19                 // String -
+     243: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     246: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     249: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     252: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     255: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     258: new           #12                 // class java/lang/StringBuilder
+     261: dup
+     262: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     265: ldc           #41                 // String XXX Loaded Library XXX:
+     267: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     270: aload_2
+     271: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     274: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     277: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     280: aload_0
+     281: invokestatic  #42                 // Method com/ideaworks3d/marmalade/LoaderAPI.getListenerManager:()Lcom/ideaworks3d/marmalade/event/ListenerManager;
+     284: putfield      #8                  // Field m_ListenerManager:Lcom/ideaworks3d/marmalade/event/ListenerManager;
+     287: aload_0
+     288: aload_0
+     289: invokespecial #43                 // Method IsRunningART:()Z
+     292: invokespecial #44                 // Method setART:(Z)V
+     295: new           #12                 // class java/lang/StringBuilder
+     298: dup
+     299: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     302: aload_0
+     303: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     306: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     309: aload_0
+     310: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     313: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     316: bipush        46
+     318: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     321: iconst_1
+     322: iadd
+     323: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     326: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     329: ldc           #19                 // String -
+     331: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     334: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     337: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     340: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     343: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     346: new           #12                 // class java/lang/StringBuilder
+     349: dup
+     350: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     353: ldc           #45                 // String XXX onCreate:
+     355: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     358: aload_0
+     359: invokevirtual #46                 // Method getRequestedOrientation:()I
+     362: invokevirtual #47                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     365: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     368: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     371: aload_0
+     372: new           #48                 // class com/ideaworks3d/marmalade/ProgressDialogHandler
+     375: dup
+     376: invokespecial #49                 // Method com/ideaworks3d/marmalade/ProgressDialogHandler."<init>":()V
+     379: putfield      #50                 // Field m_ProgressDialogHandler:Landroid/os/Handler;
+     382: aload_0
+     383: new           #51                 // class android/widget/RelativeLayout
+     386: dup
+     387: aload_0
+     388: invokespecial #52                 // Method android/widget/RelativeLayout."<init>":(Landroid/content/Context;)V
+     391: putfield      #53                 // Field m_TopLevel:Landroid/widget/RelativeLayout;
+     394: aload_0
+     395: new           #54                 // class android/widget/FrameLayout
+     398: dup
+     399: aload_0
+     400: invokespecial #55                 // Method android/widget/FrameLayout."<init>":(Landroid/content/Context;)V
+     403: putfield      #56                 // Field m_FrameLayout:Landroid/widget/FrameLayout;
+     406: aload_0
+     407: getfield      #53                 // Field m_TopLevel:Landroid/widget/RelativeLayout;
+     410: aload_0
+     411: getfield      #56                 // Field m_FrameLayout:Landroid/widget/FrameLayout;
+     414: invokevirtual #57                 // Method android/widget/RelativeLayout.addView:(Landroid/view/View;)V
+     417: aload_0
+     418: iconst_0
+     419: invokevirtual #58                 // Method createView:(Z)V
+     422: aload_0
+     423: aload_0
+     424: getfield      #53                 // Field m_TopLevel:Landroid/widget/RelativeLayout;
+     427: invokevirtual #59                 // Method setContentView:(Landroid/view/View;)V
+     430: aload_0
+     431: new           #60                 // class com/ideaworks3d/marmalade/LoaderActivity$1
+     434: dup
+     435: aload_0
+     436: aload_0
+     437: iconst_3
+     438: invokespecial #61                 // Method com/ideaworks3d/marmalade/LoaderActivity$1."<init>":(Lcom/ideaworks3d/marmalade/LoaderActivity;Landroid/content/Context;I)V
+     441: putfield      #10                 // Field m_orientationEventListener:Landroid/view/OrientationEventListener;
+     444: aload_0
+     445: getfield      #10                 // Field m_orientationEventListener:Landroid/view/OrientationEventListener;
+     448: invokevirtual #62                 // Method android/view/OrientationEventListener.enable:()V
+     451: aload_0
+     452: getfield      #10                 // Field m_orientationEventListener:Landroid/view/OrientationEventListener;
+     455: invokevirtual #63                 // Method android/view/OrientationEventListener.canDetectOrientation:()Z
+     458: ifne          517
+     461: new           #12                 // class java/lang/StringBuilder
+     464: dup
+     465: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     468: aload_0
+     469: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     472: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     475: aload_0
+     476: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     479: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     482: bipush        46
+     484: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     487: iconst_1
+     488: iadd
+     489: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     492: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     495: ldc           #19                 // String -
+     497: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     500: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     503: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     506: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     509: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     512: ldc           #64                 // String failed to get orientation events
+     514: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     517: return
+
+  public void createView(boolean);
+    descriptor: (Z)V
+    Code:
+       0: new           #12                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #19                 // String -
+      36: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: new           #12                 // class java/lang/StringBuilder
+      54: dup
+      55: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      58: ldc           #65                 // String createView: gl=
+      60: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      63: iload_1
+      64: invokevirtual #66                 // Method java/lang/StringBuilder.append:(Z)Ljava/lang/StringBuilder;
+      67: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      70: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      73: aload_0
+      74: getfield      #67                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+      77: ifnull        155
+      80: new           #12                 // class java/lang/StringBuilder
+      83: dup
+      84: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      87: aload_0
+      88: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      91: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      94: aload_0
+      95: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      98: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     101: bipush        46
+     103: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     106: iconst_1
+     107: iadd
+     108: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     111: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     114: ldc           #19                 // String -
+     116: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     119: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     122: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     125: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     128: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     131: ldc           #68                 // String Freeing the existing View
+     133: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     136: aload_0
+     137: getfield      #56                 // Field m_FrameLayout:Landroid/widget/FrameLayout;
+     140: aload_0
+     141: getfield      #67                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+     144: invokevirtual #69                 // Method android/widget/FrameLayout.removeView:(Landroid/view/View;)V
+     147: aload_0
+     148: aconst_null
+     149: putfield      #67                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+     152: invokestatic  #70                 // Method java/lang/System.gc:()V
+     155: aload_0
+     156: new           #71                 // class com/ideaworks3d/marmalade/LoaderView
+     159: dup
+     160: aload_0
+     161: iload_1
+     162: invokespecial #72                 // Method com/ideaworks3d/marmalade/LoaderView."<init>":(Lcom/ideaworks3d/marmalade/LoaderActivity;Z)V
+     165: putfield      #67                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+     168: aload_0
+     169: getfield      #56                 // Field m_FrameLayout:Landroid/widget/FrameLayout;
+     172: aload_0
+     173: getfield      #67                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+     176: iconst_0
+     177: invokevirtual #73                 // Method android/widget/FrameLayout.addView:(Landroid/view/View;I)V
+     180: aload_0
+     181: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+     184: ifnull        198
+     187: aload_0
+     188: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+     191: aload_0
+     192: getfield      #67                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+     195: invokevirtual #74                 // Method com/ideaworks3d/marmalade/LoaderThread.setView:(Lcom/ideaworks3d/marmalade/LoaderView;)V
+     198: return
+
+  public void onWindowFocusChanged(boolean);
+    descriptor: (Z)V
+    Code:
+       0: new           #12                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #19                 // String -
+      36: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: new           #12                 // class java/lang/StringBuilder
+      54: dup
+      55: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      58: ldc           #75                 // String XXX onWindowFocusChanged XXX
+      60: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      63: iload_1
+      64: invokevirtual #66                 // Method java/lang/StringBuilder.append:(Z)Ljava/lang/StringBuilder;
+      67: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      70: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      73: aload_0
+      74: iload_1
+      75: invokespecial #76                 // Method android/app/Activity.onWindowFocusChanged:(Z)V
+      78: new           #12                 // class java/lang/StringBuilder
+      81: dup
+      82: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      85: aload_0
+      86: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      89: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      92: aload_0
+      93: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      96: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      99: bipush        46
+     101: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     104: iconst_1
+     105: iadd
+     106: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     109: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     112: ldc           #19                 // String -
+     114: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     117: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     120: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     123: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     126: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     129: ldc           #77                 // String XXX onWindowFocusChanged done XXX
+     131: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     134: return
+
+  public void onConfigurationChanged(android.content.res.Configuration);
+    descriptor: (Landroid/content/res/Configuration;)V
+    Code:
+       0: new           #12                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #19                 // String -
+      36: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: ldc           #78                 // String XXX onConfigurationChanged XXX
+      53: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      56: aload_0
+      57: aload_1
+      58: invokespecial #79                 // Method android/app/Activity.onConfigurationChanged:(Landroid/content/res/Configuration;)V
+      61: aload_1
+      62: getfield      #80                 // Field android/content/res/Configuration.hardKeyboardHidden:I
+      65: iconst_1
+      66: if_icmpne     83
+      69: aload_0
+      70: getfield      #67                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+      73: getfield      #81                 // Field com/ideaworks3d/marmalade/LoaderView.m_LoaderKeyboard:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+      76: iconst_1
+      77: invokevirtual #82                 // Method com/ideaworks3d/marmalade/LoaderKeyboard.hardKeyboardConfigurationChanged:(Z)V
+      80: goto          102
+      83: aload_1
+      84: getfield      #80                 // Field android/content/res/Configuration.hardKeyboardHidden:I
+      87: iconst_2
+      88: if_icmpne     102
+      91: aload_0
+      92: getfield      #67                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+      95: getfield      #81                 // Field com/ideaworks3d/marmalade/LoaderView.m_LoaderKeyboard:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+      98: iconst_0
+      99: invokevirtual #82                 // Method com/ideaworks3d/marmalade/LoaderKeyboard.hardKeyboardConfigurationChanged:(Z)V
+     102: new           #12                 // class java/lang/StringBuilder
+     105: dup
+     106: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     109: aload_0
+     110: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     113: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     116: aload_0
+     117: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     120: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     123: bipush        46
+     125: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     128: iconst_1
+     129: iadd
+     130: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     133: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     136: ldc           #19                 // String -
+     138: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     141: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     144: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     147: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     150: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     153: ldc           #83                 // String XXX onConfigurationChanged done XXX
+     155: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     158: return
+
+  protected void onStart();
+    descriptor: ()V
+    Code:
+       0: new           #12                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #19                 // String -
+      36: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: ldc           #84                 // String XXX onStart XXX
+      53: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      56: aload_0
+      57: invokespecial #85                 // Method android/app/Activity.onStart:()V
+      60: aload_0
+      61: invokespecial #86                 // Method startLoader:()V
+      64: new           #12                 // class java/lang/StringBuilder
+      67: dup
+      68: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      71: aload_0
+      72: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      75: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      78: aload_0
+      79: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      82: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      85: bipush        46
+      87: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      90: iconst_1
+      91: iadd
+      92: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      95: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      98: ldc           #19                 // String -
+     100: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     103: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     106: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     109: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     112: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     115: ldc           #87                 // String XXX done onStart XXX
+     117: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     120: return
+
+  protected void onRestart();
+    descriptor: ()V
+    Code:
+       0: new           #12                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #19                 // String -
+      36: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: ldc           #88                 // String XXX onRestart XXX
+      53: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      56: aload_0
+      57: invokespecial #89                 // Method android/app/Activity.onRestart:()V
+      60: new           #12                 // class java/lang/StringBuilder
+      63: dup
+      64: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      67: aload_0
+      68: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      71: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      74: aload_0
+      75: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      78: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      81: bipush        46
+      83: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      86: iconst_1
+      87: iadd
+      88: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      91: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      94: ldc           #19                 // String -
+      96: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      99: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     102: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     105: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     108: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     111: ldc           #90                 // String XXX onRestart done XXX
+     113: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     116: return
+
+  protected void onResume();
+    descriptor: ()V
+    Code:
+       0: new           #12                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #19                 // String -
+      36: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: ldc           #91                 // String XXX onResume XXX
+      53: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      56: aload_0
+      57: invokespecial #92                 // Method android/app/Activity.onResume:()V
+      60: aload_0
+      61: invokespecial #4                  // Method isScreenLocked:()Z
+      64: ifeq          191
+      67: new           #12                 // class java/lang/StringBuilder
+      70: dup
+      71: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      74: aload_0
+      75: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      78: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      81: aload_0
+      82: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      85: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      88: bipush        46
+      90: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      93: iconst_1
+      94: iadd
+      95: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      98: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     101: ldc           #19                 // String -
+     103: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     106: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     109: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     112: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     115: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     118: ldc           #93                 // String XXX onResume screen is locked, will not resume the app immediately XXX
+     120: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     123: aload_0
+     124: invokespecial #5                  // Method isScreenOn:()Z
+     127: ifeq          268
+     130: new           #12                 // class java/lang/StringBuilder
+     133: dup
+     134: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     137: aload_0
+     138: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     141: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     144: aload_0
+     145: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     148: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     151: bipush        46
+     153: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     156: iconst_1
+     157: iadd
+     158: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     161: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     164: ldc           #19                 // String -
+     166: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     169: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     172: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     175: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     178: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     181: ldc           #94                 // String XXX onResume starting delayed resume XXX
+     183: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     186: aload_0
+     187: invokespecial #3                  // Method startDelayedResume:()V
+     190: return
+     191: new           #12                 // class java/lang/StringBuilder
+     194: dup
+     195: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     198: aload_0
+     199: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     202: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     205: aload_0
+     206: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     209: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     212: bipush        46
+     214: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     217: iconst_1
+     218: iadd
+     219: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     222: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     225: ldc           #19                 // String -
+     227: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     230: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     233: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     236: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     239: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     242: ldc           #95                 // String XXX onResume screen is not locked, will resume the app XXX
+     244: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     247: aload_0
+     248: getfield      #10                 // Field m_orientationEventListener:Landroid/view/OrientationEventListener;
+     251: invokevirtual #62                 // Method android/view/OrientationEventListener.enable:()V
+     254: aload_0
+     255: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+     258: ifnull        268
+     261: aload_0
+     262: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+     265: invokevirtual #96                 // Method com/ideaworks3d/marmalade/LoaderThread.onResume:()V
+     268: new           #12                 // class java/lang/StringBuilder
+     271: dup
+     272: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     275: aload_0
+     276: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     279: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     282: aload_0
+     283: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     286: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     289: bipush        46
+     291: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     294: iconst_1
+     295: iadd
+     296: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     299: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     302: ldc           #19                 // String -
+     304: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     307: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     310: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     313: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     316: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     319: ldc           #97                 // String XXX onResume done XXX
+     321: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     324: return
+
+  protected void onPause();
+    descriptor: ()V
+    Code:
+       0: new           #12                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #19                 // String -
+      36: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: ldc           #98                 // String XXX onPause XXX
+      53: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      56: aload_0
+      57: iconst_1
+      58: invokevirtual #99                 // Method isReadyForSuspend:(Z)Z
+      61: ifeq          141
+      64: new           #12                 // class java/lang/StringBuilder
+      67: dup
+      68: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      71: aload_0
+      72: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      75: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      78: aload_0
+      79: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      82: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      85: bipush        46
+      87: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      90: iconst_1
+      91: iadd
+      92: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      95: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      98: ldc           #19                 // String -
+     100: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     103: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     106: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     109: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     112: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     115: ldc           #100                // String XXX onPause not multi-window XXX
+     117: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     120: aload_0
+     121: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+     124: ifnull        134
+     127: aload_0
+     128: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+     131: invokevirtual #101                // Method com/ideaworks3d/marmalade/LoaderThread.onStop:()V
+     134: aload_0
+     135: getfield      #10                 // Field m_orientationEventListener:Landroid/view/OrientationEventListener;
+     138: invokevirtual #102                // Method android/view/OrientationEventListener.disable:()V
+     141: aload_0
+     142: invokespecial #103                // Method android/app/Activity.onPause:()V
+     145: new           #12                 // class java/lang/StringBuilder
+     148: dup
+     149: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     152: aload_0
+     153: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     156: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     159: aload_0
+     160: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     163: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     166: bipush        46
+     168: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     171: iconst_1
+     172: iadd
+     173: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     176: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     179: ldc           #19                 // String -
+     181: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     184: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     187: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     190: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     193: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     196: ldc           #104                // String XXX onPause done XXX
+     198: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     201: return
+
+  protected void onStop();
+    descriptor: ()V
+    Code:
+       0: new           #12                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #19                 // String -
+      36: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: ldc           #105                // String XXX onStop XXX
+      53: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      56: aload_0
+      57: iconst_0
+      58: invokevirtual #99                 // Method isReadyForSuspend:(Z)Z
+      61: ifeq          141
+      64: new           #12                 // class java/lang/StringBuilder
+      67: dup
+      68: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      71: aload_0
+      72: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      75: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      78: aload_0
+      79: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      82: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      85: bipush        46
+      87: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      90: iconst_1
+      91: iadd
+      92: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      95: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      98: ldc           #19                 // String -
+     100: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     103: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     106: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     109: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     112: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     115: ldc           #106                // String XXX onStop multi-window XXX
+     117: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     120: aload_0
+     121: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+     124: ifnull        134
+     127: aload_0
+     128: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+     131: invokevirtual #101                // Method com/ideaworks3d/marmalade/LoaderThread.onStop:()V
+     134: aload_0
+     135: getfield      #10                 // Field m_orientationEventListener:Landroid/view/OrientationEventListener;
+     138: invokevirtual #102                // Method android/view/OrientationEventListener.disable:()V
+     141: aload_0
+     142: invokespecial #107                // Method android/app/Activity.onStop:()V
+     145: new           #12                 // class java/lang/StringBuilder
+     148: dup
+     149: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     152: aload_0
+     153: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     156: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     159: aload_0
+     160: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     163: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     166: bipush        46
+     168: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     171: iconst_1
+     172: iadd
+     173: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     176: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     179: ldc           #19                 // String -
+     181: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     184: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     187: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     190: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     193: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     196: ldc           #108                // String XXX onStop done XXX
+     198: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     201: return
+
+  protected void onDestroy();
+    descriptor: ()V
+    Code:
+       0: getstatic     #36                 // Field m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       3: aload_0
+       4: if_acmpeq     68
+       7: new           #12                 // class java/lang/StringBuilder
+      10: dup
+      11: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      14: aload_0
+      15: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: aload_0
+      22: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      25: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      28: bipush        46
+      30: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      33: iconst_1
+      34: iadd
+      35: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      38: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      41: ldc           #19                 // String -
+      43: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      46: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      49: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      52: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      55: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      58: ldc           #109                // String XXX onDestroy XXX: skipped
+      60: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      63: aload_0
+      64: invokespecial #110                // Method android/app/Activity.onDestroy:()V
+      67: return
+      68: new           #12                 // class java/lang/StringBuilder
+      71: dup
+      72: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      75: aload_0
+      76: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      79: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      82: aload_0
+      83: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      86: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      89: bipush        46
+      91: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      94: iconst_1
+      95: iadd
+      96: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      99: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     102: ldc           #19                 // String -
+     104: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     107: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     110: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     113: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     116: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     119: new           #12                 // class java/lang/StringBuilder
+     122: dup
+     123: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     126: ldc           #111                // String XXX onDestroy XXX: finishing=
+     128: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     131: aload_0
+     132: invokevirtual #112                // Method isFinishing:()Z
+     135: invokevirtual #66                 // Method java/lang/StringBuilder.append:(Z)Ljava/lang/StringBuilder;
+     138: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     141: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     144: iconst_0
+     145: istore_1
+     146: aload_0
+     147: invokevirtual #112                // Method isFinishing:()Z
+     150: ifeq          198
+     153: aload_0
+     154: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+     157: ifnull        198
+     160: aload_0
+     161: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+     164: invokevirtual #113                // Method com/ideaworks3d/marmalade/LoaderThread.soundStop:()V
+     167: aload_0
+     168: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+     171: invokevirtual #114                // Method com/ideaworks3d/marmalade/LoaderThread.audioStopAll:()V
+     174: aload_0
+     175: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+     178: invokevirtual #115                // Method com/ideaworks3d/marmalade/LoaderThread.onDestroy:()V
+     181: aload_0
+     182: aconst_null
+     183: putfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+     186: aconst_null
+     187: putstatic     #36                 // Field m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+     190: aload_0
+     191: getfield      #67                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+     194: getfield      #116                // Field com/ideaworks3d/marmalade/LoaderView.m_TerminateApplication:Z
+     197: istore_1
+     198: aload_0
+     199: getfield      #10                 // Field m_orientationEventListener:Landroid/view/OrientationEventListener;
+     202: invokevirtual #102                // Method android/view/OrientationEventListener.disable:()V
+     205: aload_0
+     206: invokespecial #110                // Method android/app/Activity.onDestroy:()V
+     209: new           #12                 // class java/lang/StringBuilder
+     212: dup
+     213: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     216: aload_0
+     217: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     220: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     223: aload_0
+     224: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     227: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     230: bipush        46
+     232: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     235: iconst_1
+     236: iadd
+     237: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     240: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     243: ldc           #19                 // String -
+     245: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     248: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     251: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     254: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     257: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     260: ldc           #117                // String XXX onDestroy done XXX
+     262: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     265: iload_1
+     266: ifeq          275
+     269: invokestatic  #118                // Method android/os/Process.myPid:()I
+     272: invokestatic  #119                // Method android/os/Process.killProcess:(I)V
+     275: return
+
+  public void onLowMemory();
+    descriptor: ()V
+    Code:
+       0: new           #12                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #19                 // String -
+      36: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: ldc           #120                // String XXX onLowMemory XXX
+      53: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      56: aload_0
+      57: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+      60: ifnull        70
+      63: aload_0
+      64: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+      67: invokevirtual #121                // Method com/ideaworks3d/marmalade/LoaderThread.onLowMemory:()V
+      70: return
+
+  private boolean isScreenLocked();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: ldc           #122                // String keyguard
+       3: invokevirtual #123                // Method getSystemService:(Ljava/lang/String;)Ljava/lang/Object;
+       6: checkcast     #124                // class android/app/KeyguardManager
+       9: astore_1
+      10: aload_1
+      11: invokevirtual #125                // Method android/app/KeyguardManager.inKeyguardRestrictedInputMode:()Z
+      14: istore_2
+      15: iload_2
+      16: ireturn
+
+  private boolean isScreenOn();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: ldc           #126                // String power
+       3: invokevirtual #123                // Method getSystemService:(Ljava/lang/String;)Ljava/lang/Object;
+       6: checkcast     #127                // class android/os/PowerManager
+       9: astore_1
+      10: aload_1
+      11: invokevirtual #128                // Method android/os/PowerManager.isScreenOn:()Z
+      14: istore_2
+      15: iload_2
+      16: ireturn
+
+  private void startDelayedResume();
+    descriptor: ()V
+    Code:
+       0: new           #12                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #19                 // String -
+      36: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: ldc           #129                // String XXX startDelayedResume XXX
+      53: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      56: new           #130                // class com/ideaworks3d/marmalade/LoaderActivity$DelayedResumeTask
+      59: dup
+      60: aload_0
+      61: aconst_null
+      62: invokespecial #131                // Method com/ideaworks3d/marmalade/LoaderActivity$DelayedResumeTask."<init>":(Lcom/ideaworks3d/marmalade/LoaderActivity;Lcom/ideaworks3d/marmalade/LoaderActivity$1;)V
+      65: astore_1
+      66: aload_1
+      67: iconst_0
+      68: anewarray     #132                // class java/lang/Void
+      71: invokevirtual #133                // Method com/ideaworks3d/marmalade/LoaderActivity$DelayedResumeTask.execute:([Ljava/lang/Object;)Landroid/os/AsyncTask;
+      74: pop
+      75: return
+
+  private void startLoader();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: aload_0
+       2: aload_0
+       3: invokevirtual #134                // Method getAssets:()Landroid/content/res/AssetManager;
+       6: aload_0
+       7: invokevirtual #135                // Method getFilesDir:()Ljava/io/File;
+      10: aload_0
+      11: getfield      #67                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+      14: invokestatic  #136                // Method com/ideaworks3d/marmalade/LoaderThread.getInstance:(Lcom/ideaworks3d/marmalade/LoaderActivity;Landroid/content/res/AssetManager;Ljava/io/File;Lcom/ideaworks3d/marmalade/LoaderView;)Lcom/ideaworks3d/marmalade/LoaderThread;
+      17: putfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+      20: return
+
+  public boolean dispatchTouchEvent(android.view.MotionEvent);
+    descriptor: (Landroid/view/MotionEvent;)Z
+    Code:
+       0: aload_1
+       1: invokestatic  #137                // Method com/ideaworks3d/marmalade/s3eTouchpad.onTouchEvent:(Landroid/view/MotionEvent;)Z
+       4: ifeq          9
+       7: iconst_1
+       8: ireturn
+       9: aload_0
+      10: aload_1
+      11: invokespecial #138                // Method android/app/Activity.dispatchTouchEvent:(Landroid/view/MotionEvent;)Z
+      14: ireturn
+
+  private boolean onKeyEvent(int, int, android.view.KeyEvent);
+    descriptor: (IILandroid/view/KeyEvent;)Z
+    Code:
+       0: new           #12                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #19                 // String -
+      36: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: new           #12                 // class java/lang/StringBuilder
+      54: dup
+      55: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      58: ldc           #139                // String onKeyEvent
+      60: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      63: iload_1
+      64: invokevirtual #47                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      67: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      70: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      73: iconst_0
+      74: istore        4
+      76: aload_0
+      77: getfield      #67                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+      80: ifnull        95
+      83: aload_0
+      84: getfield      #67                 // Field m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+      87: iload_1
+      88: iload_2
+      89: aload_3
+      90: invokevirtual #140                // Method com/ideaworks3d/marmalade/LoaderView.onKeyEvent:(IILandroid/view/KeyEvent;)Z
+      93: istore        4
+      95: iload         4
+      97: ireturn
+
+  public boolean onKeyDown(int, android.view.KeyEvent);
+    descriptor: (ILandroid/view/KeyEvent;)Z
+    Code:
+       0: aload_0
+       1: iload_1
+       2: iconst_1
+       3: aload_2
+       4: invokespecial #141                // Method onKeyEvent:(IILandroid/view/KeyEvent;)Z
+       7: ifeq          12
+      10: iconst_1
+      11: ireturn
+      12: aload_0
+      13: iload_1
+      14: aload_2
+      15: invokespecial #142                // Method android/app/Activity.onKeyDown:(ILandroid/view/KeyEvent;)Z
+      18: ireturn
+
+  public boolean onKeyUp(int, android.view.KeyEvent);
+    descriptor: (ILandroid/view/KeyEvent;)Z
+    Code:
+       0: aload_0
+       1: iload_1
+       2: iconst_0
+       3: aload_2
+       4: invokespecial #141                // Method onKeyEvent:(IILandroid/view/KeyEvent;)Z
+       7: ifeq          12
+      10: iconst_1
+      11: ireturn
+      12: aload_0
+      13: iload_1
+      14: aload_2
+      15: invokespecial #143                // Method android/app/Activity.onKeyUp:(ILandroid/view/KeyEvent;)Z
+      18: ireturn
+
+  public boolean dispatchKeyEvent(android.view.KeyEvent);
+    descriptor: (Landroid/view/KeyEvent;)Z
+    Code:
+       0: aload_1
+       1: invokevirtual #144                // Method android/view/KeyEvent.getCharacters:()Ljava/lang/String;
+       4: ifnull        86
+       7: aload_1
+       8: invokevirtual #144                // Method android/view/KeyEvent.getCharacters:()Ljava/lang/String;
+      11: invokevirtual #145                // Method java/lang/String.isEmpty:()Z
+      14: ifne          86
+      17: aload_1
+      18: invokevirtual #146                // Method android/view/KeyEvent.getKeyCode:()I
+      21: ifne          86
+      24: aload_1
+      25: invokevirtual #147                // Method android/view/KeyEvent.getAction:()I
+      28: tableswitch   { // 0 to 2
+                     0: 67
+                     1: 56
+                     2: 78
+               default: 86
+          }
+      56: aload_0
+      57: iconst_0
+      58: iconst_0
+      59: aload_1
+      60: invokespecial #141                // Method onKeyEvent:(IILandroid/view/KeyEvent;)Z
+      63: pop
+      64: goto          86
+      67: aload_0
+      68: iconst_0
+      69: iconst_1
+      70: aload_1
+      71: invokespecial #141                // Method onKeyEvent:(IILandroid/view/KeyEvent;)Z
+      74: pop
+      75: goto          86
+      78: aload_0
+      79: iconst_0
+      80: iconst_1
+      81: aload_1
+      82: invokespecial #141                // Method onKeyEvent:(IILandroid/view/KeyEvent;)Z
+      85: pop
+      86: aload_0
+      87: aload_1
+      88: invokespecial #148                // Method android/app/Activity.dispatchKeyEvent:(Landroid/view/KeyEvent;)Z
+      91: ireturn
+
+  public boolean getIgnoreFocusLoss();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: getfield      #9                  // Field m_IgnoreFocusLoss:Z
+       4: ireturn
+
+  public void setIgnoreFocusLoss(boolean);
+    descriptor: (Z)V
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #9                  // Field m_IgnoreFocusLoss:Z
+       5: return
+
+  public android.content.Intent ExecuteIntent(android.content.Intent);
+    descriptor: (Landroid/content/Intent;)Landroid/content/Intent;
+    Code:
+       0: aload_0
+       1: aconst_null
+       2: putfield      #149                // Field m_Data:Landroid/content/Intent;
+       5: aload_0
+       6: iconst_1
+       7: putfield      #150                // Field m_IntentBlocking:Z
+      10: aload_0
+      11: iconst_0
+      12: putfield      #1                  // Field m_ExecuteIntentActivityNotFoundException:Z
+      15: aload_0
+      16: getfield      #6                  // Field m_LoaderThread:Lcom/ideaworks3d/marmalade/LoaderThread;
+      19: ifnull        170
+      22: aload_0
+      23: invokevirtual #151                // Method LoaderThread:()Lcom/ideaworks3d/marmalade/LoaderThread;
+      26: new           #152                // class com/ideaworks3d/marmalade/LoaderActivity$2
+      29: dup
+      30: aload_0
+      31: aload_1
+      32: invokespecial #153                // Method com/ideaworks3d/marmalade/LoaderActivity$2."<init>":(Lcom/ideaworks3d/marmalade/LoaderActivity;Landroid/content/Intent;)V
+      35: invokevirtual #154                // Method com/ideaworks3d/marmalade/LoaderThread.runOnOSThread:(Ljava/lang/Runnable;)V
+      38: aload_0
+      39: getfield      #150                // Field m_IntentBlocking:Z
+      42: ifeq          109
+      45: new           #12                 // class java/lang/StringBuilder
+      48: dup
+      49: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      52: aload_0
+      53: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      56: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      59: aload_0
+      60: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      63: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      66: bipush        46
+      68: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      71: iconst_1
+      72: iadd
+      73: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      76: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      79: ldc           #19                 // String -
+      81: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      84: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      87: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      90: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      93: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      96: ldc           #155                // String waiting for intent to finish
+      98: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     101: bipush        20
+     103: invokestatic  #156                // Method com/ideaworks3d/marmalade/LoaderAPI.s3eDeviceYield:(I)V
+     106: goto          38
+     109: new           #12                 // class java/lang/StringBuilder
+     112: dup
+     113: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     116: aload_0
+     117: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     120: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     123: aload_0
+     124: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     127: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     130: bipush        46
+     132: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     135: iconst_1
+     136: iadd
+     137: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     140: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     143: ldc           #19                 // String -
+     145: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     148: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     151: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     154: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     157: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     160: ldc           #157                // String intent done
+     162: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     165: aload_0
+     166: getfield      #149                // Field m_Data:Landroid/content/Intent;
+     169: areturn
+     170: aconst_null
+     171: areturn
+
+  public boolean executeIntentActivityNotFoundException();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field m_ExecuteIntentActivityNotFoundException:Z
+       4: ireturn
+
+  protected void onActivityResult(int, int, android.content.Intent);
+    descriptor: (IILandroid/content/Intent;)V
+    Code:
+       0: aload_0
+       1: iload_1
+       2: iload_2
+       3: aload_3
+       4: invokespecial #158                // Method android/app/Activity.onActivityResult:(IILandroid/content/Intent;)V
+       7: iload_1
+       8: ldc           #159                // int 123456
+      10: if_icmpne     53
+      13: iload_2
+      14: iconst_m1
+      15: if_icmpeq     31
+      18: ldc           #160                // String Intent cancelled
+      20: invokestatic  #161                // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+      23: aload_0
+      24: aconst_null
+      25: putfield      #149                // Field m_Data:Landroid/content/Intent;
+      28: goto          48
+      31: aload_3
+      32: ifnonnull     43
+      35: new           #162                // class android/content/Intent
+      38: dup
+      39: invokespecial #163                // Method android/content/Intent."<init>":()V
+      42: astore_3
+      43: aload_0
+      44: aload_3
+      45: putfield      #149                // Field m_Data:Landroid/content/Intent;
+      48: aload_0
+      49: iconst_0
+      50: putfield      #150                // Field m_IntentBlocking:Z
+      53: new           #164                // class com/ideaworks3d/marmalade/event/ActivityResultEvent
+      56: dup
+      57: aload_3
+      58: iload_1
+      59: iload_2
+      60: invokespecial #165                // Method com/ideaworks3d/marmalade/event/ActivityResultEvent."<init>":(Landroid/content/Intent;II)V
+      63: invokestatic  #166                // Method com/ideaworks3d/marmalade/LoaderAPI.notifyActivityResultListeners:(Lcom/ideaworks3d/marmalade/event/ActivityResultEvent;)V
+      66: return
+
+  public void onRequestPermissionsResult(int, java.lang.String[], int[]);
+    descriptor: (I[Ljava/lang/String;[I)V
+    Code:
+       0: aload_0
+       1: iload_1
+       2: aload_2
+       3: aload_3
+       4: invokespecial #167                // Method android/app/Activity.onRequestPermissionsResult:(I[Ljava/lang/String;[I)V
+       7: new           #168                // class com/ideaworks3d/marmalade/event/RequestPermissionsResultEvent
+      10: dup
+      11: iload_1
+      12: aload_2
+      13: aload_3
+      14: invokespecial #169                // Method com/ideaworks3d/marmalade/event/RequestPermissionsResultEvent."<init>":(I[Ljava/lang/String;[I)V
+      17: invokestatic  #170                // Method com/ideaworks3d/marmalade/LoaderAPI.notifyRequestPermissionsResultListeners:(Lcom/ideaworks3d/marmalade/event/RequestPermissionsResultEvent;)V
+      20: return
+
+  public void getCursor(android.net.Uri, java.lang.String[], com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener);
+    descriptor: (Landroid/net/Uri;[Ljava/lang/String;Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;)V
+    Code:
+       0: aload_0
+       1: invokevirtual #151                // Method LoaderThread:()Lcom/ideaworks3d/marmalade/LoaderThread;
+       4: new           #171                // class com/ideaworks3d/marmalade/LoaderActivity$3
+       7: dup
+       8: aload_0
+       9: aload_1
+      10: aload_2
+      11: aload_3
+      12: invokespecial #172                // Method com/ideaworks3d/marmalade/LoaderActivity$3."<init>":(Lcom/ideaworks3d/marmalade/LoaderActivity;Landroid/net/Uri;[Ljava/lang/String;Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;)V
+      15: invokevirtual #154                // Method com/ideaworks3d/marmalade/LoaderThread.runOnOSThread:(Ljava/lang/Runnable;)V
+      18: return
+
+  public void ShowProgressDialog();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #50                 // Field m_ProgressDialogHandler:Landroid/os/Handler;
+       4: ifnull        29
+       7: new           #173                // class android/os/Message
+      10: dup
+      11: invokespecial #174                // Method android/os/Message."<init>":()V
+      14: astore_1
+      15: aload_1
+      16: iconst_0
+      17: putfield      #175                // Field android/os/Message.what:I
+      20: aload_0
+      21: getfield      #50                 // Field m_ProgressDialogHandler:Landroid/os/Handler;
+      24: aload_1
+      25: invokevirtual #176                // Method android/os/Handler.sendMessage:(Landroid/os/Message;)Z
+      28: pop
+      29: return
+
+  public void HideProgressDialog();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #50                 // Field m_ProgressDialogHandler:Landroid/os/Handler;
+       4: ifnull        29
+       7: new           #173                // class android/os/Message
+      10: dup
+      11: invokespecial #174                // Method android/os/Message."<init>":()V
+      14: astore_1
+      15: aload_1
+      16: iconst_1
+      17: putfield      #175                // Field android/os/Message.what:I
+      20: aload_0
+      21: getfield      #50                 // Field m_ProgressDialogHandler:Landroid/os/Handler;
+      24: aload_1
+      25: invokevirtual #176                // Method android/os/Handler.sendMessage:(Landroid/os/Message;)Z
+      28: pop
+      29: return
+
+  protected void onNewIntent(android.content.Intent);
+    descriptor: (Landroid/content/Intent;)V
+    Code:
+       0: new           #12                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #19                 // String -
+      36: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: ldc           #177                // String onNewIntent
+      53: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      56: aload_0
+      57: aload_1
+      58: invokespecial #178                // Method android/app/Activity.onNewIntent:(Landroid/content/Intent;)V
+      61: new           #179                // class com/ideaworks3d/marmalade/NewIntentEvent
+      64: dup
+      65: getstatic     #180                // Field com/ideaworks3d/marmalade/NewIntentEvent$EventType.NEWINTENT:Lcom/ideaworks3d/marmalade/NewIntentEvent$EventType;
+      68: aload_1
+      69: invokespecial #181                // Method com/ideaworks3d/marmalade/NewIntentEvent."<init>":(Lcom/ideaworks3d/marmalade/NewIntentEvent$EventType;Landroid/content/Intent;)V
+      72: invokestatic  #182                // Method com/ideaworks3d/marmalade/LoaderAPI.notifyNewIntentListeners:(Lcom/ideaworks3d/marmalade/NewIntentEvent;)V
+      75: new           #12                 // class java/lang/StringBuilder
+      78: dup
+      79: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      82: aload_0
+      83: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      86: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      89: aload_0
+      90: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      93: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      96: bipush        46
+      98: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     101: iconst_1
+     102: iadd
+     103: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     106: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     109: ldc           #19                 // String -
+     111: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     114: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     117: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     120: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     123: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     126: ldc           #183                // String onNewIntent done
+     128: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     131: return
+
+  private boolean IsRunningART();
+    descriptor: ()Z
+    Code:
+       0: ldc           #184                // String java.vm.version
+       2: invokestatic  #185                // Method java/lang/System.getProperty:(Ljava/lang/String;)Ljava/lang/String;
+       5: astore_1
+       6: aload_1
+       7: ifnull        23
+      10: aload_1
+      11: ldc           #186                // String 1.
+      13: invokevirtual #187                // Method java/lang/String.startsWith:(Ljava/lang/String;)Z
+      16: ifeq          23
+      19: iconst_1
+      20: goto          24
+      23: iconst_0
+      24: istore_2
+      25: iload_2
+      26: ifeq          105
+      29: new           #12                 // class java/lang/StringBuilder
+      32: dup
+      33: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      36: aload_0
+      37: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      40: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      43: aload_0
+      44: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      47: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      50: bipush        46
+      52: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      55: iconst_1
+      56: iadd
+      57: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      60: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      63: ldc           #19                 // String -
+      65: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      68: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      71: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      74: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      77: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      80: new           #12                 // class java/lang/StringBuilder
+      83: dup
+      84: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      87: ldc           #188                // String Running under Dalvik:
+      89: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      92: aload_1
+      93: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      96: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      99: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     102: goto          178
+     105: new           #12                 // class java/lang/StringBuilder
+     108: dup
+     109: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     112: aload_0
+     113: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     116: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     119: aload_0
+     120: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     123: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+     126: bipush        46
+     128: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+     131: iconst_1
+     132: iadd
+     133: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+     136: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     139: ldc           #19                 // String -
+     141: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     144: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+     147: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     150: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     153: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     156: new           #12                 // class java/lang/StringBuilder
+     159: dup
+     160: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     163: ldc           #189                // String Running under ART:
+     165: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     168: aload_1
+     169: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     172: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     175: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     178: iload_2
+     179: ifne          186
+     182: iconst_1
+     183: goto          187
+     186: iconst_0
+     187: ireturn
+
+  public boolean isReadyForSuspend(boolean);
+    descriptor: (Z)Z
+    Code:
+       0: iconst_0
+       1: istore_2
+       2: getstatic     #190                // Field android/os/Build$VERSION.SDK_INT:I
+       5: bipush        24
+       7: if_icmplt     15
+      10: aload_0
+      11: invokevirtual #191                // Method isInMultiWindowMode:()Z
+      14: istore_2
+      15: iconst_0
+      16: istore_3
+      17: iload_1
+      18: ifeq          39
+      21: iload_2
+      22: ifne          29
+      25: iconst_1
+      26: goto          30
+      29: iconst_0
+      30: istore_3
+      31: aload_0
+      32: iload_3
+      33: putfield      #11                 // Field m_LegacySuspendMode:Z
+      36: goto          57
+      39: aload_0
+      40: getfield      #11                 // Field m_LegacySuspendMode:Z
+      43: ifne          50
+      46: iconst_1
+      47: goto          51
+      50: iconst_0
+      51: istore_3
+      52: aload_0
+      53: iconst_0
+      54: putfield      #11                 // Field m_LegacySuspendMode:Z
+      57: new           #12                 // class java/lang/StringBuilder
+      60: dup
+      61: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+      64: aload_0
+      65: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      68: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      71: aload_0
+      72: invokevirtual #14                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      75: invokevirtual #15                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      78: bipush        46
+      80: invokevirtual #16                 // Method java/lang/String.lastIndexOf:(I)I
+      83: iconst_1
+      84: iadd
+      85: invokevirtual #17                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      88: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      91: ldc           #19                 // String -
+      93: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      96: invokestatic  #20                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      99: invokevirtual #21                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+     102: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     105: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     108: new           #12                 // class java/lang/StringBuilder
+     111: dup
+     112: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+     115: ldc           #192                // String Ready for suspend (
+     117: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     120: iload_1
+     121: invokevirtual #66                 // Method java/lang/StringBuilder.append:(Z)Ljava/lang/StringBuilder;
+     124: ldc           #193                // String ,
+     126: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     129: iload_2
+     130: invokevirtual #66                 // Method java/lang/StringBuilder.append:(Z)Ljava/lang/StringBuilder;
+     133: ldc           #194                // String )
+     135: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     138: iload_3
+     139: invokevirtual #66                 // Method java/lang/StringBuilder.append:(Z)Ljava/lang/StringBuilder;
+     142: ldc           #195                // String
+     144: invokevirtual #18                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     147: aload_0
+     148: getfield      #11                 // Field m_LegacySuspendMode:Z
+     151: invokevirtual #66                 // Method java/lang/StringBuilder.append:(Z)Ljava/lang/StringBuilder;
+     154: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     157: invokestatic  #25                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+     160: iload_3
+     161: ireturn
+
+  static boolean access$000(com.ideaworks3d.marmalade.LoaderActivity);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderActivity;)Z
+    Code:
+       0: aload_0
+       1: invokespecial #5                  // Method isScreenOn:()Z
+       4: ireturn
+
+  static boolean access$100(com.ideaworks3d.marmalade.LoaderActivity);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderActivity;)Z
+    Code:
+       0: aload_0
+       1: invokespecial #4                  // Method isScreenLocked:()Z
+       4: ireturn
+
+  static void access$200(com.ideaworks3d.marmalade.LoaderActivity);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderActivity;)V
+    Code:
+       0: aload_0
+       1: invokespecial #3                  // Method startDelayedResume:()V
+       4: return
+
+  static void access$300(com.ideaworks3d.marmalade.LoaderActivity);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderActivity;)V
+    Code:
+       0: aload_0
+       1: invokespecial #2                  // Method onOrientationChangedNative:()V
+       4: return
+
+  static boolean access$502(com.ideaworks3d.marmalade.LoaderActivity, boolean);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderActivity;Z)Z
+    Code:
+       0: aload_0
+       1: iload_1
+       2: dup_x1
+       3: putfield      #1                  // Field m_ExecuteIntentActivityNotFoundException:Z
+       6: ireturn
+}

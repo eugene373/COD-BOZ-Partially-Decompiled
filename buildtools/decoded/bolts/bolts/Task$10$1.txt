@@ -1,0 +1,53 @@
+Compiled from "Task.java"
+class bolts.Task$10$1 implements bolts.Continuation<TContinuationResult, java.lang.Void> {
+  final bolts.Task$10 this$0;
+    descriptor: Lbolts/Task$10;
+
+  bolts.Task$10$1(bolts.Task$10);
+    descriptor: (Lbolts/Task$10;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lbolts/Task$10;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: return
+
+  public java.lang.Void then(bolts.Task<TContinuationResult>);
+    descriptor: (Lbolts/Task;)Ljava/lang/Void;
+    Code:
+       0: aload_1
+       1: invokevirtual #3                  // Method bolts/Task.isCancelled:()Z
+       4: ifeq          20
+       7: aload_0
+       8: getfield      #1                  // Field this$0:Lbolts/Task$10;
+      11: getfield      #4                  // Field bolts/Task$10.val$tcs:Lbolts/Task$TaskCompletionSource;
+      14: invokevirtual #5                  // Method bolts/Task$TaskCompletionSource.setCancelled:()V
+      17: goto          58
+      20: aload_1
+      21: invokevirtual #6                  // Method bolts/Task.isFaulted:()Z
+      24: ifeq          44
+      27: aload_0
+      28: getfield      #1                  // Field this$0:Lbolts/Task$10;
+      31: getfield      #4                  // Field bolts/Task$10.val$tcs:Lbolts/Task$TaskCompletionSource;
+      34: aload_1
+      35: invokevirtual #7                  // Method bolts/Task.getError:()Ljava/lang/Exception;
+      38: invokevirtual #8                  // Method bolts/Task$TaskCompletionSource.setError:(Ljava/lang/Exception;)V
+      41: goto          58
+      44: aload_0
+      45: getfield      #1                  // Field this$0:Lbolts/Task$10;
+      48: getfield      #4                  // Field bolts/Task$10.val$tcs:Lbolts/Task$TaskCompletionSource;
+      51: aload_1
+      52: invokevirtual #9                  // Method bolts/Task.getResult:()Ljava/lang/Object;
+      55: invokevirtual #10                 // Method bolts/Task$TaskCompletionSource.setResult:(Ljava/lang/Object;)V
+      58: aconst_null
+      59: areturn
+
+  public java.lang.Object then(bolts.Task) throws java.lang.Exception;
+    descriptor: (Lbolts/Task;)Ljava/lang/Object;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #11                 // Method then:(Lbolts/Task;)Ljava/lang/Void;
+       5: areturn
+}

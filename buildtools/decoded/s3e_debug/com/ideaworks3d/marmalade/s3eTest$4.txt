@@ -1,0 +1,31 @@
+Compiled from "s3eTest.java"
+class com.ideaworks3d.marmalade.s3eTest$4 implements java.lang.Runnable {
+  final boolean val$focus;
+    descriptor: Z
+
+  final com.ideaworks3d.marmalade.s3eTest this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/s3eTest;
+
+  com.ideaworks3d.marmalade.s3eTest$4(com.ideaworks3d.marmalade.s3eTest, boolean);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eTest;Z)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eTest;
+       5: aload_0
+       6: iload_2
+       7: putfield      #2                  // Field val$focus:Z
+      10: aload_0
+      11: invokespecial #3                  // Method java/lang/Object."<init>":()V
+      14: return
+
+  public void run();
+    descriptor: ()V
+    Code:
+       0: getstatic     #4                  // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       3: getfield      #5                  // Field com/ideaworks3d/marmalade/LoaderActivity.m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+       6: aload_0
+       7: getfield      #2                  // Field val$focus:Z
+      10: invokevirtual #6                  // Method com/ideaworks3d/marmalade/LoaderView.onWindowFocusChanged:(Z)V
+      13: return
+}

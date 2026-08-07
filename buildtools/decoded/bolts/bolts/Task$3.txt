@@ -1,0 +1,129 @@
+Compiled from "Task.java"
+final class bolts.Task$3 implements bolts.Continuation<java.lang.Object, java.lang.Void> {
+  final java.lang.Object val$errorLock;
+    descriptor: Ljava/lang/Object;
+
+  final java.util.ArrayList val$errors;
+    descriptor: Ljava/util/ArrayList;
+
+  final java.util.concurrent.atomic.AtomicBoolean val$isCancelled;
+    descriptor: Ljava/util/concurrent/atomic/AtomicBoolean;
+
+  final java.util.concurrent.atomic.AtomicInteger val$count;
+    descriptor: Ljava/util/concurrent/atomic/AtomicInteger;
+
+  final bolts.Task$TaskCompletionSource val$allFinished;
+    descriptor: Lbolts/Task$TaskCompletionSource;
+
+  bolts.Task$3(java.lang.Object, java.util.ArrayList, java.util.concurrent.atomic.AtomicBoolean, java.util.concurrent.atomic.AtomicInteger, bolts.Task$TaskCompletionSource);
+    descriptor: (Ljava/lang/Object;Ljava/util/ArrayList;Ljava/util/concurrent/atomic/AtomicBoolean;Ljava/util/concurrent/atomic/AtomicInteger;Lbolts/Task$TaskCompletionSource;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field val$errorLock:Ljava/lang/Object;
+       5: aload_0
+       6: aload_2
+       7: putfield      #2                  // Field val$errors:Ljava/util/ArrayList;
+      10: aload_0
+      11: aload_3
+      12: putfield      #3                  // Field val$isCancelled:Ljava/util/concurrent/atomic/AtomicBoolean;
+      15: aload_0
+      16: aload         4
+      18: putfield      #4                  // Field val$count:Ljava/util/concurrent/atomic/AtomicInteger;
+      21: aload_0
+      22: aload         5
+      24: putfield      #5                  // Field val$allFinished:Lbolts/Task$TaskCompletionSource;
+      27: aload_0
+      28: invokespecial #6                  // Method java/lang/Object."<init>":()V
+      31: return
+
+  public java.lang.Void then(bolts.Task<java.lang.Object>);
+    descriptor: (Lbolts/Task;)Ljava/lang/Void;
+    Code:
+       0: aload_1
+       1: invokevirtual #7                  // Method bolts/Task.isFaulted:()Z
+       4: ifeq          36
+       7: aload_0
+       8: getfield      #1                  // Field val$errorLock:Ljava/lang/Object;
+      11: dup
+      12: astore_2
+      13: monitorenter
+      14: aload_0
+      15: getfield      #2                  // Field val$errors:Ljava/util/ArrayList;
+      18: aload_1
+      19: invokevirtual #8                  // Method bolts/Task.getError:()Ljava/lang/Exception;
+      22: invokevirtual #9                  // Method java/util/ArrayList.add:(Ljava/lang/Object;)Z
+      25: pop
+      26: aload_2
+      27: monitorexit
+      28: goto          36
+      31: astore_3
+      32: aload_2
+      33: monitorexit
+      34: aload_3
+      35: athrow
+      36: aload_1
+      37: invokevirtual #10                 // Method bolts/Task.isCancelled:()Z
+      40: ifeq          51
+      43: aload_0
+      44: getfield      #3                  // Field val$isCancelled:Ljava/util/concurrent/atomic/AtomicBoolean;
+      47: iconst_1
+      48: invokevirtual #11                 // Method java/util/concurrent/atomic/AtomicBoolean.set:(Z)V
+      51: aload_0
+      52: getfield      #4                  // Field val$count:Ljava/util/concurrent/atomic/AtomicInteger;
+      55: invokevirtual #12                 // Method java/util/concurrent/atomic/AtomicInteger.decrementAndGet:()I
+      58: ifne          152
+      61: aload_0
+      62: getfield      #2                  // Field val$errors:Ljava/util/ArrayList;
+      65: invokevirtual #13                 // Method java/util/ArrayList.size:()I
+      68: ifeq          124
+      71: aload_0
+      72: getfield      #2                  // Field val$errors:Ljava/util/ArrayList;
+      75: invokevirtual #13                 // Method java/util/ArrayList.size:()I
+      78: iconst_1
+      79: if_icmpne     103
+      82: aload_0
+      83: getfield      #5                  // Field val$allFinished:Lbolts/Task$TaskCompletionSource;
+      86: aload_0
+      87: getfield      #2                  // Field val$errors:Ljava/util/ArrayList;
+      90: iconst_0
+      91: invokevirtual #14                 // Method java/util/ArrayList.get:(I)Ljava/lang/Object;
+      94: checkcast     #15                 // class java/lang/Exception
+      97: invokevirtual #16                 // Method bolts/Task$TaskCompletionSource.setError:(Ljava/lang/Exception;)V
+     100: goto          152
+     103: aload_0
+     104: getfield      #5                  // Field val$allFinished:Lbolts/Task$TaskCompletionSource;
+     107: new           #17                 // class bolts/AggregateException
+     110: dup
+     111: aload_0
+     112: getfield      #2                  // Field val$errors:Ljava/util/ArrayList;
+     115: invokespecial #18                 // Method bolts/AggregateException."<init>":(Ljava/util/List;)V
+     118: invokevirtual #16                 // Method bolts/Task$TaskCompletionSource.setError:(Ljava/lang/Exception;)V
+     121: goto          152
+     124: aload_0
+     125: getfield      #3                  // Field val$isCancelled:Ljava/util/concurrent/atomic/AtomicBoolean;
+     128: invokevirtual #19                 // Method java/util/concurrent/atomic/AtomicBoolean.get:()Z
+     131: ifeq          144
+     134: aload_0
+     135: getfield      #5                  // Field val$allFinished:Lbolts/Task$TaskCompletionSource;
+     138: invokevirtual #20                 // Method bolts/Task$TaskCompletionSource.setCancelled:()V
+     141: goto          152
+     144: aload_0
+     145: getfield      #5                  // Field val$allFinished:Lbolts/Task$TaskCompletionSource;
+     148: aconst_null
+     149: invokevirtual #21                 // Method bolts/Task$TaskCompletionSource.setResult:(Ljava/lang/Object;)V
+     152: aconst_null
+     153: areturn
+    Exception table:
+       from    to  target type
+          14    28    31   any
+          31    34    31   any
+
+  public java.lang.Object then(bolts.Task) throws java.lang.Exception;
+    descriptor: (Lbolts/Task;)Ljava/lang/Object;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #22                 // Method then:(Lbolts/Task;)Ljava/lang/Void;
+       5: areturn
+}

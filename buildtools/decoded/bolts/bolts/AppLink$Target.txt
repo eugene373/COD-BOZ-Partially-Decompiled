@@ -1,0 +1,61 @@
+Compiled from "AppLink.java"
+public class bolts.AppLink$Target {
+  private final android.net.Uri url;
+    descriptor: Landroid/net/Uri;
+
+  private final java.lang.String packageName;
+    descriptor: Ljava/lang/String;
+
+  private final java.lang.String className;
+    descriptor: Ljava/lang/String;
+
+  private final java.lang.String appName;
+    descriptor: Ljava/lang/String;
+
+  public bolts.AppLink$Target(java.lang.String, java.lang.String, android.net.Uri, java.lang.String);
+    descriptor: (Ljava/lang/String;Ljava/lang/String;Landroid/net/Uri;Ljava/lang/String;)V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #2                  // Field packageName:Ljava/lang/String;
+       9: aload_0
+      10: aload_2
+      11: putfield      #3                  // Field className:Ljava/lang/String;
+      14: aload_0
+      15: aload_3
+      16: putfield      #4                  // Field url:Landroid/net/Uri;
+      19: aload_0
+      20: aload         4
+      22: putfield      #5                  // Field appName:Ljava/lang/String;
+      25: return
+
+  public android.net.Uri getUrl();
+    descriptor: ()Landroid/net/Uri;
+    Code:
+       0: aload_0
+       1: getfield      #4                  // Field url:Landroid/net/Uri;
+       4: areturn
+
+  public java.lang.String getAppName();
+    descriptor: ()Ljava/lang/String;
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field appName:Ljava/lang/String;
+       4: areturn
+
+  public java.lang.String getClassName();
+    descriptor: ()Ljava/lang/String;
+    Code:
+       0: aload_0
+       1: getfield      #3                  // Field className:Ljava/lang/String;
+       4: areturn
+
+  public java.lang.String getPackageName();
+    descriptor: ()Ljava/lang/String;
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field packageName:Ljava/lang/String;
+       4: areturn
+}

@@ -1,0 +1,661 @@
+Compiled from "LoaderGL.java"
+class com.ideaworks3d.marmalade.LoaderGL {
+  private boolean m_Started;
+    descriptor: Z
+
+  private boolean m_DoneInit;
+    descriptor: Z
+
+  private int m_GLVersion;
+    descriptor: I
+
+  javax.microedition.khronos.egl.EGL10 m_Egl;
+    descriptor: Ljavax/microedition/khronos/egl/EGL10;
+
+  javax.microedition.khronos.egl.EGLDisplay m_EglDisplay;
+    descriptor: Ljavax/microedition/khronos/egl/EGLDisplay;
+
+  javax.microedition.khronos.egl.EGLSurface m_EglSurface;
+    descriptor: Ljavax/microedition/khronos/egl/EGLSurface;
+
+  javax.microedition.khronos.egl.EGLConfig[] m_EglConfigs;
+    descriptor: [Ljavax/microedition/khronos/egl/EGLConfig;
+
+  javax.microedition.khronos.egl.EGLContext m_EglContext;
+    descriptor: Ljavax/microedition/khronos/egl/EGLContext;
+
+  private static final int EGL_CONTEXT_CLIENT_VERSION = 12440;
+    descriptor: I
+
+  private static final int EGL_DEPTH_ENCODING_NV = 12514;
+    descriptor: I
+
+  com.ideaworks3d.marmalade.LoaderGL();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public boolean started();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field m_Started:Z
+       4: ireturn
+
+  public void init();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokestatic  #3                  // Method javax/microedition/khronos/egl/EGLContext.getEGL:()Ljavax/microedition/khronos/egl/EGL;
+       4: checkcast     #4                  // class javax/microedition/khronos/egl/EGL10
+       7: putfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+      10: aload_0
+      11: aload_0
+      12: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+      15: getstatic     #6                  // Field javax/microedition/khronos/egl/EGL10.EGL_DEFAULT_DISPLAY:Ljava/lang/Object;
+      18: invokeinterface #7,  2            // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglGetDisplay:(Ljava/lang/Object;)Ljavax/microedition/khronos/egl/EGLDisplay;
+      23: putfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+      26: iconst_2
+      27: newarray       int
+      29: astore_1
+      30: aload_0
+      31: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+      34: aload_0
+      35: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+      38: aload_1
+      39: invokeinterface #9,  3            // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglInitialize:(Ljavax/microedition/khronos/egl/EGLDisplay;[I)Z
+      44: pop
+      45: aload_0
+      46: invokespecial #10                 // Method chooseConfigs:()V
+      49: aconst_null
+      50: astore_2
+      51: aload_0
+      52: getfield      #11                 // Field m_GLVersion:I
+      55: iconst_2
+      56: if_icmplt     84
+      59: iconst_3
+      60: newarray       int
+      62: dup
+      63: iconst_0
+      64: sipush        12440
+      67: iastore
+      68: dup
+      69: iconst_1
+      70: aload_0
+      71: getfield      #11                 // Field m_GLVersion:I
+      74: iastore
+      75: dup
+      76: iconst_2
+      77: sipush        12344
+      80: iastore
+      81: astore_3
+      82: aload_3
+      83: astore_2
+      84: aload_0
+      85: aload_0
+      86: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+      89: aload_0
+      90: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+      93: aload_0
+      94: getfield      #12                 // Field m_EglConfigs:[Ljavax/microedition/khronos/egl/EGLConfig;
+      97: iconst_0
+      98: aaload
+      99: getstatic     #13                 // Field javax/microedition/khronos/egl/EGL10.EGL_NO_CONTEXT:Ljavax/microedition/khronos/egl/EGLContext;
+     102: aload_2
+     103: invokeinterface #14,  5           // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglCreateContext:(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;Ljavax/microedition/khronos/egl/EGLContext;[I)Ljavax/microedition/khronos/egl/EGLContext;
+     108: putfield      #15                 // Field m_EglContext:Ljavax/microedition/khronos/egl/EGLContext;
+     111: aload_0
+     112: iconst_1
+     113: putfield      #16                 // Field m_DoneInit:Z
+     116: return
+
+  public javax.microedition.khronos.opengles.GL startGL(android.view.SurfaceHolder, int);
+    descriptor: (Landroid/view/SurfaceHolder;I)Ljavax/microedition/khronos/opengles/GL;
+    Code:
+       0: iload_2
+       1: ifeq          9
+       4: aload_0
+       5: iload_2
+       6: putfield      #11                 // Field m_GLVersion:I
+       9: aload_0
+      10: getfield      #16                 // Field m_DoneInit:Z
+      13: ifne          20
+      16: aload_0
+      17: invokevirtual #17                 // Method init:()V
+      20: aload_0
+      21: aload_0
+      22: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+      25: aload_0
+      26: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+      29: aload_0
+      30: getfield      #12                 // Field m_EglConfigs:[Ljavax/microedition/khronos/egl/EGLConfig;
+      33: iconst_0
+      34: aaload
+      35: aload_1
+      36: aconst_null
+      37: invokeinterface #18,  5           // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglCreateWindowSurface:(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;Ljava/lang/Object;[I)Ljavax/microedition/khronos/egl/EGLSurface;
+      42: putfield      #19                 // Field m_EglSurface:Ljavax/microedition/khronos/egl/EGLSurface;
+      45: aload_0
+      46: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+      49: aload_0
+      50: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+      53: aload_0
+      54: getfield      #19                 // Field m_EglSurface:Ljavax/microedition/khronos/egl/EGLSurface;
+      57: aload_0
+      58: getfield      #19                 // Field m_EglSurface:Ljavax/microedition/khronos/egl/EGLSurface;
+      61: aload_0
+      62: getfield      #15                 // Field m_EglContext:Ljavax/microedition/khronos/egl/EGLContext;
+      65: invokeinterface #20,  5           // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglMakeCurrent:(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLSurface;Ljavax/microedition/khronos/egl/EGLSurface;Ljavax/microedition/khronos/egl/EGLContext;)Z
+      70: istore_3
+      71: aload_0
+      72: iconst_1
+      73: putfield      #2                  // Field m_Started:Z
+      76: aload_0
+      77: getfield      #15                 // Field m_EglContext:Ljavax/microedition/khronos/egl/EGLContext;
+      80: invokevirtual #21                 // Method javax/microedition/khronos/egl/EGLContext.getGL:()Ljavax/microedition/khronos/opengles/GL;
+      83: areturn
+
+  private static int CountSettingsWithValue(com.ideaworks3d.marmalade.LoaderGL$ConfigSetting[]);
+    descriptor: ([Lcom/ideaworks3d/marmalade/LoaderGL$ConfigSetting;)I
+    Code:
+       0: iconst_0
+       1: istore_1
+       2: aload_0
+       3: astore_2
+       4: aload_2
+       5: arraylength
+       6: istore_3
+       7: iconst_0
+       8: istore        4
+      10: iload         4
+      12: iload_3
+      13: if_icmpge     39
+      16: aload_2
+      17: iload         4
+      19: aaload
+      20: astore        5
+      22: aload         5
+      24: invokevirtual #22                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting.HasValue:()Z
+      27: ifeq          33
+      30: iinc          1, 1
+      33: iinc          4, 1
+      36: goto          10
+      39: iload_1
+      40: ireturn
+
+  private static int CopySettingsWithValues(com.ideaworks3d.marmalade.LoaderGL$ConfigSetting[], int[]);
+    descriptor: ([Lcom/ideaworks3d/marmalade/LoaderGL$ConfigSetting;[I)I
+    Code:
+       0: iconst_0
+       1: istore_2
+       2: aload_0
+       3: astore_3
+       4: aload_3
+       5: arraylength
+       6: istore        4
+       8: iconst_0
+       9: istore        5
+      11: iload         5
+      13: iload         4
+      15: if_icmpge     63
+      18: aload_3
+      19: iload         5
+      21: aaload
+      22: astore        6
+      24: aload         6
+      26: invokevirtual #22                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting.HasValue:()Z
+      29: ifeq          57
+      32: aload_1
+      33: iconst_2
+      34: iload_2
+      35: imul
+      36: aload         6
+      38: invokevirtual #23                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting.GetSetting:()I
+      41: iastore
+      42: aload_1
+      43: iconst_2
+      44: iload_2
+      45: imul
+      46: iconst_1
+      47: iadd
+      48: aload         6
+      50: invokevirtual #24                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting.GetValue:()I
+      53: iastore
+      54: iinc          2, 1
+      57: iinc          5, 1
+      60: goto          11
+      63: iload_2
+      64: ireturn
+
+  private int[] CreateSpecFromSettings(com.ideaworks3d.marmalade.LoaderGL$ConfigSetting[]);
+    descriptor: ([Lcom/ideaworks3d/marmalade/LoaderGL$ConfigSetting;)[I
+    Code:
+       0: aload_1
+       1: invokestatic  #25                 // Method CountSettingsWithValue:([Lcom/ideaworks3d/marmalade/LoaderGL$ConfigSetting;)I
+       4: istore_2
+       5: aload_0
+       6: getfield      #11                 // Field m_GLVersion:I
+       9: iconst_2
+      10: if_icmplt     16
+      13: iinc          2, 1
+      16: iconst_2
+      17: iload_2
+      18: imul
+      19: iconst_1
+      20: iadd
+      21: newarray       int
+      23: astore_3
+      24: aload_1
+      25: aload_3
+      26: invokestatic  #26                 // Method CopySettingsWithValues:([Lcom/ideaworks3d/marmalade/LoaderGL$ConfigSetting;[I)I
+      29: istore        4
+      31: aload_0
+      32: getfield      #11                 // Field m_GLVersion:I
+      35: iconst_2
+      36: if_icmplt     60
+      39: aload_3
+      40: iconst_2
+      41: iload         4
+      43: imul
+      44: sipush        12352
+      47: iastore
+      48: aload_3
+      49: iconst_2
+      50: iload         4
+      52: imul
+      53: iconst_1
+      54: iadd
+      55: iconst_4
+      56: iastore
+      57: iinc          4, 1
+      60: aload_3
+      61: iconst_2
+      62: iload         4
+      64: imul
+      65: sipush        12344
+      68: iastore
+      69: aload_3
+      70: areturn
+
+  private void chooseConfigs();
+    descriptor: ()V
+    Code:
+       0: bipush        11
+       2: anewarray     #27                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+       5: dup
+       6: iconst_0
+       7: new           #27                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+      10: dup
+      11: aload_0
+      12: ldc           #28                 // String EGL_BUFFER_SIZE
+      14: sipush        12320
+      17: invokespecial #29                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting."<init>":(Lcom/ideaworks3d/marmalade/LoaderGL;Ljava/lang/String;I)V
+      20: aastore
+      21: dup
+      22: iconst_1
+      23: new           #27                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+      26: dup
+      27: aload_0
+      28: ldc           #30                 // String EGL_DEPTH_ENCODING_NV
+      30: sipush        12514
+      33: invokespecial #29                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting."<init>":(Lcom/ideaworks3d/marmalade/LoaderGL;Ljava/lang/String;I)V
+      36: aastore
+      37: dup
+      38: iconst_2
+      39: new           #27                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+      42: dup
+      43: aload_0
+      44: ldc           #31                 // String EGL_DEPTH_SIZE
+      46: sipush        12325
+      49: invokespecial #29                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting."<init>":(Lcom/ideaworks3d/marmalade/LoaderGL;Ljava/lang/String;I)V
+      52: aastore
+      53: dup
+      54: iconst_3
+      55: new           #27                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+      58: dup
+      59: aload_0
+      60: ldc           #32                 // String EGL_SURFACE_TYPE
+      62: sipush        12339
+      65: invokespecial #29                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting."<init>":(Lcom/ideaworks3d/marmalade/LoaderGL;Ljava/lang/String;I)V
+      68: aastore
+      69: dup
+      70: iconst_4
+      71: new           #27                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+      74: dup
+      75: aload_0
+      76: ldc           #33                 // String EGL_RED_SIZE
+      78: sipush        12324
+      81: invokespecial #29                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting."<init>":(Lcom/ideaworks3d/marmalade/LoaderGL;Ljava/lang/String;I)V
+      84: aastore
+      85: dup
+      86: iconst_5
+      87: new           #27                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+      90: dup
+      91: aload_0
+      92: ldc           #34                 // String EGL_GREEN_SIZE
+      94: sipush        12323
+      97: invokespecial #29                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting."<init>":(Lcom/ideaworks3d/marmalade/LoaderGL;Ljava/lang/String;I)V
+     100: aastore
+     101: dup
+     102: bipush        6
+     104: new           #27                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+     107: dup
+     108: aload_0
+     109: ldc           #35                 // String EGL_BLUE_SIZE
+     111: sipush        12322
+     114: invokespecial #29                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting."<init>":(Lcom/ideaworks3d/marmalade/LoaderGL;Ljava/lang/String;I)V
+     117: aastore
+     118: dup
+     119: bipush        7
+     121: new           #27                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+     124: dup
+     125: aload_0
+     126: ldc           #36                 // String EGL_ALPHA_SIZE
+     128: sipush        12321
+     131: invokespecial #29                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting."<init>":(Lcom/ideaworks3d/marmalade/LoaderGL;Ljava/lang/String;I)V
+     134: aastore
+     135: dup
+     136: bipush        8
+     138: new           #27                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+     141: dup
+     142: aload_0
+     143: ldc           #37                 // String EGL_STENCIL_SIZE
+     145: sipush        12326
+     148: invokespecial #29                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting."<init>":(Lcom/ideaworks3d/marmalade/LoaderGL;Ljava/lang/String;I)V
+     151: aastore
+     152: dup
+     153: bipush        9
+     155: new           #27                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+     158: dup
+     159: aload_0
+     160: ldc           #38                 // String EGL_SAMPLE_BUFFERS
+     162: sipush        12338
+     165: invokespecial #29                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting."<init>":(Lcom/ideaworks3d/marmalade/LoaderGL;Ljava/lang/String;I)V
+     168: aastore
+     169: dup
+     170: bipush        10
+     172: new           #27                 // class com/ideaworks3d/marmalade/LoaderGL$ConfigSetting
+     175: dup
+     176: aload_0
+     177: ldc           #39                 // String EGL_SAMPLES
+     179: sipush        12337
+     182: invokespecial #29                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting."<init>":(Lcom/ideaworks3d/marmalade/LoaderGL;Ljava/lang/String;I)V
+     185: aastore
+     186: astore_1
+     187: aconst_null
+     188: astore_2
+     189: iconst_1
+     190: newarray       int
+     192: astore_3
+     193: iconst_0
+     194: istore        4
+     196: aload_0
+     197: aload_1
+     198: invokespecial #40                 // Method CreateSpecFromSettings:([Lcom/ideaworks3d/marmalade/LoaderGL$ConfigSetting;)[I
+     201: astore_2
+     202: aload_0
+     203: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+     206: aload_0
+     207: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     210: aload_2
+     211: aconst_null
+     212: iconst_0
+     213: aload_3
+     214: invokeinterface #41,  6           // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglChooseConfig:(Ljavax/microedition/khronos/egl/EGLDisplay;[I[Ljavax/microedition/khronos/egl/EGLConfig;I[I)Z
+     219: pop
+     220: aload_3
+     221: iconst_0
+     222: iaload
+     223: ifeq          229
+     226: goto          263
+     229: iload         4
+     231: aload_1
+     232: arraylength
+     233: if_icmpge     253
+     236: aload_1
+     237: iload         4
+     239: aaload
+     240: astore        5
+     242: aload         5
+     244: invokevirtual #42                 // Method com/ideaworks3d/marmalade/LoaderGL$ConfigSetting.SetValueToDefault:()V
+     247: iinc          4, 1
+     250: goto          196
+     253: new           #43                 // class java/lang/RuntimeException
+     256: dup
+     257: ldc           #44                 // String Failed to choose an EGL config
+     259: invokespecial #45                 // Method java/lang/RuntimeException."<init>":(Ljava/lang/String;)V
+     262: athrow
+     263: aload_3
+     264: iconst_0
+     265: iaload
+     266: istore        4
+     268: aload_0
+     269: iload         4
+     271: anewarray     #46                 // class javax/microedition/khronos/egl/EGLConfig
+     274: putfield      #12                 // Field m_EglConfigs:[Ljavax/microedition/khronos/egl/EGLConfig;
+     277: aload_0
+     278: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+     281: aload_0
+     282: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     285: aload_2
+     286: aload_0
+     287: getfield      #12                 // Field m_EglConfigs:[Ljavax/microedition/khronos/egl/EGLConfig;
+     290: iload         4
+     292: aload_3
+     293: invokeinterface #41,  6           // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglChooseConfig:(Ljavax/microedition/khronos/egl/EGLDisplay;[I[Ljavax/microedition/khronos/egl/EGLConfig;I[I)Z
+     298: pop
+     299: aload_0
+     300: getfield      #12                 // Field m_EglConfigs:[Ljavax/microedition/khronos/egl/EGLConfig;
+     303: iconst_0
+     304: aaload
+     305: astore        5
+     307: aload_0
+     308: aload_0
+     309: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+     312: aload_0
+     313: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     316: aload         5
+     318: sipush        12324
+     321: iconst_0
+     322: invokespecial #47                 // Method findConfigAttrib:(Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;II)I
+     325: istore        6
+     327: aload_0
+     328: aload_0
+     329: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+     332: aload_0
+     333: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     336: aload         5
+     338: sipush        12323
+     341: iconst_0
+     342: invokespecial #47                 // Method findConfigAttrib:(Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;II)I
+     345: istore        7
+     347: aload_0
+     348: aload_0
+     349: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+     352: aload_0
+     353: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     356: aload         5
+     358: sipush        12322
+     361: iconst_0
+     362: invokespecial #47                 // Method findConfigAttrib:(Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;II)I
+     365: istore        8
+     367: aload_0
+     368: aload_0
+     369: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+     372: aload_0
+     373: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     376: aload         5
+     378: sipush        12321
+     381: iconst_0
+     382: invokespecial #47                 // Method findConfigAttrib:(Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;II)I
+     385: istore        9
+     387: aload_0
+     388: aload_0
+     389: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+     392: aload_0
+     393: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     396: aload         5
+     398: sipush        12325
+     401: iconst_0
+     402: invokespecial #47                 // Method findConfigAttrib:(Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;II)I
+     405: istore        10
+     407: aload_0
+     408: aload_0
+     409: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+     412: aload_0
+     413: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     416: aload         5
+     418: sipush        12352
+     421: iconst_0
+     422: invokespecial #47                 // Method findConfigAttrib:(Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;II)I
+     425: istore        11
+     427: aload_0
+     428: aload_0
+     429: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+     432: aload_0
+     433: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+     436: aload         5
+     438: sipush        12327
+     441: sipush        12344
+     444: invokespecial #47                 // Method findConfigAttrib:(Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;II)I
+     447: istore        12
+     449: return
+
+  private int findConfigAttrib(javax.microedition.khronos.egl.EGL10, javax.microedition.khronos.egl.EGLDisplay, javax.microedition.khronos.egl.EGLConfig, int, int);
+    descriptor: (Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;II)I
+    Code:
+       0: iconst_1
+       1: newarray       int
+       3: astore        6
+       5: aload_1
+       6: aload_2
+       7: aload_3
+       8: iload         4
+      10: aload         6
+      12: invokeinterface #48,  5           // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglGetConfigAttrib:(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;I[I)Z
+      17: ifeq          25
+      20: aload         6
+      22: iconst_0
+      23: iaload
+      24: ireturn
+      25: iload         5
+      27: ireturn
+
+  public void swap();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+       4: aload_0
+       5: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+       8: aload_0
+       9: getfield      #19                 // Field m_EglSurface:Ljavax/microedition/khronos/egl/EGLSurface;
+      12: invokeinterface #49,  3           // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglSwapBuffers:(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLSurface;)Z
+      17: pop
+      18: return
+
+  public javax.microedition.khronos.opengles.GL restartGL(android.view.SurfaceHolder);
+    descriptor: (Landroid/view/SurfaceHolder;)Ljavax/microedition/khronos/opengles/GL;
+    Code:
+       0: aload_0
+       1: invokespecial #50                 // Method stop:()V
+       4: aload_0
+       5: aload_1
+       6: aload_0
+       7: getfield      #11                 // Field m_GLVersion:I
+      10: invokevirtual #51                 // Method startGL:(Landroid/view/SurfaceHolder;I)Ljavax/microedition/khronos/opengles/GL;
+      13: areturn
+
+  public void stopGL();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #50                 // Method stop:()V
+       4: aload_0
+       5: invokevirtual #52                 // Method term:()V
+       8: return
+
+  public void pauseGL();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #50                 // Method stop:()V
+       4: return
+
+  public javax.microedition.khronos.opengles.GL resumeGL(android.view.SurfaceHolder);
+    descriptor: (Landroid/view/SurfaceHolder;)Ljavax/microedition/khronos/opengles/GL;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_0
+       3: getfield      #11                 // Field m_GLVersion:I
+       6: invokevirtual #51                 // Method startGL:(Landroid/view/SurfaceHolder;I)Ljavax/microedition/khronos/opengles/GL;
+       9: areturn
+
+  private void stop();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: putfield      #2                  // Field m_Started:Z
+       5: aload_0
+       6: getfield      #19                 // Field m_EglSurface:Ljavax/microedition/khronos/egl/EGLSurface;
+       9: ifnull        58
+      12: aload_0
+      13: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+      16: aload_0
+      17: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+      20: getstatic     #53                 // Field javax/microedition/khronos/egl/EGL10.EGL_NO_SURFACE:Ljavax/microedition/khronos/egl/EGLSurface;
+      23: getstatic     #53                 // Field javax/microedition/khronos/egl/EGL10.EGL_NO_SURFACE:Ljavax/microedition/khronos/egl/EGLSurface;
+      26: getstatic     #13                 // Field javax/microedition/khronos/egl/EGL10.EGL_NO_CONTEXT:Ljavax/microedition/khronos/egl/EGLContext;
+      29: invokeinterface #20,  5           // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglMakeCurrent:(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLSurface;Ljavax/microedition/khronos/egl/EGLSurface;Ljavax/microedition/khronos/egl/EGLContext;)Z
+      34: pop
+      35: aload_0
+      36: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+      39: aload_0
+      40: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+      43: aload_0
+      44: getfield      #19                 // Field m_EglSurface:Ljavax/microedition/khronos/egl/EGLSurface;
+      47: invokeinterface #54,  3           // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglDestroySurface:(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLSurface;)Z
+      52: pop
+      53: aload_0
+      54: aconst_null
+      55: putfield      #19                 // Field m_EglSurface:Ljavax/microedition/khronos/egl/EGLSurface;
+      58: return
+
+  public void term();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #15                 // Field m_EglContext:Ljavax/microedition/khronos/egl/EGLContext;
+       4: ifnull        30
+       7: aload_0
+       8: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+      11: aload_0
+      12: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+      15: aload_0
+      16: getfield      #15                 // Field m_EglContext:Ljavax/microedition/khronos/egl/EGLContext;
+      19: invokeinterface #55,  3           // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglDestroyContext:(Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLContext;)Z
+      24: pop
+      25: aload_0
+      26: aconst_null
+      27: putfield      #15                 // Field m_EglContext:Ljavax/microedition/khronos/egl/EGLContext;
+      30: aload_0
+      31: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+      34: ifnull        56
+      37: aload_0
+      38: getfield      #5                  // Field m_Egl:Ljavax/microedition/khronos/egl/EGL10;
+      41: aload_0
+      42: getfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+      45: invokeinterface #56,  2           // InterfaceMethod javax/microedition/khronos/egl/EGL10.eglTerminate:(Ljavax/microedition/khronos/egl/EGLDisplay;)Z
+      50: pop
+      51: aload_0
+      52: aconst_null
+      53: putfield      #8                  // Field m_EglDisplay:Ljavax/microedition/khronos/egl/EGLDisplay;
+      56: aload_0
+      57: iconst_0
+      58: putfield      #16                 // Field m_DoneInit:Z
+      61: return
+}

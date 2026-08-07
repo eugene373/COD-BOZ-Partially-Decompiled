@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="page_loading_textview_textsize">15.0dp</dimen>
+    <dimen name="com_facebook_picker_place_image_size">64.0dp</dimen>
+    <dimen name="com_facebook_usersettingsfragment_profile_picture_width">64.0dp</dimen>
+    <dimen name="com_facebook_usersettingsfragment_profile_picture_height">64.0dp</dimen>
+    <dimen name="com_facebook_loginview_padding_left">12.0dp</dimen>
+    <dimen name="com_facebook_loginview_padding_right">16.0dp</dimen>
+    <dimen name="com_facebook_loginview_padding_top">12.0dp</dimen>
+    <dimen name="com_facebook_loginview_padding_bottom">12.0dp</dimen>
+    <dimen name="com_facebook_loginview_compound_drawable_padding">12.0dp</dimen>
+    <dimen name="com_facebook_loginview_text_size">16.0sp</dimen>
+    <dimen name="com_facebook_likeview_text_size">11.0sp</dimen>
+    <dimen name="com_facebook_likeview_edge_padding">2.0dp</dimen>
+    <dimen name="com_facebook_likeview_internal_padding">6.0dp</dimen>
+    <dimen name="com_facebook_likebutton_padding_left">8.0dp</dimen>
+    <dimen name="com_facebook_likebutton_padding_right">8.0dp</dimen>
+    <dimen name="com_facebook_likebutton_padding_top">0.0dp</dimen>
+    <dimen name="com_facebook_likebutton_padding_bottom">0.0dp</dimen>
+    <dimen name="com_facebook_likebutton_compound_drawable_padding">8.0dp</dimen>
+    <dimen name="com_facebook_likebutton_text_size">13.0sp</dimen>
+    <dimen name="com_facebook_likeboxcountview_caret_width">6.0dp</dimen>
+    <dimen name="com_facebook_likeboxcountview_caret_height">3.0dp</dimen>
+    <dimen name="com_facebook_likeboxcountview_border_radius">3.0dp</dimen>
+    <dimen name="com_facebook_likeboxcountview_border_width">1.0dp</dimen>
+    <dimen name="com_facebook_likeboxcountview_text_size">11.0sp</dimen>
+    <dimen name="com_facebook_likeboxcountview_text_padding">6.0dp</dimen>
+    <dimen name="com_facebook_profilepictureview_preset_size_small">50.0dp</dimen>
+    <dimen name="com_facebook_profilepictureview_preset_size_normal">100.0dp</dimen>
+    <dimen name="com_facebook_profilepictureview_preset_size_large">180.0dp</dimen>
+    <dimen name="com_facebook_tooltip_horizontal_padding">10.0dp</dimen>
+</resources>

@@ -1,0 +1,1554 @@
+Compiled from "LoaderView.java"
+public class com.ideaworks3d.marmalade.LoaderView extends android.view.SurfaceView implements android.view.SurfaceHolder$Callback,android.content.DialogInterface$OnClickListener,android.content.DialogInterface$OnDismissListener {
+  private static com.ideaworks3d.marmalade.LoaderGL m_LoaderGL;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderGL;
+
+  private static int[] g_PixelsLast;
+    descriptor: [I
+
+  public javax.microedition.khronos.opengles.GL m_GL;
+    descriptor: Ljavax/microedition/khronos/opengles/GL;
+
+  public com.ideaworks3d.marmalade.LoaderKeyboard m_LoaderKeyboard;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+
+  public com.ideaworks3d.marmalade.LoaderActivity m_LoaderActivity;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderActivity;
+
+  private android.view.SurfaceHolder m_SurfaceHolder;
+    descriptor: Landroid/view/SurfaceHolder;
+
+  private android.graphics.Bitmap m_FullScreenBitmap;
+    descriptor: Landroid/graphics/Bitmap;
+
+  private android.graphics.Paint m_Paint;
+    descriptor: Landroid/graphics/Paint;
+
+  android.os.Handler m_Handler;
+    descriptor: Landroid/os/Handler;
+
+  private android.os.Vibrator m_Vibrator;
+    descriptor: Landroid/os/Vibrator;
+
+  private int[] m_Pixels;
+    descriptor: [I
+
+  public int m_Width;
+    descriptor: I
+
+  public int m_Height;
+    descriptor: I
+
+  public boolean m_NewlyCreated;
+    descriptor: Z
+
+  private android.app.Dialog m_ErrorDialog;
+    descriptor: Landroid/app/Dialog;
+
+  public boolean m_ErrorRunning;
+    descriptor: Z
+
+  private java.lang.String m_ErrorTitle;
+    descriptor: Ljava/lang/String;
+
+  private java.lang.String m_ErrorBody;
+    descriptor: Ljava/lang/String;
+
+  private int m_ErrorType;
+    descriptor: I
+
+  private int m_ErrorRtn;
+    descriptor: I
+
+  private android.app.Dialog m_InputDialog;
+    descriptor: Landroid/app/Dialog;
+
+  private static boolean g_GLActive;
+    descriptor: Z
+
+  private java.lang.String m_InputTextTitle;
+    descriptor: Ljava/lang/String;
+
+  private java.lang.String m_InputTextDefault;
+    descriptor: Ljava/lang/String;
+
+  private int m_InputTextFlags;
+    descriptor: I
+
+  private java.lang.String m_InputTextResult;
+    descriptor: Ljava/lang/String;
+
+  public boolean m_InputTextRunning;
+    descriptor: Z
+
+  private android.widget.EditText m_EditText;
+    descriptor: Landroid/widget/EditText;
+
+  private com.ideaworks3d.marmalade.S3EVideoView m_VideoView;
+    descriptor: Lcom/ideaworks3d/marmalade/S3EVideoView;
+
+  private int m_VideoState;
+    descriptor: I
+
+  public boolean m_TerminateApplication;
+    descriptor: Z
+
+  private final java.lang.Runnable m_ShowError;
+    descriptor: Ljava/lang/Runnable;
+
+  private final java.lang.Runnable m_ShowInputText;
+    descriptor: Ljava/lang/Runnable;
+
+  private final java.lang.Runnable m_BacklightOn;
+    descriptor: Ljava/lang/Runnable;
+
+  private final java.lang.Runnable m_RunOnOSThread;
+    descriptor: Ljava/lang/Runnable;
+
+  private native void setPixelsNative(int, int, int[], boolean);
+    descriptor: (II[IZ)V
+
+  private native void runOnOSThreadNative();
+    descriptor: ()V
+
+  private native void setInputText(java.lang.String);
+    descriptor: (Ljava/lang/String;)V
+
+  private native void videoStoppedNotify();
+    descriptor: ()V
+
+  public com.ideaworks3d.marmalade.LoaderView(com.ideaworks3d.marmalade.LoaderActivity, boolean);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderActivity;Z)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #5                  // Method android/view/SurfaceView."<init>":(Landroid/content/Context;)V
+       5: aload_0
+       6: new           #6                  // class android/graphics/Paint
+       9: dup
+      10: invokespecial #7                  // Method android/graphics/Paint."<init>":()V
+      13: putfield      #8                  // Field m_Paint:Landroid/graphics/Paint;
+      16: aload_0
+      17: new           #9                  // class android/os/Handler
+      20: dup
+      21: invokespecial #10                 // Method android/os/Handler."<init>":()V
+      24: putfield      #11                 // Field m_Handler:Landroid/os/Handler;
+      27: aload_0
+      28: aconst_null
+      29: putfield      #12                 // Field m_ErrorDialog:Landroid/app/Dialog;
+      32: aload_0
+      33: iconst_0
+      34: putfield      #13                 // Field m_ErrorRunning:Z
+      37: aload_0
+      38: aconst_null
+      39: putfield      #14                 // Field m_InputDialog:Landroid/app/Dialog;
+      42: aload_0
+      43: aconst_null
+      44: putfield      #15                 // Field m_InputTextResult:Ljava/lang/String;
+      47: aload_0
+      48: iconst_0
+      49: putfield      #16                 // Field m_InputTextRunning:Z
+      52: aload_0
+      53: aconst_null
+      54: putfield      #1                  // Field m_VideoView:Lcom/ideaworks3d/marmalade/S3EVideoView;
+      57: aload_0
+      58: iconst_0
+      59: putfield      #17                 // Field m_VideoState:I
+      62: aload_0
+      63: iconst_0
+      64: putfield      #18                 // Field m_TerminateApplication:Z
+      67: aload_0
+      68: new           #19                 // class com/ideaworks3d/marmalade/LoaderView$1
+      71: dup
+      72: aload_0
+      73: invokespecial #20                 // Method com/ideaworks3d/marmalade/LoaderView$1."<init>":(Lcom/ideaworks3d/marmalade/LoaderView;)V
+      76: putfield      #21                 // Field m_ShowError:Ljava/lang/Runnable;
+      79: aload_0
+      80: new           #22                 // class com/ideaworks3d/marmalade/LoaderView$2
+      83: dup
+      84: aload_0
+      85: invokespecial #23                 // Method com/ideaworks3d/marmalade/LoaderView$2."<init>":(Lcom/ideaworks3d/marmalade/LoaderView;)V
+      88: putfield      #24                 // Field m_ShowInputText:Ljava/lang/Runnable;
+      91: aload_0
+      92: new           #25                 // class com/ideaworks3d/marmalade/LoaderView$3
+      95: dup
+      96: aload_0
+      97: invokespecial #26                 // Method com/ideaworks3d/marmalade/LoaderView$3."<init>":(Lcom/ideaworks3d/marmalade/LoaderView;)V
+     100: putfield      #27                 // Field m_BacklightOn:Ljava/lang/Runnable;
+     103: aload_0
+     104: new           #28                 // class com/ideaworks3d/marmalade/LoaderView$4
+     107: dup
+     108: aload_0
+     109: invokespecial #29                 // Method com/ideaworks3d/marmalade/LoaderView$4."<init>":(Lcom/ideaworks3d/marmalade/LoaderView;)V
+     112: putfield      #3                  // Field m_RunOnOSThread:Ljava/lang/Runnable;
+     115: getstatic     #30                 // Field g_GLActive:Z
+     118: ifne          125
+     121: iload_2
+     122: ifeq          129
+     125: iconst_1
+     126: goto          130
+     129: iconst_0
+     130: putstatic     #30                 // Field g_GLActive:Z
+     133: aload_0
+     134: aload_1
+     135: putfield      #31                 // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+     138: aload_0
+     139: aload_0
+     140: getfield      #31                 // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+     143: ldc           #32                 // String vibrator
+     145: invokevirtual #33                 // Method com/ideaworks3d/marmalade/LoaderActivity.getSystemService:(Ljava/lang/String;)Ljava/lang/Object;
+     148: checkcast     #34                 // class android/os/Vibrator
+     151: putfield      #35                 // Field m_Vibrator:Landroid/os/Vibrator;
+     154: aload_0
+     155: aload_0
+     156: invokevirtual #36                 // Method getHolder:()Landroid/view/SurfaceHolder;
+     159: putfield      #37                 // Field m_SurfaceHolder:Landroid/view/SurfaceHolder;
+     162: aload_0
+     163: getfield      #37                 // Field m_SurfaceHolder:Landroid/view/SurfaceHolder;
+     166: aload_0
+     167: invokeinterface #38,  2           // InterfaceMethod android/view/SurfaceHolder.addCallback:(Landroid/view/SurfaceHolder$Callback;)V
+     172: aload_0
+     173: new           #39                 // class com/ideaworks3d/marmalade/LoaderKeyboard
+     176: dup
+     177: aload_0
+     178: invokespecial #40                 // Method com/ideaworks3d/marmalade/LoaderKeyboard."<init>":(Lcom/ideaworks3d/marmalade/LoaderView;)V
+     181: putfield      #41                 // Field m_LoaderKeyboard:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+     184: getstatic     #30                 // Field g_GLActive:Z
+     187: ifeq          217
+     190: iconst_1
+     191: newarray       int
+     193: astore_3
+     194: ldc           #42                 // String GL
+     196: ldc           #43                 // String AndroidSurfaceHolder
+     198: aload_3
+     199: invokestatic  #44                 // Method com/ideaworks3d/marmalade/LoaderAPI.s3eConfigGetInt:(Ljava/lang/String;Ljava/lang/String;[I)I
+     202: ifne          217
+     205: aload_0
+     206: getfield      #37                 // Field m_SurfaceHolder:Landroid/view/SurfaceHolder;
+     209: aload_3
+     210: iconst_0
+     211: iaload
+     212: invokeinterface #45,  2           // InterfaceMethod android/view/SurfaceHolder.setFormat:(I)V
+     217: aload_0
+     218: iconst_1
+     219: invokevirtual #46                 // Method setFocusable:(Z)V
+     222: aload_0
+     223: iconst_1
+     224: invokevirtual #47                 // Method setFocusableInTouchMode:(Z)V
+     227: aload_0
+     228: invokevirtual #48                 // Method requestFocus:()Z
+     231: pop
+     232: aload_0
+     233: ldc           #49                 // int 1983274
+     235: invokevirtual #50                 // Method setId:(I)V
+     238: return
+
+  public int getCurrentOrientation();
+    descriptor: ()I
+    Code:
+       0: aload_0
+       1: getfield      #31                 // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       4: ldc           #51                 // String window
+       6: invokevirtual #33                 // Method com/ideaworks3d/marmalade/LoaderActivity.getSystemService:(Ljava/lang/String;)Ljava/lang/Object;
+       9: checkcast     #52                 // class android/view/WindowManager
+      12: invokeinterface #53,  1           // InterfaceMethod android/view/WindowManager.getDefaultDisplay:()Landroid/view/Display;
+      17: astore_1
+      18: aload_1
+      19: invokevirtual #54                 // Method android/view/Display.getWidth:()I
+      22: aload_1
+      23: invokevirtual #55                 // Method android/view/Display.getHeight:()I
+      26: if_icmplt     33
+      29: iconst_1
+      30: goto          34
+      33: iconst_0
+      34: istore_2
+      35: aload_1
+      36: invokevirtual #56                 // Method android/view/Display.getRotation:()I
+      39: tableswitch   { // 0 to 3
+                     0: 68
+                     1: 78
+                     2: 89
+                     3: 101
+               default: 112
+          }
+      68: iload_2
+      69: ifeq          76
+      72: iconst_0
+      73: goto          77
+      76: iconst_1
+      77: ireturn
+      78: iload_2
+      79: ifeq          86
+      82: iconst_0
+      83: goto          88
+      86: bipush        9
+      88: ireturn
+      89: iload_2
+      90: ifeq          98
+      93: bipush        8
+      95: goto          100
+      98: bipush        9
+     100: ireturn
+     101: iload_2
+     102: ifeq          110
+     105: bipush        8
+     107: goto          111
+     110: iconst_1
+     111: ireturn
+     112: iconst_m1
+     113: ireturn
+
+  private java.lang.String getCurrentKeyboardId();
+    descriptor: ()Ljava/lang/String;
+    Code:
+       0: aload_0
+       1: getfield      #31                 // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       4: ldc           #57                 // String input_method
+       6: invokevirtual #33                 // Method com/ideaworks3d/marmalade/LoaderActivity.getSystemService:(Ljava/lang/String;)Ljava/lang/Object;
+       9: checkcast     #58                 // class android/view/inputmethod/InputMethodManager
+      12: astore_1
+      13: aload_1
+      14: invokevirtual #59                 // Method android/view/inputmethod/InputMethodManager.getEnabledInputMethodList:()Ljava/util/List;
+      17: astore_2
+      18: aload_2
+      19: invokeinterface #60,  1           // InterfaceMethod java/util/List.size:()I
+      24: istore_3
+      25: ldc           #61                 // String
+      27: astore        4
+      29: iconst_0
+      30: istore        5
+      32: iload         5
+      34: iload_3
+      35: if_icmpge     87
+      38: aload_2
+      39: iload         5
+      41: invokeinterface #62,  2           // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+      46: checkcast     #63                 // class android/view/inputmethod/InputMethodInfo
+      49: astore        6
+      51: aload         6
+      53: invokevirtual #64                 // Method android/view/inputmethod/InputMethodInfo.getId:()Ljava/lang/String;
+      56: aload_0
+      57: getfield      #31                 // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      60: invokevirtual #65                 // Method com/ideaworks3d/marmalade/LoaderActivity.getContentResolver:()Landroid/content/ContentResolver;
+      63: ldc           #66                 // String default_input_method
+      65: invokestatic  #67                 // Method android/provider/Settings$Secure.getString:(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
+      68: invokevirtual #68                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      71: ifeq          81
+      74: aload         6
+      76: invokevirtual #64                 // Method android/view/inputmethod/InputMethodInfo.getId:()Ljava/lang/String;
+      79: astore        4
+      81: iinc          5, 1
+      84: goto          32
+      87: aload         4
+      89: areturn
+
+  public android.view.inputmethod.InputConnection onCreateInputConnection(android.view.inputmethod.EditorInfo);
+    descriptor: (Landroid/view/inputmethod/EditorInfo;)Landroid/view/inputmethod/InputConnection;
+    Code:
+       0: aload_1
+       1: ifnull        46
+       4: aload_0
+       5: invokespecial #69                 // Method getCurrentKeyboardId:()Ljava/lang/String;
+       8: ldc           #70                 // String SamsungKeypad
+      10: invokevirtual #71                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+      13: ifeq          24
+      16: aload_1
+      17: iconst_0
+      18: putfield      #72                 // Field android/view/inputmethod/EditorInfo.inputType:I
+      21: goto          46
+      24: aload_1
+      25: aload_1
+      26: getfield      #73                 // Field android/view/inputmethod/EditorInfo.imeOptions:I
+      29: ldc           #74                 // int 268435456
+      31: ior
+      32: putfield      #73                 // Field android/view/inputmethod/EditorInfo.imeOptions:I
+      35: aload_1
+      36: aload_0
+      37: getfield      #41                 // Field m_LoaderKeyboard:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+      40: invokevirtual #75                 // Method com/ideaworks3d/marmalade/LoaderKeyboard.getKeyboardInputType:()I
+      43: putfield      #72                 // Field android/view/inputmethod/EditorInfo.inputType:I
+      46: new           #76                 // class android/view/inputmethod/BaseInputConnection
+      49: dup
+      50: aload_0
+      51: iconst_0
+      52: invokespecial #77                 // Method android/view/inputmethod/BaseInputConnection."<init>":(Landroid/view/View;Z)V
+      55: areturn
+
+  private void backlightOn();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #11                 // Field m_Handler:Landroid/os/Handler;
+       4: aload_0
+       5: getfield      #27                 // Field m_BacklightOn:Ljava/lang/Runnable;
+       8: invokevirtual #78                 // Method android/os/Handler.post:(Ljava/lang/Runnable;)Z
+      11: pop
+      12: return
+
+  private void terminateApplication();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: putfield      #18                 // Field m_TerminateApplication:Z
+       5: return
+
+  public boolean onKeyPreIme(int, android.view.KeyEvent);
+    descriptor: (ILandroid/view/KeyEvent;)Z
+    Code:
+       0: aload_0
+       1: getfield      #41                 // Field m_LoaderKeyboard:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+       4: iload_1
+       5: aload_2
+       6: invokevirtual #79                 // Method com/ideaworks3d/marmalade/LoaderKeyboard.onKeyPreIme:(ILandroid/view/KeyEvent;)Z
+       9: ireturn
+
+  protected void onDetachedFromWindow();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #80                 // Method android/view/SurfaceView.onDetachedFromWindow:()V
+       4: return
+
+  public void onDismiss(android.content.DialogInterface);
+    descriptor: (Landroid/content/DialogInterface;)V
+    Code:
+       0: aload_1
+       1: aload_0
+       2: getfield      #14                 // Field m_InputDialog:Landroid/app/Dialog;
+       5: if_acmpne     29
+       8: aload_0
+       9: aload_0
+      10: getfield      #15                 // Field m_InputTextResult:Ljava/lang/String;
+      13: invokespecial #81                 // Method setInputText:(Ljava/lang/String;)V
+      16: aload_0
+      17: iconst_0
+      18: putfield      #16                 // Field m_InputTextRunning:Z
+      21: aload_0
+      22: aconst_null
+      23: putfield      #14                 // Field m_InputDialog:Landroid/app/Dialog;
+      26: goto          47
+      29: aload_1
+      30: aload_0
+      31: getfield      #12                 // Field m_ErrorDialog:Landroid/app/Dialog;
+      34: if_acmpne     47
+      37: aload_0
+      38: aconst_null
+      39: putfield      #12                 // Field m_ErrorDialog:Landroid/app/Dialog;
+      42: aload_0
+      43: iconst_0
+      44: putfield      #13                 // Field m_ErrorRunning:Z
+      47: return
+
+  public void onClick(android.content.DialogInterface, int);
+    descriptor: (Landroid/content/DialogInterface;I)V
+    Code:
+       0: aload_1
+       1: aload_0
+       2: getfield      #14                 // Field m_InputDialog:Landroid/app/Dialog;
+       5: if_acmpne     36
+       8: iload_2
+       9: iconst_m1
+      10: if_icmpne     27
+      13: aload_0
+      14: aload_0
+      15: getfield      #82                 // Field m_EditText:Landroid/widget/EditText;
+      18: invokevirtual #83                 // Method android/widget/EditText.getText:()Landroid/text/Editable;
+      21: invokevirtual #84                 // Method java/lang/Object.toString:()Ljava/lang/String;
+      24: putfield      #15                 // Field m_InputTextResult:Ljava/lang/String;
+      27: aload_1
+      28: invokeinterface #85,  1           // InterfaceMethod android/content/DialogInterface.dismiss:()V
+      33: goto          99
+      36: aload_1
+      37: aload_0
+      38: getfield      #12                 // Field m_ErrorDialog:Landroid/app/Dialog;
+      41: if_acmpne     99
+      44: iload_2
+      45: tableswitch   { // -3 to -1
+                    -3: 88
+                    -2: 80
+                    -1: 72
+               default: 93
+          }
+      72: aload_0
+      73: iconst_0
+      74: putfield      #86                 // Field m_ErrorRtn:I
+      77: goto          93
+      80: aload_0
+      81: iconst_1
+      82: putfield      #86                 // Field m_ErrorRtn:I
+      85: goto          93
+      88: aload_0
+      89: iconst_2
+      90: putfield      #86                 // Field m_ErrorRtn:I
+      93: aload_1
+      94: invokeinterface #85,  1           // InterfaceMethod android/content/DialogInterface.dismiss:()V
+      99: return
+
+  public boolean onKeyEvent(int, int, android.view.KeyEvent);
+    descriptor: (IILandroid/view/KeyEvent;)Z
+    Code:
+       0: aload_0
+       1: getfield      #16                 // Field m_InputTextRunning:Z
+       4: ifeq          19
+       7: iload_1
+       8: iconst_4
+       9: if_icmpne     19
+      12: aload_0
+      13: iconst_0
+      14: putfield      #16                 // Field m_InputTextRunning:Z
+      17: iconst_1
+      18: ireturn
+      19: aload_0
+      20: aload_3
+      21: invokevirtual #87                 // Method dispatchKeyEvent:(Landroid/view/KeyEvent;)Z
+      24: ifeq          29
+      27: iconst_1
+      28: ireturn
+      29: aload_0
+      30: getfield      #41                 // Field m_LoaderKeyboard:Lcom/ideaworks3d/marmalade/LoaderKeyboard;
+      33: iload_1
+      34: iload_2
+      35: aload_3
+      36: invokevirtual #88                 // Method com/ideaworks3d/marmalade/LoaderKeyboard.onKeyEvent:(IILandroid/view/KeyEvent;)Z
+      39: ireturn
+
+  public void runOnOSThread();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #3                  // Field m_RunOnOSThread:Ljava/lang/Runnable;
+       4: dup
+       5: astore_1
+       6: monitorenter
+       7: aload_0
+       8: getfield      #11                 // Field m_Handler:Landroid/os/Handler;
+      11: aload_0
+      12: getfield      #3                  // Field m_RunOnOSThread:Ljava/lang/Runnable;
+      15: invokevirtual #78                 // Method android/os/Handler.post:(Ljava/lang/Runnable;)Z
+      18: pop
+      19: aload_0
+      20: getfield      #3                  // Field m_RunOnOSThread:Ljava/lang/Runnable;
+      23: invokevirtual #89                 // Method java/lang/Object.wait:()V
+      26: goto          30
+      29: astore_2
+      30: aload_1
+      31: monitorexit
+      32: goto          40
+      35: astore_3
+      36: aload_1
+      37: monitorexit
+      38: aload_3
+      39: athrow
+      40: return
+    Exception table:
+       from    to  target type
+          19    26    29   Class java/lang/InterruptedException
+           7    32    35   any
+          35    38    35   any
+
+  public void enableRespondingToRotation();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #31                 // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       4: invokevirtual #91                 // Method com/ideaworks3d/marmalade/LoaderActivity.LoaderThread:()Lcom/ideaworks3d/marmalade/LoaderThread;
+       7: invokevirtual #92                 // Method com/ideaworks3d/marmalade/LoaderThread.onSplashFinished:()V
+      10: return
+
+  public int videoPlay(java.lang.String, int, int, int, int, int, int, boolean, long, long);
+    descriptor: (Ljava/lang/String;IIIIIIZJJ)I
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: putfield      #17                 // Field m_VideoState:I
+       5: new           #93                 // class com/ideaworks3d/marmalade/LoaderView$VideoRunner
+       8: dup
+       9: aload_0
+      10: aconst_null
+      11: invokespecial #94                 // Method com/ideaworks3d/marmalade/LoaderView$VideoRunner."<init>":(Lcom/ideaworks3d/marmalade/LoaderView;Lcom/ideaworks3d/marmalade/LoaderView$1;)V
+      14: astore        13
+      16: aload         13
+      18: aload_1
+      19: iload_2
+      20: iload_3
+      21: iload         4
+      23: iload         5
+      25: iload         6
+      27: iload         7
+      29: iload         8
+      31: lload         9
+      33: lload         11
+      35: invokevirtual #95                 // Method com/ideaworks3d/marmalade/LoaderView$VideoRunner.play:(Ljava/lang/String;IIIIIIZJJ)V
+      38: aload         13
+      40: iconst_1
+      41: invokevirtual #96                 // Method com/ideaworks3d/marmalade/LoaderView$VideoRunner.runOnUiThread:(Z)I
+      44: ireturn
+
+  public int videoPause();
+    descriptor: ()I
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field m_VideoState:I
+       4: iconst_1
+       5: if_icmpne     34
+       8: aload_0
+       9: iconst_2
+      10: putfield      #17                 // Field m_VideoState:I
+      13: new           #93                 // class com/ideaworks3d/marmalade/LoaderView$VideoRunner
+      16: dup
+      17: aload_0
+      18: aconst_null
+      19: invokespecial #94                 // Method com/ideaworks3d/marmalade/LoaderView$VideoRunner."<init>":(Lcom/ideaworks3d/marmalade/LoaderView;Lcom/ideaworks3d/marmalade/LoaderView$1;)V
+      22: astore_1
+      23: aload_1
+      24: iconst_2
+      25: invokevirtual #97                 // Method com/ideaworks3d/marmalade/LoaderView$VideoRunner.setState:(I)V
+      28: aload_1
+      29: iconst_0
+      30: invokevirtual #96                 // Method com/ideaworks3d/marmalade/LoaderView$VideoRunner.runOnUiThread:(Z)I
+      33: ireturn
+      34: iconst_m1
+      35: ireturn
+
+  public int videoResume();
+    descriptor: ()I
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field m_VideoState:I
+       4: iconst_2
+       5: if_icmpne     34
+       8: aload_0
+       9: iconst_1
+      10: putfield      #17                 // Field m_VideoState:I
+      13: new           #93                 // class com/ideaworks3d/marmalade/LoaderView$VideoRunner
+      16: dup
+      17: aload_0
+      18: aconst_null
+      19: invokespecial #94                 // Method com/ideaworks3d/marmalade/LoaderView$VideoRunner."<init>":(Lcom/ideaworks3d/marmalade/LoaderView;Lcom/ideaworks3d/marmalade/LoaderView$1;)V
+      22: astore_1
+      23: aload_1
+      24: iconst_1
+      25: invokevirtual #97                 // Method com/ideaworks3d/marmalade/LoaderView$VideoRunner.setState:(I)V
+      28: aload_1
+      29: iconst_0
+      30: invokevirtual #96                 // Method com/ideaworks3d/marmalade/LoaderView$VideoRunner.runOnUiThread:(Z)I
+      33: ireturn
+      34: iconst_m1
+      35: ireturn
+
+  private boolean videoIsPlaying();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: invokevirtual #98                 // Method videoGetStatus:()I
+       4: iconst_1
+       5: if_icmpne     12
+       8: iconst_1
+       9: goto          13
+      12: iconst_0
+      13: ireturn
+
+  public void videoStop();
+    descriptor: ()V
+    Code:
+       0: iconst_0
+       1: istore_1
+       2: aload_0
+       3: getfield      #17                 // Field m_VideoState:I
+       6: ifeq          40
+       9: new           #93                 // class com/ideaworks3d/marmalade/LoaderView$VideoRunner
+      12: dup
+      13: aload_0
+      14: aconst_null
+      15: invokespecial #94                 // Method com/ideaworks3d/marmalade/LoaderView$VideoRunner."<init>":(Lcom/ideaworks3d/marmalade/LoaderView;Lcom/ideaworks3d/marmalade/LoaderView$1;)V
+      18: astore_2
+      19: aload_2
+      20: iconst_0
+      21: invokevirtual #97                 // Method com/ideaworks3d/marmalade/LoaderView$VideoRunner.setState:(I)V
+      24: aload_2
+      25: iconst_1
+      26: invokevirtual #96                 // Method com/ideaworks3d/marmalade/LoaderView$VideoRunner.runOnUiThread:(Z)I
+      29: pop
+      30: aload_0
+      31: invokespecial #99                 // Method videoIsPlaying:()Z
+      34: istore_1
+      35: aload_0
+      36: iconst_0
+      37: putfield      #17                 // Field m_VideoState:I
+      40: iload_1
+      41: ifeq          55
+      44: aload_0
+      45: invokespecial #99                 // Method videoIsPlaying:()Z
+      48: ifne          55
+      51: aload_0
+      52: invokevirtual #100                // Method videoStopped:()V
+      55: return
+
+  public void videoSetVolume(int);
+    descriptor: (I)V
+    Code:
+       0: new           #93                 // class com/ideaworks3d/marmalade/LoaderView$VideoRunner
+       3: dup
+       4: aload_0
+       5: aconst_null
+       6: invokespecial #94                 // Method com/ideaworks3d/marmalade/LoaderView$VideoRunner."<init>":(Lcom/ideaworks3d/marmalade/LoaderView;Lcom/ideaworks3d/marmalade/LoaderView$1;)V
+       9: astore_2
+      10: aload_2
+      11: iload_1
+      12: invokevirtual #101                // Method com/ideaworks3d/marmalade/LoaderView$VideoRunner.setVolume:(I)V
+      15: aload_2
+      16: iconst_0
+      17: invokevirtual #96                 // Method com/ideaworks3d/marmalade/LoaderView$VideoRunner.runOnUiThread:(Z)I
+      20: pop
+      21: return
+
+  public int videoGetStatus();
+    descriptor: ()I
+    Code:
+       0: aload_0
+       1: getfield      #17                 // Field m_VideoState:I
+       4: ireturn
+
+  public int videoGetPosition();
+    descriptor: ()I
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field m_VideoView:Lcom/ideaworks3d/marmalade/S3EVideoView;
+       4: ifnull        15
+       7: aload_0
+       8: getfield      #1                  // Field m_VideoView:Lcom/ideaworks3d/marmalade/S3EVideoView;
+      11: invokevirtual #102                // Method com/ideaworks3d/marmalade/S3EVideoView.videoGetPosition:()I
+      14: ireturn
+      15: iconst_0
+      16: ireturn
+
+  public void videoStopped();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field m_VideoView:Lcom/ideaworks3d/marmalade/S3EVideoView;
+       4: ifnull        19
+       7: aload_0
+       8: getfield      #1                  // Field m_VideoView:Lcom/ideaworks3d/marmalade/S3EVideoView;
+      11: invokevirtual #103                // Method com/ideaworks3d/marmalade/S3EVideoView.videoRemoveView:()V
+      14: aload_0
+      15: aconst_null
+      16: putfield      #1                  // Field m_VideoView:Lcom/ideaworks3d/marmalade/S3EVideoView;
+      19: aload_0
+      20: iconst_0
+      21: putfield      #17                 // Field m_VideoState:I
+      24: aload_0
+      25: invokespecial #104                // Method videoStoppedNotify:()V
+      28: return
+
+  private void showErrorReal();
+    descriptor: ()V
+    Code:
+       0: new           #105                // class android/app/AlertDialog$Builder
+       3: dup
+       4: aload_0
+       5: getfield      #31                 // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       8: invokespecial #106                // Method android/app/AlertDialog$Builder."<init>":(Landroid/content/Context;)V
+      11: astore_1
+      12: aload_0
+      13: iconst_0
+      14: putfield      #86                 // Field m_ErrorRtn:I
+      17: aload_1
+      18: aload_0
+      19: getfield      #107                // Field m_ErrorTitle:Ljava/lang/String;
+      22: invokevirtual #108                // Method android/app/AlertDialog$Builder.setTitle:(Ljava/lang/CharSequence;)Landroid/app/AlertDialog$Builder;
+      25: pop
+      26: aload_1
+      27: aload_0
+      28: getfield      #109                // Field m_ErrorBody:Ljava/lang/String;
+      31: invokevirtual #110                // Method android/app/AlertDialog$Builder.setMessage:(Ljava/lang/CharSequence;)Landroid/app/AlertDialog$Builder;
+      34: pop
+      35: aload_1
+      36: ldc           #111                // String Continue
+      38: aload_0
+      39: invokevirtual #112                // Method android/app/AlertDialog$Builder.setPositiveButton:(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+      42: pop
+      43: aload_0
+      44: getfield      #113                // Field m_ErrorType:I
+      47: ifle          58
+      50: aload_1
+      51: ldc           #114                // String Stop
+      53: aload_0
+      54: invokevirtual #115                // Method android/app/AlertDialog$Builder.setNegativeButton:(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+      57: pop
+      58: aload_0
+      59: getfield      #113                // Field m_ErrorType:I
+      62: iconst_1
+      63: if_icmple     74
+      66: aload_1
+      67: ldc           #116                // String Ignore
+      69: aload_0
+      70: invokevirtual #117                // Method android/app/AlertDialog$Builder.setNeutralButton:(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+      73: pop
+      74: aload_0
+      75: aload_1
+      76: invokevirtual #118                // Method android/app/AlertDialog$Builder.create:()Landroid/app/AlertDialog;
+      79: putfield      #12                 // Field m_ErrorDialog:Landroid/app/Dialog;
+      82: aload_0
+      83: getfield      #12                 // Field m_ErrorDialog:Landroid/app/Dialog;
+      86: aload_0
+      87: invokevirtual #119                // Method android/app/Dialog.setOnDismissListener:(Landroid/content/DialogInterface$OnDismissListener;)V
+      90: aload_0
+      91: getfield      #12                 // Field m_ErrorDialog:Landroid/app/Dialog;
+      94: invokevirtual #120                // Method android/app/Dialog.show:()V
+      97: return
+
+  public int showError(java.lang.String, java.lang.String, int);
+    descriptor: (Ljava/lang/String;Ljava/lang/String;I)I
+    Code:
+       0: aload_0
+       1: getfield      #31                 // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       4: invokevirtual #121                // Method com/ideaworks3d/marmalade/LoaderActivity.isFinishing:()Z
+       7: ifeq          12
+      10: iconst_0
+      11: ireturn
+      12: aload_0
+      13: getfield      #21                 // Field m_ShowError:Ljava/lang/Runnable;
+      16: dup
+      17: astore        4
+      19: monitorenter
+      20: aload_0
+      21: aload_1
+      22: putfield      #107                // Field m_ErrorTitle:Ljava/lang/String;
+      25: aload_0
+      26: aload_2
+      27: putfield      #109                // Field m_ErrorBody:Ljava/lang/String;
+      30: aload_0
+      31: iload_3
+      32: putfield      #113                // Field m_ErrorType:I
+      35: aload_0
+      36: iconst_0
+      37: putfield      #86                 // Field m_ErrorRtn:I
+      40: aload_0
+      41: iconst_1
+      42: putfield      #13                 // Field m_ErrorRunning:Z
+      45: aload_0
+      46: getfield      #11                 // Field m_Handler:Landroid/os/Handler;
+      49: aload_0
+      50: getfield      #21                 // Field m_ShowError:Ljava/lang/Runnable;
+      53: invokevirtual #78                 // Method android/os/Handler.post:(Ljava/lang/Runnable;)Z
+      56: pop
+      57: aload_0
+      58: getfield      #13                 // Field m_ErrorRunning:Z
+      61: ifeq          72
+      64: bipush        20
+      66: invokestatic  #122                // Method com/ideaworks3d/marmalade/LoaderAPI.s3eDeviceYield:(I)V
+      69: goto          57
+      72: aload_0
+      73: getfield      #86                 // Field m_ErrorRtn:I
+      76: aload         4
+      78: monitorexit
+      79: ireturn
+      80: astore        5
+      82: aload         4
+      84: monitorexit
+      85: aload         5
+      87: athrow
+    Exception table:
+       from    to  target type
+          20    79    80   any
+          80    85    80   any
+
+  public void doneInputText(android.content.DialogInterface, int);
+    descriptor: (Landroid/content/DialogInterface;I)V
+    Code:
+       0: return
+
+  public void showInputTextReal();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: new           #123                // class android/widget/EditText
+       4: dup
+       5: aload_0
+       6: getfield      #31                 // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       9: invokespecial #124                // Method android/widget/EditText."<init>":(Landroid/content/Context;)V
+      12: putfield      #82                 // Field m_EditText:Landroid/widget/EditText;
+      15: aload_0
+      16: getfield      #82                 // Field m_EditText:Landroid/widget/EditText;
+      19: aload_0
+      20: getfield      #125                // Field m_InputTextDefault:Ljava/lang/String;
+      23: invokevirtual #126                // Method android/widget/EditText.setText:(Ljava/lang/CharSequence;)V
+      26: aload_0
+      27: getfield      #127                // Field m_InputTextFlags:I
+      30: iconst_1
+      31: iand
+      32: ifeq          62
+      35: aload_0
+      36: getfield      #82                 // Field m_EditText:Landroid/widget/EditText;
+      39: sipush        128
+      42: invokevirtual #128                // Method android/widget/EditText.setInputType:(I)V
+      45: aload_0
+      46: getfield      #82                 // Field m_EditText:Landroid/widget/EditText;
+      49: new           #129                // class android/text/method/PasswordTransformationMethod
+      52: dup
+      53: invokespecial #130                // Method android/text/method/PasswordTransformationMethod."<init>":()V
+      56: invokevirtual #131                // Method android/widget/EditText.setTransformationMethod:(Landroid/text/method/TransformationMethod;)V
+      59: goto          124
+      62: aload_0
+      63: getfield      #127                // Field m_InputTextFlags:I
+      66: iconst_2
+      67: iand
+      68: ifeq          83
+      71: aload_0
+      72: getfield      #82                 // Field m_EditText:Landroid/widget/EditText;
+      75: bipush        33
+      77: invokevirtual #128                // Method android/widget/EditText.setInputType:(I)V
+      80: goto          124
+      83: aload_0
+      84: getfield      #127                // Field m_InputTextFlags:I
+      87: iconst_4
+      88: iand
+      89: ifeq          104
+      92: aload_0
+      93: getfield      #82                 // Field m_EditText:Landroid/widget/EditText;
+      96: bipush        17
+      98: invokevirtual #128                // Method android/widget/EditText.setInputType:(I)V
+     101: goto          124
+     104: aload_0
+     105: getfield      #127                // Field m_InputTextFlags:I
+     108: bipush        8
+     110: iand
+     111: ifeq          124
+     114: aload_0
+     115: getfield      #82                 // Field m_EditText:Landroid/widget/EditText;
+     118: sipush        8194
+     121: invokevirtual #128                // Method android/widget/EditText.setInputType:(I)V
+     124: new           #105                // class android/app/AlertDialog$Builder
+     127: dup
+     128: aload_0
+     129: getfield      #31                 // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+     132: invokespecial #106                // Method android/app/AlertDialog$Builder."<init>":(Landroid/content/Context;)V
+     135: astore_1
+     136: aload_1
+     137: aload_0
+     138: getfield      #132                // Field m_InputTextTitle:Ljava/lang/String;
+     141: invokevirtual #108                // Method android/app/AlertDialog$Builder.setTitle:(Ljava/lang/CharSequence;)Landroid/app/AlertDialog$Builder;
+     144: pop
+     145: aload_1
+     146: aload_0
+     147: getfield      #82                 // Field m_EditText:Landroid/widget/EditText;
+     150: invokevirtual #133                // Method android/app/AlertDialog$Builder.setView:(Landroid/view/View;)Landroid/app/AlertDialog$Builder;
+     153: pop
+     154: aload_1
+     155: ldc           #134                // String OK
+     157: aload_0
+     158: invokevirtual #112                // Method android/app/AlertDialog$Builder.setPositiveButton:(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+     161: pop
+     162: aload_1
+     163: ldc           #135                // String Cancel
+     165: aload_0
+     166: invokevirtual #115                // Method android/app/AlertDialog$Builder.setNegativeButton:(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+     169: pop
+     170: aload_0
+     171: aload_1
+     172: invokevirtual #118                // Method android/app/AlertDialog$Builder.create:()Landroid/app/AlertDialog;
+     175: putfield      #14                 // Field m_InputDialog:Landroid/app/Dialog;
+     178: aload_0
+     179: iconst_1
+     180: putfield      #16                 // Field m_InputTextRunning:Z
+     183: aload_0
+     184: aconst_null
+     185: putfield      #15                 // Field m_InputTextResult:Ljava/lang/String;
+     188: aload_0
+     189: getfield      #14                 // Field m_InputDialog:Landroid/app/Dialog;
+     192: aload_0
+     193: invokevirtual #119                // Method android/app/Dialog.setOnDismissListener:(Landroid/content/DialogInterface$OnDismissListener;)V
+     196: aload_0
+     197: getfield      #14                 // Field m_InputDialog:Landroid/app/Dialog;
+     200: invokevirtual #120                // Method android/app/Dialog.show:()V
+     203: return
+
+  public void getInputString(java.lang.String, java.lang.String, int);
+    descriptor: (Ljava/lang/String;Ljava/lang/String;I)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #132                // Field m_InputTextTitle:Ljava/lang/String;
+       5: aload_0
+       6: aload_2
+       7: putfield      #125                // Field m_InputTextDefault:Ljava/lang/String;
+      10: aload_0
+      11: iload_3
+      12: putfield      #127                // Field m_InputTextFlags:I
+      15: aload_0
+      16: getfield      #11                 // Field m_Handler:Landroid/os/Handler;
+      19: aload_0
+      20: getfield      #24                 // Field m_ShowInputText:Ljava/lang/Runnable;
+      23: invokevirtual #78                 // Method android/os/Handler.post:(Ljava/lang/Runnable;)Z
+      26: pop
+      27: return
+
+  public void vibrateStart(long);
+    descriptor: (J)V
+    Code:
+       0: aload_0
+       1: getfield      #35                 // Field m_Vibrator:Landroid/os/Vibrator;
+       4: lload_1
+       5: invokevirtual #136                // Method android/os/Vibrator.vibrate:(J)V
+       8: return
+
+  public void vibrateStop();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: getfield      #35                 // Field m_Vibrator:Landroid/os/Vibrator;
+       4: invokevirtual #137                // Method android/os/Vibrator.cancel:()V
+       7: return
+
+  public boolean vibrateAvailable();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: getfield      #35                 // Field m_Vibrator:Landroid/os/Vibrator;
+       4: invokevirtual #138                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+       7: astore_1
+       8: aload_1
+       9: ldc           #139                // String hasVibrator
+      11: iconst_0
+      12: anewarray     #140                // class java/lang/Class
+      15: invokevirtual #141                // Method java/lang/Class.getMethod:(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+      18: astore_2
+      19: aload_2
+      20: aload_0
+      21: getfield      #35                 // Field m_Vibrator:Landroid/os/Vibrator;
+      24: iconst_0
+      25: anewarray     #142                // class java/lang/Object
+      28: invokevirtual #143                // Method java/lang/reflect/Method.invoke:(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+      31: checkcast     #144                // class java/lang/Boolean
+      34: invokevirtual #145                // Method java/lang/Boolean.booleanValue:()Z
+      37: ireturn
+      38: astore_1
+      39: iconst_1
+      40: ireturn
+    Exception table:
+       from    to  target type
+           0    37    38   Class java/lang/Exception
+
+  public java.lang.String getLocale();
+    descriptor: ()Ljava/lang/String;
+    Code:
+       0: invokestatic  #147                // Method java/util/Locale.getDefault:()Ljava/util/Locale;
+       3: invokevirtual #148                // Method java/util/Locale.toString:()Ljava/lang/String;
+       6: areturn
+
+  public boolean glInit(int);
+    descriptor: (I)Z
+    Code:
+       0: getstatic     #30                 // Field g_GLActive:Z
+       3: ifeq          30
+       6: getstatic     #149                // Field m_LoaderGL:Lcom/ideaworks3d/marmalade/LoaderGL;
+       9: invokevirtual #150                // Method com/ideaworks3d/marmalade/LoaderGL.started:()Z
+      12: ifne          30
+      15: aload_0
+      16: getstatic     #149                // Field m_LoaderGL:Lcom/ideaworks3d/marmalade/LoaderGL;
+      19: aload_0
+      20: getfield      #37                 // Field m_SurfaceHolder:Landroid/view/SurfaceHolder;
+      23: iload_1
+      24: invokevirtual #151                // Method com/ideaworks3d/marmalade/LoaderGL.startGL:(Landroid/view/SurfaceHolder;I)Ljavax/microedition/khronos/opengles/GL;
+      27: putfield      #152                // Field m_GL:Ljavax/microedition/khronos/opengles/GL;
+      30: getstatic     #30                 // Field g_GLActive:Z
+      33: ireturn
+
+  public void glReInit();
+    descriptor: ()V
+    Code:
+       0: getstatic     #30                 // Field g_GLActive:Z
+       3: ifeq          29
+       6: getstatic     #149                // Field m_LoaderGL:Lcom/ideaworks3d/marmalade/LoaderGL;
+       9: invokevirtual #150                // Method com/ideaworks3d/marmalade/LoaderGL.started:()Z
+      12: ifeq          29
+      15: aload_0
+      16: getstatic     #149                // Field m_LoaderGL:Lcom/ideaworks3d/marmalade/LoaderGL;
+      19: aload_0
+      20: getfield      #37                 // Field m_SurfaceHolder:Landroid/view/SurfaceHolder;
+      23: invokevirtual #153                // Method com/ideaworks3d/marmalade/LoaderGL.restartGL:(Landroid/view/SurfaceHolder;)Ljavax/microedition/khronos/opengles/GL;
+      26: putfield      #152                // Field m_GL:Ljavax/microedition/khronos/opengles/GL;
+      29: return
+
+  public void glPause();
+    descriptor: ()V
+    Code:
+       0: getstatic     #30                 // Field g_GLActive:Z
+       3: ifeq          56
+       6: getstatic     #149                // Field m_LoaderGL:Lcom/ideaworks3d/marmalade/LoaderGL;
+       9: invokevirtual #150                // Method com/ideaworks3d/marmalade/LoaderGL.started:()Z
+      12: ifeq          56
+      15: iconst_1
+      16: newarray       int
+      18: astore_1
+      19: ldc           #42                 // String GL
+      21: ldc           #154                // String AndroidTerminateGLOnPause
+      23: aload_1
+      24: invokestatic  #44                 // Method com/ideaworks3d/marmalade/LoaderAPI.s3eConfigGetInt:(Ljava/lang/String;Ljava/lang/String;[I)I
+      27: ifne          45
+      30: aload_1
+      31: iconst_0
+      32: iaload
+      33: ifeq          45
+      36: getstatic     #149                // Field m_LoaderGL:Lcom/ideaworks3d/marmalade/LoaderGL;
+      39: invokevirtual #155                // Method com/ideaworks3d/marmalade/LoaderGL.stopGL:()V
+      42: goto          51
+      45: getstatic     #149                // Field m_LoaderGL:Lcom/ideaworks3d/marmalade/LoaderGL;
+      48: invokevirtual #156                // Method com/ideaworks3d/marmalade/LoaderGL.pauseGL:()V
+      51: aload_0
+      52: aconst_null
+      53: putfield      #152                // Field m_GL:Ljavax/microedition/khronos/opengles/GL;
+      56: return
+
+  public void glResume();
+    descriptor: ()V
+    Code:
+       0: getstatic     #30                 // Field g_GLActive:Z
+       3: ifeq          67
+       6: getstatic     #149                // Field m_LoaderGL:Lcom/ideaworks3d/marmalade/LoaderGL;
+       9: invokevirtual #150                // Method com/ideaworks3d/marmalade/LoaderGL.started:()Z
+      12: ifne          67
+      15: iconst_1
+      16: newarray       int
+      18: astore_1
+      19: ldc           #42                 // String GL
+      21: ldc           #154                // String AndroidTerminateGLOnPause
+      23: aload_1
+      24: invokestatic  #44                 // Method com/ideaworks3d/marmalade/LoaderAPI.s3eConfigGetInt:(Ljava/lang/String;Ljava/lang/String;[I)I
+      27: ifne          53
+      30: aload_1
+      31: iconst_0
+      32: iaload
+      33: ifeq          53
+      36: aload_0
+      37: getstatic     #149                // Field m_LoaderGL:Lcom/ideaworks3d/marmalade/LoaderGL;
+      40: aload_0
+      41: getfield      #37                 // Field m_SurfaceHolder:Landroid/view/SurfaceHolder;
+      44: invokevirtual #153                // Method com/ideaworks3d/marmalade/LoaderGL.restartGL:(Landroid/view/SurfaceHolder;)Ljavax/microedition/khronos/opengles/GL;
+      47: putfield      #152                // Field m_GL:Ljavax/microedition/khronos/opengles/GL;
+      50: goto          67
+      53: aload_0
+      54: getstatic     #149                // Field m_LoaderGL:Lcom/ideaworks3d/marmalade/LoaderGL;
+      57: aload_0
+      58: getfield      #37                 // Field m_SurfaceHolder:Landroid/view/SurfaceHolder;
+      61: invokevirtual #157                // Method com/ideaworks3d/marmalade/LoaderGL.resumeGL:(Landroid/view/SurfaceHolder;)Ljavax/microedition/khronos/opengles/GL;
+      64: putfield      #152                // Field m_GL:Ljavax/microedition/khronos/opengles/GL;
+      67: return
+
+  public void glTerm();
+    descriptor: ()V
+    Code:
+       0: getstatic     #30                 // Field g_GLActive:Z
+       3: ifeq          30
+       6: getstatic     #149                // Field m_LoaderGL:Lcom/ideaworks3d/marmalade/LoaderGL;
+       9: invokevirtual #150                // Method com/ideaworks3d/marmalade/LoaderGL.started:()Z
+      12: ifeq          26
+      15: getstatic     #149                // Field m_LoaderGL:Lcom/ideaworks3d/marmalade/LoaderGL;
+      18: invokevirtual #155                // Method com/ideaworks3d/marmalade/LoaderGL.stopGL:()V
+      21: aload_0
+      22: aconst_null
+      23: putfield      #152                // Field m_GL:Ljavax/microedition/khronos/opengles/GL;
+      26: iconst_0
+      27: putstatic     #30                 // Field g_GLActive:Z
+      30: return
+
+  public void glSwapBuffers();
+    descriptor: ()V
+    Code:
+       0: getstatic     #149                // Field m_LoaderGL:Lcom/ideaworks3d/marmalade/LoaderGL;
+       3: invokevirtual #150                // Method com/ideaworks3d/marmalade/LoaderGL.started:()Z
+       6: ifne          10
+       9: return
+      10: getstatic     #149                // Field m_LoaderGL:Lcom/ideaworks3d/marmalade/LoaderGL;
+      13: invokevirtual #158                // Method com/ideaworks3d/marmalade/LoaderGL.swap:()V
+      16: return
+
+  public boolean onTouchEvent(android.view.MotionEvent);
+    descriptor: (Landroid/view/MotionEvent;)Z
+    Code:
+       0: aload_0
+       1: getfield      #31                 // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       4: invokevirtual #91                 // Method com/ideaworks3d/marmalade/LoaderActivity.LoaderThread:()Lcom/ideaworks3d/marmalade/LoaderThread;
+       7: ifnull        22
+      10: aload_0
+      11: getfield      #31                 // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      14: invokevirtual #91                 // Method com/ideaworks3d/marmalade/LoaderActivity.LoaderThread:()Lcom/ideaworks3d/marmalade/LoaderThread;
+      17: aload_1
+      18: invokevirtual #159                // Method com/ideaworks3d/marmalade/LoaderThread.onTouchEvent:(Landroid/view/MotionEvent;)Z
+      21: ireturn
+      22: iconst_0
+      23: ireturn
+
+  public boolean dispatchKeyEvent(android.view.KeyEvent);
+    descriptor: (Landroid/view/KeyEvent;)Z
+    Code:
+       0: ldc           #160                // String AndroidIgnoreBackKeyFromPointerDevice
+       2: iconst_0
+       3: invokestatic  #161                // Method com/ideaworks3d/marmalade/LoaderAPI.s3eConfigGet:(Ljava/lang/String;I)I
+       6: ifeq          44
+       9: aload_1
+      10: invokevirtual #162                // Method android/view/KeyEvent.getKeyCode:()I
+      13: iconst_4
+      14: if_icmpne     44
+      17: aload_1
+      18: invokevirtual #163                // Method android/view/KeyEvent.getDevice:()Landroid/view/InputDevice;
+      21: invokevirtual #164                // Method android/view/InputDevice.getId:()I
+      24: sipush        255
+      27: iand
+      28: istore_2
+      29: iload_2
+      30: iconst_2
+      31: iand
+      32: iconst_2
+      33: if_icmpne     38
+      36: iconst_1
+      37: ireturn
+      38: aload_0
+      39: aload_1
+      40: invokespecial #165                // Method android/view/SurfaceView.dispatchKeyEvent:(Landroid/view/KeyEvent;)Z
+      43: ireturn
+      44: aload_0
+      45: aload_1
+      46: invokespecial #165                // Method android/view/SurfaceView.dispatchKeyEvent:(Landroid/view/KeyEvent;)Z
+      49: ireturn
+
+  protected void onDraw(android.graphics.Canvas);
+    descriptor: (Landroid/graphics/Canvas;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #166                // Method android/view/SurfaceView.onDraw:(Landroid/graphics/Canvas;)V
+       5: return
+
+  public void surfaceCreated(android.view.SurfaceHolder);
+    descriptor: (Landroid/view/SurfaceHolder;)V
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: putfield      #167                // Field m_NewlyCreated:Z
+       5: return
+
+  public synchronized void surfaceDestroyed(android.view.SurfaceHolder);
+    descriptor: (Landroid/view/SurfaceHolder;)V
+    Code:
+       0: aload_0
+       1: getfield      #31                 // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       4: invokevirtual #91                 // Method com/ideaworks3d/marmalade/LoaderActivity.LoaderThread:()Lcom/ideaworks3d/marmalade/LoaderThread;
+       7: astore_2
+       8: aload_2
+       9: ifnonnull     13
+      12: return
+      13: aload_2
+      14: invokevirtual #168                // Method com/ideaworks3d/marmalade/LoaderThread.suspendForSurfaceChange:()V
+      17: aload_0
+      18: iconst_0
+      19: putfield      #169                // Field m_Width:I
+      22: aload_0
+      23: iconst_0
+      24: putfield      #170                // Field m_Height:I
+      27: getstatic     #171                // Field android/os/Build$VERSION.SDK_INT:I
+      30: bipush        24
+      32: if_icmplt     42
+      35: aload_0
+      36: invokevirtual #172                // Method glPause:()V
+      39: goto          62
+      42: getstatic     #149                // Field m_LoaderGL:Lcom/ideaworks3d/marmalade/LoaderGL;
+      45: invokevirtual #150                // Method com/ideaworks3d/marmalade/LoaderGL.started:()Z
+      48: ifeq          62
+      51: getstatic     #149                // Field m_LoaderGL:Lcom/ideaworks3d/marmalade/LoaderGL;
+      54: invokevirtual #155                // Method com/ideaworks3d/marmalade/LoaderGL.stopGL:()V
+      57: aload_0
+      58: aconst_null
+      59: putfield      #152                // Field m_GL:Ljavax/microedition/khronos/opengles/GL;
+      62: aload_0
+      63: aconst_null
+      64: putfield      #173                // Field m_FullScreenBitmap:Landroid/graphics/Bitmap;
+      67: aload_0
+      68: iconst_0
+      69: iconst_0
+      70: aconst_null
+      71: iconst_0
+      72: invokespecial #174                // Method setPixelsNative:(II[IZ)V
+      75: aload_0
+      76: aconst_null
+      77: putfield      #175                // Field m_Pixels:[I
+      80: aload_2
+      81: invokevirtual #176                // Method com/ideaworks3d/marmalade/LoaderThread.resumeAfterSurfaceChange:()V
+      84: aload_0
+      85: invokevirtual #177                // Method java/lang/Object.notify:()V
+      88: return
+
+  public synchronized void surfaceChanged(android.view.SurfaceHolder, int, int, int);
+    descriptor: (Landroid/view/SurfaceHolder;III)V
+    Code:
+       0: aload_0
+       1: getfield      #31                 // Field m_LoaderActivity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       4: invokevirtual #91                 // Method com/ideaworks3d/marmalade/LoaderActivity.LoaderThread:()Lcom/ideaworks3d/marmalade/LoaderThread;
+       7: astore        5
+       9: aload_0
+      10: getfield      #175                // Field m_Pixels:[I
+      13: ifnull        29
+      16: aload         5
+      18: invokevirtual #178                // Method com/ideaworks3d/marmalade/LoaderThread.skipSurfaceChange:()Z
+      21: ifeq          29
+      24: aload_0
+      25: invokevirtual #177                // Method java/lang/Object.notify:()V
+      28: return
+      29: aload         5
+      31: invokevirtual #168                // Method com/ideaworks3d/marmalade/LoaderThread.suspendForSurfaceChange:()V
+      34: aload_0
+      35: iload_3
+      36: putfield      #169                // Field m_Width:I
+      39: aload_0
+      40: iload         4
+      42: putfield      #170                // Field m_Height:I
+      45: aload_0
+      46: getfield      #173                // Field m_FullScreenBitmap:Landroid/graphics/Bitmap;
+      49: ifnull        64
+      52: aload_0
+      53: getfield      #173                // Field m_FullScreenBitmap:Landroid/graphics/Bitmap;
+      56: invokevirtual #179                // Method android/graphics/Bitmap.recycle:()V
+      59: aload_0
+      60: aconst_null
+      61: putfield      #173                // Field m_FullScreenBitmap:Landroid/graphics/Bitmap;
+      64: aload_0
+      65: aload_0
+      66: getfield      #169                // Field m_Width:I
+      69: aload_0
+      70: getfield      #170                // Field m_Height:I
+      73: getstatic     #180                // Field android/graphics/Bitmap$Config.RGB_565:Landroid/graphics/Bitmap$Config;
+      76: invokestatic  #181                // Method android/graphics/Bitmap.createBitmap:(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+      79: putfield      #173                // Field m_FullScreenBitmap:Landroid/graphics/Bitmap;
+      82: aload_0
+      83: getfield      #175                // Field m_Pixels:[I
+      86: ifnull        106
+      89: aload_0
+      90: getfield      #175                // Field m_Pixels:[I
+      93: arraylength
+      94: aload_0
+      95: getfield      #169                // Field m_Width:I
+      98: aload_0
+      99: getfield      #170                // Field m_Height:I
+     102: imul
+     103: if_icmpeq     160
+     106: getstatic     #182                // Field g_PixelsLast:[I
+     109: ifnull        138
+     112: getstatic     #182                // Field g_PixelsLast:[I
+     115: arraylength
+     116: aload_0
+     117: getfield      #169                // Field m_Width:I
+     120: aload_0
+     121: getfield      #170                // Field m_Height:I
+     124: imul
+     125: if_icmplt     138
+     128: aload_0
+     129: getstatic     #182                // Field g_PixelsLast:[I
+     132: putfield      #175                // Field m_Pixels:[I
+     135: goto          160
+     138: aload_0
+     139: aload_0
+     140: getfield      #169                // Field m_Width:I
+     143: aload_0
+     144: getfield      #170                // Field m_Height:I
+     147: imul
+     148: newarray       int
+     150: putfield      #175                // Field m_Pixels:[I
+     153: aload_0
+     154: getfield      #175                // Field m_Pixels:[I
+     157: putstatic     #182                // Field g_PixelsLast:[I
+     160: aload_0
+     161: aload_0
+     162: getfield      #169                // Field m_Width:I
+     165: aload_0
+     166: getfield      #170                // Field m_Height:I
+     169: aload_0
+     170: getfield      #175                // Field m_Pixels:[I
+     173: aload_0
+     174: getfield      #167                // Field m_NewlyCreated:Z
+     177: invokespecial #174                // Method setPixelsNative:(II[IZ)V
+     180: aload_0
+     181: iconst_0
+     182: putfield      #167                // Field m_NewlyCreated:Z
+     185: aload         5
+     187: invokevirtual #176                // Method com/ideaworks3d/marmalade/LoaderThread.resumeAfterSurfaceChange:()V
+     190: aload_0
+     191: invokevirtual #177                // Method java/lang/Object.notify:()V
+     194: return
+
+  public boolean waitForSurface();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: dup
+       2: astore_1
+       3: monitorenter
+       4: aload_0
+       5: getfield      #175                // Field m_Pixels:[I
+       8: ifnonnull     23
+      11: aload_0
+      12: invokevirtual #89                 // Method java/lang/Object.wait:()V
+      15: goto          23
+      18: astore_2
+      19: iconst_0
+      20: aload_1
+      21: monitorexit
+      22: ireturn
+      23: aload_0
+      24: getfield      #175                // Field m_Pixels:[I
+      27: ifnonnull     34
+      30: iconst_0
+      31: aload_1
+      32: monitorexit
+      33: ireturn
+      34: aload_1
+      35: monitorexit
+      36: goto          44
+      39: astore_3
+      40: aload_1
+      41: monitorexit
+      42: aload_3
+      43: athrow
+      44: iconst_1
+      45: ireturn
+    Exception table:
+       from    to  target type
+          11    15    18   Class java/lang/InterruptedException
+           4    22    39   any
+          23    33    39   any
+          34    36    39   any
+          39    42    39   any
+
+  public void doDraw();
+    descriptor: ()V
+    Code:
+       0: aconst_null
+       1: astore_1
+       2: aload_0
+       3: getfield      #173                // Field m_FullScreenBitmap:Landroid/graphics/Bitmap;
+       6: ifnonnull     24
+       9: aload_1
+      10: ifnull        23
+      13: aload_0
+      14: getfield      #37                 // Field m_SurfaceHolder:Landroid/view/SurfaceHolder;
+      17: aload_1
+      18: invokeinterface #183,  2          // InterfaceMethod android/view/SurfaceHolder.unlockCanvasAndPost:(Landroid/graphics/Canvas;)V
+      23: return
+      24: getstatic     #30                 // Field g_GLActive:Z
+      27: ifeq          45
+      30: aload_1
+      31: ifnull        44
+      34: aload_0
+      35: getfield      #37                 // Field m_SurfaceHolder:Landroid/view/SurfaceHolder;
+      38: aload_1
+      39: invokeinterface #183,  2          // InterfaceMethod android/view/SurfaceHolder.unlockCanvasAndPost:(Landroid/graphics/Canvas;)V
+      44: return
+      45: aload_0
+      46: getfield      #173                // Field m_FullScreenBitmap:Landroid/graphics/Bitmap;
+      49: aload_0
+      50: getfield      #175                // Field m_Pixels:[I
+      53: iconst_0
+      54: aload_0
+      55: getfield      #169                // Field m_Width:I
+      58: iconst_0
+      59: iconst_0
+      60: aload_0
+      61: getfield      #169                // Field m_Width:I
+      64: aload_0
+      65: getfield      #170                // Field m_Height:I
+      68: invokevirtual #184                // Method android/graphics/Bitmap.setPixels:([IIIIIII)V
+      71: aload_0
+      72: getfield      #37                 // Field m_SurfaceHolder:Landroid/view/SurfaceHolder;
+      75: invokeinterface #185,  1          // InterfaceMethod android/view/SurfaceHolder.lockCanvas:()Landroid/graphics/Canvas;
+      80: astore_1
+      81: aload_1
+      82: ifnonnull     100
+      85: aload_1
+      86: ifnull        99
+      89: aload_0
+      90: getfield      #37                 // Field m_SurfaceHolder:Landroid/view/SurfaceHolder;
+      93: aload_1
+      94: invokeinterface #183,  2          // InterfaceMethod android/view/SurfaceHolder.unlockCanvasAndPost:(Landroid/graphics/Canvas;)V
+      99: return
+     100: aload_1
+     101: aload_0
+     102: getfield      #173                // Field m_FullScreenBitmap:Landroid/graphics/Bitmap;
+     105: fconst_0
+     106: fconst_0
+     107: aload_0
+     108: getfield      #8                  // Field m_Paint:Landroid/graphics/Paint;
+     111: invokevirtual #186                // Method android/graphics/Canvas.drawBitmap:(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
+     114: aload_1
+     115: ifnull        148
+     118: aload_0
+     119: getfield      #37                 // Field m_SurfaceHolder:Landroid/view/SurfaceHolder;
+     122: aload_1
+     123: invokeinterface #183,  2          // InterfaceMethod android/view/SurfaceHolder.unlockCanvasAndPost:(Landroid/graphics/Canvas;)V
+     128: goto          148
+     131: astore_2
+     132: aload_1
+     133: ifnull        146
+     136: aload_0
+     137: getfield      #37                 // Field m_SurfaceHolder:Landroid/view/SurfaceHolder;
+     140: aload_1
+     141: invokeinterface #183,  2          // InterfaceMethod android/view/SurfaceHolder.unlockCanvasAndPost:(Landroid/graphics/Canvas;)V
+     146: aload_2
+     147: athrow
+     148: return
+    Exception table:
+       from    to  target type
+           2     9   131   any
+          24    30   131   any
+          45    85   131   any
+         100   114   131   any
+         131   132   131   any
+
+  static void access$000(com.ideaworks3d.marmalade.LoaderView);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderView;)V
+    Code:
+       0: aload_0
+       1: invokespecial #4                  // Method showErrorReal:()V
+       4: return
+
+  static java.lang.Runnable access$100(com.ideaworks3d.marmalade.LoaderView);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderView;)Ljava/lang/Runnable;
+    Code:
+       0: aload_0
+       1: getfield      #3                  // Field m_RunOnOSThread:Ljava/lang/Runnable;
+       4: areturn
+
+  static void access$200(com.ideaworks3d.marmalade.LoaderView);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderView;)V
+    Code:
+       0: aload_0
+       1: invokespecial #2                  // Method runOnOSThreadNative:()V
+       4: return
+
+  static com.ideaworks3d.marmalade.S3EVideoView access$300(com.ideaworks3d.marmalade.LoaderView);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderView;)Lcom/ideaworks3d/marmalade/S3EVideoView;
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field m_VideoView:Lcom/ideaworks3d/marmalade/S3EVideoView;
+       4: areturn
+
+  static com.ideaworks3d.marmalade.S3EVideoView access$302(com.ideaworks3d.marmalade.LoaderView, com.ideaworks3d.marmalade.S3EVideoView);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderView;Lcom/ideaworks3d/marmalade/S3EVideoView;)Lcom/ideaworks3d/marmalade/S3EVideoView;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: dup_x1
+       3: putfield      #1                  // Field m_VideoView:Lcom/ideaworks3d/marmalade/S3EVideoView;
+       6: areturn
+
+  static {};
+    descriptor: ()V
+    Code:
+       0: new           #187                // class com/ideaworks3d/marmalade/LoaderGL
+       3: dup
+       4: invokespecial #188                // Method com/ideaworks3d/marmalade/LoaderGL."<init>":()V
+       7: putstatic     #149                // Field m_LoaderGL:Lcom/ideaworks3d/marmalade/LoaderGL;
+      10: iconst_0
+      11: putstatic     #30                 // Field g_GLActive:Z
+      14: return
+}

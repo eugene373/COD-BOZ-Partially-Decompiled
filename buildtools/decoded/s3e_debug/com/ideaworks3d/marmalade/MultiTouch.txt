@@ -1,0 +1,126 @@
+Compiled from "MultiTouch.java"
+class com.ideaworks3d.marmalade.MultiTouch {
+  private static final int POINTER_DOWN = 1;
+    descriptor: I
+
+  private static final int POINTER_UP = 2;
+    descriptor: I
+
+  private static final int POINTER_MOVE = 3;
+    descriptor: I
+
+  private static final int TOUCH_DOWN = 4;
+    descriptor: I
+
+  private static final int TOUCH_UP = 5;
+    descriptor: I
+
+  private static final int TOUCH_MOVE = 6;
+    descriptor: I
+
+  private static final int TOUCH_CANCEL = 7;
+    descriptor: I
+
+  com.ideaworks3d.marmalade.MultiTouch();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static boolean onTouchEvent(com.ideaworks3d.marmalade.LoaderThread, android.view.MotionEvent);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderThread;Landroid/view/MotionEvent;)Z
+    Code:
+       0: aload_1
+       1: invokevirtual #2                  // Method android/view/MotionEvent.getAction:()I
+       4: istore_2
+       5: iload_2
+       6: sipush        255
+       9: iand
+      10: istore_2
+      11: iload_2
+      12: iconst_2
+      13: if_icmpne     77
+      16: aload_1
+      17: invokevirtual #3                  // Method android/view/MotionEvent.getPointerCount:()I
+      20: istore_3
+      21: iconst_0
+      22: istore        4
+      24: iload         4
+      26: iload_3
+      27: if_icmpge     74
+      30: aload_1
+      31: iload         4
+      33: invokevirtual #4                  // Method android/view/MotionEvent.getPointerId:(I)I
+      36: istore        5
+      38: aload_1
+      39: iload         4
+      41: invokevirtual #5                  // Method android/view/MotionEvent.getX:(I)F
+      44: f2i
+      45: istore        6
+      47: aload_1
+      48: iload         4
+      50: invokevirtual #6                  // Method android/view/MotionEvent.getY:(I)F
+      53: f2i
+      54: istore        7
+      56: aload_0
+      57: iload         5
+      59: bipush        6
+      61: iload         6
+      63: iload         7
+      65: invokevirtual #7                  // Method com/ideaworks3d/marmalade/LoaderThread.onMotionEvent:(IIII)V
+      68: iinc          4, 1
+      71: goto          24
+      74: goto          164
+      77: iconst_0
+      78: istore_3
+      79: iload_2
+      80: ifeq          88
+      83: iload_2
+      84: iconst_5
+      85: if_icmpne     93
+      88: iconst_4
+      89: istore_3
+      90: goto          117
+      93: iload_2
+      94: iconst_1
+      95: if_icmpeq     104
+      98: iload_2
+      99: bipush        6
+     101: if_icmpne     109
+     104: iconst_5
+     105: istore_3
+     106: goto          117
+     109: iload_2
+     110: iconst_3
+     111: if_icmpne     117
+     114: bipush        7
+     116: istore_3
+     117: iload_3
+     118: ifeq          164
+     121: aload_1
+     122: invokevirtual #8                  // Method android/view/MotionEvent.getActionIndex:()I
+     125: istore        4
+     127: aload_1
+     128: iload         4
+     130: invokevirtual #4                  // Method android/view/MotionEvent.getPointerId:(I)I
+     133: istore        5
+     135: aload_1
+     136: iload         4
+     138: invokevirtual #5                  // Method android/view/MotionEvent.getX:(I)F
+     141: f2i
+     142: istore        6
+     144: aload_1
+     145: iload         4
+     147: invokevirtual #6                  // Method android/view/MotionEvent.getY:(I)F
+     150: f2i
+     151: istore        7
+     153: aload_0
+     154: iload         5
+     156: iload_3
+     157: iload         6
+     159: iload         7
+     161: invokevirtual #7                  // Method com/ideaworks3d/marmalade/LoaderThread.onMotionEvent:(IIII)V
+     164: iconst_1
+     165: ireturn
+}

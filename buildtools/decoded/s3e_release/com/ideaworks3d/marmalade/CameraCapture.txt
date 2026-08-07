@@ -1,0 +1,461 @@
+Compiled from "s3eCameraCapture.java"
+class com.ideaworks3d.marmalade.CameraCapture {
+  private static int s_Images;
+    descriptor: I
+
+  private static int s_Videos;
+    descriptor: I
+
+  private static volatile boolean m_WaitingForFile;
+    descriptor: Z
+
+  static final int S3E_CAMERACAPTURE_JPG = 1;
+    descriptor: I
+
+  static final int S3E_CAMERACAPTURE_PNG = 2;
+    descriptor: I
+
+  static final int S3E_CAMERACAPTURE_BMP = 3;
+    descriptor: I
+
+  static final int S3E_CAMERACAPTURE_VIDEO = 4;
+    descriptor: I
+
+  com.ideaworks3d.marmalade.CameraCapture();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  private int CheckCamera();
+    descriptor: ()I
+    Code:
+       0: iconst_0
+       1: invokestatic  #3                  // Method android/hardware/Camera.open:(I)Landroid/hardware/Camera;
+       4: astore_1
+       5: aload_1
+       6: ifnonnull     11
+       9: iconst_0
+      10: ireturn
+      11: aload_1
+      12: invokevirtual #4                  // Method android/hardware/Camera.release:()V
+      15: iconst_1
+      16: ireturn
+
+  public int s3eCameraCaptureIsFormatSupported(int);
+    descriptor: (I)I
+    Code:
+       0: iconst_1
+       1: iload_1
+       2: if_icmpeq     12
+       5: iconst_4
+       6: iload_1
+       7: if_icmpeq     12
+      10: iconst_0
+      11: ireturn
+      12: aload_0
+      13: invokespecial #5                  // Method CheckCamera:()I
+      16: ireturn
+      17: astore_2
+      18: iconst_0
+      19: ireturn
+    Exception table:
+       from    to  target type
+          12    16    17   Class java/lang/RuntimeException
+
+  public java.lang.String s3eCameraCaptureToFile(int);
+    descriptor: (I)Ljava/lang/String;
+    Code:
+       0: aconst_null
+       1: astore_2
+       2: iload_1
+       3: iconst_4
+       4: if_icmpne     15
+       7: aload_0
+       8: invokespecial #7                  // Method startCaptureVideo:()Ljava/io/File;
+      11: astore_2
+      12: goto          25
+      15: iload_1
+      16: iconst_1
+      17: if_icmpne     25
+      20: aload_0
+      21: invokespecial #8                  // Method startCaptureImage:()Ljava/io/File;
+      24: astore_2
+      25: aload_2
+      26: ifnonnull     31
+      29: aconst_null
+      30: areturn
+      31: new           #9                  // class java/lang/StringBuilder
+      34: dup
+      35: invokespecial #10                 // Method java/lang/StringBuilder."<init>":()V
+      38: ldc           #11                 // String raw://
+      40: invokevirtual #12                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      43: aload_2
+      44: invokevirtual #13                 // Method java/io/File.getPath:()Ljava/lang/String;
+      47: invokevirtual #12                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      50: invokevirtual #14                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      53: areturn
+
+  private java.io.File startCaptureVideo();
+    descriptor: ()Ljava/io/File;
+    Code:
+       0: new           #15                 // class android/content/Intent
+       3: dup
+       4: ldc           #16                 // String android.media.action.VIDEO_CAPTURE
+       6: invokespecial #17                 // Method android/content/Intent."<init>":(Ljava/lang/String;)V
+       9: astore_1
+      10: aload_1
+      11: ldc           #18                 // String android.intent.extra.videoQuality
+      13: iconst_1
+      14: invokevirtual #19                 // Method android/content/Intent.putExtra:(Ljava/lang/String;I)Landroid/content/Intent;
+      17: pop
+      18: getstatic     #20                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      21: aload_1
+      22: invokevirtual #21                 // Method com/ideaworks3d/marmalade/LoaderActivity.ExecuteIntent:(Landroid/content/Intent;)Landroid/content/Intent;
+      25: astore_2
+      26: aload_2
+      27: ifnull        37
+      30: aload_2
+      31: invokevirtual #22                 // Method android/content/Intent.getData:()Landroid/net/Uri;
+      34: ifnonnull     39
+      37: aconst_null
+      38: areturn
+      39: iconst_2
+      40: anewarray     #23                 // class java/lang/String
+      43: dup
+      44: iconst_0
+      45: ldc           #24                 // String _data
+      47: aastore
+      48: dup
+      49: iconst_1
+      50: ldc           #25                 // String _id
+      52: aastore
+      53: astore_3
+      54: aload_2
+      55: invokevirtual #22                 // Method android/content/Intent.getData:()Landroid/net/Uri;
+      58: aload_3
+      59: invokestatic  #26                 // Method convertUriToFile:(Landroid/net/Uri;[Ljava/lang/String;)Ljava/io/File;
+      62: areturn
+
+  private java.io.File startCaptureImage();
+    descriptor: ()Ljava/io/File;
+    Code:
+       0: new           #27                 // class android/content/ContentValues
+       3: dup
+       4: invokespecial #28                 // Method android/content/ContentValues."<init>":()V
+       7: astore_2
+       8: new           #15                 // class android/content/Intent
+      11: dup
+      12: ldc           #29                 // String android.media.action.IMAGE_CAPTURE
+      14: invokespecial #17                 // Method android/content/Intent."<init>":(Ljava/lang/String;)V
+      17: astore_3
+      18: aload_2
+      19: ldc           #30                 // String title
+      21: new           #9                  // class java/lang/StringBuilder
+      24: dup
+      25: invokespecial #10                 // Method java/lang/StringBuilder."<init>":()V
+      28: ldc           #31                 // String New image
+      30: invokevirtual #12                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      33: getstatic     #32                 // Field s_Videos:I
+      36: dup
+      37: iconst_1
+      38: iadd
+      39: putstatic     #32                 // Field s_Videos:I
+      42: invokevirtual #33                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      45: invokevirtual #14                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      48: invokevirtual #34                 // Method android/content/ContentValues.put:(Ljava/lang/String;Ljava/lang/String;)V
+      51: aload_2
+      52: ldc           #35                 // String description
+      54: ldc           #36                 // String Image captured by s3eCamera
+      56: invokevirtual #34                 // Method android/content/ContentValues.put:(Ljava/lang/String;Ljava/lang/String;)V
+      59: getstatic     #20                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      62: invokevirtual #37                 // Method com/ideaworks3d/marmalade/LoaderActivity.getContentResolver:()Landroid/content/ContentResolver;
+      65: getstatic     #38                 // Field android/provider/MediaStore$Images$Media.EXTERNAL_CONTENT_URI:Landroid/net/Uri;
+      68: aload_2
+      69: invokevirtual #39                 // Method android/content/ContentResolver.insert:(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+      72: astore_1
+      73: goto          126
+      76: astore        4
+      78: new           #41                 // class java/io/File
+      81: dup
+      82: ldc           #42                 // String %s/image%d
+      84: iconst_2
+      85: anewarray     #43                 // class java/lang/Object
+      88: dup
+      89: iconst_0
+      90: invokestatic  #44                 // Method android/os/Environment.getExternalStorageDirectory:()Ljava/io/File;
+      93: invokevirtual #13                 // Method java/io/File.getPath:()Ljava/lang/String;
+      96: aastore
+      97: dup
+      98: iconst_1
+      99: getstatic     #45                 // Field s_Images:I
+     102: dup
+     103: iconst_1
+     104: iadd
+     105: putstatic     #45                 // Field s_Images:I
+     108: invokestatic  #46                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     111: aastore
+     112: invokestatic  #47                 // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+     115: invokespecial #48                 // Method java/io/File."<init>":(Ljava/lang/String;)V
+     118: astore        5
+     120: aload         5
+     122: invokestatic  #49                 // Method android/net/Uri.fromFile:(Ljava/io/File;)Landroid/net/Uri;
+     125: astore_1
+     126: aload_3
+     127: ldc           #50                 // String output
+     129: aload_1
+     130: invokevirtual #51                 // Method android/content/Intent.putExtra:(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
+     133: pop
+     134: aload_3
+     135: ldc           #18                 // String android.intent.extra.videoQuality
+     137: iconst_1
+     138: invokevirtual #19                 // Method android/content/Intent.putExtra:(Ljava/lang/String;I)Landroid/content/Intent;
+     141: pop
+     142: ldc           #52                 // String Executing Camera Capture intent
+     144: invokestatic  #53                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+     147: getstatic     #20                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+     150: aload_3
+     151: invokevirtual #21                 // Method com/ideaworks3d/marmalade/LoaderActivity.ExecuteIntent:(Landroid/content/Intent;)Landroid/content/Intent;
+     154: ifnonnull     180
+     157: ldc           #54                 // String Activity returned null, assuming cancelled
+     159: invokestatic  #53                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+     162: getstatic     #20                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+     165: invokevirtual #55                 // Method com/ideaworks3d/marmalade/LoaderActivity.getApplicationContext:()Landroid/content/Context;
+     168: invokevirtual #56                 // Method android/content/Context.getContentResolver:()Landroid/content/ContentResolver;
+     171: aload_1
+     172: aconst_null
+     173: aconst_null
+     174: invokevirtual #57                 // Method android/content/ContentResolver.delete:(Landroid/net/Uri;Ljava/lang/String;[Ljava/lang/String;)I
+     177: pop
+     178: aconst_null
+     179: areturn
+     180: ldc           #58                 // String Retrieving image url
+     182: invokestatic  #53                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+     185: iconst_2
+     186: anewarray     #23                 // class java/lang/String
+     189: dup
+     190: iconst_0
+     191: ldc           #24                 // String _data
+     193: aastore
+     194: dup
+     195: iconst_1
+     196: ldc           #25                 // String _id
+     198: aastore
+     199: astore        4
+     201: aload_1
+     202: aload         4
+     204: invokestatic  #26                 // Method convertUriToFile:(Landroid/net/Uri;[Ljava/lang/String;)Ljava/io/File;
+     207: astore        5
+     209: aload         5
+     211: invokevirtual #59                 // Method java/io/File.getAbsolutePath:()Ljava/lang/String;
+     214: invokestatic  #60                 // Method fixRotatedJpegIssue:(Ljava/lang/String;)V
+     217: aload         5
+     219: areturn
+    Exception table:
+       from    to  target type
+          59    73    76   Class java/lang/UnsupportedOperationException
+
+  public static java.io.File convertUriToFile(android.net.Uri, java.lang.String[]);
+    descriptor: (Landroid/net/Uri;[Ljava/lang/String;)Ljava/io/File;
+    Code:
+       0: iconst_1
+       1: anewarray     #41                 // class java/io/File
+       4: astore_2
+       5: iconst_1
+       6: putstatic     #1                  // Field m_WaitingForFile:Z
+       9: getstatic     #20                 // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      12: aload_0
+      13: aload_1
+      14: new           #61                 // class com/ideaworks3d/marmalade/CameraCapture$1
+      17: dup
+      18: aload_2
+      19: invokespecial #62                 // Method com/ideaworks3d/marmalade/CameraCapture$1."<init>":([Ljava/io/File;)V
+      22: invokevirtual #63                 // Method com/ideaworks3d/marmalade/LoaderActivity.getCursor:(Landroid/net/Uri;[Ljava/lang/String;Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;)V
+      25: getstatic     #1                  // Field m_WaitingForFile:Z
+      28: ifeq          38
+      31: iconst_1
+      32: invokestatic  #64                 // Method com/ideaworks3d/marmalade/LoaderAPI.s3eDeviceYield:(I)V
+      35: goto          25
+      38: aload_2
+      39: iconst_0
+      40: aaload
+      41: areturn
+
+  private static void fixRotatedJpegIssue(java.lang.String);
+    descriptor: (Ljava/lang/String;)V
+    Code:
+       0: aload_0
+       1: invokestatic  #65                 // Method getImageOrientation:(Ljava/lang/String;)I
+       4: istore_1
+       5: iload_1
+       6: ifne          10
+       9: return
+      10: new           #66                 // class android/graphics/Matrix
+      13: dup
+      14: invokespecial #67                 // Method android/graphics/Matrix."<init>":()V
+      17: astore_2
+      18: aload_2
+      19: iload_1
+      20: i2f
+      21: invokevirtual #68                 // Method android/graphics/Matrix.postRotate:(F)Z
+      24: pop
+      25: aload_0
+      26: invokestatic  #69                 // Method android/graphics/BitmapFactory.decodeFile:(Ljava/lang/String;)Landroid/graphics/Bitmap;
+      29: astore_3
+      30: aload_3
+      31: iconst_0
+      32: iconst_0
+      33: aload_3
+      34: invokevirtual #70                 // Method android/graphics/Bitmap.getWidth:()I
+      37: aload_3
+      38: invokevirtual #71                 // Method android/graphics/Bitmap.getHeight:()I
+      41: aload_2
+      42: iconst_1
+      43: invokestatic  #72                 // Method android/graphics/Bitmap.createBitmap:(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
+      46: astore        4
+      48: new           #73                 // class java/io/FileOutputStream
+      51: dup
+      52: aload_0
+      53: invokespecial #74                 // Method java/io/FileOutputStream."<init>":(Ljava/lang/String;)V
+      56: astore        6
+      58: aload         4
+      60: getstatic     #75                 // Field android/graphics/Bitmap$CompressFormat.JPEG:Landroid/graphics/Bitmap$CompressFormat;
+      63: bipush        90
+      65: aload         6
+      67: invokevirtual #76                 // Method android/graphics/Bitmap.compress:(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+      70: pop
+      71: aload         6
+      73: invokevirtual #77                 // Method java/io/FileOutputStream.close:()V
+      76: goto          86
+      79: astore        5
+      81: aload         5
+      83: invokevirtual #79                 // Method java/lang/Exception.printStackTrace:()V
+      86: return
+    Exception table:
+       from    to  target type
+          48    76    79   Class java/lang/Exception
+
+  private static int getImageOrientation(java.lang.String);
+    descriptor: (Ljava/lang/String;)I
+    Code:
+       0: iconst_0
+       1: istore_1
+       2: new           #80                 // class android/media/ExifInterface
+       5: dup
+       6: aload_0
+       7: invokespecial #81                 // Method android/media/ExifInterface."<init>":(Ljava/lang/String;)V
+      10: astore_2
+      11: aload_2
+      12: ldc           #82                 // String Orientation
+      14: iconst_1
+      15: invokevirtual #83                 // Method android/media/ExifInterface.getAttributeInt:(Ljava/lang/String;I)I
+      18: istore_3
+      19: iload_3
+      20: lookupswitch  { // 3
+                     3: 63
+                     6: 70
+                     8: 56
+               default: 73
+          }
+      56: sipush        270
+      59: istore_1
+      60: goto          73
+      63: sipush        180
+      66: istore_1
+      67: goto          73
+      70: bipush        90
+      72: istore_1
+      73: goto          81
+      76: astore_2
+      77: aload_2
+      78: invokevirtual #85                 // Method java/io/IOException.printStackTrace:()V
+      81: iload_1
+      82: ireturn
+    Exception table:
+       from    to  target type
+           2    73    76   Class java/io/IOException
+
+  private static void PrintCameraCharacteristics();
+    descriptor: ()V
+    Code:
+       0: getstatic     #86                 // Field android/os/Build$VERSION.SDK_INT:I
+       3: bipush        21
+       5: if_icmplt     115
+       8: invokestatic  #87                 // Method com/ideaworks3d/marmalade/LoaderAPI.getActivity:()Lcom/ideaworks3d/marmalade/LoaderActivity;
+      11: invokevirtual #55                 // Method com/ideaworks3d/marmalade/LoaderActivity.getApplicationContext:()Landroid/content/Context;
+      14: astore_0
+      15: aload_0
+      16: ldc           #88                 // String camera
+      18: invokevirtual #89                 // Method android/content/Context.getSystemService:(Ljava/lang/String;)Ljava/lang/Object;
+      21: checkcast     #90                 // class android/hardware/camera2/CameraManager
+      24: astore_1
+      25: aload_1
+      26: invokevirtual #91                 // Method android/hardware/camera2/CameraManager.getCameraIdList:()[Ljava/lang/String;
+      29: astore_2
+      30: aload_2
+      31: astore_3
+      32: aload_3
+      33: arraylength
+      34: istore        4
+      36: iconst_0
+      37: istore        5
+      39: iload         5
+      41: iload         4
+      43: if_icmpge     107
+      46: aload_3
+      47: iload         5
+      49: aaload
+      50: astore        6
+      52: aload_1
+      53: aload         6
+      55: invokevirtual #92                 // Method android/hardware/camera2/CameraManager.getCameraCharacteristics:(Ljava/lang/String;)Landroid/hardware/camera2/CameraCharacteristics;
+      58: astore        7
+      60: aload         7
+      62: getstatic     #93                 // Field android/hardware/camera2/CameraCharacteristics.SENSOR_ORIENTATION:Landroid/hardware/camera2/CameraCharacteristics$Key;
+      65: invokevirtual #94                 // Method android/hardware/camera2/CameraCharacteristics.get:(Landroid/hardware/camera2/CameraCharacteristics$Key;)Ljava/lang/Object;
+      68: checkcast     #95                 // class java/lang/Integer
+      71: invokevirtual #96                 // Method java/lang/Integer.intValue:()I
+      74: istore        8
+      76: ldc           #97                 // String Camera %s orientation = %d
+      78: iconst_2
+      79: anewarray     #43                 // class java/lang/Object
+      82: dup
+      83: iconst_0
+      84: aload         6
+      86: aastore
+      87: dup
+      88: iconst_1
+      89: iload         8
+      91: invokestatic  #46                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      94: aastore
+      95: invokestatic  #47                 // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+      98: invokestatic  #53                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+     101: iinc          5, 1
+     104: goto          39
+     107: goto          115
+     110: astore_2
+     111: aload_2
+     112: invokevirtual #99                 // Method android/hardware/camera2/CameraAccessException.printStackTrace:()V
+     115: return
+    Exception table:
+       from    to  target type
+          25   107   110   Class android/hardware/camera2/CameraAccessException
+
+  static boolean access$002(boolean);
+    descriptor: (Z)Z
+    Code:
+       0: iload_0
+       1: dup
+       2: putstatic     #1                  // Field m_WaitingForFile:Z
+       5: ireturn
+
+  static {};
+    descriptor: ()V
+    Code:
+       0: iconst_0
+       1: putstatic     #45                 // Field s_Images:I
+       4: iconst_0
+       5: putstatic     #32                 // Field s_Videos:I
+       8: return
+}

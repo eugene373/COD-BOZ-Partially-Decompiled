@@ -1,0 +1,24 @@
+Compiled from "s3eImagePicker.java"
+public class com.ideaworks3d.marmalade.s3eImagePicker$ImagePickerResult {
+  int format;
+    descriptor: I
+
+  java.lang.String path;
+    descriptor: Ljava/lang/String;
+
+  int size;
+    descriptor: I
+
+  final com.ideaworks3d.marmalade.s3eImagePicker this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/s3eImagePicker;
+
+  public com.ideaworks3d.marmalade.s3eImagePicker$ImagePickerResult(com.ideaworks3d.marmalade.s3eImagePicker);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eImagePicker;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eImagePicker;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: return
+}

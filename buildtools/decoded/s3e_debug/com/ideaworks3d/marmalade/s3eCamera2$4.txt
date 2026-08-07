@@ -1,0 +1,105 @@
+Compiled from "s3eCamera2.java"
+class com.ideaworks3d.marmalade.s3eCamera2$4 extends android.hardware.camera2.CameraCaptureSession$StateCallback {
+  final com.ideaworks3d.marmalade.s3eCamera2 this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/s3eCamera2;
+
+  com.ideaworks3d.marmalade.s3eCamera2$4(com.ideaworks3d.marmalade.s3eCamera2);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eCamera2;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera2;
+       5: aload_0
+       6: invokespecial #2                  // Method android/hardware/camera2/CameraCaptureSession$StateCallback."<init>":()V
+       9: return
+
+  public void onConfigured(android.hardware.camera2.CameraCaptureSession);
+    descriptor: (Landroid/hardware/camera2/CameraCaptureSession;)V
+    Code:
+       0: aconst_null
+       1: aload_0
+       2: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera2;
+       5: invokestatic  #3                  // Method com/ideaworks3d/marmalade/s3eCamera2.access$300:(Lcom/ideaworks3d/marmalade/s3eCamera2;)Landroid/hardware/camera2/CameraDevice;
+       8: if_acmpne     12
+      11: return
+      12: aload_0
+      13: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera2;
+      16: invokestatic  #4                  // Method com/ideaworks3d/marmalade/s3eCamera2.access$600:(Lcom/ideaworks3d/marmalade/s3eCamera2;)Z
+      19: ifeq          64
+      22: aload_0
+      23: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera2;
+      26: aload_0
+      27: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera2;
+      30: invokestatic  #5                  // Method com/ideaworks3d/marmalade/s3eCamera2.access$700:(Lcom/ideaworks3d/marmalade/s3eCamera2;)Landroid/hardware/camera2/CaptureRequest$Builder;
+      33: invokestatic  #6                  // Method com/ideaworks3d/marmalade/s3eCamera2.access$800:(Lcom/ideaworks3d/marmalade/s3eCamera2;Landroid/hardware/camera2/CaptureRequest$Builder;)V
+      36: aload_1
+      37: aload_0
+      38: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera2;
+      41: invokestatic  #5                  // Method com/ideaworks3d/marmalade/s3eCamera2.access$700:(Lcom/ideaworks3d/marmalade/s3eCamera2;)Landroid/hardware/camera2/CaptureRequest$Builder;
+      44: invokevirtual #7                  // Method android/hardware/camera2/CaptureRequest$Builder.build:()Landroid/hardware/camera2/CaptureRequest;
+      47: aconst_null
+      48: getstatic     #8                  // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      51: getfield      #9                  // Field com/ideaworks3d/marmalade/LoaderActivity.m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+      54: getfield      #10                 // Field com/ideaworks3d/marmalade/LoaderView.m_Handler:Landroid/os/Handler;
+      57: invokevirtual #11                 // Method android/hardware/camera2/CameraCaptureSession.capture:(Landroid/hardware/camera2/CaptureRequest;Landroid/hardware/camera2/CameraCaptureSession$CaptureCallback;Landroid/os/Handler;)I
+      60: pop
+      61: goto          103
+      64: aload_0
+      65: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera2;
+      68: aload_0
+      69: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera2;
+      72: invokestatic  #12                 // Method com/ideaworks3d/marmalade/s3eCamera2.access$900:(Lcom/ideaworks3d/marmalade/s3eCamera2;)Landroid/hardware/camera2/CaptureRequest$Builder;
+      75: invokestatic  #13                 // Method com/ideaworks3d/marmalade/s3eCamera2.access$1000:(Lcom/ideaworks3d/marmalade/s3eCamera2;Landroid/hardware/camera2/CaptureRequest$Builder;)V
+      78: aload_1
+      79: aload_0
+      80: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera2;
+      83: invokestatic  #12                 // Method com/ideaworks3d/marmalade/s3eCamera2.access$900:(Lcom/ideaworks3d/marmalade/s3eCamera2;)Landroid/hardware/camera2/CaptureRequest$Builder;
+      86: invokevirtual #7                  // Method android/hardware/camera2/CaptureRequest$Builder.build:()Landroid/hardware/camera2/CaptureRequest;
+      89: aconst_null
+      90: getstatic     #8                  // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      93: getfield      #9                  // Field com/ideaworks3d/marmalade/LoaderActivity.m_View:Lcom/ideaworks3d/marmalade/LoaderView;
+      96: getfield      #10                 // Field com/ideaworks3d/marmalade/LoaderView.m_Handler:Landroid/os/Handler;
+      99: invokevirtual #14                 // Method android/hardware/camera2/CameraCaptureSession.setRepeatingRequest:(Landroid/hardware/camera2/CaptureRequest;Landroid/hardware/camera2/CameraCaptureSession$CaptureCallback;Landroid/os/Handler;)I
+     102: pop
+     103: aload_0
+     104: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/s3eCamera2;
+     107: aload_1
+     108: invokestatic  #15                 // Method com/ideaworks3d/marmalade/s3eCamera2.access$1102:(Lcom/ideaworks3d/marmalade/s3eCamera2;Landroid/hardware/camera2/CameraCaptureSession;)Landroid/hardware/camera2/CameraCaptureSession;
+     111: pop
+     112: goto          120
+     115: astore_2
+     116: aload_2
+     117: invokevirtual #17                 // Method android/hardware/camera2/CameraAccessException.printStackTrace:()V
+     120: return
+    Exception table:
+       from    to  target type
+          12   112   115   Class android/hardware/camera2/CameraAccessException
+
+  public void onConfigureFailed(android.hardware.camera2.CameraCaptureSession);
+    descriptor: (Landroid/hardware/camera2/CameraCaptureSession;)V
+    Code:
+       0: new           #18                 // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #19                 // Method java/lang/StringBuilder."<init>":()V
+       7: aload_0
+       8: invokevirtual #20                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      11: invokevirtual #21                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      14: aload_0
+      15: invokevirtual #20                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+      18: invokevirtual #21                 // Method java/lang/Class.getName:()Ljava/lang/String;
+      21: bipush        46
+      23: invokevirtual #22                 // Method java/lang/String.lastIndexOf:(I)I
+      26: iconst_1
+      27: iadd
+      28: invokevirtual #23                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      31: invokevirtual #24                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      34: ldc           #25                 // String -
+      36: invokevirtual #24                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      39: invokestatic  #26                 // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+      42: invokevirtual #27                 // Method java/lang/Thread.getName:()Ljava/lang/String;
+      45: invokevirtual #24                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      48: invokevirtual #28                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      51: ldc           #29                 // String mOnImageAvailableListener: OnImageAvailableListener 1
+      53: invokestatic  #30                 // Method com/ideaworks3d/marmalade/LoaderAPI.traceChan:(Ljava/lang/String;Ljava/lang/String;)V
+      56: return
+}

@@ -1,0 +1,238 @@
+Compiled from "s3eTest.java"
+public class com.ideaworks3d.marmalade.s3eTest {
+  private android.os.Handler m_Handler;
+    descriptor: Landroid/os/Handler;
+
+  java.lang.Thread thread;
+    descriptor: Ljava/lang/Thread;
+
+  private boolean suspendResumeCompletionFlag;
+    descriptor: Z
+
+  private final java.lang.Object suspendResumeLock;
+    descriptor: Ljava/lang/Object;
+
+  public com.ideaworks3d.marmalade.s3eTest();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #4                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iconst_0
+       6: putfield      #1                  // Field suspendResumeCompletionFlag:Z
+       9: aload_0
+      10: new           #5                  // class java/lang/Object
+      13: dup
+      14: invokespecial #4                  // Method java/lang/Object."<init>":()V
+      17: putfield      #2                  // Field suspendResumeLock:Ljava/lang/Object;
+      20: getstatic     #6                  // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      23: invokevirtual #7                  // Method com/ideaworks3d/marmalade/LoaderActivity.LoaderThread:()Lcom/ideaworks3d/marmalade/LoaderThread;
+      26: new           #8                  // class com/ideaworks3d/marmalade/s3eTest$1
+      29: dup
+      30: aload_0
+      31: invokespecial #9                  // Method com/ideaworks3d/marmalade/s3eTest$1."<init>":(Lcom/ideaworks3d/marmalade/s3eTest;)V
+      34: invokevirtual #10                 // Method com/ideaworks3d/marmalade/LoaderThread.runOnOSThread:(Ljava/lang/Runnable;)V
+      37: return
+
+  public void PostSuspend();
+    descriptor: ()V
+    Code:
+       0: ldc           #11                 // String PostSuspend
+       2: invokestatic  #12                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+       5: aload_0
+       6: getfield      #3                  // Field m_Handler:Landroid/os/Handler;
+       9: new           #13                 // class com/ideaworks3d/marmalade/s3eTest$2
+      12: dup
+      13: aload_0
+      14: invokespecial #14                 // Method com/ideaworks3d/marmalade/s3eTest$2."<init>":(Lcom/ideaworks3d/marmalade/s3eTest;)V
+      17: invokevirtual #15                 // Method android/os/Handler.post:(Ljava/lang/Runnable;)Z
+      20: pop
+      21: return
+
+  public void PostResume();
+    descriptor: ()V
+    Code:
+       0: ldc           #16                 // String PostResume
+       2: invokestatic  #12                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+       5: aload_0
+       6: getfield      #3                  // Field m_Handler:Landroid/os/Handler;
+       9: new           #17                 // class com/ideaworks3d/marmalade/s3eTest$3
+      12: dup
+      13: aload_0
+      14: invokespecial #18                 // Method com/ideaworks3d/marmalade/s3eTest$3."<init>":(Lcom/ideaworks3d/marmalade/s3eTest;)V
+      17: invokevirtual #15                 // Method android/os/Handler.post:(Ljava/lang/Runnable;)Z
+      20: pop
+      21: return
+
+  public void PostSetFocus(boolean);
+    descriptor: (Z)V
+    Code:
+       0: ldc           #19                 // String PostSetFocus
+       2: invokestatic  #12                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+       5: aload_0
+       6: getfield      #3                  // Field m_Handler:Landroid/os/Handler;
+       9: new           #20                 // class com/ideaworks3d/marmalade/s3eTest$4
+      12: dup
+      13: aload_0
+      14: iload_1
+      15: invokespecial #21                 // Method com/ideaworks3d/marmalade/s3eTest$4."<init>":(Lcom/ideaworks3d/marmalade/s3eTest;Z)V
+      18: invokevirtual #15                 // Method android/os/Handler.post:(Ljava/lang/Runnable;)Z
+      21: pop
+      22: return
+
+  public void PostSuspendResume(int, int);
+    descriptor: (II)V
+    Code:
+       0: aload_0
+       1: new           #22                 // class java/lang/Thread
+       4: dup
+       5: new           #23                 // class com/ideaworks3d/marmalade/s3eTest$5
+       8: dup
+       9: aload_0
+      10: iload_2
+      11: iload_1
+      12: invokespecial #24                 // Method com/ideaworks3d/marmalade/s3eTest$5."<init>":(Lcom/ideaworks3d/marmalade/s3eTest;II)V
+      15: invokespecial #25                 // Method java/lang/Thread."<init>":(Ljava/lang/Runnable;)V
+      18: putfield      #26                 // Field thread:Ljava/lang/Thread;
+      21: aload_0
+      22: getfield      #26                 // Field thread:Ljava/lang/Thread;
+      25: invokevirtual #27                 // Method java/lang/Thread.start:()V
+      28: return
+
+  public boolean QueryThreadFinished();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: getfield      #26                 // Field thread:Ljava/lang/Thread;
+       4: ifnonnull     9
+       7: iconst_1
+       8: ireturn
+       9: iconst_0
+      10: ireturn
+
+  public void PostRotate(int, int);
+    descriptor: (II)V
+    Code:
+       0: ldc           #28                 // String PostRotate
+       2: invokestatic  #12                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+       5: aload_0
+       6: getfield      #3                  // Field m_Handler:Landroid/os/Handler;
+       9: new           #29                 // class com/ideaworks3d/marmalade/s3eTest$6
+      12: dup
+      13: aload_0
+      14: iload_1
+      15: iload_2
+      16: invokespecial #30                 // Method com/ideaworks3d/marmalade/s3eTest$6."<init>":(Lcom/ideaworks3d/marmalade/s3eTest;II)V
+      19: invokevirtual #15                 // Method android/os/Handler.post:(Ljava/lang/Runnable;)Z
+      22: pop
+      23: return
+
+  public int[] TakeScreenShot(int[]);
+    descriptor: ([I)[I
+    Code:
+       0: ldc           #31                 // String TakeScreenShot
+       2: invokestatic  #12                 // Method com/ideaworks3d/marmalade/LoaderAPI.trace:(Ljava/lang/String;)V
+       5: invokestatic  #32                 // Method com/ideaworks3d/marmalade/LoaderAPI.getActivity:()Lcom/ideaworks3d/marmalade/LoaderActivity;
+       8: invokevirtual #33                 // Method com/ideaworks3d/marmalade/LoaderActivity.getWindow:()Landroid/view/Window;
+      11: invokevirtual #34                 // Method android/view/Window.getDecorView:()Landroid/view/View;
+      14: ldc           #35                 // int 16908290
+      16: invokevirtual #36                 // Method android/view/View.findViewById:(I)Landroid/view/View;
+      19: astore_2
+      20: aload_2
+      21: iconst_1
+      22: invokevirtual #37                 // Method android/view/View.setDrawingCacheEnabled:(Z)V
+      25: aload_2
+      26: invokevirtual #38                 // Method android/view/View.getDrawingCache:()Landroid/graphics/Bitmap;
+      29: invokestatic  #39                 // Method android/graphics/Bitmap.createBitmap:(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
+      32: astore_3
+      33: aload_3
+      34: invokevirtual #40                 // Method android/graphics/Bitmap.getWidth:()I
+      37: istore        4
+      39: aload_3
+      40: invokevirtual #41                 // Method android/graphics/Bitmap.getHeight:()I
+      43: istore        5
+      45: iload         4
+      47: iload         5
+      49: imul
+      50: istore        6
+      52: iload         6
+      54: newarray       int
+      56: astore        7
+      58: aload_3
+      59: aload         7
+      61: iconst_0
+      62: iload         4
+      64: iconst_0
+      65: iconst_0
+      66: iload         4
+      68: iload         5
+      70: invokevirtual #42                 // Method android/graphics/Bitmap.getPixels:([IIIIIII)V
+      73: aload_1
+      74: iconst_0
+      75: iload         4
+      77: iastore
+      78: aload_1
+      79: iconst_1
+      80: iload         5
+      82: iastore
+      83: aload_2
+      84: iconst_0
+      85: invokevirtual #37                 // Method android/view/View.setDrawingCacheEnabled:(Z)V
+      88: aload         7
+      90: areturn
+
+  public int GetAndroidTargetAPILevel();
+    descriptor: ()I
+    Code:
+       0: iconst_0
+       1: istore_1
+       2: invokestatic  #32                 // Method com/ideaworks3d/marmalade/LoaderAPI.getActivity:()Lcom/ideaworks3d/marmalade/LoaderActivity;
+       5: invokevirtual #43                 // Method com/ideaworks3d/marmalade/LoaderActivity.getApplicationInfo:()Landroid/content/pm/ApplicationInfo;
+       8: astore_2
+       9: aload_2
+      10: ifnull        18
+      13: aload_2
+      14: getfield      #44                 // Field android/content/pm/ApplicationInfo.targetSdkVersion:I
+      17: istore_1
+      18: goto          26
+      21: astore_2
+      22: aload_2
+      23: invokevirtual #46                 // Method java/lang/Exception.printStackTrace:()V
+      26: iload_1
+      27: ireturn
+    Exception table:
+       from    to  target type
+           2    18    21   Class java/lang/Exception
+
+  static android.os.Handler access$002(com.ideaworks3d.marmalade.s3eTest, android.os.Handler);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eTest;Landroid/os/Handler;)Landroid/os/Handler;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: dup_x1
+       3: putfield      #3                  // Field m_Handler:Landroid/os/Handler;
+       6: areturn
+
+  static java.lang.Object access$100(com.ideaworks3d.marmalade.s3eTest);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eTest;)Ljava/lang/Object;
+    Code:
+       0: aload_0
+       1: getfield      #2                  // Field suspendResumeLock:Ljava/lang/Object;
+       4: areturn
+
+  static boolean access$202(com.ideaworks3d.marmalade.s3eTest, boolean);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eTest;Z)Z
+    Code:
+       0: aload_0
+       1: iload_1
+       2: dup_x1
+       3: putfield      #1                  // Field suspendResumeCompletionFlag:Z
+       6: ireturn
+
+  static boolean access$200(com.ideaworks3d.marmalade.s3eTest);
+    descriptor: (Lcom/ideaworks3d/marmalade/s3eTest;)Z
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field suspendResumeCompletionFlag:Z
+       4: ireturn
+}

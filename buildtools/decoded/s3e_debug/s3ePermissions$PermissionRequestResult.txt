@@ -1,0 +1,67 @@
+Compiled from "s3ePermissions.java"
+class s3ePermissions$PermissionRequestResult {
+  public java.lang.String permission;
+    descriptor: Ljava/lang/String;
+
+  public int result;
+    descriptor: I
+
+  private boolean isResultSet;
+    descriptor: Z
+
+  final s3ePermissions this$0;
+    descriptor: Ls3ePermissions;
+
+  public s3ePermissions$PermissionRequestResult(s3ePermissions, java.lang.String);
+    descriptor: (Ls3ePermissions;Ljava/lang/String;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Ls3ePermissions;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: aload_0
+      10: iconst_0
+      11: putfield      #3                  // Field isResultSet:Z
+      14: aload_0
+      15: aload_2
+      16: putfield      #4                  // Field permission:Ljava/lang/String;
+      19: return
+
+  public s3ePermissions$PermissionRequestResult(s3ePermissions, java.lang.String, int);
+    descriptor: (Ls3ePermissions;Ljava/lang/String;I)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Ls3ePermissions;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: aload_0
+      10: iconst_0
+      11: putfield      #3                  // Field isResultSet:Z
+      14: aload_0
+      15: aload_2
+      16: putfield      #4                  // Field permission:Ljava/lang/String;
+      19: aload_0
+      20: iload_3
+      21: invokevirtual #5                  // Method setResult:(I)V
+      24: return
+
+  public void setResult(int);
+    descriptor: (I)V
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #6                  // Field result:I
+       5: aload_0
+       6: iconst_1
+       7: putfield      #3                  // Field isResultSet:Z
+      10: return
+
+  public boolean isSet();
+    descriptor: ()Z
+    Code:
+       0: aload_0
+       1: getfield      #3                  // Field isResultSet:Z
+       4: ireturn
+}

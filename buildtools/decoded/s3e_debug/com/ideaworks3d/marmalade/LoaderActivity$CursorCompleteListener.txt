@@ -1,0 +1,5 @@
+Compiled from "LoaderActivity.java"
+interface com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener {
+  public abstract void cursorLoadComplete(android.database.Cursor);
+    descriptor: (Landroid/database/Cursor;)V
+}

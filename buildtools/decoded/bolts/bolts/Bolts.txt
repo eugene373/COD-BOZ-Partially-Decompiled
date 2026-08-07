@@ -1,0 +1,12 @@
+Compiled from "Bolts.java"
+public final class bolts.Bolts {
+  public static final java.lang.String VERSION = "1.1.2";
+    descriptor: Ljava/lang/String;
+
+  public bolts.Bolts();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+}

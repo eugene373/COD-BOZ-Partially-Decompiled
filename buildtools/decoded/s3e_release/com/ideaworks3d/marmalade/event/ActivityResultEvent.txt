@@ -1,0 +1,27 @@
+Compiled from "ActivityResultEvent.java"
+public class com.ideaworks3d.marmalade.event.ActivityResultEvent {
+  public android.content.Intent m_intent;
+    descriptor: Landroid/content/Intent;
+
+  public int m_requestCode;
+    descriptor: I
+
+  public int m_resultCode;
+    descriptor: I
+
+  public com.ideaworks3d.marmalade.event.ActivityResultEvent(android.content.Intent, int, int);
+    descriptor: (Landroid/content/Intent;II)V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #2                  // Field m_intent:Landroid/content/Intent;
+       9: aload_0
+      10: iload_2
+      11: putfield      #3                  // Field m_requestCode:I
+      14: aload_0
+      15: iload_3
+      16: putfield      #4                  // Field m_resultCode:I
+      19: return
+}

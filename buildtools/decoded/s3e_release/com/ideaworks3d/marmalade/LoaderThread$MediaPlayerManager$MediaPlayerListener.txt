@@ -1,0 +1,106 @@
+Compiled from "LoaderThread.java"
+class com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener implements android.media.MediaPlayer$OnErrorListener,android.media.MediaPlayer$OnCompletionListener {
+  int m_channel;
+    descriptor: I
+
+  final com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager this$1;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;
+
+  com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager$MediaPlayerListener(com.ideaworks3d.marmalade.LoaderThread$MediaPlayerManager, int);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;I)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$1:Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;
+       5: aload_0
+       6: invokespecial #2                  // Method java/lang/Object."<init>":()V
+       9: aload_0
+      10: iload_2
+      11: putfield      #3                  // Field m_channel:I
+      14: return
+
+  public boolean onError(android.media.MediaPlayer, int, int);
+    descriptor: (Landroid/media/MediaPlayer;II)Z
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field this$1:Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;
+       4: getstatic     #4                  // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Error:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+       7: aload_0
+       8: getfield      #3                  // Field m_channel:I
+      11: invokestatic  #5                  // Method com/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager.access$000:(Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;I)V
+      14: aload_0
+      15: getfield      #1                  // Field this$1:Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;
+      18: invokestatic  #6                  // Method com/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager.access$100:(Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;)[Landroid/media/MediaPlayer;
+      21: aload_0
+      22: getfield      #3                  // Field m_channel:I
+      25: aaload
+      26: invokevirtual #7                  // Method android/media/MediaPlayer.reset:()V
+      29: aload_0
+      30: getfield      #1                  // Field this$1:Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;
+      33: getstatic     #8                  // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Idle:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      36: aload_0
+      37: getfield      #3                  // Field m_channel:I
+      40: invokestatic  #5                  // Method com/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager.access$000:(Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;I)V
+      43: aload_0
+      44: getfield      #1                  // Field this$1:Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;
+      47: aload_0
+      48: getfield      #3                  // Field m_channel:I
+      51: invokestatic  #9                  // Method com/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager.access$200:(Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;I)V
+      54: iconst_1
+      55: ireturn
+
+  public void onCompletion(android.media.MediaPlayer);
+    descriptor: (Landroid/media/MediaPlayer;)V
+    Code:
+       0: aload_0
+       1: getfield      #1                  // Field this$1:Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;
+       4: invokestatic  #10                 // Method com/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager.access$300:(Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;)[I
+       7: aload_0
+       8: getfield      #3                  // Field m_channel:I
+      11: dup2
+      12: iaload
+      13: iconst_1
+      14: isub
+      15: iastore
+      16: aload_0
+      17: getfield      #1                  // Field this$1:Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;
+      20: invokestatic  #10                 // Method com/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager.access$300:(Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;)[I
+      23: aload_0
+      24: getfield      #3                  // Field m_channel:I
+      27: iaload
+      28: ifne          59
+      31: aload_0
+      32: getfield      #1                  // Field this$1:Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;
+      35: getstatic     #11                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.PlaybackCompleted:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      38: aload_0
+      39: getfield      #3                  // Field m_channel:I
+      42: invokestatic  #5                  // Method com/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager.access$000:(Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;I)V
+      45: aload_0
+      46: getfield      #1                  // Field this$1:Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;
+      49: aload_0
+      50: getfield      #3                  // Field m_channel:I
+      53: invokevirtual #12                 // Method com/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager.audioStop:(I)V
+      56: goto          97
+      59: aload_0
+      60: getfield      #1                  // Field this$1:Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;
+      63: invokestatic  #6                  // Method com/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager.access$100:(Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;)[Landroid/media/MediaPlayer;
+      66: aload_0
+      67: getfield      #3                  // Field m_channel:I
+      70: aaload
+      71: invokevirtual #13                 // Method android/media/MediaPlayer.start:()V
+      74: goto          83
+      77: astore_2
+      78: aload_2
+      79: invokevirtual #15                 // Method java/lang/IllegalStateException.printStackTrace:()V
+      82: return
+      83: aload_0
+      84: getfield      #1                  // Field this$1:Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;
+      87: getstatic     #16                 // Field com/ideaworks3d/marmalade/LoaderThread$AudioState.Started:Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;
+      90: aload_0
+      91: getfield      #3                  // Field m_channel:I
+      94: invokestatic  #5                  // Method com/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager.access$000:(Lcom/ideaworks3d/marmalade/LoaderThread$MediaPlayerManager;Lcom/ideaworks3d/marmalade/LoaderThread$AudioState;I)V
+      97: return
+    Exception table:
+       from    to  target type
+          59    74    77   Class java/lang/IllegalStateException
+}

@@ -1,0 +1,26 @@
+Compiled from "AggregateException.java"
+public class bolts.AggregateException extends java.lang.Exception {
+  private static final long serialVersionUID = 1l;
+    descriptor: J
+
+  private java.util.List<java.lang.Exception> errors;
+    descriptor: Ljava/util/List;
+
+  public bolts.AggregateException(java.util.List<java.lang.Exception>);
+    descriptor: (Ljava/util/List;)V
+    Code:
+       0: aload_0
+       1: ldc           #1                  // String There were multiple errors.
+       3: invokespecial #2                  // Method java/lang/Exception."<init>":(Ljava/lang/String;)V
+       6: aload_0
+       7: aload_1
+       8: putfield      #3                  // Field errors:Ljava/util/List;
+      11: return
+
+  public java.util.List<java.lang.Exception> getErrors();
+    descriptor: ()Ljava/util/List;
+    Code:
+       0: aload_0
+       1: getfield      #3                  // Field errors:Ljava/util/List;
+       4: areturn
+}

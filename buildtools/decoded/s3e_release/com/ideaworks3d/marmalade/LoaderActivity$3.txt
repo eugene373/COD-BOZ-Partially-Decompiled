@@ -1,0 +1,67 @@
+Compiled from "LoaderActivity.java"
+class com.ideaworks3d.marmalade.LoaderActivity$3 implements java.lang.Runnable {
+  final android.net.Uri val$uri;
+    descriptor: Landroid/net/Uri;
+
+  final java.lang.String[] val$proj;
+    descriptor: [Ljava/lang/String;
+
+  final com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener val$completeCallback;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;
+
+  final com.ideaworks3d.marmalade.LoaderActivity this$0;
+    descriptor: Lcom/ideaworks3d/marmalade/LoaderActivity;
+
+  com.ideaworks3d.marmalade.LoaderActivity$3(com.ideaworks3d.marmalade.LoaderActivity, android.net.Uri, java.lang.String[], com.ideaworks3d.marmalade.LoaderActivity$CursorCompleteListener);
+    descriptor: (Lcom/ideaworks3d/marmalade/LoaderActivity;Landroid/net/Uri;[Ljava/lang/String;Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderActivity;
+       5: aload_0
+       6: aload_2
+       7: putfield      #2                  // Field val$uri:Landroid/net/Uri;
+      10: aload_0
+      11: aload_3
+      12: putfield      #3                  // Field val$proj:[Ljava/lang/String;
+      15: aload_0
+      16: aload         4
+      18: putfield      #4                  // Field val$completeCallback:Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;
+      21: aload_0
+      22: invokespecial #5                  // Method java/lang/Object."<init>":()V
+      25: return
+
+  public void run();
+    descriptor: ()V
+    Code:
+       0: getstatic     #6                  // Field android/os/Build$VERSION.SDK_INT:I
+       3: istore_1
+       4: iload_1
+       5: bipush        11
+       7: if_icmplt     29
+      10: aload_0
+      11: getfield      #2                  // Field val$uri:Landroid/net/Uri;
+      14: aload_0
+      15: getfield      #3                  // Field val$proj:[Ljava/lang/String;
+      18: aload_0
+      19: getfield      #4                  // Field val$completeCallback:Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;
+      22: invokestatic  #7                  // Method com/ideaworks3d/marmalade/CursorLoaderHelper.getCursor:(Landroid/net/Uri;[Ljava/lang/String;Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;)Z
+      25: pop
+      26: goto          58
+      29: aload_0
+      30: getfield      #1                  // Field this$0:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      33: aload_0
+      34: getfield      #2                  // Field val$uri:Landroid/net/Uri;
+      37: aload_0
+      38: getfield      #3                  // Field val$proj:[Ljava/lang/String;
+      41: aconst_null
+      42: aconst_null
+      43: aconst_null
+      44: invokevirtual #8                  // Method com/ideaworks3d/marmalade/LoaderActivity.managedQuery:(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+      47: astore_2
+      48: aload_0
+      49: getfield      #4                  // Field val$completeCallback:Lcom/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener;
+      52: aload_2
+      53: invokeinterface #9,  2            // InterfaceMethod com/ideaworks3d/marmalade/LoaderActivity$CursorCompleteListener.cursorLoadComplete:(Landroid/database/Cursor;)V
+      58: return
+}

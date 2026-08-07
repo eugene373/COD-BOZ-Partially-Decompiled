@@ -1,0 +1,5 @@
+Compiled from "AppLinkResolver.java"
+public interface bolts.AppLinkResolver {
+  public abstract bolts.Task<bolts.AppLink> getAppLinkFromUrlInBackground(android.net.Uri);
+    descriptor: (Landroid/net/Uri;)Lbolts/Task;
+}

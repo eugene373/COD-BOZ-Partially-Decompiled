@@ -1,0 +1,52 @@
+Compiled from "LoaderActivity.java"
+class com.ideaworks3d.marmalade.ProgressDialogHandler extends android.os.Handler {
+  public static final int PROGRESS_START = 0;
+    descriptor: I
+
+  public static final int PROGRESS_FINISH = 1;
+    descriptor: I
+
+  private android.app.ProgressDialog progressDialog;
+    descriptor: Landroid/app/ProgressDialog;
+
+  com.ideaworks3d.marmalade.ProgressDialogHandler();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method android/os/Handler."<init>":()V
+       4: return
+
+  public void handleMessage(android.os.Message);
+    descriptor: (Landroid/os/Message;)V
+    Code:
+       0: aload_1
+       1: getfield      #2                  // Field android/os/Message.what:I
+       4: lookupswitch  { // 2
+                     0: 32
+                     1: 51
+               default: 80
+          }
+      32: aload_0
+      33: getstatic     #3                  // Field com/ideaworks3d/marmalade/LoaderActivity.m_Activity:Lcom/ideaworks3d/marmalade/LoaderActivity;
+      36: ldc           #4                  // String
+      38: ldc           #4                  // String
+      40: iconst_1
+      41: iconst_0
+      42: invokestatic  #5                  // Method android/app/ProgressDialog.show:(Landroid/content/Context;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ZZ)Landroid/app/ProgressDialog;
+      45: putfield      #6                  // Field progressDialog:Landroid/app/ProgressDialog;
+      48: goto          80
+      51: aload_0
+      52: getfield      #6                  // Field progressDialog:Landroid/app/ProgressDialog;
+      55: ifnull        80
+      58: aload_0
+      59: getfield      #6                  // Field progressDialog:Landroid/app/ProgressDialog;
+      62: invokevirtual #7                  // Method android/app/ProgressDialog.isShowing:()Z
+      65: ifeq          80
+      68: aload_0
+      69: getfield      #6                  // Field progressDialog:Landroid/app/ProgressDialog;
+      72: invokevirtual #8                  // Method android/app/ProgressDialog.dismiss:()V
+      75: aload_0
+      76: aconst_null
+      77: putfield      #6                  // Field progressDialog:Landroid/app/ProgressDialog;
+      80: return
+}
