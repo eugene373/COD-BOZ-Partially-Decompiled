@@ -121,6 +121,15 @@ open class LoaderActivity : Activity() {
         trace("XXX onConfigurationChanged done XXX")
     }
 
+    /**
+     * Set true by subclasses to defer the native loader (e.g. until a required
+     * runtime permission is granted). When true, [startLoader] becomes a no-op
+     * and the subclass must call [startLoader] again once the precondition is
+     * met.
+     */
+    @JvmField
+    protected var m_DeferLoader: Boolean = false
+
     override fun onStart() {
         trace("XXX onStart XXX")
         super.onStart()
@@ -221,6 +230,10 @@ open class LoaderActivity : Activity() {
     }
 
     private fun startLoader() {
+        if (m_DeferLoader) {
+            trace("startLoader: deferred (m_DeferLoader set)")
+            return
+        }
         m_LoaderThread = LoaderThread.getInstance(this, assets, filesDir, m_View!!)
     }
 

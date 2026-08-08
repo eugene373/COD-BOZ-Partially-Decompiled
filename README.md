@@ -172,14 +172,42 @@ build-tools 36, Gradle 8.11.1 (auto-fetched by the wrapper).
 
 ## Game "OBB" data
 
-The runtime still expects the `blackops_*.dz` OBB file alongside the
-APK, copied to `Android/obb/com.activision.boz/`:
+The runtime downloads the `blackops_*.dz` texture blob on first launch
+into `Android/obb/com.activision.boz/` (it writes a `.tmp` file first,
+then renames). The source URLs (still live on the Activision CDN):
 
 - [blackops_dxt.dz](http://cdn-boz-android.callofduty.com/PROD/CODBOZ/1_0_8/blackops_dxt.dz)
 - [blackops_atitc.dz](http://cdn-boz-android.callofduty.com/PROD/CODBOZ/1_0_8/blackops_atitc.dz)
 - [blackops_etc.dz](http://cdn-boz-android.callofduty.com/PROD/CODBOZ/1_0_8/blackops_etc.dz)
 
-Most likely you'll want `blackops_atitc.dz`.
+Most likely you'll want `blackops_atitc.dz`. If you'd rather not wait
+for the in-game download, drop the `.dz` file into
+`Android/obb/com.activision.boz/` on the device before launching.
+
+## Storage / OBB write access (Android 11+)
+
+The Marmalade engine writes its expansion data to the *raw* external
+storage path `/sdcard/Android/obb/com.activision.boz/`, which modern
+Android blocks under scoped storage. The fix that made downloads land
+reliably on Android 12 and 15:
+
+- **`targetSdk = 30`** in `app/build.gradle.kts` (compileSdk stays 36).
+  At SDK 30 the legacy `WRITE_EXTERNAL_STORAGE` semantics the engine
+  was written for return, and writes to the OBB path succeed again.
+- **`AndroidManifest.xml`** declares `WRITE_EXTERNAL_STORAGE` (no
+  `maxSdkVersion` cap) plus `MANAGE_EXTERNAL_STORAGE` as a belt-and-
+  braces for API 30+.
+- **`IsDeviceActivity.kt`** gates the native loader behind storage
+  access before starting the engine: it requests the runtime
+  `WRITE_EXTERNAL_STORAGE` grant on API 23-29 and the All-files-access
+  (`MANAGE_EXTERNAL_STORAGE`) grant on API 30+, and pre-creates the
+  `Android/obb/<pkg>/` dir (via `context.obbDir` *and* the raw sdcard
+  path the engine constructs) so the engine's mkdir doesn't fail.
+
+Without these the engine's write to the OBB path fails with `EACCES`,
+which it surfaces as a misleading *"device does not have enough storage
+to download the needed files"* error — not an actual disk-space
+problem.
 
 ## Repo exclusions (`.gitignore` policy)
 

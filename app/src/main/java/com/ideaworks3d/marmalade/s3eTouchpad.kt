@@ -6,7 +6,7 @@ import android.view.InputDevice
 import android.view.MotionEvent
 import android.view.ViewParent
 
-internal class s3eTouchpad {
+class s3eTouchpad {
     private var processPositionEvents = false
     private var inputDeviceId = -1
 
@@ -42,7 +42,7 @@ internal class s3eTouchpad {
         }
     }
 
-    fun s3eTouchpadInt(prop: Int): Int {
+    fun s3eTouchpadGetInt(prop: Int): Int {
         if (prop == S3E_TOUCHPAD_AVAILABLE) {
             LoaderAPI.trace("Touchpad GetInt S3E_TOUCHPAD_AVAILABLE")
             if (inputDeviceId == -1) return 0

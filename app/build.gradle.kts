@@ -16,7 +16,7 @@ android {
 
     signingConfigs {
         create("release") {
-            storeFile = file(keystoreProperties.getProperty("storeFile", ""))
+            storeFile = rootProject.file(keystoreProperties.getProperty("storeFile", ""))
             storePassword = keystoreProperties.getProperty("storePassword", "")
             keyAlias = keystoreProperties.getProperty("keyAlias", "")
             keyPassword = keystoreProperties.getProperty("keyPassword", "")
@@ -42,7 +42,11 @@ android {
     defaultConfig {
         applicationId = "com.activision.boz"
         minSdk = 21
-        targetSdk = 36
+        // Low targetSdk restores legacy WRITE_EXTERNAL_STORAGE semantics for
+        // the engine, which writes game data to /sdcard/Android/obb/<pkg>/.
+        // At SDK 36 those writes are EACCES-blocked even with All files access.
+        // App is private (never Play Store) so the trade-off is fine.
+        targetSdk = 30
         versionCode = versionProps.getProperty("VERSION_CODE").toInt()
         versionName = "1.0.8.1"
         versionNameSuffix = "kotlin"
@@ -63,7 +67,11 @@ android {
                 abiFilters += listOf("armeabi-v7a") //, "arm64-v8a")
             }
             //not worth enabling
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
             signingConfig = signingConfigs.getByName("release")
         }
     }
@@ -80,8 +88,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
 
         tasks.withType<JavaCompile>().configureEach {
             options.compilerArgs.add("-Xlint:deprecation")
@@ -89,7 +97,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "21"
     }
 
     dependenciesInfo {

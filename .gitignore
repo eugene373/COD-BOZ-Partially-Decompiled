@@ -24,3 +24,13 @@ app/src/main/assets/deadops-music/
 buildtools/smali_out/
 buildtools/__pycache__/
 buildtools/nullable_errs*.txt
+
+# session scratch
+/iwtrace.txt
+/ui.xml
+/ui2.xml
+/ui3.xml
+iwtrace.txt
+ui.xml
+ui2.xml
+ui3.xml

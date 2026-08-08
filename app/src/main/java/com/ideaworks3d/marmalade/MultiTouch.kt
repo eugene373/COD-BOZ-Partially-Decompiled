@@ -5,9 +5,6 @@ import android.view.MotionEvent
 internal class MultiTouch {
 
     companion object {
-        private const val POINTER_DOWN = 1
-        private const val POINTER_UP = 2
-        private const val POINTER_MOVE = 3
         private const val TOUCH_DOWN = 4
         private const val TOUCH_UP = 5
         private const val TOUCH_MOVE = 6
@@ -15,9 +12,8 @@ internal class MultiTouch {
 
         @JvmStatic
         fun onTouchEvent(loader: LoaderThread, event: MotionEvent): Boolean {
-            var action = event.action
-            action = action and 0xff
-            if (action == POINTER_MOVE) {
+            val action = event.action and 0xff
+            if (action == MotionEvent.ACTION_MOVE) {
                 val count = event.pointerCount
                 for (i in 0 until count) {
                     val id = event.getPointerId(i)
@@ -26,17 +22,11 @@ internal class MultiTouch {
                     loader.onMotionEvent(id, TOUCH_MOVE, x, y)
                 }
             } else {
-                var touchEvent = 0
-                if (action != MotionEvent.ACTION_DOWN && action != MotionEvent.ACTION_POINTER_DOWN) {
-                    if (action != MotionEvent.ACTION_UP && action != MotionEvent.ACTION_POINTER_UP) {
-                        if (action == MotionEvent.ACTION_CANCEL) {
-                            touchEvent = TOUCH_CANCEL
-                        }
-                    } else {
-                        touchEvent = TOUCH_UP
-                    }
-                } else {
-                    touchEvent = TOUCH_DOWN
+                val touchEvent = when (action) {
+                    MotionEvent.ACTION_DOWN, MotionEvent.ACTION_POINTER_DOWN -> TOUCH_DOWN
+                    MotionEvent.ACTION_UP, MotionEvent.ACTION_POINTER_UP -> TOUCH_UP
+                    MotionEvent.ACTION_CANCEL -> TOUCH_CANCEL
+                    else -> 0
                 }
 
                 if (touchEvent != 0) {
