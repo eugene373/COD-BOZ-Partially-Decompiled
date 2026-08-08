@@ -192,15 +192,7 @@ build-tools 36, Gradle 8.11.1 (auto-fetched by the wrapper).
 
 The runtime downloads the `blackops_*.dz` texture blob on first launch
 into `Android/obb/com.activision.boz/` (it writes a `.tmp` file first,
-then renames). The source URLs (still live on the Activision CDN):
-
-- [blackops_dxt.dz] http://cdn-boz-android.callofduty.com/PROD/CODBOZ/1_0_8/blackops_dxt.dz
-- [blackops_atitc.dz] http://cdn-boz-android.callofduty.com/PROD/CODBOZ/1_0_8/blackops_atitc.dz
-- [blackops_etc.dz] http://cdn-boz-android.callofduty.com/PROD/CODBOZ/1_0_8/blackops_etc.dz
-
-Most likely you'll want `blackops_atitc.dz`. If you'd rather not wait
-for the in-game download, drop the `.dz` file into
-`Android/obb/com.activision.boz/` on the device before launching.
+then renames).
 
 ## Storage / OBB write access (Android 11+)
 
