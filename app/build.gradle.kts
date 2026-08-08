@@ -33,10 +33,6 @@ android {
 
     val versionProps = Properties().apply {
         load(versionPropsFile.inputStream())
-        val currentCode = getProperty("VERSION_CODE").toInt()
-        val newCode = currentCode + 1
-        setProperty("VERSION_CODE", newCode.toString())
-        store(versionPropsFile.writer(), null)
     }
 
     defaultConfig {
