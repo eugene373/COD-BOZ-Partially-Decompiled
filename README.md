@@ -1,15 +1,33 @@
-# BOZ Kotlin Port (`Main/`)
+# BOZ Kotlin Port (`Master/`)
+
+Dogecoin Wallet: DLXroiTaabPubUayDqhsHKsU7yTuegMDen
 
 This is the Kotlin source tree for the Call of Duty: Black Ops Zombies
-mobile project formerly hosted under `Master/`. The original tree was a
+mobile project hosted under `Main/`. The original tree was a
 Groovy-flavored mix of Marmalade-era Java plus raw JAR blobs; this port
 moves everything to Kotlin source while preserving the JVM ABI needed by
 the native libs in `app/src/main/jniLibs/`.
+
+Big thanks to [12brendon34] https://github.com/12brendon34  for laying the
+ground work with the decompiled java source! I'm sure I'd still be 
+converting to Kotlin if not for the Github Repo.
 
 For context, original-tree documentation (and the full Maven build that
 this port inherits from) lives in `../Master/README.md`.
 
 ## Overview
+
+Call of Duty: Black Ops Zombies mobile was released in 2012, developed
+using the now-discontinued "Marmalade" game engine. This port aims to
+decompile every class the runtime needs and rewrite it as Kotlin source
+so the project is editable end-to-end on modern Android Studio, without
+relying on binary JARs.
+
+**Build status:** `./gradlew assembleDebug` → `BUILD SUCCESSFUL`,
+`app/build/outputs/apk/debug/app-debug.apk` (~53 MB). `compileDebugKotlin`
+is at **0 errors** after the rebuild pass documented below.
+
+## Layout
 
 Call of Duty: Black Ops Zombies mobile was released in 2012, developed
 using the now-discontinued "Marmalade" game engine. This port aims to
@@ -68,7 +86,7 @@ The port used **two** decompilation passes, both feeding the same
    signatures but only `TODO("body")` stubs — no method bodies.
 
 2. **Real-smali pass (signatures + bodies).** A full real-smali
-   decompilation of the Master APK lives at `../Master/smali/`
+   decompilation of the Master APK lives at `../Main/smali/`
    (≈4,967 `.smali` files with complete bytecode bodies — `invoke-*`,
    branches, `iget`/`iput`, `:cond_N`/`:goto_N`). This was converted
    to Kotlin skeletons via the new
@@ -77,7 +95,7 @@ The port used **two** decompilation passes, both feeding the same
    `.method/.end method`, `.param`, `.throws`, `.annotation`) — unlike
    `smali_to_kt.py`, which only understands javap text. Output landed
    in [`buildtools/smali_out/`](buildtools/smali_out/) mirroring the
-   `Master/smali` package tree.
+   `main/smali` package tree.
 
    The smali-derived skeletons carry the raw smali body as a `/* */`
    comment block under each `TODO("body")`, which is what made it
@@ -176,9 +194,9 @@ The runtime downloads the `blackops_*.dz` texture blob on first launch
 into `Android/obb/com.activision.boz/` (it writes a `.tmp` file first,
 then renames). The source URLs (still live on the Activision CDN):
 
-- [blackops_dxt.dz](http://cdn-boz-android.callofduty.com/PROD/CODBOZ/1_0_8/blackops_dxt.dz)
-- [blackops_atitc.dz](http://cdn-boz-android.callofduty.com/PROD/CODBOZ/1_0_8/blackops_atitc.dz)
-- [blackops_etc.dz](http://cdn-boz-android.callofduty.com/PROD/CODBOZ/1_0_8/blackops_etc.dz)
+- [blackops_dxt.dz] http://cdn-boz-android.callofduty.com/PROD/CODBOZ/1_0_8/blackops_dxt.dz
+- [blackops_atitc.dz] http://cdn-boz-android.callofduty.com/PROD/CODBOZ/1_0_8/blackops_atitc.dz
+- [blackops_etc.dz] http://cdn-boz-android.callofduty.com/PROD/CODBOZ/1_0_8/blackops_etc.dz
 
 Most likely you'll want `blackops_atitc.dz`. If you'd rather not wait
 for the in-game download, drop the `.dz` file into

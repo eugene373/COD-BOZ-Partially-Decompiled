@@ -3,9 +3,9 @@
 # members by their exact names at runtime via JNI FindClass / GetMethodID /
 # RegisterNatives. R8 obfuscation/shrinking renames or removes those members and
 # the native loader then fails with NoSuchMethodError / RegisterNatives failures
-# (e.g. LoaderView.videoStoppedNotify, s3eTouchpad.s3eTouchpadInit). Keep the
-# entire Marmalade package, the app entry point, the savegame helper, and ALL
-# native/external methods everywhere unobfuscated and unstripped.
+# (e.g. LoaderView.videoStoppedNotify). Keep the entire Marmalade package, the
+# app entry point, the savegame helper, and ALL native/external methods
+# everywhere unobfuscated and unstripped.
 
 -keep class com.ideaworks3d.** { *; }
 -keepclassmembers class com.ideaworks3d.** { *; }

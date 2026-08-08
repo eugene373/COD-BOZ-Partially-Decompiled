@@ -46,7 +46,7 @@ android {
         // the engine, which writes game data to /sdcard/Android/obb/<pkg>/.
         // At SDK 36 those writes are EACCES-blocked even with All files access.
         // App is private (never Play Store) so the trade-off is fine.
-        targetSdk = 30
+        targetSdk = 35
         versionCode = versionProps.getProperty("VERSION_CODE").toInt()
         versionName = "1.0.8.1"
         versionNameSuffix = "kotlin"
@@ -54,7 +54,7 @@ android {
     }
 
     buildTypes {
-        getByName("debug") {
+        getByName("release") {
             //noinspection ChromeOsAbiSupport
             ndk {
                 abiFilters += listOf("armeabi-v7a") //, "arm64-v8a")
