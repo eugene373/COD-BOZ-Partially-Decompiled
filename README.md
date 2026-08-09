@@ -175,6 +175,43 @@ detail. The reduction stages:
   symmetry with the original `.so`s. Initialize with
   `java.lang.Integer.valueOf(x) as java.lang.Integer`.
 
+## Disabling the s3e signature check
+
+The Marmalade engine's native library `libs3e_android.so` verifies digital
+signatures on `.s3e` container files at load time. The game archive
+`app/src/main/assets/boz.s3e` is an LZMA1-RAW-compressed s3e container
+with an embedded `icf` header and ARM executable payload. When signature
+checking is active, the engine refuses to load any `.s3e` whose signature
+doesn't match — which means you cannot edit the embedded `s3e.cfg`
+configuration or map data without breaking the file.
+
+**Why we disable it:** The signature check on `libs3e_android.so` is patched
+out so that `boz.s3e` can be freely edited for configuration tweaks
+(`s3e.cfg`) and map/data modifications. Without this patch, any edit to the
+s3e archive causes the engine to reject it at startup, halting development
+on the Kotlin port's runtime behavior.
+
+**The patch** replaces a conditional branch (`BLE` on ARM32, `B.LE` on
+ARM64) in the signature-verification function with an instruction that
+always takes the success path:
+
+| Architecture | Original instruction | Patch | Offset |
+|---|---|---|---|
+| armeabi (ARM 32-bit) | `BLE +0x13` | `MOVNE R0, #0` | 0x2496c |
+| armeabi-v7a (Thumb 32-bit) | `BLE +0x13` | `MOVNE R0, #0` | 0x383b0 |
+| arm64-v8a (AArch64) | `B.LE +0x45c` | `NOP` | 0x2aa08 |
+
+The patch is applied via `buildtools/disable_sig_check.py`, which scans for
+all `libs3e_android.so` files (jniLibs + build intermediates) and applies
+the correct architecture-specific fix. It verifies each file contains the
+`Incorrect signature` error string before patching, ensuring it only
+modifies the correct Marmalade library.
+
+To (re-)apply the patch:
+```
+python buildtools/disable_sig_check.py
+```
+
 ## Building
 
 ```
