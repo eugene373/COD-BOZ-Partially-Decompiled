@@ -1,0 +1,15 @@
+HEADER_FLAG|0
+ORIGINAL_DZ|blackops_loader.dz
+DIRS|bootstrap\iwui_stylebootstrapdownloaderlocalisation
+bootstrap/iwui_style/style.group.bin|0x000c0001|1
+bootstrap/bootstrap.group.bin|0x00000100|2
+downloader/downloader.group.bin|0x00000100|3
+console.bin|0x00000100|0
+iwnetworkconfigs.group.bin|0x00000100|0
+localisation/english_uk.dat|0x00000100|4
+localisation/english_us.dat|0x00000100|4
+localisation/french.dat|0x00000100|4
+localisation/german.dat|0x00000100|4
+localisation/italian.dat|0x00000100|4
+localisation/LocaliseHashes.dat|0x00000100|4
+localisation/spanish.dat|0x00000100|4

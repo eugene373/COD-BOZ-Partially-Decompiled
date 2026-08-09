@@ -1,0 +1,20 @@
+ResDownloadLink="http://10.80.0.199:8080/"
+ResourcePath = "com.marm.blackops/"
+[RESMANAGER]
+ResBuild=0              # Uncomment to disable resource building
+[GAME]
+Binarise=0                  # Uncomment to binarise
+[GAME]
+GameVersion="1. 0. 9"
+{}
+[GAME]
+AndroidPublicKey="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgeOpwfwM4alZrD3un6xi8bszw2auW7ARE8y8KzNSEUkJXW0eL7bmKlf3O49hhUHavYhzdhnvyVRR9c9jfS45BivJ3A7hUWxxGguwEcsa7lQz7MmcG5DtlK0OokAyvmzkgv/3XAOnGovwH11D2zEwN9dN7CqQdnjF1C+2Z7+nyzQaLeY12oB7vFEAndBIkO37mOMgoOytWz3QQOi7iajVTlJXAiforAWoBetiDh+KkLyqEWiPUMHMgbEufRTp2/E5FRQCza4KXFn1+a5o/sXGdJRVDhgwjcyEr1SnT4lXNSl6SBKshDc29axH6RBMf2sKFZhSOc0xJAPGcQvs/fx5fwIDAQAB"
+ResDownloadLink="http://cdn-boz-android.callofduty.com/PROD/CODBOZ/1_0_9/"
+ResourcePath = "com.activision.boz/"
+[s3e]
+SysAppVersion=1.0.11
+SysAppCaption="COD:BOZ"
+AndroidExtSo="libs3eFacebook.so;libs3eAmazonInAppPurchasing.so;libs3eAndroidMarketBilling.so;libs3eAndroidGooglePlayBilling.so;libs3eSamsungInAppPurchasing.so;libIsDevice.so;libIsIOSUtils.so;libs3eGooglePlayServices.so"
+{}
+[S3E]
+SysGlesDirectory=pvr

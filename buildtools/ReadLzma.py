@@ -70,85 +70,117 @@ def parse_xe3u_container(decompressed: bytes):
     """Parse the decompressed XE3U container format.
 
     After decompression, the file starts with 'XE3U' magic and contains:
-    - A header section
-    - Embedded ICF config files
-    - Optional symbol tables
+    - A 40-byte header (magic, version, section offsets)
+    - Multiple ICF config files (INI-style)
+    - A file table entry with symbol count
+    - A symbol table of null-terminated JNI/native function names
+    - A binary section (ARM code + texture tables + assets)
 
-    Returns a dict with 'header' and any extractable content.
+    Container layout:
+      0x0000  XE3U magic (4 bytes) + version + section offsets (36 bytes)
+      0x004C  Config Section 1: Main s3e.icf (global engine config)
+      ~0x11CA Config Section 2: Game config (Demonware, NETWORK, GAME, etc.)
+      ~0x4200 Config Section 3: Resource download config (RSA key, CDN links)
+      0x43F3  File table entry: flags(4) + config_offset(4) + symbol_count(2)
+      0x43FD  Symbol table: null-terminated JNI function names
+      0x5D52  Binary section: ARM code + texture offset tables + game assets
+
+    Returns a dict with 'header', 'files', 'symbols', 'file_table_entry', and 'raw'.
     """
     result = {
+        'header': {},
         'files': [],
         'symbols': [],
         'raw': decompressed,
     }
 
     if not decompressed.startswith(S3E_MAGIC):
-        # Even without magic, still return raw data
         return result
 
-    # The XE3U container has a header after the magic
-    # Parse header fields to understand the layout
-    header_size = min(len(decompressed), 40)
-    header_bytes = decompressed[:header_size]
+    # Parse the 40-byte XE3U header
+    result['header'] = {
+        'magic': decompressed[:4].decode('ascii'),
+        'version': struct.unpack('<I', decompressed[4:8])[0],
+        'version_string': f"{decompressed[8]}.{decompressed[9]}.{decompressed[10]}.{decompressed[11]}",
+        'symbol_table_offset': struct.unpack('<I', decompressed[12:16])[0],
+        'field_16': struct.unpack('<I', decompressed[16:20])[0],
+        'field_20': struct.unpack('<I', decompressed[20:24])[0],
+        'field_24': struct.unpack('<I', decompressed[24:28])[0],
+        'field_28': struct.unpack('<I', decompressed[28:32])[0],
+        'field_32': struct.unpack('<I', decompressed[32:36])[0],
+        'field_36': struct.unpack('<I', decompressed[36:40])[0],
+    }
 
-    # Look for ICF config files embedded in the data
-    # ICF files are marked by '# This is the global system configuration...' comments
-    icf_start = decompressed.find(b'# This is the global system configuration file for Marmalade applications.')
-    if icf_start > 0:
-        # Search for the end of the ICF file
-        icf_end = decompressed.find(b'# -- END S3E.ICF --')
-        if icf_end > icf_start:
-            icf_end_marker = icf_end + len(b'# -- END S3E.ICF --')
-            # Include trailing newline
-            if icf_end_marker < len(decompressed) and decompressed[icf_end_marker:icf_end_marker+1] == b'\n':
-                icf_end_marker += 1
-            icf_content = decompressed[icf_start:icf_end_marker]
+    # Extract Config Section 1: Main s3e.icf
+    icf1_start = decompressed.find(b'# This is the global system configuration file for Marmalade applications.')
+    if icf1_start > 0:
+        icf1_end = decompressed.find(b'# -- END S3E.ICF --', icf1_start)
+        if icf1_end > icf1_start:
+            icf1_end_mark = icf1_end + len(b'# -- END S3E.ICF --')
+            if icf1_end_mark < len(decompressed) and decompressed[icf1_end_mark:icf1_end_mark+1] == b'\n':
+                icf1_end_mark += 1
             result['files'].append({
                 'name': 's3e.icf',
-                'offset': icf_start,
-                'size': len(icf_content),
-                'data': icf_content,
+                'offset': icf1_start,
+                'size': icf1_end_mark - icf1_start,
+                'data': decompressed[icf1_start:icf1_end_mark],
             })
 
-    # Parse symbol table if present
-    # Symbol tables are null-terminated ASCII strings
-    # Located at offset 0x4400 based on analysis
-    symbol_offsets_to_try = [0x4400, 0x43f3, 0x440b, 0x43f7]
-    for sym_offset in symbol_offsets_to_try:
-        if sym_offset >= len(decompressed):
-            continue
-        # Look for a sequence of null-terminated strings
-        symbols = []
-        pos = sym_offset
-        consecutive_null = 0
-        while pos < len(decompressed):
+    # Extract Config Section 2: Game config (starts with '# comments and whitespace')
+    config2_marker = b'# comments and whitespace stripped by deployment tool'
+    config2_start = decompressed.find(config2_marker)
+    if config2_start > 0:
+        # Find where config section 2 ends - it ends at config section 3
+        config3_start = decompressed.find(b'ResDownloadLink', config2_start)
+        if config3_start < 0:
+            config3_start = result['header']['symbol_table_offset']
+        config2_data = decompressed[config2_start:config3_start]
+        result['files'].append({
+            'name': 'game_config.icf',
+            'offset': config2_start,
+            'size': len(config2_data),
+            'data': config2_data,
+        })
+
+    # Extract Config Section 3: Resource download config
+    if config3_start > 0:
+        file_table_offset = result['header']['symbol_table_offset']
+        config3_data = decompressed[config3_start:file_table_offset]
+        result['files'].append({
+            'name': 'download_config.icf',
+            'offset': config3_start,
+            'size': len(config3_data),
+            'data': config3_data,
+        })
+
+    # Parse symbol table from the file table entry at symbol_table_offset
+    sym_table_offset = result['header']['symbol_table_offset']
+    if sym_table_offset + 10 <= len(decompressed):
+        # File table entry: flags(4) + config_offset(4) + symbol_count(2)
+        flags = struct.unpack('<I', decompressed[sym_table_offset:sym_table_offset+4])[0]
+        config_offset = struct.unpack('<I', decompressed[sym_table_offset+4:sym_table_offset+8])[0]
+        sym_count = struct.unpack('<H', decompressed[sym_table_offset+8:sym_table_offset+10])[0]
+
+        result['file_table_entry'] = {
+            'flags': flags,
+            'config_offset': config_offset,
+            'symbol_count': sym_count,
+        }
+
+        # Parse null-terminated symbols starting after the file table entry
+        sym_start = sym_table_offset + 10
+        pos = sym_start
+        while pos < len(decompressed) and len(result['symbols']) < sym_count:
             end = decompressed.find(b'\x00', pos)
-            if end == -1 or end - pos > 128:
+            if end == -1:
                 break
             raw_name = decompressed[pos:end]
-            if len(raw_name) == 0:
-                consecutive_null += 1
-                if consecutive_null > 1:
-                    break
-                pos = end + 1
-                continue
             try:
                 name = raw_name.decode('ascii')
+                result['symbols'].append((pos, name))
             except UnicodeDecodeError:
                 break
-            # Filter out non-symbol strings
-            if name and ('s3e' in name or 'gl' in name or 'egl' in name or
-                          'Malloc' in name or 'Free' in name or name.isalpha() or
-                          '_' in name):
-                symbols.append((pos, name))
             pos = end + 1
-            consecutive_null = 0
-            if len(symbols) > 500:  # Sanity limit
-                break
-
-        if len(symbols) > 10:  # Found a real symbol table
-            result['symbols'] = symbols
-            break
 
     return result
 
@@ -207,28 +239,28 @@ def main():
 
     print(f"\nContainer magic: {decompressed[:4].decode('ascii')}")
 
-    # Print header info
-    header = {
-        'version': struct.unpack('<I', decompressed[4:8])[0],
-        'u32_at_8': struct.unpack('<I', decompressed[8:12])[0],
-        'table_offset': struct.unpack('<I', decompressed[12:16])[0],
-        'field_16': struct.unpack('<I', decompressed[16:20])[0],
-        'field_20': struct.unpack('<I', decompressed[20:24])[0],
-        'field_24': struct.unpack('<I', decompressed[24:28])[0],
-        'field_28': struct.unpack('<I', decompressed[28:32])[0],
-        'field_32': struct.unpack('<I', decompressed[32:36])[0],
-        'field_36': struct.unpack('<I', decompressed[36:40])[0],
-    }
-    print("\n=== XE3U Header ===")
-    print(f"  Version: {header['version']} (0x{header['version']:x})")
-    print(f"  Field @ 8: {header['u32_at_8']} (0x{header['u32_at_8']:x})")
-    print(f"  Symbol table offset: {header['table_offset']} (0x{header['table_offset']:x})")
-    print(f"  Data offset: {header['field_16']} (0x{header['field_16']:x})")
-    print(f"  Field @ 24: {header['field_24']} (0x{header['field_24']:x})")
-    print(f"  Field @ 28: {header['field_28']} (0x{header['field_28']:x})")
-
-    # Parse embedded content
+    # Parse embedded content (also parses header)
     parsed = parse_xe3u_container(decompressed)
+
+    # Print header info
+    header = parsed['header']
+    print("\n=== XE3U Header ===")
+    print(f"  Version: 0x{header['version']:08x}")
+    print(f"  SDK version: {header['version_string']}")
+    print(f"  Symbol table offset: 0x{header['symbol_table_offset']:08x}")
+    print(f"  Field @ 0x10: 0x{header['field_16']:08x}")
+    print(f"  Field @ 0x14: 0x{header['field_20']:08x}")
+    print(f"  Field @ 0x18: 0x{header['field_24']:08x}")
+    print(f"  Field @ 0x1C: 0x{header['field_28']:08x}")
+    print(f"  Field @ 0x20: 0x{header['field_32']:08x}")
+    print(f"  Field @ 0x24: 0x{header['field_36']:08x} ({header['field_36']} bytes)")
+
+    if 'file_table_entry' in parsed:
+        fte = parsed['file_table_entry']
+        print(f"\n=== File Table Entry ===")
+        print(f"  Flags: 0x{fte['flags']:x}")
+        print(f"  Config offset: 0x{fte['config_offset']:x}")
+        print(f"  Symbol count: {fte['symbol_count']}")
 
     # Print ICF files
     if parsed['files']:
