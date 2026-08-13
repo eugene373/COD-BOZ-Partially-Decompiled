@@ -1,0 +1,45 @@
+# This is the global system configuration file for Marmalade applications.
+# This file is automatically included in all application deployments and
+# used when debugging an x86 build.
+#
+# Most of the settings in this are per-device configuration setting for the
+# S3E loader.  These settings are almost all in the [S3E] section, with
+# a few under [GL].
+
+[S3E]
+SysFastLockDisable=1
+SysStackSwitchFastDisable=1
+
+#Always have heap 6 waiting as a "direct to OS" heap
+MemSize6=0
+MemFlags6=OS_DIRECT
+
+{OS=ANDROID}
+[GL]
+EGL_DEPTH_SIZE=16
+EGL_RED_SIZE=8
+EGL_BLUE_SIZE=8
+EGL_GREEN_SIZE=8
+EGL_ALPHA_SIZE=8
+EGLTerminateOnSuspend=1
+AlphaInFrameBuffer=1
+[S3E]
+SysGlesSuspendWithApp=0
+MemUseMMapForCode=1
+WinWidth=1280
+WinHeight=720
+WinFullScreen=1
+
+[S3E]
+GameExcute=boz.s3e
+[ICF]
+# Forces the loader to escape the binary and look at the physical hard drive folder
+Include=game_config.icf
+
+# Must reset before end of file
+{ID=ANY}
+{CLASS=ANY}
+
+[TRACE]
+IWCRT_VERBOSE=0
+# -- END S3E.ICF --

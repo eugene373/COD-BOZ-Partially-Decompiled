@@ -172,14 +172,14 @@ open class LoaderView : SurfaceView, Callback, OnClickListener, OnDismissListene
             m_ErrorDialog = null
             m_ErrorRunning = false
         } else {
-            throw AssertionError("onDismiss called with unknown dialog: $dialog")
+            trace("onDismiss called with unknown dialog (suppressed): $dialog")
         }
     }
 
     override fun onClick(dialog: DialogInterface, which: Int) {
         if (dialog === m_InputDialog) {
             if (which == -1) {
-                m_InputTextResult = m_EditText!!.text.toString()
+                m_InputTextResult = m_EditText?.text?.toString() ?: ""
             }
             dialog.dismiss()
         } else if (dialog === m_ErrorDialog) {
@@ -191,7 +191,7 @@ open class LoaderView : SurfaceView, Callback, OnClickListener, OnDismissListene
             trace("onClick: $which->$m_ErrorRtn")
             dialog.dismiss()
         } else {
-            throw AssertionError("onClick called with unknown dialog: $dialog")
+            trace("onClick called with unknown dialog (suppressed): $dialog")
         }
     }
 
@@ -289,81 +289,31 @@ open class LoaderView : SurfaceView, Callback, OnClickListener, OnDismissListene
     }
 
     private fun showErrorReal() {
-        trace("showErrorReal")
-        val builder = Builder(m_LoaderActivity)
+        trace("showErrorReal: suppressed (no pop-up mode)")
         m_ErrorRtn = 0
-        builder.setTitle(m_ErrorTitle)
-        builder.setMessage(m_ErrorBody)
-        builder.setPositiveButton("Continue", this)
-        if (m_ErrorType > 0) {
-            builder.setNegativeButton("Stop", this)
-        }
-        if (m_ErrorType > 1) {
-            builder.setNeutralButton("Ignore", this)
-        }
-        m_ErrorDialog = builder.create()
-        m_ErrorDialog!!.setOnDismissListener(this)
-        m_ErrorDialog!!.show()
-        trace("showErrorReal done")
+        m_ErrorRunning = false
     }
 
     fun showError(p0: String, p1: String, p2: Int): Int {
-        trace("showError: $p0")
-        if (m_LoaderActivity.isFinishing) {
-            trace("showError: $p1")
-            trace("activity is finishing... skipping showError")
-            return 0
-        }
-        synchronized(m_ShowError) {
-            m_ErrorTitle = p0
-            m_ErrorBody = p1
-            m_ErrorType = p2
-            m_ErrorRtn = 0
-            m_ErrorRunning = true
-            m_Handler.post(m_ShowError)
-            trace("showError: waiting")
-            while (m_ErrorRunning) {
-                LoaderAPI.s3eDeviceYield(20)
-            }
-            trace("showError: done")
-            return m_ErrorRtn
-        }
+        trace("showError: suppressed (no pop-up mode): $p0")
+        return 0
     }
 
     fun doneInputText(dialog: DialogInterface, which: Int) {
     }
 
     fun showInputTextReal() {
-        m_EditText = EditText(m_LoaderActivity)
-        m_EditText!!.setText(m_InputTextDefault)
-        if (m_InputTextFlags and 1 != 0) {
-            m_EditText!!.inputType = 128
-            m_EditText!!.transformationMethod = PasswordTransformationMethod()
-        } else if (m_InputTextFlags and 2 != 0) {
-            m_EditText!!.inputType = 33
-        } else if (m_InputTextFlags and 4 != 0) {
-            m_EditText!!.inputType = 17
-        } else if (m_InputTextFlags and 8 != 0) {
-            m_EditText!!.inputType = 8194
-        }
-        val builder = Builder(m_LoaderActivity)
-        builder.setTitle(m_InputTextTitle)
-        builder.setView(m_EditText)
-        builder.setPositiveButton("OK", this)
-        builder.setNegativeButton("Cancel", this)
-        m_InputDialog = builder.create()
-        m_InputTextRunning = true
-        m_InputTextResult = null
-        m_InputDialog!!.setOnDismissListener(this)
-        m_InputDialog!!.show()
+        trace("showInputTextReal: suppressed (no pop-up mode)")
+        m_InputTextRunning = false
+        m_InputTextResult = m_InputTextDefault ?: ""
     }
 
     fun getInputString(p0: String, p1: String, p2: Int) {
-        trace("showing m_ShowInputText dialog: $p2")
+        trace("getInputString: suppressed (no pop-up mode): $p0")
         m_InputTextTitle = p0
         m_InputTextDefault = p1
         m_InputTextFlags = p2
-        m_Handler.post(m_ShowInputText)
+        m_InputTextRunning = false
     }
 
     fun vibrateStart(p0: Long) {

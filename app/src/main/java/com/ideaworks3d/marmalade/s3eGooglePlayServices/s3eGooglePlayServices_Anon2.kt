@@ -8,7 +8,16 @@ open class s3eGooglePlayServices_Anon2() : android.content.DialogInterface.OnCli
 
     constructor(p0: com.ideaworks3d.marmalade.s3eGooglePlayServices.s3eGooglePlayServices) : this()
 
-    override public fun onClick(p0: android.content.DialogInterface, p1: Int) { /* TODO(body): (Landroid/content/DialogInterface;I)V */ }
+    override public fun onClick(p0: android.content.DialogInterface, p1: Int) {
+        android.util.Log.w("s3eGooglePlayServices", "s3eGooglePlayMatchMakingInvitePlayers invite players")
+        val service = thisRef0
+        if (service != null) {
+            val activity = service.m_PretendActivity
+            if (activity != null) {
+                activity.showMatchMakingInvitePlayersDialog(0x2710, 1, 3)
+            }
+        }
+    }
     /*
     //         .locals 4
     //         const-string v0, "s3eGooglePlayServices"

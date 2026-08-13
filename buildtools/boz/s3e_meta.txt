@@ -1,0 +1,31 @@
+# S3E metadata - used by 'repack' command
+# Edit the .icf files above, then run: python boz_s3e_tool.py repack <output.s3e>
+
+original_size=4550559
+content_size=4550131
+content_end=0x00456df3
+sig_offset=0x00456df3
+sig_size=140
+trailer_offset=0x00456e7f
+trailer_size=288
+padding_size=42
+
+# Config section offsets within decompressed.s3e
+# For each config: offset = content start; size = editable content
+# length; span_end = where the next section begins; pad = the
+# fixed inter-section padding bytes (preserved verbatim on
+# size-changing edits so the block layout start/stop stays intact).
+config_s3e.icf_offset=0x0000004c
+config_s3e.icf_size=4475
+config_s3e.icf_span_end=0x000011ca
+config_s3e.icf_pad_size=3
+config_game_config.icf_offset=0x000011ca
+config_game_config.icf_size=11741
+config_game_config.icf_span_end=0x00003fa7
+config_game_config.icf_pad_size=0
+config_download_config.icf_offset=0x00003fa7
+config_download_config.icf_size=1100
+config_download_config.icf_span_end=0x000043f3
+config_download_config.icf_pad_size=0
+# The sig_block.bin and trailer.bin files are preserved from the original.
+# The decompressed.s3e file has the editable content.
