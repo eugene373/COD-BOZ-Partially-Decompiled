@@ -9,25 +9,13 @@ moves everything to Kotlin source while preserving the JVM ABI needed by
 the native libs in `app/src/main/jniLibs/`.
 
 Big thanks to [12brendon34] https://github.com/12brendon34  for laying the
-ground work with the decompiled java source! I'm sure I'd still be 
+ground work with the decompiled java source! I'm sure I'd still be
 converting to Kotlin if not for the Github Repo.
 
 For context, original-tree documentation (and the full Maven build that
 this port inherits from) lives in `../Master/README.md`.
 
 ## Overview
-
-Call of Duty: Black Ops Zombies mobile was released in 2012, developed
-using the now-discontinued "Marmalade" game engine. This port aims to
-decompile every class the runtime needs and rewrite it as Kotlin source
-so the project is editable end-to-end on modern Android Studio, without
-relying on binary JARs.
-
-**Build status:** `./gradlew assembleDebug` → `BUILD SUCCESSFUL`,
-`app/build/outputs/apk/debug/app-debug.apk` (~53 MB). `compileDebugKotlin`
-is at **0 errors** after the rebuild pass documented below.
-
-## Layout
 
 Call of Duty: Black Ops Zombies mobile was released in 2012, developed
 using the now-discontinued "Marmalade" game engine. This port aims to
@@ -70,7 +58,7 @@ Main/
 ├── upload-keystore.jks             # signing keystore (gitignored)
 ├── local.properties                # sdk.dir, java.home (gitignored)
 ├── HOWTO_BUILD.md                  # build + re-decompile workflow
-└── README.md                       # ← you are here
+��── README.md                       # ← you are here
 ```
 
 ## How `app/src/main/java/` was produced
@@ -87,7 +75,7 @@ The port used **two** decompilation passes, both feeding the same
 
 2. **Real-smali pass (signatures + bodies).** A full real-smali
    decompilation of the Master APK lives at `../Main/smali/`
-   (≈4,967 `.smali` files with complete bytecode bodies — `invoke-*`,
+   (��4,967 `.smali` files with complete bytecode bodies — `invoke-*`,
    branches, `iget`/`iput`, `:cond_N`/`:goto_N`). This was converted
    to Kotlin skeletons via the new
    [`buildtools/syntex_to_kt.py`](buildtools/syntex_to_kt.py), which
@@ -279,3 +267,64 @@ machine:
 
 If you want the big binaries in a clone, fetch them from the CDN links
 above or copy from a working tree.
+
+## Recent Fixes (v1.0.8)
+
+### Google Play Services / JNI Crash Fix
+
+**What was broken:** The game crashed with a JNI `CallVoidMethodV` /
+`CallBooleanMethodV` on `null obj` when ending a match or attempting
+online play. The native `libs3eGooglePlayServices.so` held stale global
+references to Java objects (Activity, callbacks) that became invalid
+after `onDestroy()` / process shutdown. When the native tick loop or
+match-ending logic fired callbacks (`native_ScoreSubmittedCallback`,
+`native_SignOutCallback`, etc.), the JNI call crashed.
+
+**Fix applied:**
+- Replaced all Google Play Services integration with GMS-free Kotlin
+  stubs (`s3eGooglePlayServices`, `s3eGooglePlayServicesActivity`,
+  `GameHelper`, `BaseGameActivity`). The stubs implement the same
+  JVM-facing API but return `false` / empty strings / no-op for every
+  call.
+- Converted every `public external @JvmStatic fun native_*()` JNI
+  callback in `s3eGooglePlayServicesActivity` to a regular Kotlin
+  no-op (`{ Log.i(...) }`) so the native library's JNI `CallStatic*`
+  sites resolve to harmless stubs instead of crashing on destroyed
+  objects.
+- Removed `libs3eGooglePlayServices.so` from `jniLibs/armeabi-v7a/`
+  (and `arm64-v8a/`) so the shared object is never loaded. The build
+  now depends on `play-services-base:11.0.4` /
+  `play-services-games:11.0.4` only for compile-time API surface.
+- This runs in a **private-server / offline mode** — no Google Play
+  Services sign-in, achievements, leaderboards, or real-time
+  multiplayer via GPS are expected to work. Co-op matchmaking is served
+  by the private Demonware backend configured in `game_config.icf`.
+
+### Graphics / Rendering — Performance Improvements
+
+- Optimized the Marmalade Android renderer for modern devices.
+- Increased hardware rendering cache capacity for improved rendering
+  performance and reduced cache pressure.
+- Increased vertex cache capacity for smoother geometry processing.
+- Re-enabled triangle-strip optimizations.
+- Re-enabled the newer texture atlas system.
+- Kept hardware texture compression enabled to reduce memory usage and
+  improve texture performance.
+- Disabled unnecessary benchmark output and release-build debugging
+  overhead.
+- Cleaned up Android release rendering configuration and GLES2 settings.
+
+### Multiplayer / Audio
+
+- Reverted the experimental voice chat changes.
+- Restored the original multiplayer audio behavior after voice chat was
+  found to interfere with in-game Co-Op sound output.
+- Online Co-Op multiplayer audio now uses the previously working
+  configuration.
+
+### General
+
+- Tuned the Android release configuration specifically for modern
+  Android hardware.
+- Removed redundant configuration entries where applicable.
+- No gameplay changes were made as part of this update.
